@@ -1,0 +1,26 @@
+/**
+ * CSS Module for MultiStepForm component
+ * Classes:
+ * .sectionCont - main section container
+ * .stepsCont   - steps list container
+ */
+
+.stepsCont {
+  width: 100%;
+  padding-top: 2rem;
+  background-image: url("/images/background/bg-sidebar-mobile.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  .sectionCont {
+    display: flex;
+    /*TO DO: add padding*/
+  }
+
+  .stepsCont {
+    background-image: url("/images/background/bg-sidebar-desktop.svg");
+  }
+}

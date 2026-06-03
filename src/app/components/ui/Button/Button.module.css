@@ -1,0 +1,47 @@
+/*
+* CSS Module for the Button component
+* Classes: 
+* .btn            - button
+* .transparentBtn - button with transparent background
+* .blueBtn        - button with --blue-950 background color
+* .purpleBtn      - button with --purple-600 background color
+*/
+
+.btn {
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius-5);
+  font-size: var(--font-size-base);
+}
+
+.transparentBtn {
+  background-color: transparent;
+  color: var(--grey-500);
+}
+
+.blueBtn {
+  background-color: var(--blue-950);
+  color: var(--white);
+}
+
+.purpleBtn {
+  background-color: var(--purple-600);
+  color: var(--white);
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*on hover, change the background color from --grey-500 to --blue-950*/
+  .transparentBtn:hover {
+    color: var(--blue-950);
+  }
+
+  /*on hover, change the background color from --blue-950 to --blue-900*/
+  .blueBtn:hover {
+    background-color: var(--blue-900);
+  }
+
+  /*on hover, change the background color from --purple-600 to --purple-550*/
+  .purpleBtn:hover {
+    background-color: var(--purple-550);
+  }
+}

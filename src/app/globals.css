@@ -19,6 +19,7 @@ Global CSS styles
   --font-size-base: 1rem;
 
   /*Border*/
+  --border-radius-5: 5px;
   --border-radius-500: 500px;
 
   /*Colors:*/
@@ -31,7 +32,9 @@ Global CSS styles
 
   /*Primary*/
   --blue-950: hsl(213, 96%, 18%);
+  --blue-900: hsl(213, 96%, 27%);
   --purple-600: hsl(243, 100%, 62%);
+  --purple-550: hsl(243, 100%, 71%);
   --blue-300: hsl(228, 100%, 84%);
   --blue-200: hsl(206, 94%, 87%);
   --red-500: hsl(354, 84%, 57%);
@@ -58,6 +61,12 @@ p {
 
 ul {
   list-style-type: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .lighter-text {

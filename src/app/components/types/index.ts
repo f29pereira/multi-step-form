@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 /* ---------------------------------------------------- */
 /* Components Props types                               */
 /* ---------------------------------------------------- */
@@ -12,4 +14,15 @@ export type StepProps = {
   stepIndex: number;
   stepName: string;
   isSelected: boolean;
+};
+
+/**
+ * Props for the StepsList component
+ * @property list             - list of steps
+ * @property currentStepIndex - step index
+ * @property stepName         - name of the step
+ */
+export type StepsListProps = {
+  list: Array<ReactNode>;
+  currentStepIndex: number;
 };

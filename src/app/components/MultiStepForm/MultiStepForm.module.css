@@ -1,8 +1,9 @@
 /**
  * CSS Module for MultiStepForm component
  * Classes:
- * .sectionCont - main section container
- * .stepsCont   - steps list container
+ * .sectionCont         - main section container
+ * .stepsCont          - steps list container
+ * .nextConfirmBtnCont - "Go next" button or "Confirm" button container
  */
 
 .stepsCont {
@@ -11,6 +12,16 @@
   background-image: url("/images/background/bg-sidebar-mobile.svg");
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.navigationCont {
+  display: flex;
+  padding: 1rem;
+  background-color: var(--white);
+}
+
+.nextConfirmBtnCont {
+  margin-left: auto;
 }
 
 /*Desktop Styles*/

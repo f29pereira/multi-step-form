@@ -26,3 +26,15 @@ export type StepsListProps = {
   list: Array<ReactNode>;
   currentStepIndex: number;
 };
+
+/**
+ * Props for the Button component
+ * @property description   - button description
+ * @property variant       - button color variant
+ * @property handleOnClick - button onClick function
+ */
+export type ButtonProps = {
+  description: string;
+  variant: "transparentBtn" | "blueBtn" | "purpleBtn";
+  handleOnClick?: () => void;
+};

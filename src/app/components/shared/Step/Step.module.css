@@ -1,0 +1,54 @@
+/**
+ * CSS Module for Step component
+ * Classes: 
+ * .circleNameCont - step circle and index/name container
+ * .circle         - step circle container
+ * .selected       - update .circle background-color and .circleIndex color
+ * .circleIndex    - step index inside the circle
+ * .numberNameCont - step index and name container (desktop)
+ * .stepIndex      - index (desktop)
+ * .stepName       - name (desktop)
+ */
+
+.circleNameCont {
+  margin-bottom: 2rem;
+}
+
+.circle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+  background-color: transparent;
+}
+
+.selected {
+  background-color: var(--blue-200);
+}
+
+.circleIndex {
+  color: var(--white);
+}
+
+.selected .circleIndex {
+  color: var(--blue-950);
+}
+
+.numberNameCont {
+  display: none;
+}
+
+.stepIndex {
+  color: var(--grey-500);
+}
+
+.stepName {
+  text-transform: capitalize;
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*TO DO - Add classes:*/
+  /*.circleNameCont: step circle and step index and name: display flex row container*/
+  /*.numberNameCont: display: block*/
+}

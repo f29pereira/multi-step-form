@@ -1,0 +1,55 @@
+/**
+ * CSS Module for the PersonalInfo component
+ * Classes:
+ * .mainCont    - main container
+ * .description - form description
+ * .input       - form input
+ */
+
+.mainCont {
+  padding: 2rem 1rem;
+  border-radius: var(--border-radius-10);
+  background-color: var(--white);
+}
+
+.description {
+  max-width: 15.625rem; /*250px*/
+  margin: 1rem 0 1.5rem 0;
+  line-height: 1.5;
+  color: var(--grey-500);
+}
+
+.input {
+  width: 100%;
+  margin: 0.5rem 0 1rem 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--purple-200);
+  border-radius: var(--border-radius-5);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-700);
+  color: var(--blue-950);
+}
+
+.input::placeholder {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-700);
+  color: var(--grey-450);
+}
+
+.input:focus {
+  outline: none; /*remove default browser outline*/
+  border: 1.5px solid var(--purple-550);
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*increase padding*/
+  .mainCont {
+    padding: 3rem;
+  }
+
+  /*remove max-width*/
+  .description {
+    max-width: unset;
+  }
+}

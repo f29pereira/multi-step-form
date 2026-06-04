@@ -74,6 +74,8 @@ a {
 
 p {
   font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--grey-500);
 }
 
 ul {
@@ -123,4 +125,12 @@ button {
   padding: 2rem 1rem;
   border-radius: var(--border-radius-10);
   background-color: var(--white);
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*increase padding*/
+  .white-card-cont {
+    padding: 3rem;
+  }
 }

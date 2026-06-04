@@ -8,8 +8,6 @@
 .description {
   max-width: 15.625rem; /*250px*/
   margin: 1rem 0 1.5rem 0;
-  line-height: 1.5;
-  color: var(--grey-500);
 }
 
 .input {
@@ -36,11 +34,6 @@
 
 /*Tablet Styles*/
 @media (min-width: 48rem /*768px*/) {
-  /*increase padding*/
-  .mainCont {
-    padding: 3rem;
-  }
-
   /*remove max-width*/
   .description {
     max-width: unset;

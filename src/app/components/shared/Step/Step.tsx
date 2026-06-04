@@ -7,6 +7,8 @@ import type { StepProps } from "../../types";
  * - If the step is the current selected updates the circle style to .selected
  *
  * - For desktop screens: aditionally shows the text "STEP" plus index and name
+ *
+ * Props are defined in {@link StepProps}.
  */
 export default function Step({ stepIndex, stepName, isSelected }: StepProps) {
   return (

@@ -15,10 +15,10 @@
 }
 
 .circle {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
-  border: 2px solid var(--white);
+  border: 1px solid var(--white);
   background-color: transparent;
 }
 
@@ -28,6 +28,7 @@
 
 .circleIndex {
   color: var(--white);
+  font-size: var(--font-size-base);
 }
 
 .selected .circleIndex {

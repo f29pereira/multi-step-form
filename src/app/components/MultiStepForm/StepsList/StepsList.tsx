@@ -4,16 +4,17 @@ import Step from "../../shared/Step/Step";
 
 /**
  * Renders the list of steps for the multi-step form
+ *
+ * Props are defined in {@link StepsListProps}.
  */
 export default function StepsList({ list, currentStepIndex }: StepsListProps) {
   return (
     <div className={styles.listCont}>
-      {/*TO DO: Update stepName prop*/}
       {list.map((step, index) => (
         <Step
           key={index}
           stepIndex={index + 1}
-          stepName="Test"
+          stepName={step}
           isSelected={currentStepIndex === index}
         />
       ))}

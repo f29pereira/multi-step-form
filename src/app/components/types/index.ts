@@ -23,7 +23,7 @@ export type StepProps = {
  * @property stepName         - name of the step
  */
 export type StepsListProps = {
-  list: Array<ReactNode>;
+  list: Array<string>;
   currentStepIndex: number;
 };
 

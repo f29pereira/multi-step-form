@@ -16,6 +16,7 @@ Global CSS styles
   --font-weight-500: 500;
   --font-weight-700: 700;
   /*Size*/
+  --font-size-14: 0.875rem; /*14px*/
   --font-size-base: 1rem;
 
   /*Border*/

@@ -1,0 +1,80 @@
+/**
+ * CSS Module for the Plan component
+ * Classes:
+ * .btn         - button
+ * .contentCont - button content container
+ * .icon        - plan type icon
+ * .type        - plan type name
+ * .value       - plan price
+ * .discount    - plan discont
+ */
+
+.btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem 1rem;
+  width: 100%;
+  border: 1.5px solid var(--purple-200);
+  border-radius: var(--border-radius-10);
+}
+
+.btn:focus {
+  outline: none; /*remove default browser outline*/
+  border: 2px solid var(--purple-550);
+  background-color: var(--blue-100);
+}
+
+.contentCont {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.icon {
+  width: 2.5rem; /*40px*/
+  height: 2.5rem; /*40px*/
+}
+
+.type {
+  font-size: var(--font-size-base);
+  color: var(--blue-950);
+}
+
+.value {
+  font-size: var(--font-size-14);
+  color: var(--grey-500);
+}
+
+.discount {
+  font-size: var(--font-size-14);
+  color: var(--blue-950);
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*increase the gap between the icon and plan type, price and discont from 1rem to 2rem*/
+  .btn {
+    gap: 2rem;
+  }
+
+  /*increase the icon width/height from 40px to 50px*/
+  .icon {
+    width: 3.125rem; /*50px*/
+    height: 3.125rem; /*50px*/
+  }
+
+  /*increase the gap between the plan type, price and discont*/
+  .contentCont {
+    gap: 1rem;
+  }
+
+  /*increase value and discont font size from 14px to 16px*/
+  .value,
+  .discount {
+    font-size: var(--font-size-base);
+  }
+}
+
+/*TO DO: Add desktop styles*/

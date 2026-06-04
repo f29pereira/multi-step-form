@@ -38,3 +38,44 @@ export type ButtonProps = {
   variant: "transparentBtn" | "blueBtn" | "purpleBtn";
   handleOnClick?: () => void;
 };
+
+/**
+ * Props for the Plan component
+ * @property type  - type of plan
+ * @property price - plan price
+ */
+export type PlanProps = {
+  type: PlanType;
+  price: PlanPricing;
+};
+
+/* ---------------------------------------------------- */
+/* Other component related types                        */
+/* ---------------------------------------------------- */
+
+/**
+ * Type for the subscription plans
+ */
+export type PlanType = "Arcade" | "Advanced" | "Pro";
+
+/**
+ * Type for the subscription plan details
+ * @property type        - type of plan
+ * @property monthlyPlan - monthly plan value and discont
+ * @property yearlyPlan  - yearly plan value and discont
+ */
+export type PlanDetails = {
+  type: PlanType;
+  monthlyPlan: PlanPricing;
+  yearlyPlan: PlanPricing;
+};
+
+/**
+ * Type for the subscription plan pricing
+ * @property value    - plan value
+ * @property discount - plan current discont
+ */
+export type PlanPricing = {
+  value: string;
+  discount?: string;
+};

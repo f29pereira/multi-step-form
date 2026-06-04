@@ -8,7 +8,7 @@ import styles from "./PersonalInfo.module.css";
  */
 export default function PersonalInfo() {
   return (
-    <div className={styles.mainCont}>
+    <div className={"white-card-cont"}>
       <h1 className={styles.title}>Personal info</h1>
 
       <p className={`lighter-text ${styles.description}`} id="form-description">

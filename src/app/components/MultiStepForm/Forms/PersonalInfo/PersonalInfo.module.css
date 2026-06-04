@@ -1,16 +1,9 @@
 /**
  * CSS Module for the PersonalInfo component
  * Classes:
- * .mainCont    - main container
  * .description - form description
  * .input       - form input
  */
-
-.mainCont {
-  padding: 2rem 1rem;
-  border-radius: var(--border-radius-10);
-  background-color: var(--white);
-}
 
 .description {
   max-width: 15.625rem; /*250px*/

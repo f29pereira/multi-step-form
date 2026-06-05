@@ -1,4 +1,6 @@
+"use client"; // Client Component
 import styles from "./PersonalInfo.module.css";
+import useFocus from "@/app/components/customHooks/useFocus";
 
 /**
  * Renders the personal info form with the inputs:
@@ -7,9 +9,18 @@ import styles from "./PersonalInfo.module.css";
  * - Phone Number
  */
 export default function PersonalInfo() {
+  const { elementRef } = useFocus<HTMLHeadingElement>();
+
   return (
     <div className={"white-card-cont"}>
-      <h1 className={styles.title}>Personal info</h1>
+      <h1
+        ref={elementRef}
+        tabIndex={-1}
+        className={styles.title}
+        aria-label="Step 1 of 4, Personal info"
+      >
+        Personal info
+      </h1>
 
       <p className={`lighter-text ${styles.description}`} id="form-description">
         Please provide your name, email address, and phone number.

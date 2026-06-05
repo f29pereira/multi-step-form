@@ -49,6 +49,17 @@ export type PlanProps = {
   price: PlanPricing;
 };
 
+/**
+ * Props for the SubscriptionToggle component
+ * @property isYearly - is the a yearly subscription
+ * @property toggle   - toggle between yearly and monthly subscription
+ */
+// TO DO - remove after context implementation
+export type SubscriptionToggleProps = {
+  isYearly: boolean;
+  toggle: () => void;
+};
+
 /* ---------------------------------------------------- */
 /* Other component related types                        */
 /* ---------------------------------------------------- */

@@ -1,12 +1,12 @@
 /**
  * CSS Module for MultiStepForm component
  * Classes:
- * .sectionCont        - main section container
- * .stepsCont          - steps list container
- * .contentCont        - current form step and buttons container
- * .formStepCont       - current form step container
- * .fixedBottomCont    - fixed bottom container
- * .nextConfirmBtnCont - "Go next" button or "Confirm" button container
+ * .sectionCont    - main section container
+ * .stepsCont      - steps list container
+ * .contentCont    - current form step and navigation buttons container
+ * .formStepCont   - current form step container
+ * .navigationCont - fixed container for the navigation buttons (mobile)
+ * .buttonsCont    - "Go back", "Go next" or "Confirm" buttons container
  */
 
 .stepsCont {
@@ -27,14 +27,14 @@
   padding: 0 1rem;
 }
 
-.fixedBottomCont {
+.navigationCont {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
 }
 
-.navigationCont {
+.buttonsCont {
   display: flex;
   padding: 1rem;
   background-color: var(--white);

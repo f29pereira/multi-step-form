@@ -55,8 +55,8 @@ export default function MultiStepForm() {
         </div>
 
         {/*Navigation buttons*/}
-        <div className={styles.fixedBottomCont}>
-          <div className={styles.navigationCont}>
+        <div className={styles.navigationCont}>
+          <div className={styles.buttonsCont}>
             {currentStep > 0 ? (
               <Button
                 description="Go Back"

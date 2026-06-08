@@ -35,21 +35,47 @@
   color: var(--blue-950);
 }
 
+/*not displayed for mobile screens*/
 .numberNameCont {
   display: none;
 }
 
 .stepIndex {
-  color: var(--grey-500);
+  margin-bottom: 0.2rem;
+  color: var(--purple-200);
+  font-size: var(--font-size-14);
+  letter-spacing: 0.1em;
 }
 
 .stepName {
-  text-transform: capitalize;
+  text-transform: uppercase;
+  color: var(--white);
+  font-size: var(--font-size-base);
+  letter-spacing: 0.08em;
+}
+
+.stepIndex,
+.stepName {
+  display: block;
 }
 
 /*Desktop Styles*/
 @media (min-width: 64rem /*1024px*/) {
-  /*TO DO - Add classes:*/
-  /*.circleNameCont: step circle and step index and name: display flex row container*/
-  /*.numberNameCont: display: block*/
+  /*increase size from 2rem to 2.5rem*/
+  .circle {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  /*flex row container with items center aligned and 1rem gap*/
+  .circleNameCont {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /*update display from none to block*/
+  .numberNameCont {
+    display: block;
+  }
 }

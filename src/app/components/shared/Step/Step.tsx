@@ -22,7 +22,9 @@ export default function Step({ stepIndex, stepName, isSelected }: StepProps) {
 
       {/*Index and name*/}
       <div className={styles.numberNameCont}>
-        <span className={styles.stepIndex}>STEP {stepIndex}</span>
+        <span className={`lighter-text ${styles.stepIndex}`}>
+          STEP {stepIndex}
+        </span>
         <span className={`bold-text ${styles.stepName}`}>{stepName}</span>
       </div>
     </div>

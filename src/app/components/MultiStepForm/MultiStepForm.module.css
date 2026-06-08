@@ -44,14 +44,58 @@
   margin-left: auto;
 }
 
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*increase left/right padding from 1rem to 3rem*/
+  .formStepCont {
+    padding: 0 3rem;
+  }
+}
+
 /*Desktop Styles*/
 @media (min-width: 64rem /*1024px*/) {
+  /*grid with 2 columns, 3rem gap*/
   .sectionCont {
-    display: flex;
-    /*TO DO: add padding*/
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    align-items: stretch;
+    gap: 3rem;
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: var(--border-radius-15);
+    box-shadow:
+      0 10px 15px -3px var(--shadow),
+      0 4px 6px -4px var(--shadow);
   }
 
+  /*add padding*/
+  .contentCont {
+    padding: 2rem 4rem 0.5rem 1rem;
+  }
+
+  /*remove the negative top margin and padding*/
+  .formStepCont {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  /*remove the fixed position and add top padding*/
+  .navigationCont {
+    position: relative;
+    padding-top: 4rem;
+  }
+
+  /*make the height auto and update the background image*/
   .stepsCont {
+    padding: 0;
+    height: auto;
+    border-radius: var(--border-radius-10);
+    background-size: contain;
     background-image: url("/images/background/bg-sidebar-desktop.svg");
+  }
+
+  /*remove padding*/
+  .buttonsCont {
+    padding: 0;
   }
 }

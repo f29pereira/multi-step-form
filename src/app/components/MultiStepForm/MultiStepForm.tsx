@@ -17,12 +17,7 @@ export default function MultiStepForm() {
 
   /*TO DO: Add formData state*/
 
-  const stepsList = [
-    "Personal Info",
-    "Select your plan",
-    "Pick add-ons",
-    "Finishing Up",
-  ];
+  const stepsList = ["Your Info", "Select plan", "Add-ons", "Summary"];
 
   /*TO DO: Add other form components*/
   const formsList = [PersonalInfo];

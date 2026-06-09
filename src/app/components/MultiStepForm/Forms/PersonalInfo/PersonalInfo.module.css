@@ -1,14 +1,8 @@
 /**
  * CSS Module for the PersonalInfo component
  * Classes:
- * .description - form description
- * .input       - form input
+ * .input - form input
  */
-
-.description {
-  max-width: 15.625rem; /*250px*/
-  margin: 1rem 0 1.5rem 0;
-}
 
 .input {
   width: 100%;
@@ -32,10 +26,10 @@
   border: 1.5px solid var(--purple-550);
 }
 
-/*Tablet Styles*/
-@media (min-width: 48rem /*768px*/) {
-  /*remove max-width*/
-  .description {
-    max-width: unset;
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*increse bottom margin from 1rem to 1.5rem*/
+  .input {
+    margin: 0.5rem 0 1.5rem 0;
   }
 }

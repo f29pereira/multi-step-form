@@ -22,7 +22,7 @@ export default function PersonalInfo() {
         Personal info
       </h1>
 
-      <p className={`lighter-text ${styles.description}`} id="form-description">
+      <p className="lighter-text form-description" id="form-description">
         Please provide your name, email address, and phone number.
       </p>
 

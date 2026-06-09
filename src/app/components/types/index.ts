@@ -41,12 +41,18 @@ export type ButtonProps = {
 
 /**
  * Props for the Plan component
- * @property type  - type of plan
- * @property price - plan price
+ * @property id              - plan id
+ * @property type            - type of plan
+ * @property price           - plan price
+ * @property selectedId      - current selected plan id
+ * @property setCurrentPlan  - updates the current selected plan
  */
 export type PlanProps = {
+  id: string;
   type: PlanType;
   price: PlanPricing;
+  selectedPlan: string;
+  setCurrentPlan: (id: string) => void;
 };
 
 /**
@@ -94,11 +100,13 @@ export type PlanType = "Arcade" | "Advanced" | "Pro";
 
 /**
  * Type for the subscription plan details
+ * @property id          - plan id
  * @property type        - type of plan
  * @property monthlyPlan - monthly plan value and discont
  * @property yearlyPlan  - yearly plan value and discont
  */
 export type PlanDetails = {
+  id: string;
   type: PlanType;
   monthlyPlan: PlanPricing;
   yearlyPlan: PlanPricing;
@@ -110,6 +118,6 @@ export type PlanDetails = {
  * @property discount - plan current discont
  */
 export type PlanPricing = {
-  value: string;
+  value: number;
   discount?: string;
 };

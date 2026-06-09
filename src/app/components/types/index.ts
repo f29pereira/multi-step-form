@@ -20,7 +20,6 @@ export type StepProps = {
  * Props for the StepsList component
  * @property list             - list of steps
  * @property currentStepIndex - step index
- * @property stepName         - name of the step
  */
 export type StepsListProps = {
   list: Array<string>;
@@ -47,9 +46,7 @@ export type ButtonProps = {
  * @property selectedId      - current selected plan id
  * @property setCurrentPlan  - updates the current selected plan
  */
-export type PlanProps = {
-  id: string;
-  type: PlanType;
+export type PlanProps = Pick<PlanDetails, "id" | "type"> & {
   price: PlanPricing;
   selectedPlan: string;
   setCurrentPlan: (id: string) => void;

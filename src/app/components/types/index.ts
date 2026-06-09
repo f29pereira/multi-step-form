@@ -61,6 +61,29 @@ export type SubscriptionToggleProps = {
 };
 
 /* ---------------------------------------------------- */
+/* Context Provider related types                       */
+/* ---------------------------------------------------- */
+
+/**
+ * Type for React children
+ * @property children  - single or list of React children
+ */
+export type ReactChildrenType = {
+  children: ReactNode;
+};
+
+/**
+ * Type for the MultiStepContext
+ * @property isYearly           - is a yearly subscription
+ * @property toggleSubscription - toggle between yearly and monthly subscription
+ */
+export type MultiStepFormContextType = {
+  isYearly: boolean;
+  toggleSubscription: () => void;
+  /*TO DO: Add form data*/
+};
+
+/* ---------------------------------------------------- */
 /* Other component related types                        */
 /* ---------------------------------------------------- */
 

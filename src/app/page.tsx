@@ -1,4 +1,5 @@
 import styles from "./page.module.css";
+import MultiStepFormProvider from "./components/context/MultiStepFormProvider";
 import MultiStepForm from "./components/MultiStepForm/MultiStepForm";
 
 /**
@@ -7,7 +8,9 @@ import MultiStepForm from "./components/MultiStepForm/MultiStepForm";
 export default function Home() {
   return (
     <main className={styles.mainCont}>
-      <MultiStepForm />
+      <MultiStepFormProvider>
+        <MultiStepForm />
+      </MultiStepFormProvider>
     </main>
   );
 }

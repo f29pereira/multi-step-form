@@ -1,26 +1,28 @@
 /**
  * CSS Module for the Plan component
  * Classes:
- * .btn         - button
- * .contentCont - button content container
+ * .planCont    - plan container
+ * .selected  - current plan is selected
  * .icon        - plan type icon
  * .type        - plan type name
  * .value       - plan price
  * .discount    - plan discont
  */
 
-.btn {
+.planCont {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1.2rem 1rem;
+  padding: 0.8rem 1rem;
   width: 100%;
-  border: 1.5px solid var(--purple-200);
+  height: 6rem; /*96px*/
+  cursor: pointer;
+  border: 2px solid var(--purple-200);
   border-radius: var(--border-radius-10);
 }
 
-.btn:focus {
-  outline: none; /*remove default browser outline*/
+/*change border and background color when plan is selected*/
+.planCont.selected {
   border: 2px solid var(--purple-550);
   background-color: var(--blue-100);
 }
@@ -54,9 +56,9 @@
 
 /*Tablet Styles*/
 @media (min-width: 48rem /*768px*/) {
-  /*increase the gap between the icon and plan type, price and discont from 1rem to 2rem*/
-  .btn {
-    gap: 2rem;
+  /*increase height from 96px to 125px*/
+  .planCont {
+    height: 7.8125rem; /*125px*/
   }
 
   /*increase the icon width/height from 40px to 50px*/
@@ -77,4 +79,18 @@
   }
 }
 
-/*TO DO: Add desktop styles*/
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*update the flex direction from row to column, increase gap from 1rem to 3.5rem, set width and increase height from 125px to 210px*/
+  .planCont {
+    flex-direction: column;
+    gap: 3.5rem;
+    width: 8.75rem; /*140px*/
+    height: 13.125rem; /*210px*/
+  }
+
+  /*reset the gap value*/
+  .contentCont {
+    gap: 0.5rem;
+  }
+}

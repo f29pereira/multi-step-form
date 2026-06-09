@@ -1,20 +1,19 @@
+import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import styles from "./SubscriptionToggle.module.css";
-import type { SubscriptionToggleProps } from "@/app/components/types";
 
 /**
  * Renders the monthly/yearly subscription toggle
  */
-export default function SubscriptionToggle({
-  isYearly,
-  toggle,
-}: SubscriptionToggleProps) {
+export default function SubscriptionToggle() {
+  const { isYearly, toggleSubscription } = useMultiStepForm();
+
   return (
     <div className={`flex-center ${styles.mainCont}`}>
       <span className={`light-text ${styles.monthly}`}>Monthly</span>
       {/*Toggle Button*/}
       <button
         className={styles.toggleBtn}
-        onClick={toggle}
+        onClick={toggleSubscription}
         aria-label={`Monthly/Yearly toggle current selected: ${isYearly ? "Yearly" : "Monthly"}`}
       >
         {isYearly ? (

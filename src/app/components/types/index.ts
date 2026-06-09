@@ -55,17 +55,6 @@ export type PlanProps = {
   setCurrentPlan: (id: string) => void;
 };
 
-/**
- * Props for the SubscriptionToggle component
- * @property isYearly - is the a yearly subscription
- * @property toggle   - toggle between yearly and monthly subscription
- */
-// TO DO - remove after context implementation
-export type SubscriptionToggleProps = {
-  isYearly: boolean;
-  toggle: () => void;
-};
-
 /* ---------------------------------------------------- */
 /* Context Provider related types                       */
 /* ---------------------------------------------------- */

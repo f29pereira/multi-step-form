@@ -15,7 +15,7 @@ import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm"
  */
 export default function SelectPlan() {
   /*context*/
-  const { isYearly, toggleSubscription } = useMultiStepForm();
+  const { isYearly } = useMultiStepForm();
 
   /*state*/
   const [selectedPlan, setSelectedPlan] = useState<string>("");
@@ -70,7 +70,7 @@ export default function SelectPlan() {
 
       {/*Subscription type toggle*/}
       <div className={styles.subsToggleCont}>
-        <SubscriptionToggle isYearly={isYearly} toggle={toggleSubscription} />
+        <SubscriptionToggle />
       </div>
     </div>
   );

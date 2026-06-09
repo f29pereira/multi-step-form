@@ -4,6 +4,7 @@ import styles from "./MultiStepForm.module.css";
 import { useState } from "react";
 import StepsList from "./StepsList/StepsList";
 import PersonalInfo from "./Forms/PersonalInfo/PersonalInfo";
+import SelectPlan from "./Forms/SelectPlan/SelectPlan";
 import Button from "../ui/Button/Button";
 
 /**
@@ -15,19 +16,16 @@ import Button from "../ui/Button/Button";
 export default function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState<number>(0);
 
-  /*TO DO: Add formData state*/
-
   const stepsList = ["Your Info", "Select plan", "Add-ons", "Summary"];
-
   /*TO DO: Add other form components*/
-  const formsList = [PersonalInfo];
+  const formsList = [PersonalInfo, SelectPlan];
   const CurrentStep = formsList[currentStep];
 
   /**
    * Goes to the next form step
    */
   const nextStep = () => {
-    /*TO DO: Add form fields validation*/
+    /*TO DO: Add form fields validation and form submission*/
     setCurrentStep((prev) => prev + 1);
   };
 

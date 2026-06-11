@@ -52,6 +52,20 @@ export type PlanProps = Pick<PlanDetails, "id" | "type"> & {
   setCurrentPlan: (id: string) => void;
 };
 
+/**
+ * Type for the AddOn component
+ * @property id        - add-on id
+ * @property type      - type of add-on
+ * @property price     - add-on price
+ * @property toggle    - toggles the add-on id in the pickedAddOns state
+ * @property isChecked - is the checkbox checked
+ */
+export type AddOnProps = Pick<AddOnDetails, "id" | "type" | "description"> & {
+  price: number;
+  toggle: (id: string) => void;
+  isChecked: boolean;
+};
+
 /* ---------------------------------------------------- */
 /* Context Provider related types                       */
 /* ---------------------------------------------------- */
@@ -106,4 +120,27 @@ export type PlanDetails = {
 export type PlanPricing = {
   value: number;
   discount?: string;
+};
+
+/**
+ * Type for the add-ons
+ */
+export type AddOnType =
+  | "Online service"
+  | "Larger storage"
+  | "Customizable profile";
+
+/**
+ * Type for the add-on pricing
+ * @property id           - add-on id
+ * @property type         - type of add-on
+ * @property monthlyPrice - monthly add-on price
+ * @property yearlyPrice  - yearly add-on price
+ */
+export type AddOnDetails = {
+  id: string;
+  type: AddOnType;
+  description: string;
+  monthlyPrice: number;
+  yearlyPrice: number;
 };

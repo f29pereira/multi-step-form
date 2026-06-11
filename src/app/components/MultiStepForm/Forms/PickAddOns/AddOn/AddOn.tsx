@@ -1,0 +1,73 @@
+import styles from "./AddOn.module.css";
+import type { AddOnProps } from "@/app/components/types";
+import { formarYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
+
+/**
+ * Renders a add-on with:
+ * - Checkbox input
+ * - Add-on label type
+ * - Description
+ * - Price (monthly or yearly value)
+ */
+export default function AddOn({
+  id,
+  type,
+  description,
+  price,
+  toggle,
+  isChecked,
+}: AddOnProps) {
+  const { isYearly } = useMultiStepForm();
+
+  return (
+    <div className={`${styles.addOnCont} ${isChecked ? styles.selected : ""}`}>
+      <div className={styles.flexCenter}>
+        <div className={styles.checkboxWrapper}>
+          {/*Checkbox*/}
+          <input
+            type="checkbox"
+            id={`add-on-${id}`}
+            value={id}
+            className={`${styles.checkbox}`}
+            onChange={() => toggle(id)}
+            checked={isChecked}
+          />
+
+          {/*Checkmark*/}
+          {isChecked ? (
+            <span className={`flex-center ${styles.checkmark}`}>
+              <svg
+                className={styles.icon}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 12 9"
+                aria-hidden="true"
+              >
+                <path d="m1 4 3.433 3.433L10.866 1" />
+              </svg>
+            </span>
+          ) : null}
+        </div>
+
+        <div className={styles.labelDescCont}>
+          {/*Label (Type)*/}
+          <label
+            htmlFor={`add-on-${id}`}
+            className={`bold-text ${styles.label}`}
+          >
+            {type}
+          </label>
+
+          {/*Description*/}
+          <p className={styles.description}>{description}</p>
+        </div>
+      </div>
+
+      {/*Price (monthly or yearly value)*/}
+      <span className="sr-only">{`Plus ${price} dollars per ${isYearly ? "year" : "month"}`}</span>
+      <span className={`lighter-text ${styles.price}`}>
+        {`+${formarYearlyOrMonthlyPrice(isYearly, price)}`}
+      </span>
+    </div>
+  );
+}

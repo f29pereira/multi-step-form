@@ -29,6 +29,7 @@
   --font-size-30: 1.875rem; /*30px*/
 
   /*Border*/
+  --border-radius-4: 4px;
   --border-radius-5: 5px;
   --border-radius-10: 10px;
   --border-radius-15: 15px;
@@ -164,9 +165,10 @@ button {
     font-size: var(--font-size-30);
   }
 
-  /*remove padding*/
+  /*remove padding and set width to 450px*/
   .white-card-cont {
     padding: 0;
+    width: 28.125rem; /*450px*/
   }
 
   /*increase bottom margin from 1.5rem to 2rem*/

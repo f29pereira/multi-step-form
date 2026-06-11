@@ -5,6 +5,7 @@ import { useState } from "react";
 import StepsList from "./StepsList/StepsList";
 import PersonalInfo from "./Forms/PersonalInfo/PersonalInfo";
 import SelectPlan from "./Forms/SelectPlan/SelectPlan";
+import PickAddOns from "./Forms/PickAddOns/PickAddOns";
 import Button from "../ui/Button/Button";
 
 /**
@@ -18,7 +19,7 @@ export default function MultiStepForm() {
 
   const stepsList = ["Your Info", "Select plan", "Add-ons", "Summary"];
   /*TO DO: Add other form components*/
-  const formsList = [PersonalInfo, SelectPlan];
+  const formsList = [PersonalInfo, SelectPlan, PickAddOns];
   const CurrentStep = formsList[currentStep];
 
   /**

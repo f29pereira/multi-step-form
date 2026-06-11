@@ -1,7 +1,8 @@
 "use client"; // Client Component
 import styles from "./Plan.module.css";
 import type { PlanProps } from "@/app/components/types";
-import { getPlanIcon, formatPlanPrice } from "./Plan.util";
+import { getPlanIcon } from "./Plan.util";
+import { formarYearlyOrMonthlyPrice } from "@/app/lib/utils";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 
 /**
@@ -47,7 +48,7 @@ export default function Plan({
         <span className="sr-only">{`Price ${price.value} dollars per ${isYearly ? "year" : "month"}`}</span>
 
         <span className={`light-text ${styles.value}`} aria-hidden="true">
-          {formatPlanPrice(isYearly, price.value)}
+          {formarYearlyOrMonthlyPrice(isYearly, price.value)}
         </span>
 
         {/*Discount*/}

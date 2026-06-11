@@ -62,12 +62,3 @@ export const getPlanIcon = (type: PlanType) => {
       );
   }
 };
-
-/**
- * Returns the formatated plan price with /yr or /mo
- */
-export const formatPlanPrice = (isYearly: boolean, price: number) => {
-  const priceValue = `$${price}/`;
-
-  return isYearly ? `${priceValue}yr` : `${priceValue}mo`;
-};

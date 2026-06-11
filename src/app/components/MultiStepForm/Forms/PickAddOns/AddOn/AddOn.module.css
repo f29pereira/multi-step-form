@@ -7,8 +7,8 @@
  * .checkboxWrapper - container for the .checkbox input and .checkmark when the input is selected
  * .checkbox        - checkbox input
  * .checkmark       - checkmark that appears inside the checkbox when clicked
- * .labelDescCont   - container for the .label and .description
- * .label           - label with the add-on type
+ * .typeDescCont    - container for the .type and .description
+ * .type            - add-on type
  * .description     - add-on description
  * .price           - add-on price
  */
@@ -20,6 +20,7 @@
   padding: 0.8rem 0.7rem;
   border: 2px solid var(--purple-200);
   border-radius: var(--border-radius-10);
+  cursor: pointer;
 }
 
 .addOnCont.selected {
@@ -65,11 +66,11 @@
   stroke-width: 2;
 }
 
-.labelDescCont {
+.typeDescCont {
   max-width: 12.5rem; /*200px*/
 }
 
-.label {
+.type {
   font-size: var(--font-size-base);
 }
 
@@ -85,6 +86,11 @@
 
 /*Tablet Styles*/
 @media (min-width: 48rem /*768px*/) {
+  /*on hover, change border color of the main container from --purple-200 to --purple-600*/
+  .addOnCont:hover {
+    border-color: var(--purple-600);
+  }
+
   /*increase top/bottom padding from 0.8rem to 1rem and left/right padding from 0.7rem to 1.5rem*/
   .addOnCont {
     padding: 1rem 1.5rem;
@@ -107,7 +113,7 @@
   }
 
   /*remove maximum width*/
-  .labelDescCont {
+  .typeDescCont {
     max-width: unset;
   }
 
@@ -126,7 +132,7 @@
 /*Desktop Styles*/
 @media (min-width: 64rem /*1024px*/) {
   /*reset maximum width to original 12.5rem*/
-  .labelDescCont {
+  .typeDescCont {
     max-width: 12.5rem; /*200px*/
   }
 }

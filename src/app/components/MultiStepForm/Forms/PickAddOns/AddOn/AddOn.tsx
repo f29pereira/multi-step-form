@@ -6,8 +6,8 @@ import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm"
 /**
  * Renders a add-on with:
  * - Checkbox input
- * - Add-on label type
- * - Description
+ * - Add-on type
+ * - Add-on description
  * - Price (monthly or yearly value)
  */
 export default function AddOn({
@@ -21,7 +21,10 @@ export default function AddOn({
   const { isYearly } = useMultiStepForm();
 
   return (
-    <div className={`${styles.addOnCont} ${isChecked ? styles.selected : ""}`}>
+    <label
+      htmlFor={`add-on-${id}`}
+      className={`${styles.addOnCont} ${isChecked ? styles.selected : ""}`}
+    >
       <div className={styles.flexCenter}>
         <div className={styles.checkboxWrapper}>
           {/*Checkbox*/}
@@ -49,14 +52,9 @@ export default function AddOn({
           ) : null}
         </div>
 
-        <div className={styles.labelDescCont}>
-          {/*Label (Type)*/}
-          <label
-            htmlFor={`add-on-${id}`}
-            className={`bold-text ${styles.label}`}
-          >
-            {type}
-          </label>
+        <div className={styles.typeDescCont}>
+          {/*Type*/}
+          <span className={`bold-text ${styles.type}`}>{type}</span>
 
           {/*Description*/}
           <p className={styles.description}>{description}</p>
@@ -68,6 +66,6 @@ export default function AddOn({
       <span className={`lighter-text ${styles.price}`}>
         {`+${formarYearlyOrMonthlyPrice(isYearly, price)}`}
       </span>
-    </div>
+    </label>
   );
 }

@@ -7,6 +7,7 @@ import SelectPlan from "./Forms/SelectPlan/SelectPlan";
 import PickAddOns from "./Forms/PickAddOns/PickAddOns";
 import Button from "../ui/Button/Button";
 import { useMultiStepForm } from "../customHooks/useMultiStepForm";
+import FinishSubscription from "./Forms/FinishSubscription/FinishSubscription";
 
 /**
  * Renders the multi-step user subscription form with:
@@ -19,7 +20,7 @@ export default function MultiStepForm() {
 
   const stepsList = ["Your Info", "Select plan", "Add-ons", "Summary"];
   /*TO DO: Add other form components*/
-  const formsList = [PersonalInfo, SelectPlan, PickAddOns];
+  const formsList = [PersonalInfo, SelectPlan, PickAddOns, FinishSubscription];
   const CurrentStep = formsList[currentStepIndex];
 
   return (

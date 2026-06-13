@@ -72,6 +72,12 @@ h1 {
   color: var(--blue-950);
 }
 
+h2 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-700);
+  color: var(--blue-950);
+}
+
 h1:focus {
   outline: none;
 }
@@ -123,6 +129,11 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
 }
 
 .sr-only {

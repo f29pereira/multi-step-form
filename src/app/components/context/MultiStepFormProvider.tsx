@@ -31,6 +31,13 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
   };
 
   /**
+   * Goes to a form step for a given index
+   */
+  const goToStep = (stepIndex: number) => {
+    setCurrentStepIndex(stepIndex);
+  };
+
+  /**
    * Toogles between monthly or yearly subscripton
    */
   const toggle = () => {
@@ -43,6 +50,7 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
         currentStepIndex: currentStepIndex,
         goToNextStep: goToNextStep,
         goToPrevStep: goToPrevStep,
+        goToStep: goToStep,
         isYearly: isYearly,
         toggleSubscription: toggle,
       }}

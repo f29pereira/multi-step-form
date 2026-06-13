@@ -90,6 +90,7 @@ export type MultiStepFormContextType = {
   currentStepIndex: number;
   goToNextStep: () => void;
   goToPrevStep: () => void;
+  goToStep: (stepIndex: number) => void;
   isYearly: boolean;
   toggleSubscription: () => void;
   /*TO DO: Add form data*/

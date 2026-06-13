@@ -53,7 +53,7 @@ export type PlanProps = Pick<PlanDetails, "id" | "type"> & {
 };
 
 /**
- * Type for the AddOn component
+ * Props for the AddOn component
  * @property id        - add-on id
  * @property type      - type of add-on
  * @property price     - add-on price
@@ -80,10 +80,16 @@ export type ReactChildrenType = {
 
 /**
  * Type for the MultiStepContext
+ * @property currentStepIndex   - current form step index
+ * @property goToNextStep       - goes to the next form step
+ * @property goToPrevStep       - goes to the previous form step
  * @property isYearly           - is a yearly subscription
  * @property toggleSubscription - toggle between yearly and monthly subscription
  */
 export type MultiStepFormContextType = {
+  currentStepIndex: number;
+  goToNextStep: () => void;
+  goToPrevStep: () => void;
   isYearly: boolean;
   toggleSubscription: () => void;
   /*TO DO: Add form data*/

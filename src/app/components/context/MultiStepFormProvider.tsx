@@ -10,9 +10,25 @@ export const MultiStepFormContext = createContext<
  * Provides the context to be able to toggle the subscription type
  */
 export default function MultiStepFormProvider({ children }: ReactChildrenType) {
+  const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
+
   const [isYearly, setIsYearly] = useState<boolean>(true);
 
   /*TO DO: Add formData state*/
+
+  /**
+   * Goes to the next form step
+   */
+  const goToNextStep = () => {
+    setCurrentStepIndex((prev) => prev + 1);
+  };
+
+  /**
+   * Goes back to the previous form step
+   */
+  const goToPrevStep = () => {
+    setCurrentStepIndex((prev) => prev - 1);
+  };
 
   /**
    * Toogles between monthly or yearly subscripton
@@ -23,7 +39,13 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
 
   return (
     <MultiStepFormContext
-      value={{ isYearly: isYearly, toggleSubscription: toggle }}
+      value={{
+        currentStepIndex: currentStepIndex,
+        goToNextStep: goToNextStep,
+        goToPrevStep: goToPrevStep,
+        isYearly: isYearly,
+        toggleSubscription: toggle,
+      }}
     >
       {children}
     </MultiStepFormContext>

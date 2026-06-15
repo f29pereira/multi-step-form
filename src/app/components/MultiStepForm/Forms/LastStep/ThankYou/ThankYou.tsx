@@ -13,7 +13,7 @@ export default function ThankYou() {
   const { elementRef } = useFocus<HTMLHeadingElement>();
 
   return (
-    <div className={`white-card-cont ${styles.mainCont}`}>
+    <div className={`white-card-cont flex-col-center ${styles.mainCont}`}>
       <div className={`flex-col-center ${styles.gap}`}>
         {/*Icon*/}
         <svg

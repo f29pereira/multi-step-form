@@ -80,11 +80,13 @@ export type ReactChildrenType = {
 
 /**
  * Type for the MultiStepContext
- * @property currentStepIndex   - current form step index
- * @property goToNextStep       - goes to the next form step
- * @property goToPrevStep       - goes to the previous form step
- * @property isYearly           - is a yearly subscription
- * @property toggleSubscription - toggle between yearly and monthly subscription
+ * @property currentStepIndex    - current form step index
+ * @property goToNextStep        - goes to the next form step
+ * @property goToPrevStep        - goes to the previous form step
+ * @property isYearly            - is a yearly subscription
+ * @property toggleSubscription  - toggle between yearly and monthly subscription
+ * @property isConfirmed         - is the subscription confirmed by the user
+ * @property confirmSubscription - confirms the user's subscription
  */
 export type MultiStepFormContextType = {
   currentStepIndex: number;
@@ -94,6 +96,8 @@ export type MultiStepFormContextType = {
   isYearly: boolean;
   toggleSubscription: () => void;
   /*TO DO: Add form data*/
+  isConfirmed: boolean;
+  confirmSubscription: () => void;
 };
 
 /* ---------------------------------------------------- */

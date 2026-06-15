@@ -16,6 +16,8 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
 
   /*TO DO: Add formData state*/
 
+  const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
+
   /**
    * Goes to the next form step
    */
@@ -24,9 +26,13 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
   };
 
   /**
-   * Goes back to the previous form step
+   * Goes back to the previous form step and, if the subscription is confirmed, cancells it
    */
   const goToPrevStep = () => {
+    if (isConfirmed) {
+      setIsConfirmed(false);
+    }
+
     setCurrentStepIndex((prev) => prev - 1);
   };
 
@@ -44,6 +50,13 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
     setIsYearly((prev) => !prev);
   };
 
+  /**
+   * Confirms the user's subscription
+   */
+  const confirmSubscription = () => {
+    setIsConfirmed(true);
+  };
+
   return (
     <MultiStepFormContext
       value={{
@@ -53,6 +66,8 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
         goToStep: goToStep,
         isYearly: isYearly,
         toggleSubscription: toggle,
+        isConfirmed: isConfirmed,
+        confirmSubscription: confirmSubscription,
       }}
     >
       {children}

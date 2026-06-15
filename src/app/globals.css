@@ -195,4 +195,9 @@ button {
   .form-description {
     margin: 1rem 0 2rem 0;
   }
+
+  /*increase font size from 14px to 16px*/
+  label {
+    font-size: var(--font-size-base);
+  }
 }

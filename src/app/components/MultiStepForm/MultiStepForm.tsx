@@ -7,7 +7,7 @@ import SelectPlan from "./Forms/SelectPlan/SelectPlan";
 import PickAddOns from "./Forms/PickAddOns/PickAddOns";
 import Button from "../ui/Button/Button";
 import { useMultiStepForm } from "../customHooks/useMultiStepForm";
-import FinishSubscription from "./Forms/FinishSubscription/FinishSubscription";
+import FinishSubscription from "./Forms/LastStep/FinishSubscription/FinishSubscription";
 
 /**
  * Renders the multi-step user subscription form with:

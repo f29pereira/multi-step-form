@@ -5,9 +5,9 @@ import StepsList from "./StepsList/StepsList";
 import PersonalInfo from "./Forms/PersonalInfo/PersonalInfo";
 import SelectPlan from "./Forms/SelectPlan/SelectPlan";
 import PickAddOns from "./Forms/PickAddOns/PickAddOns";
+import LastStep from "./Forms/LastStep/LastStep";
 import Button from "../ui/Button/Button";
 import { useMultiStepForm } from "../customHooks/useMultiStepForm";
-import FinishSubscription from "./Forms/LastStep/FinishSubscription/FinishSubscription";
 
 /**
  * Renders the multi-step user subscription form with:
@@ -16,11 +16,17 @@ import FinishSubscription from "./Forms/LastStep/FinishSubscription/FinishSubscr
  * - Go Back and Next or Confirm buttons
  */
 export default function MultiStepForm() {
-  const { currentStepIndex, goToNextStep, goToPrevStep } = useMultiStepForm();
+  const {
+    currentStepIndex,
+    goToNextStep,
+    goToPrevStep,
+    isConfirmed,
+    confirmSubscription,
+  } = useMultiStepForm();
 
   const stepsList = ["Your Info", "Select plan", "Add-ons", "Summary"];
   /*TO DO: Add other form components*/
-  const formsList = [PersonalInfo, SelectPlan, PickAddOns, FinishSubscription];
+  const formsList = [PersonalInfo, SelectPlan, PickAddOns, LastStep];
   const CurrentStep = formsList[currentStepIndex];
 
   return (
@@ -34,30 +40,36 @@ export default function MultiStepForm() {
           <CurrentStep />
         </div>
 
-        {/*Navigation buttons*/}
-        <div className={styles.navigationCont}>
-          <div className={styles.buttonsCont}>
-            {currentStepIndex > 0 ? (
-              <Button
-                description="Go Back"
-                variant="transparentBtn"
-                handleOnClick={goToPrevStep}
-              />
-            ) : null}
-
-            <div className={styles.nextConfirmBtnCont}>
-              {currentStepIndex === stepsList.length - 1 ? (
-                <Button description="Confirm" variant="purpleBtn" />
-              ) : (
+        {!isConfirmed ? (
+          /*Navigation buttons*/
+          <div className={styles.navigationCont}>
+            <div className={styles.buttonsCont}>
+              {currentStepIndex > 0 ? (
                 <Button
-                  description="Next Step"
-                  variant="blueBtn"
-                  handleOnClick={goToNextStep}
+                  description="Go Back"
+                  variant="transparentBtn"
+                  handleOnClick={goToPrevStep}
                 />
-              )}
+              ) : null}
+
+              <div className={styles.nextConfirmBtnCont}>
+                {currentStepIndex === stepsList.length - 1 ? (
+                  <Button
+                    description="Confirm"
+                    variant="purpleBtn"
+                    handleOnClick={confirmSubscription}
+                  />
+                ) : (
+                  <Button
+                    description="Next Step"
+                    variant="blueBtn"
+                    handleOnClick={goToNextStep}
+                  />
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </section>
   );

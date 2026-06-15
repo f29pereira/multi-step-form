@@ -26,6 +26,7 @@
   --font-size-14: 0.875rem; /*14px*/
   --font-size-base: 1rem;
   --font-size-20: 1.375rem; /*22px*/
+  --font-size-25: 1.5625rem; /*25px*/
   --font-size-30: 1.875rem; /*30px*/
 
   /*Border*/
@@ -127,6 +128,14 @@ button {
 
 .flex-center {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Centered flex column container*/
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

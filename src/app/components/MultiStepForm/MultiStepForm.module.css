@@ -54,12 +54,14 @@
 
 /*Desktop Styles*/
 @media (min-width: 64rem /*1024px*/) {
-  /*grid with 2 columns, 3rem gap*/
+  /*grid with 2 columns, 3rem gap, set width to 880px and height to 640px*/
   .sectionCont {
     display: grid;
     grid-template-columns: 0.5fr 1fr;
     align-items: stretch;
     gap: 3rem;
+    width: 55rem; /*880px*/
+    height: 40rem; /*640px*/
     padding: 1rem;
     background-color: var(--white);
     border-radius: var(--border-radius-15);
@@ -68,21 +70,23 @@
       0 4px 6px -4px var(--shadow);
   }
 
-  /*add padding*/
+  /*flex column, add padding*/
   .contentCont {
-    padding: 2rem 4rem 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 4rem 1.2rem 1rem;
   }
 
-  /*remove the negative top margin and padding*/
+  /*remove the negative top margin and padding and add flex of 1 to push .navigationCont to the bottom*/
   .formStepCont {
     margin-top: 0;
     padding: 0;
+    flex: 1;
   }
 
-  /*remove the fixed position and add top padding*/
+  /*remove the fixed position*/
   .navigationCont {
     position: relative;
-    padding-top: 4rem;
   }
 
   /*make the height auto and update the background image*/
@@ -96,5 +100,20 @@
   /*remove padding*/
   .buttonsCont {
     padding: 0;
+  }
+}
+
+/*Large Desktop Styles*/
+@media (min-width: 90rem /*1440px*/) {
+  /*increase: gap from 3rem to 5rem, width from 880px to 960px and padding from 1rem to 1.2rem*/
+  .sectionCont {
+    gap: 5rem;
+    width: 60rem; /*960px*/
+    padding: 1.2rem;
+  }
+
+  /*increase top padding from 2rem to 3rem*/
+  .contentCont {
+    padding: 3rem 4rem 1.2rem 1rem;
   }
 }

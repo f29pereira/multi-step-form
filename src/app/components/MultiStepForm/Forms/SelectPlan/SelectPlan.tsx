@@ -44,7 +44,7 @@ export default function SelectPlan() {
         Select your plan
       </h1>
 
-      <p className="lighter-text form-description" id="form-description">
+      <p className="lighter-text form-description">
         You have the option of monthly or yearly billing.
       </p>
 

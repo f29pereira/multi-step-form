@@ -5,7 +5,8 @@ import styles from "./SubscriptionToggle.module.css";
  * Renders the monthly/yearly subscription toggle
  */
 export default function SubscriptionToggle() {
-  const { isYearly, toggleSubscription } = useMultiStepForm();
+  const { formData, toggleSubscription } = useMultiStepForm();
+  const isYearly = formData.isYearly;
 
   return (
     <div className={`flex-center ${styles.mainCont}`}>

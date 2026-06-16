@@ -12,9 +12,11 @@ import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm"
 export default function FinishSubscription() {
   const { elementRef } = useFocus<HTMLHeadingElement>();
 
-  const { isYearly, goToStep } = useMultiStepForm();
+  const { formData, goToStep } = useMultiStepForm();
 
   /*TO DO: get form data from context*/
+
+  const isYearly = formData.isYearly;
 
   return (
     <div className={"white-card-cont"}>

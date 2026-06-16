@@ -13,7 +13,8 @@ import { useState } from "react";
  */
 export default function PickAddOns() {
   /*context*/
-  const { isYearly } = useMultiStepForm();
+  const { formData } = useMultiStepForm();
+  const isYearly = formData.isYearly;
 
   /*ref*/
   const { elementRef } = useFocus<HTMLHeadingElement>();

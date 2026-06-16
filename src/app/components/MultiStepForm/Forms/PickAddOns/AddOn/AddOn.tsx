@@ -18,7 +18,8 @@ export default function AddOn({
   toggle,
   isChecked,
 }: AddOnProps) {
-  const { isYearly } = useMultiStepForm();
+  const { formData } = useMultiStepForm();
+  const isYearly = formData.isYearly;
 
   return (
     <label

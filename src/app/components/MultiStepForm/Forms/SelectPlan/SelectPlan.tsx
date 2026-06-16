@@ -15,7 +15,8 @@ import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm"
  */
 export default function SelectPlan() {
   /*context*/
-  const { isYearly } = useMultiStepForm();
+  const { formData } = useMultiStepForm();
+  const isYearly = formData.isYearly;
 
   /*state*/
   const [selectedPlan, setSelectedPlan] = useState<string>("");

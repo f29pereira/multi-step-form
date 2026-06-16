@@ -19,7 +19,8 @@ export default function Plan({
   selectedPlan,
   setCurrentPlan,
 }: PlanProps) {
-  const { isYearly } = useMultiStepForm();
+  const { formData } = useMultiStepForm();
+  const isYearly = formData.isYearly;
 
   const icon = getPlanIcon(type);
 

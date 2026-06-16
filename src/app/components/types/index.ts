@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Dispatch, SetStateAction } from "react";
 
 /* ---------------------------------------------------- */
 /* Components Props types                               */
@@ -80,12 +80,13 @@ export type ReactChildrenType = {
 
 /**
  * Type for the MultiStepContext
- * @property currentStepIndex    - current form step index
+ * @property currentStepIndex    - state: current form step index
  * @property goToNextStep        - goes to the next form step
  * @property goToPrevStep        - goes to the previous form step
- * @property isYearly            - is a yearly subscription
  * @property toggleSubscription  - toggle between yearly and monthly subscription
- * @property isConfirmed         - is the subscription confirmed by the user
+ * @property formData            - state: multi-step form data and
+ * @property setFormData         - state setter: multi-step form data
+ * @property isConfirmed         - state: is the subscription confirmed by the user
  * @property confirmSubscription - confirms the user's subscription
  */
 export type MultiStepFormContextType = {
@@ -93,9 +94,9 @@ export type MultiStepFormContextType = {
   goToNextStep: () => void;
   goToPrevStep: () => void;
   goToStep: (stepIndex: number) => void;
-  isYearly: boolean;
   toggleSubscription: () => void;
-  /*TO DO: Add form data*/
+  formData: FormData;
+  setFormData: Dispatch<SetStateAction<FormData>>;
   isConfirmed: boolean;
   confirmSubscription: () => void;
 };
@@ -154,4 +155,13 @@ export type AddOnDetails = {
   description: string;
   monthlyPrice: number;
   yearlyPrice: number;
+};
+
+/**
+ * Type for the multi-step form data
+ * @property isYearly - is a yearly subscription
+ */
+export type FormData = {
+  isYearly: boolean;
+  /*TO DO: Add form data for the steps: PersonalInfo, SelectPlan and PickAddOns*/
 };

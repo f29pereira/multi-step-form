@@ -1,6 +1,10 @@
 "use client"; // Client Component
 import { createContext, useState } from "react";
-import type { ReactChildrenType, MultiStepFormContextType } from "../types";
+import type {
+  ReactChildrenType,
+  MultiStepFormContextType,
+  FormData,
+} from "../types";
 
 export const MultiStepFormContext = createContext<
   MultiStepFormContextType | undefined
@@ -12,9 +16,10 @@ export const MultiStepFormContext = createContext<
 export default function MultiStepFormProvider({ children }: ReactChildrenType) {
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
 
-  const [isYearly, setIsYearly] = useState<boolean>(true);
-
-  /*TO DO: Add formData state*/
+  const [formData, setFormData] = useState<FormData>({
+    isYearly: true,
+    /*TO DO: Add form data for the steps: PersonalInfo, SelectPlan and PickAddOns*/
+  });
 
   const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
 
@@ -47,7 +52,7 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
    * Toogles between monthly or yearly subscripton
    */
   const toggle = () => {
-    setIsYearly((prev) => !prev);
+    setFormData((prev) => ({ ...prev, isYearly: !prev.isYearly }));
   };
 
   /**
@@ -64,8 +69,9 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
         goToNextStep: goToNextStep,
         goToPrevStep: goToPrevStep,
         goToStep: goToStep,
-        isYearly: isYearly,
         toggleSubscription: toggle,
+        formData: formData,
+        setFormData: setFormData,
         isConfirmed: isConfirmed,
         confirmSubscription: confirmSubscription,
       }}

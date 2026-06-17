@@ -61,9 +61,9 @@ export default function MultiStepForm() {
                   />
                 ) : (
                   <Button
+                    formId="current-form-step"
                     description="Next Step"
                     variant="blueBtn"
-                    handleOnClick={goToNextStep}
                   />
                 )}
               </div>

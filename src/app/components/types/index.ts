@@ -28,11 +28,13 @@ export type StepsListProps = {
 
 /**
  * Props for the Button component
+ * @property formId        - (optional) associated form id
  * @property description   - button description
  * @property variant       - button color variant
- * @property handleOnClick - button onClick function
+ * @property handleOnClick - (optional) onClick function
  */
 export type ButtonProps = {
+  formId?: string;
   description: string;
   variant: "transparentBtn" | "blueBtn" | "purpleBtn";
   handleOnClick?: () => void;

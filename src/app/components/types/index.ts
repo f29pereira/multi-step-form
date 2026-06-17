@@ -68,6 +68,16 @@ export type AddOnProps = Pick<AddOnDetails, "id" | "type" | "description"> & {
   isChecked: boolean;
 };
 
+/**
+ * Props for the ErrorMessage component
+ * @property id      - id to be associated with the input
+ * @property message - text with error message
+ */
+export type ErrorMessageProps = {
+  id: string;
+  message?: string;
+};
+
 /* ---------------------------------------------------- */
 /* Context Provider related types                       */
 /* ---------------------------------------------------- */

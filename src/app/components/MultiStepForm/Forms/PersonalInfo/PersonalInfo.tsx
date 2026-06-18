@@ -103,7 +103,7 @@ export default function PersonalInfo() {
           autoComplete="name"
           placeholder="e.g. Stephen King"
           aria-invalid={isInputInvalid("name")}
-          aria-errormessage="name-error"
+          aria-errormessage={isInputInvalid("name") ? "name-error" : undefined}
           {...register("name", nameValidation)}
         />
 
@@ -124,7 +124,9 @@ export default function PersonalInfo() {
           autoComplete="email"
           placeholder="e.g. stephenking@lorem.com"
           aria-invalid={isInputInvalid("email")}
-          aria-errormessage="email-error"
+          aria-errormessage={
+            isInputInvalid("email") ? "email-error" : undefined
+          }
           {...register("email", emailValidation)}
         />
 
@@ -145,7 +147,9 @@ export default function PersonalInfo() {
           autoComplete="tel"
           placeholder="e.g. +1 234 567 890"
           aria-invalid={isInputInvalid("phone")}
-          aria-errormessage="phone-error"
+          aria-errormessage={
+            isInputInvalid("phone") ? "phone-error" : undefined
+          }
           {...register("phone", phoneValidation)}
         />
       </form>

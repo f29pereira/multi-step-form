@@ -19,7 +19,8 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
   const [formData, setFormData] = useState<FormData>({
     isYearly: true,
     personalInfo: { name: "", email: "", phone: "" },
-    /*TO DO: Add form data for the steps: PersonalInfo, SelectPlan and PickAddOns*/
+    selectedPlanId: "",
+    /*TO DO: Add form data for the step: and PickAddOns*/
   });
 
   const [isConfirmed, setIsConfirmed] = useState<boolean>(false);

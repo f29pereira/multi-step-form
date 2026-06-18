@@ -171,13 +171,14 @@ export type AddOnDetails = {
 
 /**
  * Type for the multi-step form data
- * @property isYearly     - is a yearly subscription
- * @property personalInfo - PersonalInfo component form data
+ * @property isYearly       - is a yearly subscription
+ * @property personalInfo   - user's personal data
+ * @property selectedPlanId - user's selected plan id
  */
-export type FormData = {
+export type FormData = Pick<SelectedPlan, "selectedPlanId"> & {
   isYearly: boolean;
   personalInfo: PersonalInfoFields;
-  /*TO DO: Add form data for the steps: SelectPlan and PickAddOns*/
+  /*TO DO: Add form data for the step: PickAddOns*/
 };
 
 /**
@@ -190,4 +191,12 @@ export type PersonalInfoFields = {
   name: string;
   email: string;
   phone: string;
+};
+
+/**
+ * Type for the user's selected plan
+ * @property id - plan id
+ */
+export type SelectedPlan = {
+  selectedPlanId: string;
 };

@@ -42,16 +42,14 @@ export type ButtonProps = {
 
 /**
  * Props for the Plan component
- * @property id              - plan id
- * @property type            - type of plan
- * @property price           - plan price
- * @property selectedId      - current selected plan id
- * @property setCurrentPlan  - updates the current selected plan
+ * @property id        - plan id
+ * @property type      - type of plan
+ * @property price     - plan price
+ * @property isInvalid - is the plan invalid
  */
 export type PlanProps = Pick<PlanDetails, "id" | "type"> & {
   price: PlanPricing;
-  selectedPlan: string;
-  setCurrentPlan: (id: string) => void;
+  isInvalid: boolean;
 };
 
 /**

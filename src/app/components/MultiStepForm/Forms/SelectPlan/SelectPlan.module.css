@@ -1,9 +1,20 @@
 /**
  * CSS Module for the SelectPlan component
  * Classes:
+ * .description    - form description
+ * .form           - form container
  * .plansListCont  - container for the list of Plan components 
  * .subsToggleCont - container for the SubscriptionToggle component
+ * .errorMsgCont   - container for the error message
  */
+
+.description {
+  margin-bottom: 2rem;
+}
+
+.form {
+  position: relative;
+}
 
 .plansListCont {
   display: flex;
@@ -15,8 +26,19 @@
   margin-top: 1.5rem;
 }
 
+.errorMsgCont {
+  position: absolute;
+  top: -1.5rem;
+  width: 100%;
+}
+
 /*Desktop Styles*/
 @media (min-width: 64rem /*1024px*/) {
+  /*increase bottom margin from 2rem to 3rem*/
+  .description {
+    margin-bottom: 3rem;
+  }
+
   /*update the flex direction from column to row*/
   .plansListCont {
     flex-direction: row;

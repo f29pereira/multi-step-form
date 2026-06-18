@@ -1,12 +1,13 @@
 /**
  * CSS Module for the Plan component
  * Classes:
- * .planCont    - plan container
- * .selected  - current plan is selected
- * .icon        - plan type icon
- * .type        - plan type name
- * .value       - plan price
- * .discount    - plan discont
+ * .planCont   - plan container
+ * .selected   - current plan is selected
+ * .errorInput - input error style
+ * .icon       - plan type icon
+ * .type       - plan type name
+ * .value      - plan price
+ * .discount   - plan discont
  */
 
 .planCont {
@@ -21,10 +22,15 @@
   border-radius: var(--border-radius-10);
 }
 
-/*change border and background color when plan is selected*/
+/*change border color from --purple-200 to --purple-550*/
 .planCont.selected {
-  border: 2px solid var(--purple-550);
+  border-color: var(--purple-550);
   background-color: var(--blue-100);
+}
+
+/*change border color from --purple-200 to --red-500*/
+.planCont.errorInput {
+  border-color: var(--red-500);
 }
 
 .contentCont {

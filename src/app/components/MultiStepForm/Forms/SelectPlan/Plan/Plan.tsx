@@ -1,9 +1,12 @@
 "use client"; // Client Component
+
 import styles from "./Plan.module.css";
+import clsx from "clsx";
 import type { PlanProps } from "@/app/components/types";
 import { getPlanIcon } from "./Plan.util";
 import { formarYearlyOrMonthlyPrice } from "@/app/lib/utils";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
+import { useFormContext } from "react-hook-form";
 
 /**
  * Renders a subscription plan with:
@@ -12,30 +15,39 @@ import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm"
  * - Price (monthly or yearly value)
  * - Discount if applicable
  */
-export default function Plan({
-  id,
-  type,
-  price,
-  selectedPlan,
-  setCurrentPlan,
-}: PlanProps) {
+export default function Plan({ id, type, price, isInvalid }: PlanProps) {
+  // MultiStepForm context
   const { formData } = useMultiStepForm();
+
   const isYearly = formData.isYearly;
 
+  // React Hook Form: context
+  const {
+    register,
+    watch,
+    formState: { errors },
+  } = useFormContext();
+
+  const selectedPlanId = watch("selectedPlanId");
+  const isSelected = id === selectedPlanId;
+
+  // Data
   const icon = getPlanIcon(type);
 
   return (
     <label
-      className={`${styles.planCont} ${selectedPlan === id ? styles.selected : ""}`}
+      className={clsx(styles.planCont, {
+        [styles.selected]: isSelected,
+        [styles.errorInput]: isInvalid,
+      })}
     >
       <input
         className="sr-only"
         type="radio"
-        name="plan"
-        onChange={() => {
-          setCurrentPlan(id);
-        }}
-        checked={selectedPlan === id}
+        value={id}
+        {...register("selectedPlanId", {
+          required: "Select a plan to continue",
+        })}
       />
 
       {/*Plan Icon*/}

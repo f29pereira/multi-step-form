@@ -2,7 +2,7 @@
 
 import styles from "./PersonalInfo.module.css";
 import clsx from "clsx";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import useFocus from "@/app/components/customHooks/useFocus";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import type { PersonalInfoFields } from "@/app/components/types";
@@ -15,18 +15,20 @@ import ErrorMessage from "@/app/components/shared/ErrorMessage/ErrorMessage";
 
 /**
  * Renders the personal info form with:
- * Inputs:
- * - Name
- * - Email Address
- * - Phone Number
+ * - Main header
+ * - Form description
+ * - Form with the inputs: Name, Email Address and Phone Number
  *
- * - When submitting the form if any field is invalid, renders an error message
+ * When submitting the form if any field is invalid, renders an error message
  */
 export default function PersonalInfo() {
-  const { elementRef } = useFocus<HTMLHeadingElement>();
-
+  // MultiStepForm context
   const { formData, setFormData, goToNextStep } = useMultiStepForm();
 
+  // Main header Ref
+  const { elementRef } = useFocus<HTMLHeadingElement>();
+
+  // React Hook Form
   const {
     register,
     handleSubmit,
@@ -48,8 +50,9 @@ export default function PersonalInfo() {
 
   /**
    * Submits the form and goes to the next form step
+   * @param data name, email an phone input data
    */
-  const submit = (data: FieldValues) => {
+  const submit = (data: PersonalInfoFields) => {
     setFormData((prev) => ({
       ...prev,
       personalInfo: {

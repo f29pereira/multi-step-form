@@ -96,7 +96,7 @@ export type ReactChildrenType = {
  * @property goToNextStep        - goes to the next form step
  * @property goToPrevStep        - goes to the previous form step
  * @property toggleSubscription  - toggle between yearly and monthly subscription
- * @property formData            - state: multi-step form data and
+ * @property formData            - state: multi-step form data
  * @property setFormData         - state setter: multi-step form data
  * @property isConfirmed         - state: is the subscription confirmed by the user
  * @property confirmSubscription - confirms the user's subscription
@@ -171,9 +171,23 @@ export type AddOnDetails = {
 
 /**
  * Type for the multi-step form data
- * @property isYearly - is a yearly subscription
+ * @property isYearly     - is a yearly subscription
+ * @property personalInfo - PersonalInfo component form data
  */
 export type FormData = {
   isYearly: boolean;
-  /*TO DO: Add form data for the steps: PersonalInfo, SelectPlan and PickAddOns*/
+  personalInfo: PersonalInfoFields;
+  /*TO DO: Add form data for the steps: SelectPlan and PickAddOns*/
+};
+
+/**
+ * Type for the user's personal data
+ * @property name  - name
+ * @property email - email address
+ * @property phone - phone number
+ */
+export type PersonalInfoFields = {
+  name: string;
+  email: string;
+  phone: string;
 };

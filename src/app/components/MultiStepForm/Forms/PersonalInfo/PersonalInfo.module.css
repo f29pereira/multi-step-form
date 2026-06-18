@@ -1,18 +1,24 @@
 /**
  * CSS Module for the PersonalInfo component
  * Classes:
- * .input - form input
+ * .input       - form input
+ * .errorInput  - input error style
  */
 
 .input {
   width: 100%;
   margin: 0.5rem 0 1rem 0;
   padding: 0.8rem 1rem;
-  border: 1px solid var(--purple-200);
+  border: 1.5px solid var(--purple-200);
   border-radius: var(--border-radius-5);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-700);
   color: var(--blue-950);
+}
+
+/*change border color from --purple-200 to --red-500*/
+.input.errorInput {
+  border-color: var(--red-500);
 }
 
 .input::placeholder {
@@ -21,9 +27,15 @@
   color: var(--grey-450);
 }
 
+/*when focused, change the border color from --purple-200 to --purple-550*/
 .input:focus {
   outline: none; /*remove default browser outline*/
-  border: 1.5px solid var(--purple-550);
+  border-color: var(--purple-550);
+}
+
+/*when focused with error, change the border color from --purple-550 to --red-500*/
+.input.errorInput:focus {
+  border-color: var(--red-500);
 }
 
 /*Desktop Styles*/

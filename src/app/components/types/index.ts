@@ -57,13 +57,9 @@ export type PlanProps = Pick<PlanDetails, "id" | "type"> & {
  * @property id        - add-on id
  * @property type      - type of add-on
  * @property price     - add-on price
- * @property toggle    - toggles the add-on id in the pickedAddOns state
- * @property isChecked - is the checkbox checked
  */
 export type AddOnProps = Pick<AddOnDetails, "id" | "type" | "description"> & {
   price: number;
-  toggle: (id: string) => void;
-  isChecked: boolean;
 };
 
 /**
@@ -109,6 +105,47 @@ export type MultiStepFormContextType = {
   setFormData: Dispatch<SetStateAction<FormData>>;
   isConfirmed: boolean;
   confirmSubscription: () => void;
+};
+
+/**
+ * Type for the multi-step form data
+ * @property isYearly       - is a yearly subscription
+ * @property personalInfo   - user's personal data
+ * @property selectedPlanId - user's selected plan id
+ * @property selectedAddOns - user's selected add-on ids
+ */
+export type FormData = Pick<SelectedPlan, "selectedPlanId"> &
+  Pick<SelectedAddOns, "selectedAddOns"> & {
+    isYearly: boolean;
+    personalInfo: PersonalInfoFields;
+  };
+
+/**
+ * Type for the user's personal data
+ * @property name  - name
+ * @property email - email address
+ * @property phone - phone number
+ */
+export type PersonalInfoFields = {
+  name: string;
+  email: string;
+  phone: string;
+};
+
+/**
+ * Type for the user's selected plan
+ * @property id - plan id
+ */
+export type SelectedPlan = {
+  selectedPlanId: string;
+};
+
+/**
+ * Type for the user's selected add-ons
+ * @property selectedAddOns - list of add-on ids
+ */
+export type SelectedAddOns = {
+  selectedAddOns: string[];
 };
 
 /* ---------------------------------------------------- */
@@ -165,36 +202,4 @@ export type AddOnDetails = {
   description: string;
   monthlyPrice: number;
   yearlyPrice: number;
-};
-
-/**
- * Type for the multi-step form data
- * @property isYearly       - is a yearly subscription
- * @property personalInfo   - user's personal data
- * @property selectedPlanId - user's selected plan id
- */
-export type FormData = Pick<SelectedPlan, "selectedPlanId"> & {
-  isYearly: boolean;
-  personalInfo: PersonalInfoFields;
-  /*TO DO: Add form data for the step: PickAddOns*/
-};
-
-/**
- * Type for the user's personal data
- * @property name  - name
- * @property email - email address
- * @property phone - phone number
- */
-export type PersonalInfoFields = {
-  name: string;
-  email: string;
-  phone: string;
-};
-
-/**
- * Type for the user's selected plan
- * @property id - plan id
- */
-export type SelectedPlan = {
-  selectedPlanId: string;
 };

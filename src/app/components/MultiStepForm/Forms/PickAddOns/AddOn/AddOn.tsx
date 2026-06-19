@@ -1,7 +1,11 @@
+"use client"; // Client Component
+
 import styles from "./AddOn.module.css";
+import clsx from "clsx";
 import type { AddOnProps } from "@/app/components/types";
 import { formarYearlyOrMonthlyPrice } from "@/app/lib/utils";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
+import { useFormContext } from "react-hook-form";
 
 /**
  * Renders a add-on with:
@@ -10,21 +14,23 @@ import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm"
  * - Add-on description
  * - Price (monthly or yearly value)
  */
-export default function AddOn({
-  id,
-  type,
-  description,
-  price,
-  toggle,
-  isChecked,
-}: AddOnProps) {
+export default function AddOn({ id, type, description, price }: AddOnProps) {
+  // MultiStepForm context
   const { formData } = useMultiStepForm();
   const isYearly = formData.isYearly;
+
+  // React Hook Form: context
+  const { register, watch } = useFormContext();
+
+  const selectedIds: string[] = watch("selectedAddOns");
+  const isSelected = selectedIds.includes(id);
 
   return (
     <label
       htmlFor={`add-on-${id}`}
-      className={`${styles.addOnCont} ${isChecked ? styles.selected : ""}`}
+      className={clsx(styles.addOnCont, {
+        [styles.selected]: isSelected,
+      })}
     >
       <div className={styles.flexCenter}>
         <div className={styles.checkboxWrapper}>
@@ -34,12 +40,11 @@ export default function AddOn({
             id={`add-on-${id}`}
             value={id}
             className={`${styles.checkbox}`}
-            onChange={() => toggle(id)}
-            checked={isChecked}
+            {...register("selectedAddOns")}
           />
 
           {/*Checkmark*/}
-          {isChecked ? (
+          {isSelected ? (
             <span className={`flex-center ${styles.checkmark}`}>
               <svg
                 className={styles.icon}

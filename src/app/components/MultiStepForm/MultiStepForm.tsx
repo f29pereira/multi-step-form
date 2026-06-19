@@ -16,16 +16,11 @@ import { useMultiStepForm } from "../customHooks/useMultiStepForm";
  * - Go Back and Next or Confirm buttons
  */
 export default function MultiStepForm() {
-  const {
-    currentStepIndex,
-    goToNextStep,
-    goToPrevStep,
-    isConfirmed,
-    confirmSubscription,
-  } = useMultiStepForm();
+  // MultiStepForm context
+  const { currentStepIndex, goToPrevStep, isConfirmed, confirmSubscription } =
+    useMultiStepForm();
 
   const stepsList = ["Your Info", "Select plan", "Add-ons", "Summary"];
-  /*TO DO: Add other form components*/
   const formsList = [PersonalInfo, SelectPlan, PickAddOns, LastStep];
   const CurrentStep = formsList[currentStepIndex];
 

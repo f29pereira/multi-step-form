@@ -105,7 +105,7 @@ export default function FinishSubscription() {
         <span className={styles.greyText}>
           Total {`(per ${isYearly ? "year" : "month"})`}
         </span>
-        <span className="sr-only">{`Plus ${12} dollars per ${isYearly ? "year" : "month"}`}</span>
+        <span className="sr-only">{`${total} dollars`}</span>
         <span className={`bold-text ${styles.totalPrice}`} aria-hidden="true">
           {formarYearlyOrMonthlyPrice(isYearly, total)}
         </span>

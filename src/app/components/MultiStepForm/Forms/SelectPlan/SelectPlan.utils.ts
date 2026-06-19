@@ -1,4 +1,4 @@
-import type { PlanDetails } from "@/app/components/types";
+import type { PlanDetails, PlanProps } from "@/app/components/types";
 
 /**
  * Returns the list of plans with yearly or montly pricing and discont
@@ -13,6 +13,31 @@ export const getPlansList = (isYearly: boolean) => {
       discount: isYearly ? plan.yearlyPlan.discount : plan.monthlyPlan.discount,
     },
   }));
+};
+
+/**
+ * Returns the plan by a given id
+ * @param id       - plan id
+ * @param isYearly - if true returns the yearly price, if false returns the montly price
+ */
+export const getPlanById = (
+  id: string,
+  isYearly: boolean,
+): PlanProps | undefined => {
+  const plan = PLANS_LIST.find((plan) => plan.id === id);
+
+  if (plan) {
+    const planPrice = isYearly ? plan.yearlyPlan : plan.monthlyPlan;
+
+    return {
+      id: plan.id,
+      type: plan.type,
+      price: { value: planPrice.value, discount: planPrice.discount },
+      isInvalid: false,
+    };
+  }
+
+  return plan;
 };
 
 /**

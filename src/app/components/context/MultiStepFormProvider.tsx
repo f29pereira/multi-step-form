@@ -1,10 +1,12 @@
 "use client"; // Client Component
+
 import { createContext, useState } from "react";
 import type {
   ReactChildrenType,
   MultiStepFormContextType,
   FormData,
 } from "../types";
+import { getPlanById } from "../MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
 
 export const MultiStepFormContext = createContext<
   MultiStepFormContextType | undefined
@@ -20,7 +22,7 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
     isYearly: true,
     personalInfo: { name: "", email: "", phone: "" },
     selectedPlanId: "",
-    /*TO DO: Add form data for the step: and PickAddOns*/
+    selectedAddOns: [],
   });
 
   const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
@@ -61,7 +63,11 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
    * Confirms the user's subscription
    */
   const confirmSubscription = () => {
-    setIsConfirmed(true);
+    const plan = getPlanById(formData.selectedPlanId, formData.isYearly);
+
+    if (plan) {
+      setIsConfirmed(true);
+    }
   };
 
   return (

@@ -3,20 +3,32 @@
 import useFocus from "@/app/components/customHooks/useFocus";
 import styles from "./FinishSubscription.module.css";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
+import { getPlanById } from "../../SelectPlan/SelectPlan.utils";
+import { getSelectedAddOns } from "../../PickAddOns/PickAddOns.utils";
+import { formarYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import { PlanProps } from "@/app/components/types";
+import { getSubscriptionTotal } from "./FinishSubscription.utils";
 
 /**
  * Renders the subscription confirmation screen with:
+ * - Main header
  * - Form data: selected plan and add-ons list
  * - Subscription total
  */
 export default function FinishSubscription() {
-  const { elementRef } = useFocus<HTMLHeadingElement>();
-
+  // MultiStepForm context
   const { formData, goToStep } = useMultiStepForm();
 
-  /*TO DO: get form data from context*/
-
   const isYearly = formData.isYearly;
+  const selectedPlan = getPlanById(
+    formData.selectedPlanId,
+    isYearly,
+  ) as PlanProps;
+  const selectedAddOns = getSelectedAddOns(formData.selectedAddOns, isYearly);
+  const total = getSubscriptionTotal(selectedPlan, selectedAddOns);
+
+  // Main header Ref
+  const { elementRef } = useFocus<HTMLHeadingElement>();
 
   return (
     <div className={"white-card-cont"}>
@@ -33,12 +45,11 @@ export default function FinishSubscription() {
         Double-check everything looks OK before confirming.
       </p>
 
-      {/*Form data*/}
+      {/*Selected user's plan and add-ons*/}
       <div className={styles.formDataCont}>
-        {/*Selected plan*/}
-        {/*TO DO: get plan type from context*/}
+        {/*Plan type*/}
         <h2 className={styles.title}>
-          Plan name{`(${isYearly ? "Yearly" : "Monthly"})`}
+          {`${selectedPlan?.type} (${isYearly ? "Yearly" : "Monthly"})`}
         </h2>
 
         <div className="flex-space-between">
@@ -52,33 +63,40 @@ export default function FinishSubscription() {
           </button>
 
           {/*Plan price*/}
-          <span className="sr-only">{`Price ${0} dollars per ${isYearly ? "year" : "month"}`}</span>
+          <span className="sr-only">{`Price ${selectedPlan?.price} dollars per ${isYearly ? "year" : "month"}`}</span>
 
-          {/*TO DO: get plan price from context*/}
-          <span
-            className={`bold-text ${styles.planPrice}`}
-            aria-hidden="true"
-          ></span>
+          <span className={`bold-text ${styles.planPrice}`} aria-hidden="true">
+            {formarYearlyOrMonthlyPrice(isYearly, selectedPlan.price.value)}
+          </span>
         </div>
 
-        <hr className={styles.divider} aria-hidden="true" />
-
-        {/*Selected add-ons*/}
         <div className={styles.flexCol}>
           <p className="sr-only">Selected Add-Ons</p>
-          {/*TO DO: map the add-ons list data from context*/}
-          <div className={`flex-space-between ${styles.addOn}`}>
-            <span className={`lighter-text ${styles.greyText}`}>
-              Add-on name
-            </span>
-            <span className="sr-only">{`Plus ${0} dollars per ${isYearly ? "year" : "month"}`}</span>
-            <span
-              className={`light-text ${styles.blueText}`}
-              aria-hidden="true"
-            >
-              Add-on price
-            </span>
-          </div>
+
+          {/*Add-ons list*/}
+          {selectedAddOns.length > 0 ? (
+            <>
+              <hr className={styles.divider} aria-hidden="true" />
+              {selectedAddOns.map((addOn) => (
+                <div
+                  key={addOn?.id}
+                  className={`flex-space-between ${styles.addOn}`}
+                >
+                  {/*Add-On type*/}
+                  <span className={`lighter-text ${styles.greyText}`}>
+                    {addOn.type}
+                  </span>
+                  {/*Add-On price*/}
+                  <span
+                    className={`light-text ${styles.blueText}`}
+                    aria-hidden="true"
+                  >
+                    {`+${formarYearlyOrMonthlyPrice(isYearly, addOn.price)}`}
+                  </span>
+                </div>
+              ))}
+            </>
+          ) : null}
         </div>
       </div>
 
@@ -88,9 +106,8 @@ export default function FinishSubscription() {
           Total {`(per ${isYearly ? "year" : "month"})`}
         </span>
         <span className="sr-only">{`Plus ${12} dollars per ${isYearly ? "year" : "month"}`}</span>
-        {/*TO DO: get total from context*/}
         <span className={`bold-text ${styles.totalPrice}`} aria-hidden="true">
-          Total price
+          {formarYearlyOrMonthlyPrice(isYearly, total)}
         </span>
       </div>
     </div>

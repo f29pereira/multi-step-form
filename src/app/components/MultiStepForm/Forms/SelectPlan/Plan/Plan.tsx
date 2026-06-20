@@ -4,7 +4,7 @@ import styles from "./Plan.module.css";
 import clsx from "clsx";
 import type { PlanProps } from "@/app/components/types";
 import { getPlanIcon } from "./Plan.util";
-import { formarYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import { useFormContext } from "react-hook-form";
 
@@ -61,7 +61,7 @@ export default function Plan({ id, type, price, isInvalid }: PlanProps) {
         <span className="sr-only">{`Price ${price.value} dollars per ${isYearly ? "year" : "month"}`}</span>
 
         <span className={`light-text ${styles.value}`} aria-hidden="true">
-          {formarYearlyOrMonthlyPrice(isYearly, price.value)}
+          {formatYearlyOrMonthlyPrice(isYearly, price.value)}
         </span>
 
         {/*Discount*/}

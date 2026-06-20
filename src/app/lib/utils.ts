@@ -3,7 +3,7 @@
  * @param isYearly is the price for yearly format
  * @param price price value
  */
-export const formarYearlyOrMonthlyPrice = (
+export const formatYearlyOrMonthlyPrice = (
   isYearly: boolean,
   price: number,
 ) => {

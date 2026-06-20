@@ -3,7 +3,7 @@
 import styles from "./AddOn.module.css";
 import clsx from "clsx";
 import type { AddOnProps } from "@/app/components/types";
-import { formarYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import { useFormContext } from "react-hook-form";
 
@@ -70,7 +70,7 @@ export default function AddOn({ id, type, description, price }: AddOnProps) {
       {/*Price (monthly or yearly value)*/}
       <span className="sr-only">{`Plus ${price} dollars per ${isYearly ? "year" : "month"}`}</span>
       <span className={`lighter-text ${styles.price}`}>
-        {`+${formarYearlyOrMonthlyPrice(isYearly, price)}`}
+        {`+${formatYearlyOrMonthlyPrice(isYearly, price)}`}
       </span>
     </label>
   );

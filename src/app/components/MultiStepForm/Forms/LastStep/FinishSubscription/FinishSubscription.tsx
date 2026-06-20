@@ -5,7 +5,7 @@ import styles from "./FinishSubscription.module.css";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import { getPlanById } from "../../SelectPlan/SelectPlan.utils";
 import { getSelectedAddOns } from "../../PickAddOns/PickAddOns.utils";
-import { formarYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
 import { PlanProps } from "@/app/components/types";
 import { getSubscriptionTotal } from "./FinishSubscription.utils";
 
@@ -66,7 +66,7 @@ export default function FinishSubscription() {
           <span className="sr-only">{`Price ${selectedPlan?.price} dollars per ${isYearly ? "year" : "month"}`}</span>
 
           <span className={`bold-text ${styles.planPrice}`} aria-hidden="true">
-            {formarYearlyOrMonthlyPrice(isYearly, selectedPlan.price.value)}
+            {formatYearlyOrMonthlyPrice(isYearly, selectedPlan.price.value)}
           </span>
         </div>
 
@@ -91,7 +91,7 @@ export default function FinishSubscription() {
                     className={`light-text ${styles.blueText}`}
                     aria-hidden="true"
                   >
-                    {`+${formarYearlyOrMonthlyPrice(isYearly, addOn.price)}`}
+                    {`+${formatYearlyOrMonthlyPrice(isYearly, addOn.price)}`}
                   </span>
                 </div>
               ))}
@@ -107,7 +107,7 @@ export default function FinishSubscription() {
         </span>
         <span className="sr-only">{`${total} dollars`}</span>
         <span className={`bold-text ${styles.totalPrice}`} aria-hidden="true">
-          {formarYearlyOrMonthlyPrice(isYearly, total)}
+          {formatYearlyOrMonthlyPrice(isYearly, total)}
         </span>
       </div>
     </div>

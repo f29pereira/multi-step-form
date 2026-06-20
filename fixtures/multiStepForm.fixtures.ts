@@ -1,4 +1,29 @@
-import type { PlanDetails } from "@/app/components/types";
+import type {
+  PlanDetails,
+  MultiStepFormContextType,
+} from "@/app/components/types";
+
+/**
+ * Returns an initial state mock for the MultiStepFormContext
+ */
+export const createEmptyMultiStepFormContext = (): MultiStepFormContextType => {
+  return {
+    currentStepIndex: 0,
+    goToNextStep: jest.fn(),
+    goToPrevStep: jest.fn(),
+    goToStep: jest.fn(),
+    toggleSubscription: jest.fn(),
+    formData: {
+      isYearly: true,
+      personalInfo: { name: "", email: "", phone: "" },
+      selectedPlanId: "",
+      selectedAddOns: [],
+    },
+    setFormData: jest.fn(),
+    isConfirmed: false,
+    confirmSubscription: jest.fn(),
+  };
+};
 
 /**
  * Returns a mocked plan
@@ -45,3 +70,13 @@ const FIXTURE_PLANS_LIST: PlanDetails[] = [
     },
   },
 ];
+
+export const FIXTURE_FORM_STEPS = {
+  personalInfo: {
+    title: "Step 1 of 4, Personal info",
+    description: "Please provide your name, email address, and phone number.",
+    nameInputLabel: "Name",
+    emailInputLabel: "Email Address",
+    phoneInputLabel: "Phone Number",
+  },
+};

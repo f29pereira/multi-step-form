@@ -1,5 +1,8 @@
 import { screen } from "@testing-library/react";
-import { FIXTURE_FORM_STEPS } from "../../fixtures/multiStepForm.fixtures";
+import {
+  FIXTURE_FORM_STEPS,
+  FIXTURE_SUBSCRIPTIONTOGGLE,
+} from "../../fixtures/multiStepForm.fixtures";
 
 /**
  * Expects the visibility of the following elements, in the PersonalInfo component:
@@ -26,4 +29,26 @@ export const expectPersonalInfoVisible = () => {
   expect(nameInput).toBeVisible();
   expect(emailInput).toBeVisible();
   expect(phoneInput).toBeVisible();
+};
+
+/**
+ * Expects the visibility of the following elements, in the SubscriptionToggle component:
+ * - Monthly text
+ * - Toggle button
+ * - Yearly text
+ */
+export const expectSubscriptionToggleVisible = (isYearly: boolean) => {
+  const subscriptionToggle = FIXTURE_SUBSCRIPTIONTOGGLE;
+
+  const monthly = screen.getByText(subscriptionToggle.monthly);
+  const yearly = screen.getByText(subscriptionToggle.yearly);
+
+  const btnDescription = `${subscriptionToggle.btnDescription} ${isYearly ? "Yearly" : "Monthly"}`;
+  const btn = screen.getByRole("button", {
+    name: btnDescription,
+  });
+
+  expect(monthly).toBeVisible();
+  expect(yearly).toBeVisible();
+  expect(btn).toBeVisible();
 };

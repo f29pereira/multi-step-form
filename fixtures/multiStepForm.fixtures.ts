@@ -71,7 +71,11 @@ const FIXTURE_PLANS_LIST: PlanDetails[] = [
   },
 ];
 
+/**
+ * Mocked data for the Form steps
+ */
 export const FIXTURE_FORM_STEPS = {
+  // PersonalInfo component
   personalInfo: {
     title: "Step 1 of 4, Personal info",
     description: "Please provide your name, email address, and phone number.",
@@ -79,4 +83,14 @@ export const FIXTURE_FORM_STEPS = {
     emailInputLabel: "Email Address",
     phoneInputLabel: "Phone Number",
   },
+  // TO DO: Add mocked data for SelectPlan, PickAddOns, LastStep
+};
+
+/**
+ * Mocked data for the SubscriptionToggle component
+ */
+export const FIXTURE_SUBSCRIPTIONTOGGLE = {
+  monthly: "Monthly",
+  yearly: "Yearly",
+  btnDescription: "Monthly/Yearly toggle current selected:",
 };

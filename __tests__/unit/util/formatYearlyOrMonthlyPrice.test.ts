@@ -1,5 +1,5 @@
 import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
-import { createPlan } from "../../../fixtures/multiStepForm.fixture";
+import { createPlan } from "../../../fixtures/multiStepForm.fixtures";
 
 /**
  * Test for function: formatYearlyOrMonthlyPrice

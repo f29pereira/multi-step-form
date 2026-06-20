@@ -94,3 +94,12 @@ export const FIXTURE_SUBSCRIPTIONTOGGLE = {
   yearly: "Yearly",
   btnDescription: "Monthly/Yearly toggle current selected:",
 };
+
+/**
+ * Mocked data for the ThankYou component
+ */
+export const FIXTURE_THANKYOU = {
+  title: "Thank you!",
+  description:
+    "Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loregaming.com.",
+};

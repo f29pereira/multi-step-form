@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react";
 import {
   FIXTURE_FORM_STEPS,
   FIXTURE_SUBSCRIPTIONTOGGLE,
+  FIXTURE_THANKYOU,
 } from "../../fixtures/multiStepForm.fixtures";
 
 /**
@@ -51,4 +52,23 @@ export const expectSubscriptionToggleVisible = (isYearly: boolean) => {
   expect(monthly).toBeVisible();
   expect(yearly).toBeVisible();
   expect(btn).toBeVisible();
+};
+
+/**
+ * Expects the visibility of the following elements, in the ThankYou component:
+ * - Main header
+ * - Description
+ */
+export const expectThankYouVisible = () => {
+  const thankYou = FIXTURE_THANKYOU;
+
+  const title = screen.getByRole("heading", {
+    level: 1,
+    name: thankYou.title,
+  });
+
+  const description = screen.getByText(thankYou.description);
+
+  expect(title).toBeVisible();
+  expect(description).toBeVisible();
 };

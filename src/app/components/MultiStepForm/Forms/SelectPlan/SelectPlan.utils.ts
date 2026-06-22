@@ -1,11 +1,15 @@
 import type { PlanDetails, PlanProps } from "@/app/components/types";
 
 /**
- * Returns the list of plans with yearly or montly pricing and discont
- * @param isYearly - if true returns the yearly plans, if false returns the montly plans
+ * Returns the list of plans with yearly or montly subscription
+ * @param plansList - list of plans with yearly and montly pricing
+ * @param isYearly  - if true returns the yearly plans, if false returns the montly plans
  */
-export const getPlansList = (isYearly: boolean) => {
-  return PLANS_LIST.map((plan) => ({
+export const getPlansListBySubscription = (
+  plansList: PlanDetails[],
+  isYearly: boolean,
+) => {
+  return plansList.map((plan) => ({
     id: plan.id,
     type: plan.type,
     price: {
@@ -43,7 +47,7 @@ export const getPlanById = (
 /**
  * List of available subscription plans
  */
-const PLANS_LIST: PlanDetails[] = [
+export const PLANS_LIST: PlanDetails[] = [
   {
     id: "1",
     type: "Arcade",

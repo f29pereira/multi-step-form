@@ -2,7 +2,7 @@
 
 import styles from "./SelectPlan.module.css";
 import type { SelectedPlan } from "@/app/components/types";
-import { getPlansList } from "./SelectPlan.utils";
+import { PLANS_LIST, getPlansListBySubscription } from "./SelectPlan.utils";
 import Plan from "./Plan/Plan";
 import SubscriptionToggle from "./SubscriptionToggle/SubscriptionToggle";
 import useFocus from "@/app/components/customHooks/useFocus";
@@ -41,7 +41,7 @@ export default function SelectPlan() {
   } = methods;
 
   // Data
-  const plansList = getPlansList(formData.isYearly);
+  const plansList = getPlansListBySubscription(PLANS_LIST, formData.isYearly);
 
   /**
    * Returns true if no plan is selected

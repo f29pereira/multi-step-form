@@ -97,7 +97,7 @@ export default function SelectPlan() {
             <legend className="sr-only">Select your plan</legend>
 
             {/*List of plans*/}
-            <div className={styles.plansListCont}>
+            <div className={styles.plansListCont} data-testid="plans-list">
               {plansList.map((plan) => (
                 <Plan
                   key={plan.id}

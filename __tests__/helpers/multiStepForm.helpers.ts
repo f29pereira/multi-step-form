@@ -33,6 +33,30 @@ export const expectPersonalInfoVisible = () => {
 };
 
 /**
+ * Expects the visibility of the following elements, in the SelectPlan component:
+ * - Main header
+ * - Toggle button
+ * - Form description
+ * - Form with a list of plans
+ */
+export const expectSelectPlanVisible = (plansListLength: number) => {
+  const selectPlan = FIXTURE_FORM_STEPS.selectPlan;
+
+  const title = screen.getByRole("heading", {
+    level: 1,
+    name: selectPlan.title,
+  });
+
+  const description = screen.getByText(selectPlan.description);
+
+  const plansList = screen.getByTestId("plans-list");
+
+  expect(title).toBeVisible();
+  expect(description).toBeVisible();
+  expect(plansList.children).toHaveLength(plansListLength);
+};
+
+/**
  * Expects the visibility of the following elements, in the SubscriptionToggle component:
  * - Monthly text
  * - Toggle button

@@ -35,7 +35,7 @@ export const createPlan = (): PlanDetails => {
 /**
  * List of mocked subscription plans
  */
-const FIXTURE_PLANS_LIST: PlanDetails[] = [
+export const FIXTURE_PLANS_LIST: PlanDetails[] = [
   {
     id: "1",
     type: "Arcade",
@@ -83,7 +83,12 @@ export const FIXTURE_FORM_STEPS = {
     emailInputLabel: "Email Address",
     phoneInputLabel: "Phone Number",
   },
-  // TO DO: Add mocked data for SelectPlan, PickAddOns, LastStep
+  // SelectPlan component
+  selectPlan: {
+    title: "Step 2 of 4, Select your plan",
+    description: "You have the option of monthly or yearly billing.",
+  },
+  // TO DO: Add mocked data for PickAddOns, LastStep
 };
 
 /**

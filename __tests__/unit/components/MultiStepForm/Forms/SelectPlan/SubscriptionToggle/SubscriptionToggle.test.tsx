@@ -18,7 +18,7 @@ describe("SubscriptionToggle component", () => {
     render(<SubscriptionToggle />);
   });
 
-  it("renders the text Montly and Yearly and the toggle button", () => {
+  it("renders the monthly and yearly text and the toggle button", () => {
     expectSubscriptionToggleVisible(context.formData.isYearly);
   });
 });

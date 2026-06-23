@@ -92,6 +92,16 @@ export const FIXTURE_FORM_STEPS = {
 };
 
 /**
+ * Mocked data for the Plan component
+ */
+export const FIXTURE_PLAN = {
+  type: "Arcade",
+  monthlyPlan: "$90/mon",
+  yearlyPlan: "$90/yr",
+  yearlyDiscount: "2 months free",
+};
+
+/**
  * Mocked data for the SubscriptionToggle component
  */
 export const FIXTURE_SUBSCRIPTIONTOGGLE = {

@@ -1,9 +1,12 @@
-import { screen } from "@testing-library/react";
+import { ReactElement, ReactNode } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { screen, render } from "@testing-library/react";
 import {
   FIXTURE_FORM_STEPS,
   FIXTURE_SUBSCRIPTIONTOGGLE,
   FIXTURE_THANKYOU,
 } from "../../fixtures/multiStepForm.fixtures";
+import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
 
 /**
  * Expects the visibility of the following elements, in the PersonalInfo component:
@@ -79,6 +82,45 @@ export const expectSubscriptionToggleVisible = (isYearly: boolean) => {
 };
 
 /**
+ * Expects the radio input to be in the document, in the SubscriptionToggle component:
+ */
+export const expectPlanRadioInputInDocument = () => {
+  const radioInput = screen.getByTestId("plan-radio-input");
+
+  expect(radioInput).toBeInTheDocument();
+};
+
+/**
+ * Expects the visibility of the following elements, in the Plan component:
+ * - Plan type
+ * - Price (monthly or yearly value)
+ * - Discount if applicable
+ */
+export const expectPlanVisible = (
+  isYearly: boolean,
+  type: string,
+  value: number,
+  discount: string | undefined,
+) => {
+  const planType = screen.getByText(type);
+
+  const formattedPrice = formatYearlyOrMonthlyPrice(isYearly, value);
+  const planPrice = screen.getByText(formattedPrice);
+
+  expect(planType).toBeVisible();
+  expect(planPrice).toBeVisible();
+
+  const planDiscount = screen.getByTestId("plan-discount");
+  expect(planDiscount).toBeVisible();
+
+  if (discount) {
+    expect(planDiscount).toHaveTextContent(discount);
+  } else {
+    expect(planDiscount).toHaveTextContent("");
+  }
+};
+
+/**
  * Expects the visibility of the following elements, in the ThankYou component:
  * - Main header
  * - Description
@@ -95,4 +137,19 @@ export const expectThankYouVisible = () => {
 
   expect(title).toBeVisible();
   expect(description).toBeVisible();
+};
+
+/**
+ * Returns a React Form Hook provider with react element
+ * @param ui - React element to be rendered inside the React Form Hook provider
+ */
+export const renderWithReactFormHookProvider = (ui: ReactElement) => {
+  // Wrapper component
+  const Wrapper = ({ children }: { children: ReactNode }) => {
+    const methods = useForm();
+
+    return <FormProvider {...methods}>{children}</FormProvider>;
+  };
+
+  return render(<Wrapper>{ui}</Wrapper>);
 };

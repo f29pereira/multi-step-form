@@ -42,6 +42,7 @@ export default function Plan({ id, type, price, isInvalid }: PlanProps) {
       })}
     >
       <input
+        data-testid="plan-radio-input"
         className="sr-only"
         type="radio"
         value={id}
@@ -66,7 +67,10 @@ export default function Plan({ id, type, price, isInvalid }: PlanProps) {
 
         {/*Discount*/}
         <span className="sr-only">Discount</span>
-        <span className={`lighter-text ${styles.discount}`}>
+        <span
+          className={`lighter-text ${styles.discount}`}
+          data-testid="plan-discount"
+        >
           {price.discount}
         </span>
       </div>

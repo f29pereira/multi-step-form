@@ -3,10 +3,10 @@
 import styles from "./PickAddOns.module.css";
 import type { SelectedAddOns } from "@/app/components/types";
 import useFocus from "@/app/components/customHooks/useFocus";
-import { getAddOnsList } from "./PickAddOns.utils";
+import { ADD_ONS_LIST } from "./PickAddOns.utils";
+import { getAddOnsListBySubscription } from "./PickAddOns.utils";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import AddOn from "./AddOn/AddOn";
-import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 
 /**
@@ -34,7 +34,7 @@ export default function PickAddOns() {
   const { register, watch } = methods;
 
   // Data
-  const addOnsList = getAddOnsList(isYearly);
+  const addOnsList = getAddOnsListBySubscription(ADD_ONS_LIST, isYearly);
 
   /**
    * Submits the form and goes to the next form step

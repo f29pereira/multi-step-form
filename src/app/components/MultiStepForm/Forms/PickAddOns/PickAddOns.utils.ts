@@ -1,11 +1,15 @@
 import type { AddOnDetails, AddOnProps } from "@/app/components/types";
 
 /**
- * Returns the list of add-ons with yearly or montly pricing
- * @param isYearly - if true returns the yearly add-ons, if false returns the montly add-ons
+ * Returns the list of add-ons with yearly or montly subscription
+ * @param addOnsList - list of plans with yearly and montly pricing
+ * @param isYearly   - if true returns the yearly add-ons, if false returns the montly add-ons
  */
-export const getAddOnsList = (isYearly: boolean) => {
-  return ADD_ONS_LIST.map((addOn) => ({
+export const getAddOnsListBySubscription = (
+  addOnsList: AddOnDetails[],
+  isYearly: boolean,
+) => {
+  return addOnsList.map((addOn) => ({
     id: addOn.id,
     type: addOn.type,
     description: addOn.description,
@@ -57,7 +61,7 @@ export const getAddOnById = (
 /**
  * List of available add-ons
  */
-const ADD_ONS_LIST: AddOnDetails[] = [
+export const ADD_ONS_LIST: AddOnDetails[] = [
   {
     id: "1",
     type: "Online service",

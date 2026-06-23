@@ -36,7 +36,11 @@ describe("SelectPlan component", () => {
   });
 
   it("renders the main title, form description and list of plans", () => {
-    const plansLength = getPlansListBySubscription.length;
+    const plansLength = getPlansListBySubscription(
+      FIXTURE_PLANS_LIST,
+      true,
+    ).length;
+
     expectSelectPlanVisible(plansLength);
   });
 });

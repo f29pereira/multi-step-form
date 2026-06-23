@@ -1,6 +1,7 @@
 import type {
   PlanDetails,
   MultiStepFormContextType,
+  AddOnDetails,
 } from "@/app/components/types";
 
 /**
@@ -72,6 +73,33 @@ export const FIXTURE_PLANS_LIST: PlanDetails[] = [
 ];
 
 /**
+ * List of mocked add-ons
+ */
+export const FIXTURE_ADD_ONS_LIST: AddOnDetails[] = [
+  {
+    id: "1",
+    type: "Online service",
+    description: "Access to multiplayer games",
+    monthlyPrice: 1,
+    yearlyPrice: 10,
+  },
+  {
+    id: "2",
+    type: "Larger storage",
+    description: "Extra 1TB of cloud save",
+    monthlyPrice: 2,
+    yearlyPrice: 20,
+  },
+  {
+    id: "3",
+    type: "Customizable profile",
+    description: "Custom theme on your profile",
+    monthlyPrice: 2,
+    yearlyPrice: 20,
+  },
+];
+
+/**
  * Mocked data for the Form steps
  */
 export const FIXTURE_FORM_STEPS = {
@@ -88,7 +116,12 @@ export const FIXTURE_FORM_STEPS = {
     title: "Step 2 of 4, Select your plan",
     description: "You have the option of monthly or yearly billing.",
   },
-  // TO DO: Add mocked data for PickAddOns, LastStep
+  // PickAddOns component
+  pickAddOns: {
+    title: "Step 3 of 4, Pick add-ons",
+    description: "Add-ons help enhance your gaming experience.",
+  },
+  // TO DO: Add mocked data for LastStep
 };
 
 /**

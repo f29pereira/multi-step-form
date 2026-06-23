@@ -41,6 +41,7 @@ export const expectPersonalInfoVisible = () => {
  * - Toggle button
  * - Form description
  * - Form with a list of plans
+ * @param plansListLength - number of plans being rendered
  */
 export const expectSelectPlanVisible = (plansListLength: number) => {
   const selectPlan = FIXTURE_FORM_STEPS.selectPlan;
@@ -64,6 +65,7 @@ export const expectSelectPlanVisible = (plansListLength: number) => {
  * - Monthly text
  * - Toggle button
  * - Yearly text
+ * @param isYearly - if true returns the yearly plans, if false returns the montly plans
  */
 export const expectSubscriptionToggleVisible = (isYearly: boolean) => {
   const subscriptionToggle = FIXTURE_SUBSCRIPTIONTOGGLE;
@@ -82,7 +84,7 @@ export const expectSubscriptionToggleVisible = (isYearly: boolean) => {
 };
 
 /**
- * Expects the radio input to be in the document, in the SubscriptionToggle component:
+ * Expects the radio input to be in the document for the Plan component
  */
 export const expectPlanRadioInputInDocument = () => {
   const radioInput = screen.getByTestId("plan-radio-input");
@@ -118,6 +120,30 @@ export const expectPlanVisible = (
   } else {
     expect(planDiscount).toHaveTextContent("");
   }
+};
+
+/**
+ * Expects the visibility of the following elements, in the SelectPlan component:
+ * - Main header
+ * - Form description
+ * - Form with a list of add-ons
+ * @param addOnsListLength - number of addOns being rendered
+ */
+export const expectPickAddOnsVisible = (addOnsListLength: number) => {
+  const pickAddOns = FIXTURE_FORM_STEPS.pickAddOns;
+
+  const title = screen.getByRole("heading", {
+    level: 1,
+    name: pickAddOns.title,
+  });
+
+  const description = screen.getByText(pickAddOns.description);
+
+  const plansList = screen.getByTestId("add-ons-list");
+
+  expect(title).toBeVisible();
+  expect(description).toBeVisible();
+  expect(plansList.children).toHaveLength(addOnsListLength);
 };
 
 /**

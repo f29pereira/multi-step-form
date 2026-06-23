@@ -71,7 +71,7 @@ export default function PickAddOns() {
             <legend className="sr-only">Pick add-ons</legend>
 
             {/*List of add-ons*/}
-            <div className={styles.addOnsListCont}>
+            <div className={styles.addOnsListCont} data-testid="add-ons-list">
               {addOnsList.map((addOn) => (
                 <AddOn
                   key={addOn.id}

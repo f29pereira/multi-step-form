@@ -18,6 +18,8 @@ jest.mock("@/app/components/customHooks/useMultiStepForm", () => ({
 // Type cast to be able to call jest functions in useMultiStepForm
 const useMultiStepFormMock = useMultiStepForm as jest.Mock;
 
+const defaultContext = createEmptyMultiStepFormContext();
+
 const plan = createPlan();
 
 /**
@@ -25,7 +27,6 @@ const plan = createPlan();
  */
 describe("Plan component", () => {
   beforeEach(() => {
-    const defaultContext = createEmptyMultiStepFormContext();
     useMultiStepFormMock.mockReturnValue(defaultContext);
   });
 
@@ -60,17 +61,22 @@ describe("Plan component", () => {
         isInvalid={false}
       />,
     );
-    expectPlanVisible(true, plan.type, planPrice.value, planPrice.discount);
+    expectPlanVisible(
+      defaultContext.formData.isYearly,
+      plan.type,
+      planPrice.value,
+      planPrice.discount,
+    );
   });
 
   it("renders the type and monthly price", () => {
-    const defaultContext = createEmptyMultiStepFormContext();
-
-    // Update useMultiStepForm to a monthly subscription
-    useMultiStepFormMock.mockReturnValue({
+    const updatedContext = {
       ...defaultContext,
       formData: { ...defaultContext, isYearly: false },
-    });
+    };
+
+    // Update useMultiStepForm to a monthly subscription
+    useMultiStepFormMock.mockReturnValue(updatedContext);
 
     const planPrice = {
       value: plan.monthlyPlan.value,
@@ -84,6 +90,11 @@ describe("Plan component", () => {
         isInvalid={false}
       />,
     );
-    expectPlanVisible(false, plan.type, planPrice.value, undefined);
+    expectPlanVisible(
+      updatedContext.formData.isYearly,
+      plan.type,
+      planPrice.value,
+      undefined,
+    );
   });
 });

@@ -15,16 +15,16 @@ jest.mock("@/app/components/customHooks/useMultiStepForm", () => ({
 // Type cast to be able to call jest functions in useMultiStepForm
 const useMultiStepFormMock = useMultiStepForm as jest.Mock;
 
-const addOn = createAddOn();
+const defaultContext = createEmptyMultiStepFormContext();
 
-const defaultValues = { selectedAddOns: [] };
+const addOn = createAddOn();
+const reactFormDefaultValues = { selectedAddOns: [] };
 
 /**
  * Unit testing for the component: AddOn
  */
 describe("Plan component", () => {
   beforeEach(() => {
-    const defaultContext = createEmptyMultiStepFormContext();
     useMultiStepFormMock.mockReturnValue(defaultContext);
   });
 
@@ -36,19 +36,24 @@ describe("Plan component", () => {
         description={addOn.description}
         price={addOn.yearlyPrice}
       />,
-      defaultValues,
+      reactFormDefaultValues,
     );
-    expectAddOnVisible(true, addOn.type, addOn.description, addOn.yearlyPrice);
+    expectAddOnVisible(
+      defaultContext.formData.isYearly,
+      addOn.type,
+      addOn.description,
+      addOn.yearlyPrice,
+    );
   });
 
   it("renders the checkbox input and add-on: type, description and monthly price", () => {
-    const defaultContext = createEmptyMultiStepFormContext();
-
-    // Update useMultiStepForm to a monthly subscription
-    useMultiStepFormMock.mockReturnValue({
+    const updatedContext = {
       ...defaultContext,
       formData: { ...defaultContext, isYearly: false },
-    });
+    };
+
+    // Update useMultiStepForm to a monthly subscription
+    useMultiStepFormMock.mockReturnValue(updatedContext);
 
     renderWithReactFormHookProvider(
       <AddOn
@@ -57,10 +62,11 @@ describe("Plan component", () => {
         description={addOn.description}
         price={addOn.monthlyPrice}
       />,
-      defaultValues,
+      reactFormDefaultValues,
     );
+
     expectAddOnVisible(
-      false,
+      updatedContext.formData.isYearly,
       addOn.type,
       addOn.description,
       addOn.monthlyPrice,

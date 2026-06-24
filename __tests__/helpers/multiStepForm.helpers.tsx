@@ -8,10 +8,15 @@ import {
 import { screen, render } from "@testing-library/react";
 import {
   FIXTURE_FORM_STEPS,
+  FIXTURE_PLANS_LIST,
   FIXTURE_SUBSCRIPTIONTOGGLE,
   FIXTURE_THANKYOU,
 } from "../../fixtures/multiStepForm.fixtures";
 import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import { getSubscriptionTotal } from "@/app/components/MultiStepForm/Forms/LastStep/FinishSubscription/FinishSubscription.utils";
+import { getPlanById } from "@/app/components/MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
+import { AddOnProps, PlanProps } from "@/app/components/types";
+import { getSelectedAddOns } from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns.utils";
 
 /**
  * Expects the visibility of the following elements, in the PersonalInfo component:
@@ -177,6 +182,87 @@ export const expectAddOnVisible = (
   expect(addOnType).toBeVisible();
   expect(addOnDescription).toBeVisible();
   expect(addOnPrice).toBeVisible();
+};
+
+/**
+ * Expects the visibility of the following elements, in the FinishSubscription component:
+ * - Main header
+ * - Description
+ * - Plan type and price
+ * - Change plan button
+ * - Form data: selected plan and add-ons list
+ * - Subscription total
+ * @param isYearly       - if true returns the yearly plans, if false returns the montly plans
+ * @param selectedPlanId - selected plan id
+ * @param selectedAddOns - list of selected add-ons id
+ */
+export const expectFinishSubscriptionVisible = (
+  isYearly: boolean,
+  selectedPlanId: string,
+  selectedAddOns: string[],
+) => {
+  const finishSubscription = FIXTURE_FORM_STEPS.finishSubscription;
+
+  const selectedPlan = getPlanById(
+    FIXTURE_PLANS_LIST,
+    selectedPlanId,
+    isYearly,
+  ) as PlanProps;
+
+  const selectedAddOnsList = getSelectedAddOns(
+    selectedAddOns,
+    isYearly,
+  ) as AddOnProps[];
+
+  const title = screen.getByRole("heading", {
+    level: 1,
+    name: finishSubscription.title,
+  });
+
+  const description = screen.getByText(finishSubscription.description);
+
+  const planTypeTitle = screen.getByRole("heading", {
+    level: 2,
+    name: `${finishSubscription.FIXTURE_PLAN.type} (${isYearly ? "Yearly" : "Monthly"})`,
+  });
+
+  const changeBtn = screen.getByRole("button", {
+    name: finishSubscription.changeBtn,
+  });
+
+  const planPriceCont = screen.getByTestId("plan-price");
+  const planPriceValue = `${formatYearlyOrMonthlyPrice(isYearly, selectedPlan.price.value)}`;
+
+  const addOnTypeContainerList = screen.getAllByTestId("add-on-type");
+  const addOnPriceContainerList = screen.getAllByTestId("add-on-price");
+
+  const totalText = screen.getByText(
+    `Total ${`(per ${isYearly ? "year" : "month"})`}`,
+  );
+  const totalValue = screen.getByText(
+    `${formatYearlyOrMonthlyPrice(isYearly, getSubscriptionTotal(selectedPlan, selectedAddOnsList))}`,
+  );
+
+  expect(title).toBeVisible();
+  expect(description).toBeVisible();
+  expect(planTypeTitle).toBeVisible();
+  expect(changeBtn).toBeVisible();
+  expect(planPriceCont).toBeVisible();
+  expect(planPriceCont).toHaveTextContent(planPriceValue);
+
+  selectedAddOnsList.forEach((addOn, index) => {
+    // Add-on type
+    expect(addOnTypeContainerList[index]).toBeVisible();
+    expect(addOnTypeContainerList[index]).toHaveTextContent(addOn.type);
+
+    // Add-on price
+    const addOnPriceValue = `+${formatYearlyOrMonthlyPrice(isYearly, addOn.price)}`;
+    expect(addOnPriceContainerList[index]).toBeVisible();
+    expect(addOnPriceContainerList[index]).toHaveTextContent(addOnPriceValue);
+  });
+
+  expect(totalText).toBeVisible();
+  expect(totalValue).toBeVisible();
 };
 
 /**

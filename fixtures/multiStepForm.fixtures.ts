@@ -27,6 +27,32 @@ export const createEmptyMultiStepFormContext = (): MultiStepFormContextType => {
 };
 
 /**
+ * Returns state mock with formData for the MultiStepFormContext
+ */
+export const createMultiStepFormContext = (): MultiStepFormContextType => {
+  return {
+    currentStepIndex: 0,
+    goToNextStep: jest.fn(),
+    goToPrevStep: jest.fn(),
+    goToStep: jest.fn(),
+    toggleSubscription: jest.fn(),
+    formData: {
+      isYearly: true,
+      personalInfo: {
+        name: "John Doe",
+        email: "johndoe@email.com",
+        phone: "123456789",
+      },
+      selectedPlanId: "1",
+      selectedAddOns: ["1", "2", "3"],
+    },
+    setFormData: jest.fn(),
+    isConfirmed: false,
+    confirmSubscription: jest.fn(),
+  };
+};
+
+/**
  * Returns a mocked plan
  */
 export const createPlan = (): PlanDetails => {
@@ -107,6 +133,26 @@ export const FIXTURE_ADD_ONS_LIST: AddOnDetails[] = [
 ];
 
 /**
+ * Mocked data for the Plan component
+ */
+export const FIXTURE_PLAN = {
+  type: "Arcade",
+  monthlyPlan: "$90/mon",
+  yearlyPlan: "$90/yr",
+  yearlyDiscount: "2 months free",
+};
+
+/**
+ * Mocked data for the AddOn component
+ */
+export const FIXTURE_ADDON = {
+  type: "Online service",
+  description: "Access to multiplayer games",
+  monthlyAddOn: "+$1/mon",
+  yearlyAddOn: "+$10/yr",
+};
+
+/**
  * Mocked data for the Form steps
  */
 export const FIXTURE_FORM_STEPS = {
@@ -128,27 +174,16 @@ export const FIXTURE_FORM_STEPS = {
     title: "Step 3 of 4, Pick add-ons",
     description: "Add-ons help enhance your gaming experience.",
   },
-  // TO DO: Add mocked data for LastStep
-};
-
-/**
- * Mocked data for the Plan component
- */
-export const FIXTURE_PLAN = {
-  type: "Arcade",
-  monthlyPlan: "$90/mon",
-  yearlyPlan: "$90/yr",
-  yearlyDiscount: "2 months free",
-};
-
-/**
- * Mocked data for the AddOn component
- */
-export type FIXTURE_ADDON = {
-  type: "Online service";
-  description: "Access to multiplayer games";
-  monthlyAddOn: "+$1/mon";
-  yearlyAddOn: "+$10/yr";
+  // FinishSubscription component
+  finishSubscription: {
+    title: "Step 4 of 4, Finishing up",
+    description: "Double-check everything looks OK before confirming.",
+    changeBtn: "Change Plan",
+    FIXTURE_PLAN,
+    FIXTURE_ADD_ONS_LIST,
+    yearlyTotal: "$140/yr",
+    monthlyTotal: "$14/mo",
+  },
 };
 
 /**

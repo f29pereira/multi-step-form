@@ -3,7 +3,7 @@
 import useFocus from "@/app/components/customHooks/useFocus";
 import styles from "./FinishSubscription.module.css";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
-import { getPlanById } from "../../SelectPlan/SelectPlan.utils";
+import { getPlanById, PLANS_LIST } from "../../SelectPlan/SelectPlan.utils";
 import { getSelectedAddOns } from "../../PickAddOns/PickAddOns.utils";
 import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
 import { PlanProps } from "@/app/components/types";
@@ -12,6 +12,8 @@ import { getSubscriptionTotal } from "./FinishSubscription.utils";
 /**
  * Renders the subscription confirmation screen with:
  * - Main header
+ * - Description
+ * - Change plan button
  * - Form data: selected plan and add-ons list
  * - Subscription total
  */
@@ -21,6 +23,7 @@ export default function FinishSubscription() {
 
   const isYearly = formData.isYearly;
   const selectedPlan = getPlanById(
+    PLANS_LIST,
     formData.selectedPlanId,
     isYearly,
   ) as PlanProps;
@@ -65,7 +68,11 @@ export default function FinishSubscription() {
           {/*Plan price*/}
           <span className="sr-only">{`Price ${selectedPlan?.price} dollars per ${isYearly ? "year" : "month"}`}</span>
 
-          <span className={`bold-text ${styles.planPrice}`} aria-hidden="true">
+          <span
+            className={`bold-text ${styles.planPrice}`}
+            aria-hidden="true"
+            data-testid="plan-price"
+          >
             {formatYearlyOrMonthlyPrice(isYearly, selectedPlan.price.value)}
           </span>
         </div>
@@ -83,13 +90,17 @@ export default function FinishSubscription() {
                   className={`flex-space-between ${styles.addOn}`}
                 >
                   {/*Add-On type*/}
-                  <span className={`lighter-text ${styles.greyText}`}>
+                  <span
+                    className={`lighter-text ${styles.greyText}`}
+                    data-testid="add-on-type"
+                  >
                     {addOn.type}
                   </span>
                   {/*Add-On price*/}
                   <span
                     className={`light-text ${styles.blueText}`}
                     aria-hidden="true"
+                    data-testid="add-on-price"
                   >
                     {`+${formatYearlyOrMonthlyPrice(isYearly, addOn.price)}`}
                   </span>
@@ -106,7 +117,11 @@ export default function FinishSubscription() {
           Total {`(per ${isYearly ? "year" : "month"})`}
         </span>
         <span className="sr-only">{`${total} dollars`}</span>
-        <span className={`bold-text ${styles.totalPrice}`} aria-hidden="true">
+        <span
+          className={`bold-text ${styles.totalPrice}`}
+          aria-hidden="true"
+          data-testid="total"
+        >
           {formatYearlyOrMonthlyPrice(isYearly, total)}
         </span>
       </div>

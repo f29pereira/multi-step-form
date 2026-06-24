@@ -73,6 +73,13 @@ export const FIXTURE_PLANS_LIST: PlanDetails[] = [
 ];
 
 /**
+ * Returns a mocked add-on
+ */
+export const createAddOn = (): AddOnDetails => {
+  return FIXTURE_ADD_ONS_LIST[0];
+};
+
+/**
  * List of mocked add-ons
  */
 export const FIXTURE_ADD_ONS_LIST: AddOnDetails[] = [
@@ -132,6 +139,16 @@ export const FIXTURE_PLAN = {
   monthlyPlan: "$90/mon",
   yearlyPlan: "$90/yr",
   yearlyDiscount: "2 months free",
+};
+
+/**
+ * Mocked data for the AddOn component
+ */
+export type FIXTURE_ADDON = {
+  type: "Online service";
+  description: "Access to multiplayer games";
+  monthlyAddOn: "+$1/mon";
+  yearlyAddOn: "+$10/yr";
 };
 
 /**

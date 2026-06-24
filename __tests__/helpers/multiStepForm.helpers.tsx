@@ -1,5 +1,10 @@
 import { ReactElement, ReactNode } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import {
+  FormProvider,
+  useForm,
+  DefaultValues,
+  FieldValues,
+} from "react-hook-form";
 import { screen, render } from "@testing-library/react";
 import {
   FIXTURE_FORM_STEPS,
@@ -147,6 +152,34 @@ export const expectPickAddOnsVisible = (addOnsListLength: number) => {
 };
 
 /**
+ * Expects the visibility of the following elements, in the AddOn component:
+ * - Checkbox input
+ * - Add-on type
+ * - Add-on description
+ * - Price (monthly or yearly value)
+ */
+export const expectAddOnVisible = (
+  isYearly: boolean,
+  type: string,
+  discription: string,
+  price: number,
+) => {
+  const checkBoxInput = screen.getByTestId("add-on-input");
+
+  const addOnType = screen.getByText(type);
+
+  const addOnDescription = screen.getByText(discription);
+
+  const formattedPrice = `+${formatYearlyOrMonthlyPrice(isYearly, price)}`;
+  const addOnPrice = screen.getByText(formattedPrice);
+
+  expect(checkBoxInput).toBeVisible();
+  expect(addOnType).toBeVisible();
+  expect(addOnDescription).toBeVisible();
+  expect(addOnPrice).toBeVisible();
+};
+
+/**
  * Expects the visibility of the following elements, in the ThankYou component:
  * - Main header
  * - Description
@@ -167,12 +200,18 @@ export const expectThankYouVisible = () => {
 
 /**
  * Returns a React Form Hook provider with react element
- * @param ui - React element to be rendered inside the React Form Hook provider
+ * @param ui           - React element to be rendered inside the React Form Hook provider
+ * @param defaultValue - React Form Hook useForm defaultValues
  */
-export const renderWithReactFormHookProvider = (ui: ReactElement) => {
+export const renderWithReactFormHookProvider = <T extends FieldValues>(
+  ui: ReactElement,
+  defaultValue?: DefaultValues<T>,
+) => {
   // Wrapper component
   const Wrapper = ({ children }: { children: ReactNode }) => {
-    const methods = useForm();
+    const methods = useForm({
+      defaultValues: defaultValue,
+    });
 
     return <FormProvider {...methods}>{children}</FormProvider>;
   };

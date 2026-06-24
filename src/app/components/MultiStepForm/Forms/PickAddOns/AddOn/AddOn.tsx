@@ -36,6 +36,7 @@ export default function AddOn({ id, type, description, price }: AddOnProps) {
         <div className={styles.checkboxWrapper}>
           {/*Checkbox*/}
           <input
+            data-testid="add-on-input"
             type="checkbox"
             id={`add-on-${id}`}
             value={id}

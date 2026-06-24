@@ -21,14 +21,16 @@ export const getPlansListBySubscription = (
 
 /**
  * Returns the plan by a given id
- * @param id       - plan id
- * @param isYearly - if true returns the yearly price, if false returns the montly price
+ * @param plansList - list of plans
+ * @param id        - plan id
+ * @param isYearly  - if true returns the yearly price, if false returns the montly price
  */
 export const getPlanById = (
+  plansList: PlanDetails[],
   id: string,
   isYearly: boolean,
 ): PlanProps | undefined => {
-  const plan = PLANS_LIST.find((plan) => plan.id === id);
+  const plan = plansList.find((plan) => plan.id === id);
 
   if (plan) {
     const planPrice = isYearly ? plan.yearlyPlan : plan.monthlyPlan;

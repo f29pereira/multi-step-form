@@ -49,6 +49,21 @@ export const expectPersonalInfoVisible = () => {
 };
 
 /**
+ * Fills the PersonalInfo component inputs: Name, Email Address and Phone Number
+ */
+export const fillPersonalInfo = async () => {
+  const personalInfo = FIXTURE_FORM_STEPS.personalInfo;
+
+  const nameInput = screen.getByLabelText(personalInfo.nameInputLabel);
+  const emailInput = screen.getByLabelText(personalInfo.emailInputLabel);
+  const phoneInput = screen.getByLabelText(personalInfo.phoneInputLabel);
+
+  await userEvent.type(nameInput, "John Doe");
+  await userEvent.type(emailInput, "johndoe@email.com");
+  await userEvent.type(phoneInput, "123456789");
+};
+
+/**
  * Expects the visibility of the following elements, in the SelectPlan component:
  * - Main header
  * - Toggle button

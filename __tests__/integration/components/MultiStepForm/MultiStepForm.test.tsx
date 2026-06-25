@@ -2,15 +2,20 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import MultiStepFormProvider from "@/app/components/context/MultiStepFormProvider";
 import MultiStepForm from "@/app/components/MultiStepForm/MultiStepForm";
-import { submitForm } from "../../../helpers/multiStepForm.helpers";
+import {
+  fillPersonalInfo,
+  submitForm,
+} from "../../../helpers/multiStepForm.helpers";
 import {
   FIXTURE_MULTISTEPFORM,
   FIXTURE_FORM_STEPS,
+  FIXTURE_SUBSCRIPTIONTOGGLE,
 } from "../../../../fixtures/multiStepForm.fixtures";
 import { expectErrorMessageVisible } from "../../../helpers/multiStepForm.helpers";
 
 const multiStepForm = FIXTURE_MULTISTEPFORM;
 const personalInfo = FIXTURE_FORM_STEPS.personalInfo;
+const subscriptionToggle = FIXTURE_SUBSCRIPTIONTOGGLE;
 
 /**
  * Integration testing for the component: MultiStepForm
@@ -85,10 +90,36 @@ describe("MultiStepForm component", () => {
   });
 
   describe("SelectPlan component", () => {
-    test.todo(
-      "renders the error message `Select a plan to continue` when no plan is selected",
-    );
+    beforeEach(async () => {
+      // Sucessfully submit PersonalInfo component to advance to the SelectPlan component
+      await fillPersonalInfo();
+      await submitForm();
+    });
 
-    test.todo("allows to toggle between monthly or yearly subscription");
+    it("renders the error message `Select a plan to continue` when no plan is selected", async () => {
+      await submitForm();
+
+      expectErrorMessageVisible(multiStepForm.selectPlan.required);
+    });
+
+    it("allows to toggle between monthly or yearly subscription", async () => {
+      const toggleYearly = `${subscriptionToggle.btnDescription} Yearly`;
+      const toggleMonthly = `${subscriptionToggle.btnDescription} Monthly`;
+
+      expect(screen.queryAllByText(/\/yr/)).toHaveLength(3);
+      expect(screen.queryAllByText(/\/mo/)).toHaveLength(0);
+
+      // Toggle monthly subscription
+      const yearlyBtn = screen.getByRole("button", { name: toggleYearly });
+      await userEvent.click(yearlyBtn);
+      expect(screen.queryAllByText(/\/yr/)).toHaveLength(0);
+      expect(screen.queryAllByText(/\/mo/)).toHaveLength(3);
+
+      // Toggle yearly subscription
+      const monthlyBtn = screen.getByRole("button", { name: toggleMonthly });
+      await userEvent.click(monthlyBtn);
+      expect(screen.queryAllByText(/\/yr/)).toHaveLength(3);
+      expect(screen.queryAllByText(/\/mo/)).toHaveLength(0);
+    });
   });
 });

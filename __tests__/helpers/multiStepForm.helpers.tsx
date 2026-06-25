@@ -285,6 +285,17 @@ export const expectThankYouVisible = () => {
 };
 
 /**
+ * Expects the visibility of the following elements, in the StepsList component:
+ * - List of steps
+ * @param stepsListLength - number of steps being rendered
+ */
+export const expectStepsListVisible = (stepsListLength: number) => {
+  const stepsList = screen.getByTestId("steps-list");
+
+  expect(stepsList.children).toHaveLength(stepsListLength);
+};
+
+/**
  * Returns a React Form Hook provider with react element
  * @param ui           - React element to be rendered inside the React Form Hook provider
  * @param defaultValue - React Form Hook useForm defaultValues

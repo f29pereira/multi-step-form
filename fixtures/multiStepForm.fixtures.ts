@@ -187,6 +187,13 @@ export const FIXTURE_FORM_STEPS = {
 };
 
 /**
+ * Mocked data for the StepsList component
+ */
+export const FIXTURE_STEPSLIST = {
+  stepsList: ["Your Info", "Select plan", "Add-ons", "Summary"],
+};
+
+/**
  * Mocked data for the SubscriptionToggle component
  */
 export const FIXTURE_SUBSCRIPTIONTOGGLE = {

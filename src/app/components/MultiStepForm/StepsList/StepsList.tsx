@@ -9,7 +9,11 @@ import Step from "../../shared/Step/Step";
  */
 export default function StepsList({ list, currentStepIndex }: StepsListProps) {
   return (
-    <div className={styles.listCont} aria-hidden="true">
+    <div
+      className={styles.listCont}
+      aria-hidden="true"
+      data-testid="steps-list"
+    >
       {list.map((step, index) => (
         <Step
           key={index}

@@ -313,6 +313,16 @@ export const expectStepVisible = () => {
 };
 
 /**
+ * Expects the visibility of an error message
+ * @messageText - message text
+ */
+export const expectErrorMessageVisible = (messageText: string) => {
+  const errorMessage = screen.getByText(messageText);
+
+  expect(errorMessage).toBeVisible();
+};
+
+/**
  * Submits the "Confirm" button from the MultiStepForm component
  */
 export const submitForm = async () => {

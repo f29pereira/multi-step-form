@@ -85,6 +85,7 @@ export default function PersonalInfo() {
           submit(data);
         })}
         aria-describedby="form-description"
+        noValidate
       >
         <div className="flex-space-between">
           {/*Name: Label*/}

@@ -209,9 +209,17 @@ export const FIXTURE_MULTISTEPFORM = {
   confirmBtn: "Confirm",
   personalInfo: {
     required: "This field is required",
-    minLength: "Must be at least 2 characters",
-    maxLength: "Must be under 50 characters",
-    invalid: "Can only contain letters or spaces",
+    name: {
+      minLength: "Must be at least 2 characters",
+      maxLength: "Must be under 50 characters",
+      invalid: "Can only contain letters or spaces",
+    },
+    email: {
+      invalid: "Invalid Email Address",
+    },
+    phone: {
+      invalid: "Invalid Phone Number",
+    },
   },
   selectPlan: {
     required: "Select a plan to continue",

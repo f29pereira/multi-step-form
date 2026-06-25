@@ -194,6 +194,14 @@ export const FIXTURE_STEPSLIST = {
 };
 
 /**
+ * Mocked data for the Step component
+ */
+export const FIXTURE_STEP = {
+  stepIndex: 0,
+  stepName: "Your Info",
+};
+
+/**
  * Mocked data for the SubscriptionToggle component
  */
 export const FIXTURE_SUBSCRIPTIONTOGGLE = {

@@ -11,6 +11,7 @@ import {
   FIXTURE_PLANS_LIST,
   FIXTURE_SUBSCRIPTIONTOGGLE,
   FIXTURE_THANKYOU,
+  FIXTURE_STEP,
 } from "../../fixtures/multiStepForm.fixtures";
 import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
 import { getSubscriptionTotal } from "@/app/components/MultiStepForm/Forms/LastStep/FinishSubscription/FinishSubscription.utils";
@@ -293,6 +294,20 @@ export const expectStepsListVisible = (stepsListLength: number) => {
   const stepsList = screen.getByTestId("steps-list");
 
   expect(stepsList.children).toHaveLength(stepsListLength);
+};
+
+/**
+ * Expects the visibility of the following elements, in the Step component:
+ * - Step index and name
+ */
+export const expectStepVisible = () => {
+  const step = FIXTURE_STEP;
+
+  const stepIndex = screen.getByText(`STEP ${step.stepIndex}`);
+  const stepName = screen.getByText(step.stepName);
+
+  expect(stepIndex).toBeVisible();
+  expect(stepName).toBeVisible();
 };
 
 /**

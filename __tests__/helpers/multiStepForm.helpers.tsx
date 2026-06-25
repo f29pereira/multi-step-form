@@ -6,8 +6,10 @@ import {
   FieldValues,
 } from "react-hook-form";
 import { screen, render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import {
   FIXTURE_FORM_STEPS,
+  FIXTURE_MULTISTEPFORM,
   FIXTURE_PLANS_LIST,
   FIXTURE_SUBSCRIPTIONTOGGLE,
   FIXTURE_THANKYOU,
@@ -308,6 +310,19 @@ export const expectStepVisible = () => {
 
   expect(stepIndex).toBeVisible();
   expect(stepName).toBeVisible();
+};
+
+/**
+ * Submits the "Confirm" button from the MultiStepForm component
+ */
+export const submitForm = async () => {
+  const multiStepForm = FIXTURE_MULTISTEPFORM;
+
+  const btn = screen.getByRole("button", {
+    name: multiStepForm.nextBtn,
+  });
+
+  await userEvent.click(btn);
 };
 
 /**

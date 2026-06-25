@@ -202,6 +202,23 @@ export const FIXTURE_STEP = {
 };
 
 /**
+ * Mocked data for the MultiStepForm component
+ */
+export const FIXTURE_MULTISTEPFORM = {
+  nextBtn: "Next Step",
+  confirmBtn: "Confirm",
+  personalInfo: {
+    required: "This field is required",
+    minLength: "Must be at least 2 characters",
+    maxLength: "Must be under 50 characters",
+    invalid: "Can only contain letters or spaces",
+  },
+  selectPlan: {
+    required: "Select a plan to continue",
+  },
+};
+
+/**
  * Mocked data for the SubscriptionToggle component
  */
 export const FIXTURE_SUBSCRIPTIONTOGGLE = {

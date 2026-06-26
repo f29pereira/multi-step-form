@@ -12,12 +12,17 @@ import type { StepProps } from "../../types";
  */
 export default function Step({ stepIndex, stepName, isSelected }: StepProps) {
   return (
-    <div className={styles.circleNameCont}>
+    <div className={styles.circleNameCont} data-testid="step">
       {/*Circle*/}
       <div
         className={`flex-center ${styles.circle} ${isSelected ? styles.selected : ""}`}
       >
-        <span className={`bold-text ${styles.circleIndex}`}>{stepIndex}</span>
+        <span
+          className={`bold-text ${styles.circleIndex}`}
+          data-testid="mobile-step-index"
+        >
+          {stepIndex}
+        </span>
       </div>
 
       {/*Index and name*/}

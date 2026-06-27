@@ -16,6 +16,7 @@ export default function Step({ stepIndex, stepName, isSelected }: StepProps) {
       {/*Circle*/}
       <div
         className={`flex-center ${styles.circle} ${isSelected ? styles.selected : ""}`}
+        data-testid="step-circle"
       >
         <span
           className={`bold-text ${styles.circleIndex}`}

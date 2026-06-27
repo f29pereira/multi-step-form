@@ -12,7 +12,7 @@ test.describe("Mobile steps list", () => {
     await page.goto("/"); // baseURL
   });
 
-  test("show steps list with index for each step", async ({ page }) => {
+  test("displays the steps list with index for each step", async ({ page }) => {
     await expectMobileStepsListVisible(page, stepsList);
   });
 });

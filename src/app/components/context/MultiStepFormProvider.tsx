@@ -6,6 +6,7 @@ import type {
   MultiStepFormContextType,
   FormData,
 } from "../types";
+import { PLANS_LIST } from "../MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
 import { getPlanById } from "../MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
 
 export const MultiStepFormContext = createContext<
@@ -63,7 +64,11 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
    * Confirms the user's subscription
    */
   const confirmSubscription = () => {
-    const plan = getPlanById(formData.selectedPlanId, formData.isYearly);
+    const plan = getPlanById(
+      PLANS_LIST,
+      formData.selectedPlanId,
+      formData.isYearly,
+    );
 
     if (plan) {
       setIsConfirmed(true);

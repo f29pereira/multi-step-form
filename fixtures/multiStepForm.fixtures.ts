@@ -206,6 +206,7 @@ export const FIXTURE_STEP = {
  */
 export const FIXTURE_MULTISTEPFORM = {
   nextBtn: "Next Step",
+  prevBtn: "Go Back",
   confirmBtn: "Confirm",
   personalInfo: {
     required: "This field is required",

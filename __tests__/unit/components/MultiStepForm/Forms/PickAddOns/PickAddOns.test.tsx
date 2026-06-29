@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import { createRef } from "react";
 import PickAddOns from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns";
 import { createEmptyMultiStepFormContext } from "../../../../../../fixtures/multiStepForm.fixtures";
 import { FIXTURE_ADD_ONS_LIST } from "../../../../../../fixtures/multiStepForm.fixtures";
@@ -32,7 +33,8 @@ jest.mock(
  */
 describe("PickAddOns component", () => {
   beforeEach(() => {
-    render(<PickAddOns />);
+    const formRef = createRef<HTMLFormElement>();
+    render(<PickAddOns formRef={formRef} />);
   });
 
   it("renders the main title, form description and list of add-ons", () => {

@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import { createRef } from "react";
 import SelectPlan from "@/app/components/MultiStepForm/Forms/SelectPlan/SelectPlan";
 import { createEmptyMultiStepFormContext } from "../../../../../../fixtures/multiStepForm.fixtures";
 import { FIXTURE_PLANS_LIST } from "../../../../../../fixtures/multiStepForm.fixtures";
@@ -32,7 +33,8 @@ jest.mock(
  */
 describe("SelectPlan component", () => {
   beforeEach(() => {
-    render(<SelectPlan />);
+    const formRef = createRef<HTMLFormElement>();
+    render(<SelectPlan formRef={formRef} />);
   });
 
   it("renders the main title, form description and list of plans", () => {

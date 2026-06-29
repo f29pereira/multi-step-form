@@ -1,7 +1,7 @@
 "use client"; // Client Component
 
 import styles from "./SelectPlan.module.css";
-import type { SelectedPlan } from "@/app/components/types";
+import type { FormStepProps, SelectedPlan } from "@/app/components/types";
 import { PLANS_LIST, getPlansListBySubscription } from "./SelectPlan.utils";
 import Plan from "./Plan/Plan";
 import SubscriptionToggle from "./SubscriptionToggle/SubscriptionToggle";
@@ -18,8 +18,10 @@ import ErrorMessage from "@/app/components/shared/ErrorMessage/ErrorMessage";
  * - Subscription type toggle
  *
  * When submitting the form if no plan is selected, renders an error message
+ *
+ * Props are defined in {@link FormStepProps}.
  */
-export default function SelectPlan() {
+export default function SelectPlan({ formRef }: FormStepProps) {
   // MultiStepForm context
   const { formData, setFormData, goToNextStep } = useMultiStepForm();
 
@@ -76,8 +78,8 @@ export default function SelectPlan() {
 
       <FormProvider {...methods}>
         <form
+          ref={formRef}
           className={styles.form}
-          id="current-form-step"
           onSubmit={methods.handleSubmit((data) => {
             submit(data);
           })}

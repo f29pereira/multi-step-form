@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { useForm } from "react-hook-form";
 import useFocus from "@/app/components/customHooks/useFocus";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
-import type { PersonalInfoFields } from "@/app/components/types";
+import type { FormStepProps, PersonalInfoFields } from "@/app/components/types";
 import {
   nameValidation,
   emailValidation,
@@ -20,8 +20,10 @@ import ErrorMessage from "@/app/components/shared/ErrorMessage/ErrorMessage";
  * - Form with the inputs: Name, Email Address and Phone Number
  *
  * When submitting the form if any field is invalid, renders an error message
+ *
+ * Props are defined in {@link FormStepProps}.
  */
-export default function PersonalInfo() {
+export default function PersonalInfo({ formRef }: FormStepProps) {
   // MultiStepForm context
   const { formData, setFormData, goToNextStep } = useMultiStepForm();
 
@@ -80,7 +82,7 @@ export default function PersonalInfo() {
       </p>
 
       <form
-        id="current-form-step"
+        ref={formRef}
         onSubmit={handleSubmit((data) => {
           submit(data);
         })}

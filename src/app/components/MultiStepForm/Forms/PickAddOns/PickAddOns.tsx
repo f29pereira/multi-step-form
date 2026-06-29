@@ -1,7 +1,7 @@
 "use client"; // Client Component
 
 import styles from "./PickAddOns.module.css";
-import type { SelectedAddOns } from "@/app/components/types";
+import type { FormStepProps, SelectedAddOns } from "@/app/components/types";
 import useFocus from "@/app/components/customHooks/useFocus";
 import { ADD_ONS_LIST } from "./PickAddOns.utils";
 import { getAddOnsListBySubscription } from "./PickAddOns.utils";
@@ -14,8 +14,10 @@ import { useForm, FormProvider } from "react-hook-form";
  * - Main header
  * - Form description
  * - List of add-ons to check
+ *
+ * Props are defined in {@link FormStepProps}.
  */
-export default function PickAddOns() {
+export default function PickAddOns({ formRef }: FormStepProps) {
   // MultiStepForm context
   const { formData, setFormData, goToNextStep } = useMultiStepForm();
   const isYearly = formData.isYearly;
@@ -62,7 +64,7 @@ export default function PickAddOns() {
 
       <FormProvider {...methods}>
         <form
-          id="current-form-step"
+          ref={formRef}
           onSubmit={methods.handleSubmit((data) => {
             submit(data);
           })}

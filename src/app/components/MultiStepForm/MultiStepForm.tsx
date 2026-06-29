@@ -1,6 +1,7 @@
 "use client"; // Client Component
 
 import styles from "./MultiStepForm.module.css";
+import { useRef } from "react";
 import StepsList from "./StepsList/StepsList";
 import PersonalInfo from "./Forms/PersonalInfo/PersonalInfo";
 import SelectPlan from "./Forms/SelectPlan/SelectPlan";
@@ -24,6 +25,16 @@ export default function MultiStepForm() {
   const formsList = [PersonalInfo, SelectPlan, PickAddOns, LastStep];
   const CurrentStep = formsList[currentStepIndex];
 
+  // Current form ref
+  const currentFormRef = useRef<HTMLFormElement>(null);
+
+  /**
+   * Submits the current form step
+   */
+  const submitForm = () => {
+    currentFormRef.current?.requestSubmit();
+  };
+
   return (
     <section className={styles.sectionCont}>
       <div className={styles.stepsCont}>
@@ -32,7 +43,7 @@ export default function MultiStepForm() {
 
       <div className={styles.contentCont}>
         <div className={styles.formStepCont}>
-          <CurrentStep />
+          <CurrentStep formRef={currentFormRef} />
         </div>
 
         {!isConfirmed ? (
@@ -56,9 +67,11 @@ export default function MultiStepForm() {
                   />
                 ) : (
                   <Button
-                    formId="current-form-step"
                     description="Next Step"
                     variant="blueBtn"
+                    handleOnClick={() => {
+                      submitForm();
+                    }}
                   />
                 )}
               </div>

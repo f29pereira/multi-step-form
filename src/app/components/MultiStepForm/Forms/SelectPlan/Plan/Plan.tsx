@@ -40,6 +40,7 @@ export default function Plan({ id, type, price, isInvalid }: PlanProps) {
         [styles.selected]: isSelected,
         [styles.errorInput]: isInvalid,
       })}
+      data-testid="plan-label"
     >
       <input
         data-testid="plan-radio-input"

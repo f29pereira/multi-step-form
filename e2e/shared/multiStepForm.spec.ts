@@ -5,14 +5,29 @@ import {
   expectCurrentStepVisible,
   goBack,
   expectPersonalInfoInputValues,
+  submitMultiStepForm,
+  expectFinishSubscriptionVisible,
 } from "../helpers/shared.helpers";
-import { FIXTURE_FORM_STEPS } from "../../fixtures/multiStepForm.fixtures";
+import {
+  multiStepFormContext,
+  FIXTURE_FORM_STEPS,
+  FIXTURE_THANKYOU,
+} from "../../fixtures/multiStepForm.fixtures";
 
+// Multi-step form Data
+const submittedData = multiStepFormContext();
+const name = submittedData.personalInfo.name;
+const email = submittedData.personalInfo.email;
+const phone = submittedData.personalInfo.phone;
+const isYearly = submittedData.isYearly;
+const selectedPlanId = submittedData.selectedPlanId;
+const selectedAddOnsIds = submittedData.selectedAddOns;
+
+// Form step elements
 const personalInfo = FIXTURE_FORM_STEPS.personalInfo;
 const selectPlan = FIXTURE_FORM_STEPS.selectPlan;
-const name = "John Doe";
-const email = "johndoe@email.com";
-const phone = "123456789";
+const finishSubscription = FIXTURE_FORM_STEPS.finishSubscription;
+const thankYou = FIXTURE_THANKYOU;
 
 /**
  * End to End testing: list of form steps
@@ -51,27 +66,43 @@ test.describe("Multi step form", () => {
     await expectPersonalInfoInputValues(page, name, email, phone);
   });
 
-  test.fixme("shows the `Finishing up` screen with a summary of the entered form data when the user goes through all steps successfully", async ({
-    page,
-  }) => {
-    // TO DO: submit form
-    // TO DO: Check `Finishing up` main title
-    // TO DO: check submitted data
-  });
+  test.describe("After completing the Multi-step form", () => {
+    test.beforeEach(async ({ page }) => {
+      await submitMultiStepForm(
+        page,
+        name,
+        email,
+        phone,
+        selectedPlanId,
+        selectedAddOnsIds,
+      );
+    });
 
-  test.fixme("redirects the user to the `Select Plan` form when clicking the `Change` link in the `Finishing up` screen", async ({
-    page,
-  }) => {
-    // TO DO: submit form
-    // TO DO: Click "Change" link
-    // TO DO: Check `Select Plan` main title
-  });
+    test("shows the `Finishing up` screen with a summary of the entered form data when the user goes through all steps successfully", async ({
+      page,
+    }) => {
+      await expectCurrentStepVisible(page, finishSubscription.title);
 
-  test.fixme("redirects the user to the `Thank you` screen when clicking the `Confirm` button in the `Finishing up` screen", async ({
-    page,
-  }) => {
-    // TO DO: submit form
-    // TO DO: Click "Confirm" button
-    // TO DO: Check `Thank you` main title
+      await expectFinishSubscriptionVisible(
+        page,
+        isYearly,
+        selectedPlanId,
+        selectedAddOnsIds,
+      );
+    });
+
+    test.fixme("redirects the user to the `Select Plan` form when clicking the `Change` link in the `Finishing up` screen", async ({
+      page,
+    }) => {
+      // TO DO: Click "Change" link
+      // TO DO: Check `Select Plan` main title
+    });
+
+    test.fixme("redirects the user to the `Thank you` screen when clicking the `Confirm` button in the `Finishing up` screen", async ({
+      page,
+    }) => {
+      // TO DO: Click "Confirm" button
+      // TO DO: Check `Thank you` main title
+    });
   });
 });

@@ -2,6 +2,7 @@ import type {
   PlanDetails,
   MultiStepFormContextType,
   AddOnDetails,
+  FormData,
 } from "@/app/components/types";
 
 /**
@@ -36,19 +37,26 @@ export const createMultiStepFormContext = (): MultiStepFormContextType => {
     goToPrevStep: jest.fn(),
     goToStep: jest.fn(),
     toggleSubscription: jest.fn(),
-    formData: {
-      isYearly: true,
-      personalInfo: {
-        name: "John Doe",
-        email: "johndoe@email.com",
-        phone: "123456789",
-      },
-      selectedPlanId: "1",
-      selectedAddOns: ["1", "2", "3"],
-    },
+    formData: multiStepFormContext(),
     setFormData: jest.fn(),
     isConfirmed: false,
     confirmSubscription: jest.fn(),
+  };
+};
+
+/**
+ * Returns a mock for a completed Multi-step form
+ */
+export const multiStepFormContext = (): FormData => {
+  return {
+    isYearly: true,
+    personalInfo: {
+      name: "John Doe",
+      email: "johndoe@email.com",
+      phone: "123456789",
+    },
+    selectedPlanId: createPlan().id,
+    selectedAddOns: ["1", "2", "3"],
   };
 };
 

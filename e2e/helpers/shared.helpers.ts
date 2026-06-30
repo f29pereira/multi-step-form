@@ -53,24 +53,6 @@ export const expectSelectedStepStyle = async (
 };
 
 /**
- * Fills the Personal info form inputs: Name, Email Address and Phone Number
- * @param page         - Playwright page
- * @param name         - Name input value
- * @param emailAddress - Email Address input value
- * @param phoneNumber  - Phone Number input value
- */
-export const fillPersonalInfo = async (
-  page: Page,
-  name: string,
-  emailAddress: string,
-  phoneNumber: string,
-) => {
-  await page.getByLabel(personalInfo.nameInputLabel).fill(name);
-  await page.getByLabel(personalInfo.emailInputLabel).fill(emailAddress);
-  await page.getByLabel(personalInfo.phoneInputLabel).fill(phoneNumber);
-};
-
-/**
  * Asserts that, the current form step is visible
  * @param page      - Playwright page
  * @param formTitle - Current form step main title
@@ -85,13 +67,86 @@ export const expectCurrentStepVisible = async (
 };
 
 /**
+ * Fills the Personal info form inputs: Name, Email Address and Phone Number and submits the form
+ * @param page         - Playwright page
+ * @param name         - Name input value
+ * @param emailAddress - Email Address input value
+ * @param phoneNumber  - Phone Number input value
+ */
+export const submitPersonalInfo = async (
+  page: Page,
+  name: string,
+  emailAddress: string,
+  phoneNumber: string,
+) => {
+  const formContainer = page.getByTestId("personal-info-form");
+  await expect(formContainer).toBeVisible();
+
+  const nameInput = formContainer.getByLabel(personalInfo.nameInputLabel);
+  const emailInput = formContainer.getByLabel(personalInfo.emailInputLabel);
+  const phoneInput = formContainer.getByLabel(personalInfo.phoneInputLabel);
+
+  await expect(nameInput).toBeVisible();
+  await expect(emailInput).toBeVisible();
+  await expect(phoneInput).toBeVisible();
+
+  await nameInput.fill(name);
+  await emailInput.fill(emailAddress);
+  await phoneInput.fill(phoneNumber);
+
+  await expectPersonalInfoInputValues(page, name, emailAddress, phoneNumber);
+
+  await submitForm(page);
+};
+
+/**
+ * Asserts that, the Personal Info inputs have the saved form data
+ * @param page         - Playwright page
+ * @param name         - Name input value
+ * @param emailAddress - Email Address input value
+ * @param phoneNumber  - Phone Number input value
+ */
+export const expectPersonalInfoInputValues = async (
+  page: Page,
+  name: string,
+  emailAddress: string,
+  phoneNumber: string,
+) => {
+  await expect(page.getByLabel(personalInfo.nameInputLabel)).toHaveValue(name);
+  await expect(page.getByLabel(personalInfo.emailInputLabel)).toHaveValue(
+    emailAddress,
+  );
+  await expect(page.getByLabel(personalInfo.phoneInputLabel)).toHaveValue(
+    phoneNumber,
+  );
+};
+
+/**
  * Submits the current form
  * @param page - Playwright page
  */
 export const submitForm = async (page: Page) => {
-  const btn = page.getByRole("button", {
+  const submitBtn = page.getByRole("button", {
     name: multiStepForm.nextBtn,
   });
 
-  await btn.click();
+  // Prevents a potential error in the Safari browser, as the button is inside a fixed parent container
+  await expect(submitBtn).toBeInViewport();
+
+  await submitBtn.click();
+};
+
+/**
+ * Goes to the previous form
+ * @param page - Playwright page
+ */
+export const goBack = async (page: Page) => {
+  const goBackBtn = page.getByRole("button", {
+    name: multiStepForm.prevBtn,
+  });
+
+  // Prevents a potential error in the Safari browser, as the button is inside a fixed parent container
+  await expect(goBackBtn).toBeInViewport();
+
+  await goBackBtn.click();
 };

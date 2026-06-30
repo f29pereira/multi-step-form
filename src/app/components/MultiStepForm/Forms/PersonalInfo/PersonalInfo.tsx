@@ -88,6 +88,7 @@ export default function PersonalInfo({ formRef }: FormStepProps) {
         })}
         aria-describedby="form-description"
         noValidate
+        data-testid="personal-info-form"
       >
         <div className="flex-space-between">
           {/*Name: Label*/}

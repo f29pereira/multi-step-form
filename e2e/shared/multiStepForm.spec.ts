@@ -1,5 +1,4 @@
-import { test } from "@playwright/test";
-
+import { test, expect } from "@playwright/test";
 import {
   submitPersonalInfo,
   expectCurrentStepVisible,
@@ -10,6 +9,7 @@ import {
 } from "../helpers/shared.helpers";
 import {
   multiStepFormContext,
+  FIXTURE_MULTISTEPFORM,
   FIXTURE_FORM_STEPS,
   FIXTURE_THANKYOU,
 } from "../../fixtures/multiStepForm.fixtures";
@@ -24,6 +24,7 @@ const selectedPlanId = submittedData.selectedPlanId;
 const selectedAddOnsIds = submittedData.selectedAddOns;
 
 // Form step elements
+const multistepForm = FIXTURE_MULTISTEPFORM;
 const personalInfo = FIXTURE_FORM_STEPS.personalInfo;
 const selectPlan = FIXTURE_FORM_STEPS.selectPlan;
 const finishSubscription = FIXTURE_FORM_STEPS.finishSubscription;
@@ -91,18 +92,29 @@ test.describe("Multi step form", () => {
       );
     });
 
-    test.fixme("redirects the user to the `Select Plan` form when clicking the `Change` link in the `Finishing up` screen", async ({
+    test("redirects the user to the `Select Plan` form when clicking the `Change` link in the `Finishing up` screen", async ({
       page,
     }) => {
-      // TO DO: Click "Change" link
-      // TO DO: Check `Select Plan` main title
+      // Clicks the "Change Plan" button
+      await page
+        .getByRole("button", { name: finishSubscription.changeBtn })
+        .click();
+
+      // Goes to the second form step (Select Plan)
+      await expectCurrentStepVisible(page, selectPlan.title);
     });
 
-    test.fixme("redirects the user to the `Thank you` screen when clicking the `Confirm` button in the `Finishing up` screen", async ({
+    test("redirects the user to the `Thank you` screen when clicking the `Confirm` button in the `Finishing up` screen", async ({
       page,
     }) => {
-      // TO DO: Click "Confirm" button
-      // TO DO: Check `Thank you` main title
+      // Clicks the "Confirm" button
+      await page
+        .getByRole("button", { name: multistepForm.confirmBtn })
+        .click();
+
+      // Goes to the Thank you screen
+      await expectCurrentStepVisible(page, thankYou.title);
+      await expect(page.getByText(thankYou.description)).toBeVisible();
     });
   });
 });

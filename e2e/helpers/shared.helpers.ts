@@ -215,8 +215,13 @@ export const submitPersonalInfo = async (
   await expect(emailInput).toBeVisible();
   await expect(phoneInput).toBeVisible();
 
+  await nameInput.click();
   await nameInput.fill(name);
+
+  await nameInput.click();
   await emailInput.fill(emailAddress);
+
+  await nameInput.click();
   await phoneInput.fill(phoneNumber);
 
   await expectPersonalInfoInputValues(page, name, emailAddress, phoneNumber);

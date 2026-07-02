@@ -1,7 +1,7 @@
 /**
  * CSS Module for the Plan component
  * Classes:
- * .planCont   - plan container
+ * .planCont   - plan main container
  * .selected   - current plan is selected
  * .errorInput - input error style
  * .icon       - plan type icon
@@ -65,6 +65,11 @@
   /*increase height from 96px to 125px*/
   .planCont {
     height: 7.8125rem; /*125px*/
+  }
+
+  /*on hover, change border color of the main container from --purple-200 to --purple-600*/
+  .planCont:hover {
+    border-color: var(--purple-600);
   }
 
   /*increase the icon width/height from 40px to 50px*/

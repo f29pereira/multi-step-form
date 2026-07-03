@@ -16,6 +16,8 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
         - [2. Select Plan](#2-select-plan)
         - [3. Pick Add-ons](#3-pick-add-ons)
     - [Forms Validation](#forms-validation)
+      - [1. Personal Info Validation](#1-personal-info-validation)
+      - [1. Select Plan Validation](#2-select-plan-validation)
     - [Hover states](#hover-states)
   - [Tests](#tests)
     - [Unit and Integration Tests](#unit-and-integration-tests)
@@ -117,7 +119,45 @@ On this screen, the user can click the "Change" button to be redirected to the S
 
 ##### Forms Validation
 
-TO DO
+This projects uses React Hook Form to validate and display error messages in the form steps: Personal Info and Select Plan
+
+###### 1. Personal Info Validation
+
+- If a field is missing:
+
+  <img src="public/images/readme/steps/personalInfo/errorMessages/required.png" width="450" alt="Personal Info - required message">
+
+Name field:
+
+- If it has less than 2 characters:
+
+  <img src="public/images/readme/steps/personalInfo/errorMessages/name_less_than_2_chars.png" width="450" alt="Personal Info - name field min characters message">
+
+- If it has more than 50 characters:
+
+  <img src="public/images/readme/steps/personalInfo/errorMessages/name_less_than_2_chars.png" width="450" alt="Personal Info - name field max characters message">
+
+- If contains characters other than letters and spaces the message:
+
+  <img src="public/images/readme/steps/personalInfo/errorMessages/name_invalid.png" width="450" alt="Personal Info - name field invalid message">
+
+Email Address field:
+
+- If doesn't match the valid format:
+
+  <img src="public/images/readme/steps/personalInfo/errorMessages/email_invalid.png" width="450" alt="Personal Info - email address field invalid message">
+
+Phone Number field:
+
+- If doesn't match a valid format like +351 123456789; +1-(800)-123-4567; (926) 1234567; 1234567; 123-4567:
+
+  <img src="public/images/readme/steps/personalInfo/errorMessages/phone_invalid.png" width="450" alt="Personal Info - phone number field invalid message">
+
+###### 2. Select Plan Validation
+
+- If no plan is selected:
+
+  <img src="public/images/readme/steps/selectPlan/required.png" width="450" alt="Selected Plan - required message">
 
 #### Hover states
 

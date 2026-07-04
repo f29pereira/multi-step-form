@@ -1,0 +1,23 @@
+/**
+ * CSS Module for StepList component
+ * Classes: 
+ * .listCont - list of steps container
+ */
+
+.listCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*flex column container with items aligned to the left, decrease gap from 1rem to 0.5rem and add top/left padding*/
+  .listCont {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 2.5rem 0 0 1.5rem;
+  }
+}

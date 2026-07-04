@@ -1,0 +1,53 @@
+/**
+ * CSS Module for SubscriptionToggle component
+ * Classes: 
+ * .mainCont        - main container
+ * .monthly         - monthly text
+ * .toggleBtn       - toggle monthly/yearly subscription button
+ * .monthlySelected - .circle container when the current selected subscription is monthly
+ * .yearlySelected  - .circle container when the current selected subscription is yearly
+ * .circle          - white circle inside .toggleBtn
+ * .yearly          - yearly text
+ */
+
+.mainCont {
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: var(--border-radius-10);
+  background-color: var(--blue-50);
+}
+
+.monthly {
+  color: var(--blue-950);
+}
+
+.toggleBtn {
+  width: 2.5rem;
+  padding: 0.3rem;
+  border-radius: var(--border-radius-10);
+  background-color: var(--blue-950);
+}
+
+.monthlySelected {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.yearlySelected {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.circle {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background-color: var(--white);
+}
+
+.yearly {
+  color: var(--grey-500);
+}

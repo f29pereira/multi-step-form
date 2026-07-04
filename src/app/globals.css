@@ -1,0 +1,204 @@
+/*
+ * Global CSS styles
+ * Classes:
+ * .lighter-text    - font-weight-400
+ * .light-text      - font-weight-500
+ * .bold-text       - font-weight-700
+ * .flex-center     - centered flex row container
+ * .sr-only         - available only for screen readers
+ * .white-card-cont - card with 10px border radius and white background
+*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  /*Font:*/
+  /*Family*/
+  --font-ubuntu: "Ubuntu", sans-serif;
+  /*Weight*/
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-700: 700;
+  /*Size*/
+  --font-size-14: 0.875rem; /*14px*/
+  --font-size-base: 1rem;
+  --font-size-20: 1.375rem; /*22px*/
+  --font-size-25: 1.5625rem; /*25px*/
+  --font-size-30: 1.875rem; /*30px*/
+  --font-size-35: 2.1875rem; /*35px*/
+
+  /*Border*/
+  --border-radius-4: 4px;
+  --border-radius-5: 5px;
+  --border-radius-10: 10px;
+  --border-radius-15: 15px;
+  --border-radius-500: 500px;
+
+  /*Colors:*/
+  /*Neutral*/
+  --grey-500: hsl(231, 11%, 63%);
+  --grey-450: hsl(231, 11%, 71%);
+  --purple-200: hsl(229, 24%, 87%);
+  --blue-100: hsl(218, 100%, 97%);
+  --blue-50: hsl(231, 100%, 99%);
+  --white: hsl(0, 100%, 100%);
+  --shadow: hsla(0, 0%, 0%, 0.1);
+
+  /*Primary*/
+  --blue-950: hsl(213, 96%, 18%);
+  --blue-900: hsl(213, 96%, 27%);
+  --purple-600: hsl(243, 100%, 62%);
+  --purple-550: hsl(243, 100%, 71%);
+  --blue-300: hsl(228, 100%, 84%);
+  --blue-200: hsl(206, 94%, 87%);
+  --red-500: hsl(354, 84%, 57%);
+}
+
+html,
+body {
+  font-family: var(--font-ubuntu);
+  -webkit-font-smoothing: antialiased; /*smooths the edges of fonts on Chrome, Safari, Edge*/
+  -moz-osx-font-smoothing: grayscale; /*smooths the edges of fonts Firefox on macOS*/
+}
+
+body {
+  background-color: var(--blue-100);
+}
+
+h1 {
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-700);
+  color: var(--blue-950);
+}
+
+h2 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-700);
+  color: var(--blue-950);
+}
+
+h1:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--grey-500);
+}
+
+ul {
+  list-style-type: none;
+}
+
+label {
+  display: block;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400);
+  color: var(--blue-950);
+}
+
+fieldset {
+  border: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.lighter-text {
+  font-weight: var(--font-weight-400);
+}
+
+.light-text {
+  font-weight: var(--font-weight-500);
+}
+
+.bold-text {
+  font-weight: var(--font-weight-700);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Centered flex column container*/
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.white-card-cont {
+  padding: 2rem 1rem;
+  border-radius: var(--border-radius-10);
+  background-color: var(--white);
+}
+
+.form-description {
+  max-width: 15.625rem; /*250px*/
+  margin: 1rem 0 1.5rem 0;
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*increase left/right padding from 1rem to 3rem*/
+  .white-card-cont {
+    padding: 2rem 3rem;
+  }
+
+  /*remove max-width*/
+  .form-description {
+    max-width: unset;
+  }
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*increase the font size from 20px to 30px*/
+  h1 {
+    font-size: var(--font-size-30);
+  }
+
+  /*remove padding and set width to 450px*/
+  .white-card-cont {
+    padding: 0;
+    width: 28.125rem; /*450px*/
+  }
+
+  /*increase bottom margin from 1.5rem to 2rem*/
+  .form-description {
+    margin: 1rem 0 2rem 0;
+  }
+
+  /*increase font size from 14px to 16px*/
+  label {
+    font-size: var(--font-size-base);
+  }
+}

@@ -1,0 +1,19 @@
+/**
+ * CSS Module for the PersonalInfo component
+ * Classes:
+ * .errorMsg    - input error message
+ */
+
+.errorMsg {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-500);
+  color: var(--red-500);
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*increase font size from 14px to 16px*/
+  .errorMsg {
+    font-size: var(--font-size-base);
+  }
+}

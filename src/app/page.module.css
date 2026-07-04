@@ -1,0 +1,19 @@
+/**
+ * CSS Module for Home component
+ * Classes: 
+ * .mainCont - container for the MultiStepForm component
+ */
+
+.mainCont {
+  height: 100vh;
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*flex row container fully centered*/
+  .mainCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

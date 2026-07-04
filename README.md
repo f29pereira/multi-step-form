@@ -161,7 +161,47 @@ Phone Number field:
 
 #### Hover states
 
-TO DO
+##### 1. Personal info form
+
+Name field with hover state:
+
+<img src="public/images/readme/hover/steps/personalInfo/field.png" width="450" alt="Personal Info - field hover state">
+
+##### 2. Select Plan form
+
+<img src="public/images/readme/hover/steps/selectPlan/plan.png" width="450" alt="Selected Plan - plan hover state">
+
+##### 3. Confirmation screen - "Change" button
+
+Default state:
+
+<img src="public/images/readme/hover/steps/confirmation.png" width="450" alt="Confirmation screen - select plan button">
+
+Hover state:
+
+<img src="public/images/readme/hover/steps/confirmation_hover.png" width="450" alt="Confirmation screen - select plan button hover state">
+
+##### 4. Steps navigation buttons
+
+Default/Hover state:
+
+"Go Back" button:
+
+<img src="public/images/readme/hover/steps/buttons/goBack/goBack.png" width="150" alt="Go Back button default state">
+
+<img src="public/images/readme/hover/steps/buttons/goBack/goBack_hover.png" width="150" alt="Go Back button hover state">
+
+"Next Step" button:
+
+<img src="public/images/readme/hover/steps/buttons/nextStep/nextStep.png" width="150" alt="Next Step button hover state">
+
+<img src="public/images/readme/hover/steps/buttons/nextStep/nextStep_hover.png" width="150" alt="Next Step button hover state">
+
+"Confirm" button:
+
+<img src="public/images/readme/hover/steps/buttons/confirm/confirm.png" width="150" alt="Confirm button hover  state">
+
+<img src="public/images/readme/hover/steps/buttons/confirm/confirm_hover.png" width="150" alt="Confirm button hover state">
 
 ### Tests
 

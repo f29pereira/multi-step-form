@@ -207,15 +207,70 @@ Default/Hover state:
 
 #### **Unit and Integration Tests**
 
-TO DO
+This project uses Jest and React Testing Library for unit and integration testing.
+
+The unit tests cover:
+
+- The rendering of the components
+- The function formatYearlyOrMonthlyPrice, used to format the price in the Select Plan, Pick Add-ons and Finishing Up screens
+
+The integration tests cover:
+
+For the Personal info form step:
+
+- Displaying the message "This field is required" for the empty fields
+- Displaying the message "Must be at least 2 characters" if the Name field has less than 2 characters
+- Displaying the message "Must be under 50 characters" if the Name field has more than 50 characters
+- Displaying the message "Can only contain letters or spaces" if the Name field is invalid
+- Displaying the message "Invalid Email Address" if the Email Address field is invalid
+- Displaying the message "Invalid Phone Number" if the Phone Number field is invalid
+
+For the Select plab form step:
+
+- Displaying the message "Select a plan to continue" is no plan is selected
+- Allowing the user to toggle between monthly or yearly subscription
 
 #### **E2E Tests**
 
-TO DO
+This project uses Playwright for end to end testing.
+
+The E2E tests cover:
+
+1. Mobile only (Pixel 5 and iPhone 12):
+
+- Displaying the steps list with the index for each step
+
+2. Desktop only (Chromium, Firefox and Webkit):
+
+"displays the steps list with index and name for each step"
+
+- Displaying the steps list with the index and name for each step
+
+3. All viewport tests:
+
+- Not allowing the user to go to the next step if the current step has an invalid field
+- All form steps Keep the submitted form data
+
+After completing the Multi-step form:
+
+- Displaying the "Finishing up" screen with a summary of the entered form data
+- Allowing the user to go back to the "Select Plan" for step when clicking on the "Change" button in the "Finishing up" screen
+- Allowing the user togo to the "Thank you" screen when clicking on the "Confirm" button in the "Finishing up" screen
 
 #### **Accessibility Tests**
 
-TO DO
+1. Automated Tests
+
+- Run Lighthouse audits in Chrome and Edge DevTools (96 score - related to the text font color and form background color).
+
+2. Manual Tests
+
+- Screen Reader testing with NVDA:
+  - Checked that headings (h1, h2) are announced correctly.
+  - Checked that the main headings (h1) are automatically announced when changing from one form step to another, to let know the users that a new form step is being displayed.
+  - Checked that the steps list is not announced.
+  - Checked that all section content is announced correctly.
+  - Checked that all buttons and fields are read when focused.
 
 ### Links
 
@@ -244,7 +299,9 @@ TO DO
 
 ### What I learned
 
-TO DO
+- Use a list of components (form step related components) to de displayed one by one in the main form component MultiStepForm
+- Use the React Hook Form library to validate and display error messages for the form steps
+- Avoid potential hydration errors that occasionally occur during the Playwright tests (browsers: webkit and safari) by using the Playwrtight's method click(), to check if the inputs of the first form step where ready to be filled in.
 
 ## Author
 

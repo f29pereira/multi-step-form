@@ -103,7 +103,7 @@ Clicking the "Go Back" button allows the user to return to the previous form ste
 
 The final form step is the Pick Add-ons form, where the user can choose the add-ons for the subscription.
 
-<img src="public/images/readme/steps/pickAddons/selected_addons.png" width="750" alt="Third form step - Pick Add-ons">
+<img src="public/images/readme/steps/pickAddons/pick_addons.png" width="750" alt="Third form step - Pick Add-ons">
 
 Like the plan, selected add-ons stay highlighted:
 

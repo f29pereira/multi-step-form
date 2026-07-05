@@ -1,0 +1,82 @@
+/**
+ * CSS Module for the FinishSubscription component
+ * Classes:
+ * .formDataCont - container for the form data (selected plan and add-ons list)
+ * .title        - main title
+ * .linkBtn      - link to redirect to the SelectPlan component
+ * .divider      - line between selected plan and add-ons list
+ * .flexCont     - flex column container for the list of add-ons
+ * .totalCont    - total price container
+ * .totalPrice   - total price
+ * .greyText     - text with --grey-500 color
+ * .blueText     - text with --blue-950 color
+ */
+
+.formDataCont {
+  padding: 1.5rem 1rem;
+  background-color: var(--blue-50);
+  border-radius: var(--border-radius-5);
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.linkBtn {
+  font-size: var(--font-size-base);
+  text-decoration: underline;
+}
+
+.planPrice {
+  font-size: var(--font-size-base);
+  color: var(--blue-950);
+}
+
+.divider {
+  margin: 0.9rem 0 1rem 0;
+  border: none; /*reset default border*/
+  border-top: 1px solid var(--blue-100);
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: var(--font-size-base);
+}
+
+.totalCont {
+  margin-top: 1.5rem;
+  padding: 0 1.5rem;
+  font-size: var(--font-size-base);
+}
+
+.totalPrice {
+  color: var(--purple-600);
+}
+
+.greyText {
+  color: var(--grey-500);
+}
+
+.blueText {
+  color: var(--blue-950);
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*increase top/bottom padding from 1.5rem to 2rem and left/right padding from 1rem to 1.5rem*/
+  .formDataCont {
+    padding: 2rem 1.5rem;
+  }
+
+  /*increase bottom margin to 0.5rem to 1rem*/
+  .title {
+    margin-bottom: 1rem;
+  }
+
+  /*on hover, change text color from --grey-500 to --purple-550*/
+  .linkBtn:hover {
+    color: var(--purple-550);
+  }
+}

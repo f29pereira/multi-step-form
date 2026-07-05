@@ -1,0 +1,119 @@
+/**
+ * CSS Module for MultiStepForm component
+ * Classes:
+ * .sectionCont    - main section container
+ * .stepsCont      - steps list container
+ * .contentCont    - current form step and navigation buttons container
+ * .formStepCont   - current form step container
+ * .navigationCont - fixed container for the navigation buttons (mobile)
+ * .buttonsCont    - "Go back", "Go next" or "Confirm" buttons container
+ */
+
+.stepsCont {
+  width: 100%;
+  height: 10rem; /*160px*/
+  padding-top: 2rem;
+  background-image: url("/multi-step-form/images/background/bg-sidebar-mobile.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contentCont {
+  position: relative;
+}
+
+.formStepCont {
+  margin-top: -3.5rem;
+  padding: 0 1rem;
+}
+
+.navigationCont {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.buttonsCont {
+  display: flex;
+  padding: 1rem;
+  background-color: var(--white);
+}
+
+.nextConfirmBtnCont {
+  margin-left: auto;
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*increase left/right padding from 1rem to 3rem*/
+  .formStepCont {
+    padding: 0 3rem;
+  }
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*grid with 2 columns, 3rem gap, set width to 880px and height to 640px*/
+  .sectionCont {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    align-items: stretch;
+    gap: 3rem;
+    width: 55rem; /*880px*/
+    height: 40rem; /*640px*/
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: var(--border-radius-15);
+    box-shadow:
+      0 10px 15px -3px var(--shadow),
+      0 4px 6px -4px var(--shadow);
+  }
+
+  /*flex column, add padding*/
+  .contentCont {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 4rem 1.2rem 1rem;
+  }
+
+  /*remove the negative top margin and padding and add flex of 1 to push .navigationCont to the bottom*/
+  .formStepCont {
+    margin-top: 0;
+    padding: 0;
+    flex: 1;
+  }
+
+  /*remove the fixed position*/
+  .navigationCont {
+    position: relative;
+  }
+
+  /*make the height auto and update the background image*/
+  .stepsCont {
+    padding: 0;
+    height: auto;
+    border-radius: var(--border-radius-10);
+    background-image: url("/multi-step-form/images/background/bg-sidebar-desktop.svg");
+  }
+
+  /*remove padding*/
+  .buttonsCont {
+    padding: 0;
+  }
+}
+
+/*Large Desktop Styles*/
+@media (min-width: 90rem /*1440px*/) {
+  /*increase: gap from 3rem to 5rem, width from 880px to 960px and padding from 1rem to 1.2rem*/
+  .sectionCont {
+    gap: 5rem;
+    width: 60rem; /*960px*/
+    padding: 1.2rem;
+  }
+
+  /*increase top padding from 2rem to 3rem*/
+  .contentCont {
+    padding: 3rem 4rem 1.2rem 1rem;
+  }
+}

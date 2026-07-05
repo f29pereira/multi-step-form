@@ -1,0 +1,26 @@
+/**
+ * CSS Module for the PickAddOns component
+ * Classes:
+ * .mainCont       - main container
+ * .addOnsListCont - list of add-ons container
+ * .description    - form description
+ */
+
+.addOnsListCont {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.description {
+  max-width: 16.25rem; /*260px*/
+  margin: 1rem 0 1.5rem 0;
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*remove maximum width*/
+  .description {
+    max-width: unset;
+  }
+}

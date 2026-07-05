@@ -1,0 +1,138 @@
+/**
+ * CSS Module for the AddOn component
+ * Classes:
+ * .addOnCont       - add-on main container
+ * .selected        - check-box is selected
+ * .flexCenter      - flex container for the checkbox, label and add-on description 
+ * .checkboxWrapper - container for the .checkbox input and .checkmark when the input is selected
+ * .checkbox        - checkbox input
+ * .checkmark       - checkmark that appears inside the checkbox when clicked
+ * .typeDescCont    - container for the .type and .description
+ * .type            - add-on type
+ * .description     - add-on description
+ * .price           - add-on price
+ */
+
+.addOnCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0.7rem;
+  border: 2px solid var(--purple-200);
+  border-radius: var(--border-radius-10);
+  cursor: pointer;
+}
+
+.addOnCont.selected {
+  border-color: var(--purple-600);
+  background-color: var(--blue-100);
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.checkboxWrapper {
+  position: relative;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.checkbox {
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  border: 1.5px solid var(--purple-200);
+  border-radius: var(--border-radius-4);
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  padding: 0.2rem;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius-4);
+  background-color: var(--purple-600);
+  pointer-events: none; /*not clickable*/
+}
+
+.icon path {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 2;
+}
+
+.typeDescCont {
+  max-width: 12.5rem; /*200px*/
+}
+
+.type {
+  font-size: var(--font-size-base);
+}
+
+.description {
+  margin-top: 0.2rem;
+  font-size: var(--font-size-14);
+}
+
+.price {
+  font-size: var(--font-size-14);
+  color: var(--purple-600);
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*on hover, change border color of the main container from --purple-200 to --purple-600*/
+  .addOnCont:hover {
+    border-color: var(--purple-600);
+  }
+
+  /*increase top/bottom padding from 0.8rem to 1rem and left/right padding from 0.7rem to 1.5rem*/
+  .addOnCont {
+    padding: 1rem 1.5rem;
+  }
+
+  /*increase gap from 1rem to 2rem*/
+  .flexCenter {
+    gap: 1.5rem;
+  }
+
+  /*increase width and height from 1.2rem to 1.4rem*/
+  .checkboxWrapper {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  /*increase padding from 0.2rem to 0.3rem*/
+  .checkmark {
+    padding: 0.3rem;
+  }
+
+  /*remove maximum width*/
+  .typeDescCont {
+    max-width: unset;
+  }
+
+  /*increase top margin from 0.2rem to 0.5rem and font size from 14px to 16px*/
+  .description {
+    margin-top: 0.5rem;
+    font-size: var(--font-size-base);
+  }
+
+  /*increase font size from 14px to 16px*/
+  .price {
+    font-size: var(--font-size-base);
+  }
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*reset maximum width to original 12.5rem*/
+  .typeDescCont {
+    max-width: 12.5rem; /*200px*/
+  }
+}

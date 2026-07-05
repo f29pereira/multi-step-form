@@ -1,0 +1,107 @@
+/**
+ * CSS Module for the Plan component
+ * Classes:
+ * .planCont   - plan main container
+ * .selected   - current plan is selected
+ * .errorInput - input error style
+ * .icon       - plan type icon
+ * .type       - plan type name
+ * .value      - plan price
+ * .discount   - plan discont
+ */
+
+.planCont {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  height: 6rem; /*96px*/
+  cursor: pointer;
+  border: 2px solid var(--purple-200);
+  border-radius: var(--border-radius-10);
+}
+
+/*change border color from --purple-200 to --purple-550*/
+.planCont.selected {
+  border-color: var(--purple-550);
+  background-color: var(--blue-100);
+}
+
+/*change border color from --purple-200 to --red-500*/
+.planCont.errorInput {
+  border-color: var(--red-500);
+}
+
+.contentCont {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.icon {
+  width: 2.5rem; /*40px*/
+  height: 2.5rem; /*40px*/
+}
+
+.type {
+  font-size: var(--font-size-base);
+  color: var(--blue-950);
+}
+
+.value {
+  font-size: var(--font-size-14);
+  color: var(--grey-500);
+}
+
+.discount {
+  font-size: var(--font-size-14);
+  color: var(--blue-950);
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*increase height from 96px to 125px*/
+  .planCont {
+    height: 7.8125rem; /*125px*/
+  }
+
+  /*on hover, change border color of the main container from --purple-200 to --purple-600*/
+  .planCont:hover {
+    border-color: var(--purple-600);
+  }
+
+  /*increase the icon width/height from 40px to 50px*/
+  .icon {
+    width: 3.125rem; /*50px*/
+    height: 3.125rem; /*50px*/
+  }
+
+  /*increase the gap between the plan type, price and discont*/
+  .contentCont {
+    gap: 1rem;
+  }
+
+  /*increase value and discont font size from 14px to 16px*/
+  .value,
+  .discount {
+    font-size: var(--font-size-base);
+  }
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*update the flex direction from row to column, increase gap from 1rem to 3.5rem, set width and increase height from 125px to 210px*/
+  .planCont {
+    flex-direction: column;
+    gap: 3.5rem;
+    width: 8.75rem; /*140px*/
+    height: 13.125rem; /*210px*/
+  }
+
+  /*reset the gap value*/
+  .contentCont {
+    gap: 0.5rem;
+  }
+}

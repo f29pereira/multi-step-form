@@ -18,6 +18,11 @@
   color: var(--grey-500);
 }
 
+/*on focus, display --grey-500 outline*/
+.transparentBtn:focus {
+  outline-color: var(--grey-500);
+}
+
 .blueBtn {
   background-color: var(--blue-950);
   color: var(--white);
@@ -26,6 +31,12 @@
 .purpleBtn {
   background-color: var(--purple-600);
   color: var(--white);
+}
+
+/*on focus, display --purple-600 outline*/
+.blueBtn:focus,
+.purpleBtn:focus {
+  outline-color: var(--purple-600);
 }
 
 /*Tablet Styles*/

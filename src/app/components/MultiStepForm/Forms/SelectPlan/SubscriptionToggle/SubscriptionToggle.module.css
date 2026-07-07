@@ -29,6 +29,11 @@
   background-color: var(--blue-950);
 }
 
+/*on focus, display --purple-600 outline*/
+.toggleBtn:focus {
+  outline-color: var(--purple-600);
+}
+
 .monthlySelected {
   display: flex;
   justify-content: flex-start;

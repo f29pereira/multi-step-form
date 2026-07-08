@@ -115,6 +115,12 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline-width: 0.2rem;
+  outline-style: solid;
+  outline-offset: 4px;
+}
+
 .lighter-text {
   font-weight: var(--font-weight-400);
 }

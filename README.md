@@ -18,7 +18,7 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
     - [Forms Validation](#forms-validation)
       - [1. Personal Info Validation](#1-personal-info-validation)
       - [1. Select Plan Validation](#2-select-plan-validation)
-    - [Hover states](#hover-states)
+    - [Hover and Focus states](#hover-and-focus-states)
   - [Tests](#tests)
     - [Unit and Integration Tests](#unit-and-integration-tests)
     - [E2E Tests](#e2e-tests)
@@ -159,7 +159,9 @@ Phone Number field:
 
   <img src="public/images/readme/steps/selectPlan/required.png" width="450" alt="Selected Plan - required message">
 
-#### Hover states
+#### Hover and Focus states
+
+##### Hover states
 
 ##### 1. Personal info form
 
@@ -187,21 +189,49 @@ Default/Hover state:
 
 "Go Back" button:
 
-<img src="public/images/readme/hover/steps/buttons/goBack/goBack.png" width="150" alt="Go Back button default state">
+<img src="public/images/readme/buttons/goBack/goBack.png" width="150" alt="Go Back button default state">
 
-<img src="public/images/readme/hover/steps/buttons/goBack/goBack_hover.png" width="150" alt="Go Back button hover state">
+<img src="public/images/readme/hover/buttons/goBack_hover.png" width="150" alt="Go Back button hover state">
 
 "Next Step" button:
 
-<img src="public/images/readme/hover/steps/buttons/nextStep/nextStep.png" width="150" alt="Next Step button hover state">
+<img src="public/images/readme/buttons/nextStep/nextStep.png" width="150" alt="Next Step button hover state">
 
-<img src="public/images/readme/hover/steps/buttons/nextStep/nextStep_hover.png" width="150" alt="Next Step button hover state">
+<img src="public/images/readme/hover/buttons/nextStep_hover.png" width="150" alt="Next Step button hover state">
 
 "Confirm" button:
 
-<img src="public/images/readme/hover/steps/buttons/confirm/confirm.png" width="150" alt="Confirm button hover  state">
+<img src="public/images/readme/buttons/confirm/confirm.png" width="150" alt="Confirm button hover  state">
 
-<img src="public/images/readme/hover/steps/buttons/confirm/confirm_hover.png" width="150" alt="Confirm button hover state">
+<img src="public/images/readme/hover/buttons/confirm_hover.png" width="150" alt="Confirm button hover state">
+
+##### Focus states
+
+##### 1. Personal info form
+
+Name field with focus state:
+
+<img src="public/images/readme/hover/steps/personalInfo/field.png" width="450" alt="Personal Info - field focus state">
+
+##### 2. Select Plan form
+
+Subscription toggle button focus state:
+
+<img src="public/images/readme/focus/steps/selectPlan/subscriptionToggle.png" width="450" alt="Selected Plan - subscription toggle focus state">
+
+##### 3. Steps navigation buttons
+
+"Go Back" button:
+
+<img src="public/images/readme/focus/steps/buttons/goBack/goBack.png" width="150" alt="Go Back button focus state">
+
+"Next Step" button:
+
+<img src="public/images/readme/focus/steps/buttons/nextStep/nextStep.png" width="150" alt="Next Step button focus state">
+
+"Confirm" button:
+
+<img src="public/images/readme/focus/steps/buttons/confirm/confirm.png" width="150" alt="Confirm button focus state">
 
 ### Tests
 

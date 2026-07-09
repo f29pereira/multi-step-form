@@ -13,13 +13,19 @@ export const metadata: Metadata = {
   description: "Frontend Mentor: Multi-step form",
 };
 
-export default function RootLayout({
+/**
+ * Generates static routes for a given set of locales
+ */
+export async function generateStaticParams() {
+  return [{ lang: "en" }, { lang: "pt" }];
+}
+
+export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  params,
+}: LayoutProps<"/[lang]">) {
   return (
-    <html lang="en" className={`${ubuntu.variable}`}>
+    <html lang={(await params).lang} className={`${ubuntu.variable}`}>
       <body>{children}</body>
     </html>
   );

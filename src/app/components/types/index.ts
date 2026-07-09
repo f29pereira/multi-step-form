@@ -5,6 +5,15 @@ import { RefObject, ReactNode, Dispatch, SetStateAction } from "react";
 /* ---------------------------------------------------- */
 
 /**
+ * Type for the MultiStepFormProvider component
+ * @param children   - React children that have access to the MultiStepFormContext
+ * @param dictionary - locatization dictionary
+ */
+export type MultiStepFormProviderProps = Pick<ReactChildrenType, "children"> & {
+  dictionary: Dictionary;
+};
+
+/**
  * Props for the form step components: PersonalInfo, SelectPlan, PickAddOns, LastStep
  * @property formRef - React ref for the current form step
  */
@@ -92,6 +101,7 @@ export type ReactChildrenType = {
 
 /**
  * Type for the MultiStepContext
+ * @property dictionary          - locatization dictionary
  * @property currentStepIndex    - state: current form step index
  * @property goToNextStep        - goes to the next form step
  * @property goToPrevStep        - goes to the previous form step
@@ -102,6 +112,7 @@ export type ReactChildrenType = {
  * @property confirmSubscription - confirms the user's subscription
  */
 export type MultiStepFormContextType = {
+  dictionary: Dictionary;
   currentStepIndex: number;
   goToNextStep: () => void;
   goToPrevStep: () => void;

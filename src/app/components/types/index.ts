@@ -155,6 +155,22 @@ export type SelectedAddOns = {
 };
 
 /* ---------------------------------------------------- */
+/* Localization related types                           */
+/* ---------------------------------------------------- */
+
+/**
+ * Type for the localization dictionary
+ * @property step      - step
+ * @property stepsList - list of step names
+ */
+export type Dictionary = {
+  step: string;
+  stepsList: {
+    name: string;
+  }[];
+};
+
+/* ---------------------------------------------------- */
 /* Other component related types                        */
 /* ---------------------------------------------------- */
 

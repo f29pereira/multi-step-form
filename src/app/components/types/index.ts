@@ -23,12 +23,14 @@ export type FormStepProps = {
 
 /**
  * Props for the Circle component
- * @property stepIndex  - number of the step
- * @property stepName   - name of the step
- * @property isSelected - is the step selected
+ * @property stepIndex        - index of the step
+ * @property stepIndexDesktop - index of ste step (desktop only)
+ * @property stepName         - name of the step
+ * @property isSelected       - is the step selected
  */
 export type StepProps = {
   stepIndex: number;
+  stepIndexDesktop: string;
   stepName: string;
   isSelected: boolean;
 };

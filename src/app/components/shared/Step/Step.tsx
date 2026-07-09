@@ -10,7 +10,12 @@ import type { StepProps } from "../../types";
  *
  * Props are defined in {@link StepProps}.
  */
-export default function Step({ stepIndex, stepName, isSelected }: StepProps) {
+export default function Step({
+  stepIndex,
+  stepIndexDesktop,
+  stepName,
+  isSelected,
+}: StepProps) {
   return (
     <div className={styles.circleNameCont} data-testid="step">
       {/*Circle*/}
@@ -29,7 +34,7 @@ export default function Step({ stepIndex, stepName, isSelected }: StepProps) {
       {/*Index and name*/}
       <div className={styles.numberNameCont}>
         <span className={`lighter-text ${styles.stepIndex}`}>
-          STEP {stepIndex}
+          {stepIndexDesktop}
         </span>
         <span className={`bold-text ${styles.stepName}`}>{stepName}</span>
       </div>

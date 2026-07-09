@@ -1,6 +1,7 @@
 import styles from "./StepsList.module.css";
 import type { StepsListProps } from "../../types";
 import Step from "../../shared/Step/Step";
+import { useMultiStepForm } from "../../customHooks/useMultiStepForm";
 
 /**
  * Renders the list of steps for the multi-step form
@@ -8,6 +9,19 @@ import Step from "../../shared/Step/Step";
  * Props are defined in {@link StepsListProps}.
  */
 export default function StepsList({ list, currentStepIndex }: StepsListProps) {
+  // MultiStepForm context
+  const { dictionary } = useMultiStepForm();
+
+  /**
+   * Returns the desktop only step index
+   * @param stepIndex - step index
+   */
+  const getDesktopIndex = (stepIndex: number) => {
+    const step = dictionary.step.toUpperCase();
+
+    return `${step} ${stepIndex + 1}`;
+  };
+
   return (
     <div
       className={styles.listCont}
@@ -18,7 +32,8 @@ export default function StepsList({ list, currentStepIndex }: StepsListProps) {
         <Step
           key={index}
           stepIndex={index + 1}
-          stepName={step}
+          stepIndexDesktop={getDesktopIndex(index)}
+          stepName={dictionary.stepsList[index].name}
           isSelected={currentStepIndex === index}
         />
       ))}

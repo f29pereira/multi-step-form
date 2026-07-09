@@ -1,0 +1,17 @@
+{
+  "step": "Etapa",
+  "stepsList": [
+    {
+      "name": "Info. pessoal"
+    },
+    {
+      "name": "Escolher o plano"
+    },
+    {
+      "name": "Add-ons"
+    },
+    {
+      "name": "Resumo"
+    }
+  ]
+}

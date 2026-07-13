@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
+import { getDictionary, hasLocale } from "./dictionaries";
 import StoreProvider from "../StoreProvider";
 
 const ubuntu = Ubuntu({
@@ -25,10 +27,18 @@ export default async function RootLayout({
   children,
   params,
 }: LayoutProps<"/[lang]">) {
+  const { lang } = await params;
+
+  if (!hasLocale(lang)) notFound();
+
+  const dict = await getDictionary(lang);
+
   return (
     <html lang={(await params).lang} className={`${ubuntu.variable}`}>
       <body>
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider localeCode={lang} dictionary={dict}>
+          {children}
+        </StoreProvider>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
+import StoreProvider from "../StoreProvider";
 
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
@@ -26,7 +27,9 @@ export default async function RootLayout({
 }: LayoutProps<"/[lang]">) {
   return (
     <html lang={(await params).lang} className={`${ubuntu.variable}`}>
-      <body>{children}</body>
+      <body>
+        <StoreProvider>{children}</StoreProvider>
+      </body>
     </html>
   );
 }

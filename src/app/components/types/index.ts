@@ -5,15 +5,6 @@ import { RefObject, ReactNode, Dispatch, SetStateAction } from "react";
 /* ---------------------------------------------------- */
 
 /**
- * Type for the MultiStepFormProvider component
- * @param children   - React children that have access to the MultiStepFormContext
- * @param dictionary - locatization dictionary
- */
-export type MultiStepFormProviderProps = Pick<ReactChildrenType, "children"> & {
-  dictionary: Dictionary;
-};
-
-/**
  * Props for the form step components: PersonalInfo, SelectPlan, PickAddOns, LastStep
  * @property formRef - React ref for the current form step
  */
@@ -103,7 +94,6 @@ export type ReactChildrenType = {
 
 /**
  * Type for the MultiStepContext
- * @property dictionary          - locatization dictionary
  * @property currentStepIndex    - state: current form step index
  * @property goToNextStep        - goes to the next form step
  * @property goToPrevStep        - goes to the previous form step
@@ -114,7 +104,6 @@ export type ReactChildrenType = {
  * @property confirmSubscription - confirms the user's subscription
  */
 export type MultiStepFormContextType = {
-  dictionary: Dictionary;
   currentStepIndex: number;
   goToNextStep: () => void;
   goToPrevStep: () => void;
@@ -166,6 +155,32 @@ export type SelectedPlan = {
 export type SelectedAddOns = {
   selectedAddOns: string[];
 };
+
+/* ---------------------------------------------------- */
+/* Redux Toolkit related types                          */
+/* ---------------------------------------------------- */
+
+/**
+ * Type for the Redux store
+ * @property children   - single or list of React children
+ * @property locale     - current locale code
+ * @property dictionary - locatization dictionary
+ */
+export type StoreProviderProps = {
+  children: ReactNode;
+  localeCode: LocaleCode;
+  dictionary: Dictionary;
+};
+
+/**
+ * Type for the localization slice
+ * @property locale     - current locale code
+ * @property dictionary - locatization dictionary
+ */
+export type LocalizationState = Pick<
+  StoreProviderProps,
+  "localeCode" | "dictionary"
+>;
 
 /* ---------------------------------------------------- */
 /* Localization related types                           */
@@ -238,3 +253,8 @@ export type AddOnDetails = {
   monthlyPrice: number;
   yearlyPrice: number;
 };
+
+/**
+ * Type for the locale codes
+ */
+export type LocaleCode = "en" | "pt";

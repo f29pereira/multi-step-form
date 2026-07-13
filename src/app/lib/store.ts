@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-// TO DO - import reducers
+import localizationReducer from "../features/localization/localizationSlice";
 
 // Create the root reducer independently to obtain the RootState type
 const rootReducer = combineReducers({
-  //TO DO - add reducers
+  localization: localizationReducer,
 });
 
 /**

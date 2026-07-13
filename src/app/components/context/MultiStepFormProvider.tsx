@@ -3,7 +3,7 @@
 import { createContext, useState } from "react";
 import type {
   MultiStepFormContextType,
-  MultiStepFormProviderProps,
+  ReactChildrenType,
   FormData,
 } from "../types";
 import { PLANS_LIST } from "../MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
@@ -16,10 +16,7 @@ export const MultiStepFormContext = createContext<
 /**
  * Provides the context to be able to toggle the subscription type
  */
-export default function MultiStepFormProvider({
-  children,
-  dictionary,
-}: MultiStepFormProviderProps) {
+export default function MultiStepFormProvider({ children }: ReactChildrenType) {
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
 
   const [formData, setFormData] = useState<FormData>({
@@ -81,7 +78,6 @@ export default function MultiStepFormProvider({
   return (
     <MultiStepFormContext
       value={{
-        dictionary: dictionary,
         currentStepIndex: currentStepIndex,
         goToNextStep: goToNextStep,
         goToPrevStep: goToPrevStep,

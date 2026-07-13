@@ -10,14 +10,14 @@ export type Locale = keyof typeof dictionaries;
 
 /**
  * Returns true if given local exists
- * @param locale
+ * @param locale - locale code
  */
-export const hasLocale = (locale: string): locale is Locale =>
-  locale in dictionaries;
+export const hasLocale = (localeCode: string): localeCode is Locale =>
+  localeCode in dictionaries;
 
 /**
  * Returns the localization dictionary by a given locale
- * @param locale
+ * @param locale - locale code
  */
-export const getDictionary = async (locale: Locale): Promise<Dictionary> =>
-  dictionaries[locale]();
+export const getDictionary = async (localeCode: Locale): Promise<Dictionary> =>
+  dictionaries[localeCode]();

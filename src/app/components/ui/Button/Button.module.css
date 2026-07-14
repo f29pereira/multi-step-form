@@ -2,14 +2,24 @@
 * CSS Module for the Button component
 * Classes: 
 * .btn            - button
+* .small          - 14px font size
+* .base           - 16px font size
 * .transparentBtn - button with transparent background
 * .blueBtn        - button with --blue-950 background color
 * .purpleBtn      - button with --purple-600 background color
+* .whiteBtn       - button with --white background color
 */
 
 .btn {
   padding: 1rem 1.5rem;
   border-radius: var(--border-radius-10);
+}
+
+.small {
+  font-size: var(--font-size-14);
+}
+
+.base {
   font-size: var(--font-size-base);
 }
 
@@ -19,7 +29,7 @@
 }
 
 /*on focus, display --grey-500 outline*/
-.transparentBtn:focus {
+.transparentBtn:focus-visible {
   outline-color: var(--grey-500);
 }
 
@@ -33,9 +43,20 @@
   color: var(--white);
 }
 
+.whiteBtn {
+  background-color: var(--white);
+  color: var(--grey-500);
+}
+
+/*on focus, display --grey-500 outline*/
+.transparentBtn:focus-visible,
+.whiteBtn:focus-visible {
+  outline-color: var(--grey-500);
+}
+
 /*on focus, display --purple-600 outline*/
-.blueBtn:focus,
-.purpleBtn:focus {
+.blueBtn:focus-visible,
+.purpleBtn:focus-visible {
   outline-color: var(--purple-600);
 }
 

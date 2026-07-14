@@ -40,11 +40,13 @@ export type StepsListProps = {
  * Props for the Button component
  * @property description   - button description
  * @property variant       - button color variant
+ * @property fontSize      - (optional) button font size (small = 14px, default: base = 16px)
  * @property handleOnClick - (optional) onClick function
  */
 export type ButtonProps = {
   description: string;
-  variant: "transparentBtn" | "blueBtn" | "purpleBtn";
+  variant: "transparentBtn" | "blueBtn" | "purpleBtn" | "whiteBtn";
+  fontSize?: "small" | "base";
   handleOnClick?: () => void;
 };
 

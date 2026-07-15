@@ -30,7 +30,7 @@
 }
 
 /*on focus, display --purple-600 outline*/
-.toggleBtn:focus {
+.toggleBtn:focus-visible {
   outline-color: var(--purple-600);
 }
 

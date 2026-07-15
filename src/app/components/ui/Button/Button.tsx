@@ -17,6 +17,7 @@ export default function Button({
     <button
       className={clsx(styles.btn, styles[variant], styles[fontSize ?? "base"])}
       onClick={handleOnClick}
+      onMouseDown={(e) => e.preventDefault()}
     >
       <span className="bold-text">{description}</span>
     </button>

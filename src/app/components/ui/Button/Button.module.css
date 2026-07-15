@@ -28,11 +28,6 @@
   color: var(--grey-500);
 }
 
-/*on focus, display --grey-500 outline*/
-.transparentBtn:focus-visible {
-  outline-color: var(--grey-500);
-}
-
 .blueBtn {
   background-color: var(--blue-950);
   color: var(--white);

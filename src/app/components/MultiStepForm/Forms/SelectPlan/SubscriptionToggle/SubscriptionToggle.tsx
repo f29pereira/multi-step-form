@@ -15,6 +15,7 @@ export default function SubscriptionToggle() {
       <button
         className={styles.toggleBtn}
         onClick={toggleSubscription}
+        onMouseDown={(e) => e.preventDefault()}
         aria-label={`Monthly/Yearly toggle current selected: ${isYearly ? "Yearly" : "Monthly"}`}
       >
         {isYearly ? (

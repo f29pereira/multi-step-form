@@ -9,6 +9,10 @@
  * .buttonsCont    - "Go back", "Go next" or "Confirm" buttons container
  */
 
+.sectionCont {
+  position: relative;
+}
+
 .stepsCont {
   width: 100%;
   height: 10rem; /*160px*/

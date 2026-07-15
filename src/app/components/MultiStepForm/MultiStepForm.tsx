@@ -2,6 +2,7 @@
 
 import styles from "./MultiStepForm.module.css";
 import { useRef } from "react";
+import LanguageSwitch from "../LanguageSwitch/LanguageSwitch";
 import StepsList from "./StepsList/StepsList";
 import PersonalInfo from "./Forms/PersonalInfo/PersonalInfo";
 import SelectPlan from "./Forms/SelectPlan/SelectPlan";
@@ -37,6 +38,8 @@ export default function MultiStepForm() {
 
   return (
     <section className={styles.sectionCont}>
+      <LanguageSwitch />
+
       <div className={styles.stepsCont}>
         <StepsList list={stepsList} currentStepIndex={currentStepIndex} />
       </div>

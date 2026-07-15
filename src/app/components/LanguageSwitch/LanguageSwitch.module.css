@@ -1,0 +1,117 @@
+/**
+ * CSS Module for the LanguageSwitch component
+ * Classes:
+ * .mainCont    - absolute positioned main container
+ * .btn         - languages list pop-up button
+ * .flexCont    - flex container for the button content
+ * .languages   - languages list
+ * .languageBtn - language item button
+ */
+
+.mainCont {
+  position: absolute;
+  top: 4.2rem;
+  right: 1rem; /*to match the right padding of .sectionCont (MultiStepForm component)*/
+  z-index: 1;
+}
+
+.btn {
+  padding: 0.2rem 0.5rem;
+  color: var(--grey-500);
+  font-size: var(--font-size-14);
+  border-radius: var(--border-radius-10);
+  background-color: var(--white);
+}
+
+/*if the languages pop-up is visible, change .btn text color from --grey-500 to --blue-950*/
+.toggled {
+  color: var(--blue-950);
+}
+
+/*on focus, display --grey-500 outline*/
+.btn:focus-visible {
+  outline-color: var(--grey-500);
+}
+
+.flexCont {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.languages {
+  position: absolute;
+  right: 0;
+  margin-top: 0.2rem;
+  padding: 1rem 0;
+  width: 8rem;
+  border-radius: var(--border-radius-10);
+  border: 2px solid var(--purple-200);
+  background-color: var(--white);
+}
+
+.languageBtn {
+  width: 100%;
+  margin: 0.5rem 0;
+  color: var(--grey-500);
+  font-size: var(--font-size-14);
+}
+
+/*on focus, display --grey-500 outline*/
+.languageBtn:focus-visible {
+  outline-color: var(--grey-500);
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*decrease top from 4.2rem to 3rem and increase right from 1rem to 3rem*/
+  .mainCont {
+    top: 3rem;
+    right: 3rem; /*to match the right padding of .sectionCont (MultiStepForm component)*/
+  }
+
+  /*increase padding to 0.5rem and font size from 14px to 16px*/
+  .btn {
+    padding: 0.5rem;
+    font-size: var(--font-size-base);
+  }
+
+  /*on hover, change text color from --grey-500 to --blue-950*/
+  .btn:hover {
+    color: var(--blue-950);
+  }
+
+  /*increase top margin from 0.2rem to*/
+  .languages {
+    margin-top: 0.5rem;
+  }
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*decrease top from 3rem to -3rem and right from 3rem to 0, add box shadow*/
+  .mainCont {
+    top: -3rem; /*displayed above the .sectionCont (MultiStepForm component)*/
+    right: 0;
+    box-shadow:
+      0 10px 15px -3px var(--shadow),
+      0 4px 6px -4px var(--shadow);
+  }
+
+  /*remove margin, set top/bottom padding and increase font size from 14px to 16px*/
+  .languageBtn {
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: var(--font-size-base);
+  }
+
+  /*on hover, change text color from --grey-500 to --blue-950 and background color from --white to --grey-450*/
+  .languageBtn:hover {
+    color: var(--blue-950);
+    background-color: var(--purple-200);
+  }
+}

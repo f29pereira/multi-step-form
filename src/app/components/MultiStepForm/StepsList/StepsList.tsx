@@ -1,7 +1,7 @@
 import styles from "./StepsList.module.css";
 import type { StepsListProps } from "../../types";
 import Step from "../../shared/Step/Step";
-import { useMultiStepForm } from "../../customHooks/useMultiStepForm";
+import { useAppSelector } from "@/app/hooks";
 
 /**
  * Renders the list of steps for the multi-step form
@@ -9,8 +9,8 @@ import { useMultiStepForm } from "../../customHooks/useMultiStepForm";
  * Props are defined in {@link StepsListProps}.
  */
 export default function StepsList({ list, currentStepIndex }: StepsListProps) {
-  // MultiStepForm context
-  const { dictionary } = useMultiStepForm();
+  // Localization reducer
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
 
   /**
    * Returns the desktop only step index

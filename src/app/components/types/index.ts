@@ -198,6 +198,56 @@ export type Dictionary = {
   stepsList: {
     name: string;
   }[];
+  personalInfo: PersonalInfoDictionary;
+  // TO DO: Add SelectPlan, PickAddOns, FinishSubscription and ThankYou localization
+};
+
+/**
+ * Type for the form localization
+ * @property titleAriaLabel - aria-label for the form title
+ * @property title          - form title
+ * @property description    - form description
+ */
+export type FormDictionary = {
+  titleAriaLabel: string;
+  title: string;
+  description: string;
+};
+
+/**
+ * Type for the PersonalInfo component localization
+ * @property title             - form title
+ * @property description       - form description
+ * @property nameLabel         - name label
+ * @property emailAddressLabel - email address label
+ * @property phoneNumberLabel  - phone number label
+ * @property errorMessages     - error messages
+ */
+export type PersonalInfoDictionary = FormDictionary & {
+  nameLabel: string;
+  emailAddressLabel: string;
+  phoneNumberLabel: string;
+  errorMessages: PersonalInfoErrorMessagesDictionary;
+};
+
+/**
+ * Type for the PersonalInfo component errorMessages localization
+ * @property required     - required field error message
+ * @property minLength    - name field min lenght error message
+ * @property maxLength    - name field max lenght error message
+ * @property invalid      - invalid name field error message
+ * @property emailAddress - invalid email address field error message
+ * @property phoneNumber  - invalid phone number field error message
+ */
+export type PersonalInfoErrorMessagesDictionary = {
+  required: string;
+  name: {
+    minLength: string;
+    maxLength: string;
+    invalid: string;
+  };
+  emailAddress: string;
+  phoneNumber: string;
 };
 
 /* ---------------------------------------------------- */

@@ -13,5 +13,23 @@
     {
       "name": "Summary"
     }
-  ]
+  ],
+  "personalInfo": {
+    "titleAriaLabel": "Step 1 of 4, Personal info",
+    "title": "Personal info",
+    "description": "Please provide your name, email address, and phone number.",
+    "nameLabel": "Name",
+    "emailAddressLabel": "Email Address",
+    "phoneNumberLabel": "Phone Number",
+    "errorMessages": {
+      "required": "This field is required",
+      "name": {
+        "minLength": "Must be at least 2 characters",
+        "maxLength": "Must be under 50 characters",
+        "invalid": "Can only contain letters or spaces"
+      },
+      "emailAddress": "Invalid Email Address",
+      "phoneNumber": "Invalid Phone Number"
+    }
+  }
 }

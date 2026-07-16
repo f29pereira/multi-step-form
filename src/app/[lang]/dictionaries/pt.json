@@ -13,5 +13,23 @@
     {
       "name": "Resumo"
     }
-  ]
+  ],
+  "personalInfo": {
+    "titleAriaLabel": "Etapa 1 de 4, Informação pessoal",
+    "title": "Informação pessoal",
+    "description": "Por favor, forneça o seu nome, endereço de e-mail e número de telefone.",
+    "nameLabel": "Nome",
+    "emailAddressLabel": "Endereço de e-mail",
+    "phoneNumberLabel": "Número de Telefone",
+    "errorMessages": {
+      "required": "Este campo é obrigatório",
+      "name": {
+        "minLength": "Deve ter pelo menos 2 caracteres",
+        "maxLength": "Deve ter menos de 50 caracteres",
+        "invalid": "Pode conter apenas letras ou espaços"
+      },
+      "emailAddress": "Endereço de e-mail inválido",
+      "phoneNumber": "Número de Telefone inválido"
+    }
+  }
 }

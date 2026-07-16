@@ -12,6 +12,7 @@ import {
   phoneValidation,
 } from "./PersonalInfo.utils";
 import ErrorMessage from "@/app/components/shared/ErrorMessage/ErrorMessage";
+import { useAppSelector } from "@/app/hooks";
 
 /**
  * Renders the personal info form with:
@@ -24,6 +25,10 @@ import ErrorMessage from "@/app/components/shared/ErrorMessage/ErrorMessage";
  * Props are defined in {@link FormStepProps}.
  */
 export default function PersonalInfo({ formRef }: FormStepProps) {
+  // Localization reducer
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
+  const personalInfoDict = dictionary.personalInfo;
+
   // MultiStepForm context
   const { formData, setFormData, goToNextStep } = useMultiStepForm();
 
@@ -68,17 +73,19 @@ export default function PersonalInfo({ formRef }: FormStepProps) {
 
   return (
     <div className={"white-card-cont"}>
+      {/*Main header*/}
       <h1
         ref={elementRef}
         tabIndex={-1}
         className={styles.title}
-        aria-label="Step 1 of 4, Personal info"
+        aria-label={personalInfoDict.titleAriaLabel}
       >
-        Personal info
+        {personalInfoDict.title}
       </h1>
 
+      {/*Form description*/}
       <p className="lighter-text form-description" id="form-description">
-        Please provide your name, email address, and phone number.
+        {personalInfoDict.description}
       </p>
 
       <form
@@ -92,7 +99,7 @@ export default function PersonalInfo({ formRef }: FormStepProps) {
       >
         <div className="flex-space-between">
           {/*Name: Label*/}
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">{personalInfoDict.nameLabel}</label>
           {/*Name: Error message*/}
           <ErrorMessage id={"name-error"} message={errors.name?.message} />
         </div>
@@ -108,12 +115,12 @@ export default function PersonalInfo({ formRef }: FormStepProps) {
           placeholder="e.g. Stephen King"
           aria-invalid={isInputInvalid("name")}
           aria-errormessage={isInputInvalid("name") ? "name-error" : undefined}
-          {...register("name", nameValidation)}
+          {...register("name", nameValidation(dictionary))}
         />
 
         <div className="flex-space-between">
           {/*Email Address: Label*/}
-          <label htmlFor="email">Email Address</label>
+          <label htmlFor="email">{personalInfoDict.emailAddressLabel}</label>
           {/*Email Address: Error message*/}
           <ErrorMessage id={"email-error"} message={errors.email?.message} />
         </div>
@@ -131,12 +138,12 @@ export default function PersonalInfo({ formRef }: FormStepProps) {
           aria-errormessage={
             isInputInvalid("email") ? "email-error" : undefined
           }
-          {...register("email", emailValidation)}
+          {...register("email", emailValidation(dictionary))}
         />
 
         <div className="flex-space-between">
           {/*Phone Number: Label*/}
-          <label htmlFor="phone">Phone Number</label>
+          <label htmlFor="phone">{personalInfoDict.phoneNumberLabel}</label>
           {/*Phone Number: Error message*/}
           <ErrorMessage id={"phone-error"} message={errors.phone?.message} />
         </div>
@@ -154,7 +161,7 @@ export default function PersonalInfo({ formRef }: FormStepProps) {
           aria-errormessage={
             isInputInvalid("phone") ? "phone-error" : undefined
           }
-          {...register("phone", phoneValidation)}
+          {...register("phone", phoneValidation(dictionary))}
         />
       </form>
     </div>

@@ -190,8 +190,10 @@ export type LocalizationState = Pick<
 
 /**
  * Type for the localization dictionary
- * @property step      - step
- * @property stepsList - list of step names
+ * @property step         - step keyword
+ * @property stepsList    - list of step names
+ * @property personalInfo - PersonalInfo component dictionary
+ * @property selectPlan   - SelectPlan component dictionary
  */
 export type Dictionary = {
   step: string;
@@ -199,7 +201,8 @@ export type Dictionary = {
     name: string;
   }[];
   personalInfo: PersonalInfoDictionary;
-  // TO DO: Add SelectPlan, PickAddOns, FinishSubscription and ThankYou localization
+  selectPlan: SelectPlanDictionary;
+  // TO DO: Add PickAddOns, FinishSubscription and ThankYou localization
 };
 
 /**
@@ -221,7 +224,7 @@ export type FormDictionary = {
  * @property nameLabel         - name label
  * @property emailAddressLabel - email address label
  * @property phoneNumberLabel  - phone number label
- * @property errorMessages     - error messages
+ * @property errorMessages     - form error messages
  */
 export type PersonalInfoDictionary = FormDictionary & {
   nameLabel: string;
@@ -231,7 +234,7 @@ export type PersonalInfoDictionary = FormDictionary & {
 };
 
 /**
- * Type for the PersonalInfo component errorMessages localization
+ * Type for the PersonalInfo component error messages localization
  * @property required     - required field error message
  * @property minLength    - name field min lenght error message
  * @property maxLength    - name field max lenght error message
@@ -250,14 +253,34 @@ export type PersonalInfoErrorMessagesDictionary = {
   phoneNumber: string;
 };
 
+/**
+ * Type for the SelectPlan component localization
+ * @property legend        - fieldset legend
+ * @property discount      - discount keyword
+ * @property plans         - list of plans with type and discount
+ * @property errorMessages - form error messages
+ */
+export type SelectPlanDictionary = FormDictionary & {
+  legend: string;
+  discount: string;
+  plans: {
+    type: string;
+    discount: string;
+  }[];
+  errorMessages: SelectPlanErrorMessagesDictionary;
+};
+
+/**
+ *  Type for the SelectPlan component error messages localization
+ *  @property required - required field error message
+ */
+export type SelectPlanErrorMessagesDictionary = {
+  required: string;
+};
+
 /* ---------------------------------------------------- */
 /* Other component related types                        */
 /* ---------------------------------------------------- */
-
-/**
- * Type for the subscription plans
- */
-export type PlanType = "Arcade" | "Advanced" | "Pro";
 
 /**
  * Type for the subscription plan details
@@ -268,7 +291,7 @@ export type PlanType = "Arcade" | "Advanced" | "Pro";
  */
 export type PlanDetails = {
   id: string;
-  type: PlanType;
+  type: string;
   monthlyPlan: PlanPricing;
   yearlyPlan: PlanPricing;
 };

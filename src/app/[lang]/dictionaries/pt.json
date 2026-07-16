@@ -31,5 +31,29 @@
       "emailAddress": "Endereço de e-mail inválido",
       "phoneNumber": "Número de Telefone inválido"
     }
+  },
+  "selectPlan": {
+    "titleAriaLabel": "Etapa 2 de 4, Ecolher o plano",
+    "title": "Escolha o seu plano",
+    "description": "Tem a opção de faturação mensal ou anual.",
+    "legend": "Escolha o seu plano",
+    "discount": "Desconto",
+    "plans": [
+      {
+        "type": "Arcade",
+        "discount": "2 meses grátis"
+      },
+      {
+        "type": "Advanced",
+        "discount": "2 meses grátis"
+      },
+      {
+        "type": "Pro",
+        "discount": "2 meses grátis"
+      }
+    ],
+    "errorMessages": {
+      "required": "Escolha um plano para continuar"
+    }
   }
 }

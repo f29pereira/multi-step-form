@@ -31,5 +31,29 @@
       "emailAddress": "Invalid Email Address",
       "phoneNumber": "Invalid Phone Number"
     }
+  },
+  "selectPlan": {
+    "titleAriaLabel": "Step 2 of 4, Select your plan",
+    "title": "Select your plan",
+    "description": "You have the option of monthly or yearly billing.",
+    "legend": "Select your plan",
+    "discount": "Discount",
+    "plans": [
+      {
+        "type": "Arcade",
+        "discount": "2 months free"
+      },
+      {
+        "type": "Advanced",
+        "discount": "2 months free"
+      },
+      {
+        "type": "Pro",
+        "discount": "2 months free"
+      }
+    ],
+    "errorMessages": {
+      "required": "Select a plan to continue"
+    }
   }
 }

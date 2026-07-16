@@ -2,13 +2,17 @@
 
 import styles from "./SelectPlan.module.css";
 import type { FormStepProps, SelectedPlan } from "@/app/components/types";
-import { PLANS_LIST, getPlansListBySubscription } from "./SelectPlan.utils";
+import {
+  getPlansWithLocalization,
+  getPlansListBySubscription,
+} from "./SelectPlan.utils";
 import Plan from "./Plan/Plan";
 import SubscriptionToggle from "./SubscriptionToggle/SubscriptionToggle";
 import useFocus from "@/app/components/customHooks/useFocus";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import { FormProvider, useForm } from "react-hook-form";
 import ErrorMessage from "@/app/components/shared/ErrorMessage/ErrorMessage";
+import { useAppSelector } from "@/app/hooks";
 
 /**
  * Renders the select plan form with:
@@ -22,6 +26,10 @@ import ErrorMessage from "@/app/components/shared/ErrorMessage/ErrorMessage";
  * Props are defined in {@link FormStepProps}.
  */
 export default function SelectPlan({ formRef }: FormStepProps) {
+  // Localization reducer
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
+  const selectPlanDict = dictionary.selectPlan;
+
   // MultiStepForm context
   const { formData, setFormData, goToNextStep } = useMultiStepForm();
 
@@ -43,7 +51,11 @@ export default function SelectPlan({ formRef }: FormStepProps) {
   } = methods;
 
   // Data
-  const plansList = getPlansListBySubscription(PLANS_LIST, formData.isYearly);
+  const plansList = getPlansWithLocalization(selectPlanDict);
+  const currentPlansList = getPlansListBySubscription(
+    plansList,
+    formData.isYearly,
+  );
 
   /**
    * Returns true if no plan is selected
@@ -63,17 +75,19 @@ export default function SelectPlan({ formRef }: FormStepProps) {
 
   return (
     <div className="white-card-cont">
+      {/*Main header*/}
       <h1
         ref={elementRef}
         tabIndex={-1}
         className={styles.title}
-        aria-label="Step 2 of 4, Select your plan"
+        aria-label={selectPlanDict.titleAriaLabel}
       >
-        Select your plan
+        {selectPlanDict.title}
       </h1>
 
+      {/*Form description*/}
       <p className={`lighter-text form-description ${styles.description}`}>
-        You have the option of monthly or yearly billing.
+        {selectPlanDict.description}
       </p>
 
       <FormProvider {...methods}>
@@ -96,11 +110,11 @@ export default function SelectPlan({ formRef }: FormStepProps) {
             aria-invalid={isInputInvalid()}
             aria-errormessage={isInputInvalid() ? "plan-error" : undefined}
           >
-            <legend className="sr-only">Select your plan</legend>
+            <legend className="sr-only">{selectPlanDict.legend}</legend>
 
             {/*List of plans*/}
             <div className={styles.plansListCont} data-testid="plans-list">
-              {plansList.map((plan) => (
+              {currentPlansList.map((plan) => (
                 <Plan
                   key={plan.id}
                   id={plan.id}

@@ -1,4 +1,28 @@
-import type { PlanDetails, PlanProps } from "@/app/components/types";
+import type {
+  PlanDetails,
+  PlanProps,
+  SelectPlanDictionary,
+} from "@/app/components/types";
+
+/**
+ * Returns the list of available subscription plans with localization
+ * @param selectPlanDict - SelectPlan component dictionary
+ */
+export const getPlansWithLocalization = (
+  selectPlanDict: SelectPlanDictionary,
+): PlanDetails[] => {
+  return PLANS_LIST_PRICING.map((plan, index) => ({
+    id: plan.id,
+    type: selectPlanDict.plans[index].type,
+    monthlyPlan: {
+      value: plan.monthlyPlan.value,
+    },
+    yearlyPlan: {
+      value: plan.yearlyPlan.value,
+      discount: selectPlanDict.plans[index].discount,
+    },
+  }));
+};
 
 /**
  * Returns the list of plans with yearly or montly subscription
@@ -47,40 +71,34 @@ export const getPlanById = (
 };
 
 /**
- * List of available subscription plans
+ * List of available subscription plans yearly or montly pricing
  */
-export const PLANS_LIST: PlanDetails[] = [
+export const PLANS_LIST_PRICING = [
   {
     id: "1",
-    type: "Arcade",
     monthlyPlan: {
       value: 9,
     },
     yearlyPlan: {
       value: 90,
-      discount: "2 months free",
     },
   },
   {
     id: "2",
-    type: "Advanced",
     monthlyPlan: {
       value: 12,
     },
     yearlyPlan: {
       value: 120,
-      discount: "2 months free",
     },
   },
   {
     id: "3",
-    type: "Pro",
     monthlyPlan: {
       value: 15,
     },
     yearlyPlan: {
       value: 150,
-      discount: "2 months free",
     },
   },
 ];

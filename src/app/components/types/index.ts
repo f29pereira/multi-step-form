@@ -190,16 +190,21 @@ export type LocalizationState = Pick<
 
 /**
  * Type for the localization dictionary
- * @property step         - step keyword
- * @property stepsList    - list of step names
- * @property personalInfo - PersonalInfo component dictionary
- * @property selectPlan   - SelectPlan component dictionary
+ * @property step           - step keyword
+ * @property stepsList      - list of step names
+ * @property subscription   - yearly and monthly keyword for subscription prices
+ * @property personalInfo   - PersonalInfo component dictionary
+ * @property selectPlan     - SelectPlan component dictionary
  */
 export type Dictionary = {
   step: string;
   stepsList: {
     name: string;
   }[];
+  subscription: {
+    yearly: SubscriptionDictionary;
+    monthly: SubscriptionDictionary;
+  };
   personalInfo: PersonalInfoDictionary;
   selectPlan: SelectPlanDictionary;
   // TO DO: Add PickAddOns, FinishSubscription and ThankYou localization
@@ -215,6 +220,16 @@ export type FormDictionary = {
   titleAriaLabel: string;
   title: string;
   description: string;
+};
+
+/**
+ * Type for the subscription localization
+ * @property long  - long keyword
+ * @property short - short keyword
+ */
+export type SubscriptionDictionary = {
+  long: string;
+  short: string;
 };
 
 /**

@@ -14,6 +14,16 @@
       "name": "Resumo"
     }
   ],
+  "subscription": {
+    "yearly": {
+      "long": "anuais",
+      "short": "a."
+    },
+    "monthly": {
+      "long": "mensais",
+      "short": "m."
+    }
+  },
   "personalInfo": {
     "titleAriaLabel": "Etapa 1 de 4, Informação pessoal",
     "title": "Informação pessoal",

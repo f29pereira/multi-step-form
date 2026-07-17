@@ -1,22 +1,34 @@
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import styles from "./SubscriptionToggle.module.css";
+import { useAppSelector } from "@/app/hooks";
 
 /**
  * Renders the monthly/yearly subscription toggle
  */
 export default function SubscriptionToggle() {
+  // Localization reducer
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
+  const subsToggleDict = dictionary.subscriptionToggle;
+
+  // MultiStepForm context
   const { formData, toggleSubscription } = useMultiStepForm();
   const isYearly = formData.isYearly;
 
   return (
     <div className={`flex-center ${styles.mainCont}`}>
-      <span className={`light-text ${styles.monthly}`}>Monthly</span>
+      {/*Monthly text*/}
+      <span className={`light-text ${styles.monthly}`}>
+        {subsToggleDict.monthlyText}
+      </span>
+
       {/*Toggle Button*/}
       <button
         className={styles.toggleBtn}
         onClick={toggleSubscription}
         onMouseDown={(e) => e.preventDefault()}
-        aria-label={`Monthly/Yearly toggle current selected: ${isYearly ? "Yearly" : "Monthly"}`}
+        aria-label={`${subsToggleDict.toggleBtnLabel} ${
+          isYearly ? subsToggleDict.yearlyText : subsToggleDict.monthlyText
+        }`}
       >
         {isYearly ? (
           <div className={styles.yearlySelected}>
@@ -28,7 +40,11 @@ export default function SubscriptionToggle() {
           </div>
         )}
       </button>
-      <span className={`light-text ${styles.yearly}`}>Yearly</span>
+
+      {/*Yearly text*/}
+      <span className={`light-text ${styles.yearly}`}>
+        {subsToggleDict.yearlyText}
+      </span>
     </div>
   );
 }

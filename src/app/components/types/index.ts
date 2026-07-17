@@ -190,13 +190,15 @@ export type LocalizationState = Pick<
 
 /**
  * Type for the localization dictionary
- * @property step           - step keyword
- * @property stepsList      - list of step names
- * @property subscription   - yearly and monthly keyword for subscription prices
- * @property personalInfo   - PersonalInfo component dictionary
- * @property selectPlan     - SelectPlan component dictionary
+ * @property step               - step keyword
+ * @property stepsList          - list of step names
+ * @property subscription       - yearly and monthly keywords for the subscription prices
+ * @property personalInfo       - PersonalInfo component dictionary
+ * @property selectPlan         - SelectPlan component dictionary
+ * @property subscriptionToggle - SubscriptionToggle component dictionary
  */
 export type Dictionary = {
+  // TO DO: Add LanguageSwitch and navigation buttons localization
   step: string;
   stepsList: {
     name: string;
@@ -207,6 +209,7 @@ export type Dictionary = {
   };
   personalInfo: PersonalInfoDictionary;
   selectPlan: SelectPlanDictionary;
+  subscriptionToggle: SubscriptionToggleDictionary;
   // TO DO: Add PickAddOns, FinishSubscription and ThankYou localization
 };
 
@@ -291,6 +294,18 @@ export type SelectPlanDictionary = FormDictionary & {
  */
 export type SelectPlanErrorMessagesDictionary = {
   required: string;
+};
+
+/**
+ * Type for the SubscriptionToggle component localization
+ * @property monthlyText    - monthly text
+ * @property toggleBtnLabel - label for the toggle button
+ * @property yearlyText     - yearly text
+ */
+export type SubscriptionToggleDictionary = {
+  monthlyText: string;
+  toggleBtnLabel: string;
+  yearlyText: string;
 };
 
 /* ---------------------------------------------------- */

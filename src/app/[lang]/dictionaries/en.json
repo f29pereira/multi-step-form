@@ -65,5 +65,10 @@
     "errorMessages": {
       "required": "Select a plan to continue"
     }
+  },
+  "subscriptionToggle": {
+    "monthlyText": "Monthly",
+    "toggleBtnLabel": "Monthly/Yearly subscription toggle, currently selected:",
+    "yearlyText": "Yearly"
   }
 }

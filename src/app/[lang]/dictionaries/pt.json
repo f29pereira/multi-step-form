@@ -65,5 +65,10 @@
     "errorMessages": {
       "required": "Escolha um plano para continuar"
     }
+  },
+  "subscriptionToggle": {
+    "monthlyText": "Mensal",
+    "toggleBtnLabel": "Alternar entre subscrição Mensal/Anual, atualmente selecionada:",
+    "yearlyText": "Anual"
   }
 }

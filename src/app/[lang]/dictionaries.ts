@@ -9,7 +9,7 @@ const dictionaries = {
 export type Locale = keyof typeof dictionaries;
 
 /**
- * Returns true if given local exists
+ * Returns true if given locale exists
  * @param locale - locale code
  */
 export const hasLocale = (localeCode: string): localeCode is Locale =>

@@ -196,6 +196,7 @@ export type LocalizationState = Pick<
  * @property personalInfo       - PersonalInfo component dictionary
  * @property selectPlan         - SelectPlan component dictionary
  * @property subscriptionToggle - SubscriptionToggle component dictionary
+ * @property pickAddOns         - PickAddOns component dictionary
  */
 export type Dictionary = {
   // TO DO: Add LanguageSwitch and navigation buttons localization
@@ -210,7 +211,8 @@ export type Dictionary = {
   personalInfo: PersonalInfoDictionary;
   selectPlan: SelectPlanDictionary;
   subscriptionToggle: SubscriptionToggleDictionary;
-  // TO DO: Add PickAddOns, FinishSubscription and ThankYou localization
+  pickAddOns: PickAddOnsDictionary;
+  // TO DO: FinishSubscription and ThankYou localization
 };
 
 /**
@@ -308,6 +310,19 @@ export type SubscriptionToggleDictionary = {
   yearlyText: string;
 };
 
+/**
+ * Type for the PickAddOns component localization
+ * @property legend        - fieldset legend
+ * @property addOns        - list of add-ons with type and description
+ */
+export type PickAddOnsDictionary = FormDictionary & {
+  legend: string;
+  addOns: {
+    type: string;
+    description: string;
+  }[];
+};
+
 /* ---------------------------------------------------- */
 /* Other component related types                        */
 /* ---------------------------------------------------- */
@@ -337,14 +352,6 @@ export type PlanPricing = {
 };
 
 /**
- * Type for the add-ons
- */
-export type AddOnType =
-  | "Online service"
-  | "Larger storage"
-  | "Customizable profile";
-
-/**
  * Type for the add-on pricing
  * @property id           - add-on id
  * @property type         - type of add-on
@@ -353,7 +360,7 @@ export type AddOnType =
  */
 export type AddOnDetails = {
   id: string;
-  type: AddOnType;
+  type: string;
   description: string;
   monthlyPrice: number;
   yearlyPrice: number;

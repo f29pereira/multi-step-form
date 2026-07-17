@@ -1,4 +1,24 @@
-import type { AddOnDetails, AddOnProps } from "@/app/components/types";
+import type {
+  AddOnDetails,
+  AddOnProps,
+  PickAddOnsDictionary,
+} from "@/app/components/types";
+
+/**
+ * Returns the list of available add-ons with localization
+ * @param pickAddOnsDict PickAddOns component dictionary
+ */
+export const getAddOnsWithLocalization = (
+  pickAddOnsDict: PickAddOnsDictionary,
+): AddOnDetails[] => {
+  return ADD_ONS_LIST_PRICING.map((addOn, index) => ({
+    id: addOn.id,
+    type: pickAddOnsDict.addOns[index].type,
+    description: pickAddOnsDict.addOns[index].description,
+    monthlyPrice: addOn.monthlyPrice,
+    yearlyPrice: addOn.yearlyPrice,
+  }));
+};
 
 /**
  * Returns the list of add-ons with yearly or montly subscription
@@ -23,11 +43,12 @@ export const getAddOnsListBySubscription = (
  * @param isYearly  - if true returns the yearly add-on price, if false returns the montly add-on price
  */
 export const getSelectedAddOns = (
+  addOnsList: AddOnDetails[],
   addOnsIds: string[],
   isYearly: boolean,
 ): AddOnProps[] => {
   const selectedAddOns = addOnsIds
-    .map((id) => getAddOnById(id, isYearly))
+    .map((id) => getAddOnById(addOnsList, id, isYearly))
     .filter((addOn) => addOn != undefined);
 
   return selectedAddOns;
@@ -35,14 +56,16 @@ export const getSelectedAddOns = (
 
 /**
  * Returns the add-on by a given id
- * @param id       - add-on id
- * @param isYearly - if true returns the yearly price, if false returns the montly price
+ * @param addOnsList list of add-ons
+ * @param id         add-on id
+ * @param isYearly   if true returns the yearly price, if false returns the montly price
  */
 export const getAddOnById = (
+  addOnsList: AddOnDetails[],
   id: string,
   isYearly: boolean,
 ): AddOnProps | undefined => {
-  const addOn = ADD_ONS_LIST.find((addOn) => addOn.id === id);
+  const addOn = addOnsList.find((addOn) => addOn.id === id);
 
   if (addOn) {
     const addOnPrice = isYearly ? addOn.yearlyPrice : addOn.monthlyPrice;
@@ -59,27 +82,21 @@ export const getAddOnById = (
 };
 
 /**
- * List of available add-ons
+ * List of available add-ons pricing
  */
-export const ADD_ONS_LIST: AddOnDetails[] = [
+export const ADD_ONS_LIST_PRICING = [
   {
     id: "1",
-    type: "Online service",
-    description: "Access to multiplayer games",
     monthlyPrice: 1,
     yearlyPrice: 10,
   },
   {
     id: "2",
-    type: "Larger storage",
-    description: "Extra 1TB of cloud save",
     monthlyPrice: 2,
     yearlyPrice: 20,
   },
   {
     id: "3",
-    type: "Customizable profile",
-    description: "Custom theme on your profile",
     monthlyPrice: 2,
     yearlyPrice: 20,
   },

@@ -70,5 +70,25 @@
     "monthlyText": "Mensal",
     "toggleBtnLabel": "Alternar entre subscrição Mensal/Anual, atualmente selecionada:",
     "yearlyText": "Anual"
+  },
+  "pickAddOns": {
+    "titleAriaLabel": "Etapa 3 de 4, Escolha add-ons",
+    "title": "Escolha add-ons",
+    "description": "Add-ons ajudam a melhorar a sua experiência gaming.",
+    "legend": "Escolha add-ons",
+    "addOns": [
+      {
+        "type": "Serviço online",
+        "description": "Acesso a jogos multiplayer"
+      },
+      {
+        "type": "Maior capacidade de armazenamento",
+        "description": "1TB extra na cloud save"
+      },
+      {
+        "type": "Perfil customizável",
+        "description": "Tema personalizado no seu perfil"
+      }
+    ]
   }
 }

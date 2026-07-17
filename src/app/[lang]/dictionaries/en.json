@@ -70,5 +70,25 @@
     "monthlyText": "Monthly",
     "toggleBtnLabel": "Monthly/Yearly subscription toggle, currently selected:",
     "yearlyText": "Yearly"
+  },
+  "pickAddOns": {
+    "titleAriaLabel": "Step 3 of 4, Pick add-ons",
+    "title": "Pick add-ons",
+    "description": "Add-ons help enhance your gaming experience.",
+    "legend": "Pick add-ons",
+    "addOns": [
+      {
+        "type": "Online service",
+        "description": "Access to multiplayer games"
+      },
+      {
+        "type": "Larger storage",
+        "description": "Extra 1TB of cloud save"
+      },
+      {
+        "type": "Customizable profile",
+        "description": "Custom theme on your profile"
+      }
+    ]
   }
 }

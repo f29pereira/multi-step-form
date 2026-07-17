@@ -3,11 +3,12 @@
 import styles from "./PickAddOns.module.css";
 import type { FormStepProps, SelectedAddOns } from "@/app/components/types";
 import useFocus from "@/app/components/customHooks/useFocus";
-import { ADD_ONS_LIST } from "./PickAddOns.utils";
+import { getAddOnsWithLocalization } from "./PickAddOns.utils";
 import { getAddOnsListBySubscription } from "./PickAddOns.utils";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import AddOn from "./AddOn/AddOn";
 import { useForm, FormProvider } from "react-hook-form";
+import { useAppSelector } from "@/app/hooks";
 
 /**
  * Renders the pick add-ons form with:
@@ -18,6 +19,10 @@ import { useForm, FormProvider } from "react-hook-form";
  * Props are defined in {@link FormStepProps}.
  */
 export default function PickAddOns({ formRef }: FormStepProps) {
+  // Localization reducer
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
+  const pickAddOnsDict = dictionary.pickAddOns;
+
   // MultiStepForm context
   const { formData, setFormData, goToNextStep } = useMultiStepForm();
   const isYearly = formData.isYearly;
@@ -36,7 +41,8 @@ export default function PickAddOns({ formRef }: FormStepProps) {
   const { register, watch } = methods;
 
   // Data
-  const addOnsList = getAddOnsListBySubscription(ADD_ONS_LIST, isYearly);
+  const addOnsList = getAddOnsWithLocalization(pickAddOnsDict);
+  const currentAddOnsList = getAddOnsListBySubscription(addOnsList, isYearly);
 
   /**
    * Submits the form and goes to the next form step
@@ -49,17 +55,19 @@ export default function PickAddOns({ formRef }: FormStepProps) {
 
   return (
     <div className="white-card-cont">
+      {/*Main header*/}
       <h1
         ref={elementRef}
         tabIndex={-1}
         className={styles.title}
-        aria-label="Step 3 of 4, Pick add-ons"
+        aria-label={pickAddOnsDict.titleAriaLabel}
       >
-        Pick add-ons
+        {pickAddOnsDict.title}
       </h1>
 
+      {/*Form description*/}
       <p className={`lighter-text ${styles.description}`}>
-        Add-ons help enhance your gaming experience.
+        {pickAddOnsDict.description}
       </p>
 
       <FormProvider {...methods}>
@@ -70,11 +78,11 @@ export default function PickAddOns({ formRef }: FormStepProps) {
           })}
         >
           <fieldset>
-            <legend className="sr-only">Pick add-ons</legend>
+            <legend className="sr-only">{pickAddOnsDict.legend}</legend>
 
             {/*List of add-ons*/}
             <div className={styles.addOnsListCont} data-testid="add-ons-list">
-              {addOnsList.map((addOn) => (
+              {currentAddOnsList.map((addOn) => (
                 <AddOn
                   key={addOn.id}
                   id={addOn.id}

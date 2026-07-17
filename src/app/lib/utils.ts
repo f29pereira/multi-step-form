@@ -43,11 +43,36 @@ export const getFormattedLabelPrice = (
   dictionary: Dictionary,
 ) => {
   const priceText = formatCurrencyAsCode(localeCode, price);
+
+  const subscriptionText = getSubscriptionText(
+    isYearly,
+    localeCode,
+    dictionary,
+  );
+
+  return `${priceText} ${subscriptionText}`;
+};
+
+/**
+ * Returns the subscription text for yearly or monthly payment
+ * @param isYearly   is the price for yearly format
+ * @param localeCode locale code
+ *
+ * @returns accessible subscription text for screen readers
+ *
+ * @example getTotalText(true, "en")
+ * // per Year
+ */
+export const getSubscriptionText = (
+  isYearly: boolean,
+  localeCode: LocaleCode,
+  dictionary: Dictionary,
+) => {
   const subscription = dictionary.subscription;
 
   return isYearly
-    ? `${priceText} ${subscription.yearly.long}`
-    : `${priceText} ${subscription.monthly.long}`;
+    ? `${subscription.yearly.long}`
+    : `${subscription.monthly.long}`;
 };
 
 /**

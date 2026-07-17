@@ -212,7 +212,8 @@ export type Dictionary = {
   selectPlan: SelectPlanDictionary;
   subscriptionToggle: SubscriptionToggleDictionary;
   pickAddOns: PickAddOnsDictionary;
-  // TO DO: FinishSubscription and ThankYou localization
+  finishSubscription: FinishSubscriptionDictionary;
+  // TO DO: ThankYou localization
 };
 
 /**
@@ -321,6 +322,24 @@ export type PickAddOnsDictionary = FormDictionary & {
     type: string;
     description: string;
   }[];
+};
+
+/**
+ * Type for the FinishSubscription component localization
+ * @property changePlanLink  - change plan link
+ * @property changePlanLabel - change plan link label
+ * @property addOnsLabel     - list of add-ons label
+ * @property total           - total text and yearly/monthly text
+ */
+export type FinishSubscriptionDictionary = FormDictionary & {
+  changePlanLink: string;
+  changePlanLabel: string;
+  addOnsLabel: string;
+  total: {
+    text: string;
+    yearly: string;
+    monthly: string;
+  };
 };
 
 /* ---------------------------------------------------- */

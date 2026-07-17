@@ -90,5 +90,18 @@
         "description": "Tema personalizado no seu perfil"
       }
     ]
+  },
+  "finishSubscription": {
+    "titleAriaLabel": "Etapa 4 de 4, Finalizar",
+    "title": "Finalizar",
+    "description": "Verifique novamente se está tudo OK antes de confirmar.",
+    "changePlanLink": "Mudar",
+    "changePlanLabel": "Plano",
+    "addOnsLabel": "Add-Ons escolhidos",
+    "total": {
+      "text": "Total",
+      "yearly": "por ano",
+      "monthly": "por mês"
+    }
   }
 }

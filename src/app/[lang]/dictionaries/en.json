@@ -90,5 +90,18 @@
         "description": "Custom theme on your profile"
       }
     ]
+  },
+  "finishSubscription": {
+    "titleAriaLabel": "Step 4 of 4, Finishing up",
+    "title": "Finishing up",
+    "description": "Double-check everything looks OK before confirming.",
+    "changePlanLink": "Change",
+    "changePlanLabel": "Plan",
+    "addOnsLabel": "Selected Add-Ons",
+    "total": {
+      "text": "Total",
+      "yearly": "per year",
+      "monthly": "per month"
+    }
   }
 }

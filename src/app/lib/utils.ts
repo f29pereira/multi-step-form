@@ -42,7 +42,7 @@ export const getFormattedLabelPrice = (
   localeCode: LocaleCode,
   dictionary: Dictionary,
 ) => {
-  const priceText = formatCurrencyAsCode(localeCode, price);
+  const priceText = formatCurrencyAsFullName(localeCode, price);
 
   const subscriptionText = getSubscriptionText(
     isYearly,
@@ -102,14 +102,17 @@ export const getFormattedPrice = (
 };
 
 /**
- * Returns a formatted price with the currency text by a given localeCode
+ * Returns a formatted full name price by a given localeCode
  * @param localeCode locale code
  * @param price      price to format
  *
- * @example formatCurrencyAsCode("en", 90)
+ * @example formatCurrencyAsFullName("en", 90)
  * // 90 US dollars
  */
-export const formatCurrencyAsCode = (localeCode: LocaleCode, price: number) => {
+export const formatCurrencyAsFullName = (
+  localeCode: LocaleCode,
+  price: number,
+) => {
   const currency = getCurrency(localeCode);
 
   return new Intl.NumberFormat(localeCode, {

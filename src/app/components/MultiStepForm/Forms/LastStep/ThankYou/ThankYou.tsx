@@ -2,14 +2,20 @@
 
 import useFocus from "@/app/components/customHooks/useFocus";
 import styles from "./ThankYou.module.css";
+import { useAppSelector } from "@/app/hooks";
 
 /**
  * Renders the thank you for the user subscription
  * - Icon
- * - Title
+ * - Main header
  * - Thank you message
  */
 export default function ThankYou() {
+  // Localization reducer
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
+  const thankYouDict = dictionary.thankYou;
+
+  // Main header Ref
   const { elementRef } = useFocus<HTMLHeadingElement>();
 
   return (
@@ -37,14 +43,14 @@ export default function ThankYou() {
           </g>
         </svg>
 
+        {/*Main header*/}
         <h1 ref={elementRef} tabIndex={-1} className={styles.title}>
-          Thank you!
+          {thankYouDict.title}
         </h1>
 
+        {/*Thank you message*/}
         <p className={`lighter-text ${styles.message}`}>
-          Thanks for confirming your subscription! We hope you have fun using
-          our platform. If you ever need support, please feel free to email us
-          at support@loregaming.com.
+          {thankYouDict.message}
         </p>
       </div>
     </div>

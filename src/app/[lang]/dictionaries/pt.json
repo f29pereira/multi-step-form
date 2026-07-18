@@ -103,5 +103,9 @@
       "yearly": "por ano",
       "monthly": "por mês"
     }
+  },
+  "thankYou": {
+    "title": "Obrigado!",
+    "message": "Obrigado por confirmar a sua subscrição! Esperamos que se divirta a utilizar a nossa plataforma. Se precisar de apoio a qualquer momento, sinta-se à vontade para nos enviar um e-mail para support@loregaming.com."
   }
 }

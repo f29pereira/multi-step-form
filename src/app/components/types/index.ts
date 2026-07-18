@@ -197,6 +197,7 @@ export type LocalizationState = Pick<
  * @property selectPlan         - SelectPlan component dictionary
  * @property subscriptionToggle - SubscriptionToggle component dictionary
  * @property pickAddOns         - PickAddOns component dictionary
+ * @property pickAddOns         - ThankYou component dictionary
  */
 export type Dictionary = {
   // TO DO: Add LanguageSwitch and navigation buttons localization
@@ -213,7 +214,7 @@ export type Dictionary = {
   subscriptionToggle: SubscriptionToggleDictionary;
   pickAddOns: PickAddOnsDictionary;
   finishSubscription: FinishSubscriptionDictionary;
-  // TO DO: ThankYou localization
+  thankYou: ThankYouDictionary;
 };
 
 /**
@@ -340,6 +341,16 @@ export type FinishSubscriptionDictionary = FormDictionary & {
     yearly: string;
     monthly: string;
   };
+};
+
+/**
+ * Type for the ThankYou component localization
+ * @property title   - main title
+ * @property message - thank you message
+ */
+export type ThankYouDictionary = {
+  title: string;
+  message: string;
 };
 
 /* ---------------------------------------------------- */

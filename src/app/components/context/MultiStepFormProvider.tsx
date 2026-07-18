@@ -6,8 +6,11 @@ import type {
   ReactChildrenType,
   FormData,
 } from "../types";
-import { PLANS_LIST } from "../MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
-import { getPlanById } from "../MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
+import {
+  getPlanById,
+  getPlansWithLocalization,
+} from "../MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
+import { useAppSelector } from "@/app/hooks";
 
 export const MultiStepFormContext = createContext<
   MultiStepFormContextType | undefined
@@ -17,6 +20,10 @@ export const MultiStepFormContext = createContext<
  * Provides the context to be able to toggle the subscription type
  */
 export default function MultiStepFormProvider({ children }: ReactChildrenType) {
+  // Localization reducer
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
+  const selectPlanDict = dictionary.selectPlan;
+
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
 
   const [formData, setFormData] = useState<FormData>({
@@ -64,8 +71,10 @@ export default function MultiStepFormProvider({ children }: ReactChildrenType) {
    * Confirms the user's subscription
    */
   const confirmSubscription = () => {
+    const planList = getPlansWithLocalization(selectPlanDict);
+
     const plan = getPlanById(
-      PLANS_LIST,
+      planList,
       formData.selectedPlanId,
       formData.isYearly,
     );

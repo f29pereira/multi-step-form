@@ -144,7 +144,7 @@ export default function FinishSubscription() {
                   >
                     {`+${getFormattedPrice(
                       isYearly,
-                      selectedPlan.price.value,
+                      addOn.price,
                       localeCode,
                       dictionary,
                     )}`}

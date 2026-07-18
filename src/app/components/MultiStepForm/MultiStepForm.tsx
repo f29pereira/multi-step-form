@@ -10,6 +10,7 @@ import PickAddOns from "./Forms/PickAddOns/PickAddOns";
 import LastStep from "./Forms/LastStep/LastStep";
 import Button from "../ui/Button/Button";
 import { useMultiStepForm } from "../customHooks/useMultiStepForm";
+import { useAppSelector } from "@/app/hooks";
 
 /**
  * Renders the multi-step user subscription form with:
@@ -18,6 +19,10 @@ import { useMultiStepForm } from "../customHooks/useMultiStepForm";
  * - Go Back and Next or Confirm buttons
  */
 export default function MultiStepForm() {
+  // Localization reducer
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
+  const navigationDict = dictionary.navigation;
+
   // MultiStepForm context
   const { currentStepIndex, goToPrevStep, isConfirmed, confirmSubscription } =
     useMultiStepForm();
@@ -55,7 +60,7 @@ export default function MultiStepForm() {
             <div className={styles.buttonsCont}>
               {currentStepIndex > 0 ? (
                 <Button
-                  description="Go Back"
+                  description={navigationDict.goBackBtn}
                   variant="transparentBtn"
                   handleOnClick={goToPrevStep}
                 />
@@ -64,13 +69,13 @@ export default function MultiStepForm() {
               <div className={styles.nextConfirmBtnCont}>
                 {currentStepIndex === stepsList.length - 1 ? (
                   <Button
-                    description="Confirm"
+                    description={navigationDict.confirmBtn}
                     variant="purpleBtn"
                     handleOnClick={confirmSubscription}
                   />
                 ) : (
                   <Button
-                    description="Next Step"
+                    description={navigationDict.nextStep}
                     variant="blueBtn"
                     handleOnClick={() => {
                       submitForm();

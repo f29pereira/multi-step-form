@@ -14,6 +14,11 @@
       "name": "Summary"
     }
   ],
+  "navigation": {
+    "goBackBtn": "Go Back",
+    "nextStep": "Next Step",
+    "confirmBtn": "Confirm"
+  },
   "subscription": {
     "yearly": {
       "long": "per year",

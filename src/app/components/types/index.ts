@@ -192,6 +192,7 @@ export type LocalizationState = Pick<
  * Type for the localization dictionary
  * @property step               - step keyword
  * @property stepsList          - list of step names
+ * @property navigation         - form navigation
  * @property subscription       - yearly and monthly keywords for the subscription prices
  * @property personalInfo       - PersonalInfo component dictionary
  * @property selectPlan         - SelectPlan component dictionary
@@ -200,11 +201,11 @@ export type LocalizationState = Pick<
  * @property pickAddOns         - ThankYou component dictionary
  */
 export type Dictionary = {
-  // TO DO: Add LanguageSwitch and navigation buttons localization
   step: string;
   stepsList: {
     name: string;
   }[];
+  navigation: NavigationDictionary;
   subscription: {
     yearly: SubscriptionDictionary;
     monthly: SubscriptionDictionary;
@@ -215,6 +216,18 @@ export type Dictionary = {
   pickAddOns: PickAddOnsDictionary;
   finishSubscription: FinishSubscriptionDictionary;
   thankYou: ThankYouDictionary;
+};
+
+/**
+ * Type for the form navigation
+ * @property goBackBtn  - go back button description
+ * @property nextStep   - next step button description
+ * @property confirmBtn - confirm button description
+ */
+export type NavigationDictionary = {
+  goBackBtn: string;
+  nextStep: string;
+  confirmBtn: string;
 };
 
 /**

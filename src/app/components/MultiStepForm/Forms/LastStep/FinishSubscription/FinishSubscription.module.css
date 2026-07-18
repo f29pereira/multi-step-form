@@ -5,7 +5,7 @@
  * .title        - main title
  * .linkBtn      - link to redirect to the SelectPlan component
  * .divider      - line between selected plan and add-ons list
- * .flexCont     - flex column container for the list of add-ons
+ * .flexCol     - flex column container for the list of add-ons
  * .totalCont    - total price container
  * .totalPrice   - total price
  * .greyText     - text with --grey-500 color

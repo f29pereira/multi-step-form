@@ -1,16 +1,18 @@
 "use client"; // Client Component
 
+import clsx from "clsx";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/app/hooks";
 import styles from "./LanguageSwitch.module.css";
-import clsx from "clsx";
 import {
   getLocaleName,
   getUpperCaseLocale,
   LOCALE_CODES,
   getFormattedLocale,
 } from "./LanguageSwitch.utils";
+import { setCookie } from "@/app/lib/utils";
 import useToggle from "../customHooks/useToggle";
-import { useDispatch } from "react-redux";
 import { IoIosArrowDown, IoIosArrowUp, IoIosGlobe } from "@/app/lib/icons";
 import { LocaleCode } from "../types";
 import { setLocalization } from "@/app/features/localization/localizationSlice";
@@ -29,6 +31,9 @@ export default function LanguageSwitch() {
   // Locales pop-up
   const { isToggled, toggle } = useToggle(false);
 
+  // Next.js hooks
+  const router = useRouter();
+
   /**
    * Updates the app language
    */
@@ -36,6 +41,10 @@ export default function LanguageSwitch() {
     const dict = await fetchLocaleDictionary(localeCode);
 
     dispatch(setLocalization({ localeCode: localeCode, dictionary: dict }));
+
+    setCookie("NEXT_LOCALE", localeCode, 31536000); // Save cookie
+
+    router.replace(`/${localeCode}`); // Update locale URL param
 
     toggle(); // close the locales pop-up
   };

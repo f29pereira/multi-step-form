@@ -172,3 +172,20 @@ const getLanguageTag = (localeCode: LocaleCode) => {
       return "pt-PT";
   }
 };
+
+/**
+ * Creates a cookie
+ * @param cookieName  cookie name
+ * @param cookieValue value to be saved
+ * @param maxAge      number of seconds until the cookie expires
+ *
+ * @example setCookie("NEXT_LOCALE", "en", 31536000)
+ * // save the cookie NEXT_LOCALE with the value en for a full year
+ */
+export const setCookie = (
+  cookieName: string,
+  cookieValue: string,
+  maxAge: number,
+) => {
+  document.cookie = `${cookieName}=${cookieValue}; path=/; max-age=${maxAge}; SameSite=Lax`;
+};

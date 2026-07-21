@@ -14,11 +14,17 @@ import {
   FIXTURE_SUBSCRIPTIONTOGGLE,
   FIXTURE_THANKYOU,
   FIXTURE_STEP,
+  FIXTURE_ADD_ONS_LIST,
 } from "../../fixtures/multiStepForm.fixtures";
-import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import { getFormattedPrice } from "@/app/lib/utils";
 import { getSubscriptionTotal } from "@/app/components/MultiStepForm/Forms/LastStep/FinishSubscription/FinishSubscription.utils";
 import { getPlanById } from "@/app/components/MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
-import { AddOnProps, PlanProps } from "@/app/components/types";
+import {
+  AddOnProps,
+  Dictionary,
+  LocaleCode,
+  PlanProps,
+} from "@/app/components/types";
 import { getSelectedAddOns } from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns.utils";
 
 /**
@@ -125,16 +131,30 @@ export const expectPlanRadioInputInDocument = () => {
  * - Plan type
  * - Price (monthly or yearly value)
  * - Discount if applicable
+ *
+ * @param isYearly    if true returns the yearly pricing, if false returns the montly pricing
+ * @param type        plan type
+ * @param price       plan price
+ * @param localeCode  current locale code
+ * @param dictionary  localization dictionary
+ * @param discount    plan discount
  */
 export const expectPlanVisible = (
   isYearly: boolean,
   type: string,
-  value: number,
+  price: number,
+  localeCode: LocaleCode,
+  dictionary: Dictionary,
   discount: string | undefined,
 ) => {
   const planType = screen.getByText(type);
 
-  const formattedPrice = formatYearlyOrMonthlyPrice(isYearly, value);
+  const formattedPrice = getFormattedPrice(
+    isYearly,
+    price,
+    localeCode,
+    dictionary,
+  );
   const planPrice = screen.getByText(formattedPrice);
 
   expect(planType).toBeVisible();
@@ -180,12 +200,21 @@ export const expectPickAddOnsVisible = (addOnsListLength: number) => {
  * - Add-on type
  * - Add-on description
  * - Price (monthly or yearly value)
+ *
+ * @param isYearly    if true returns the yearly pricing, if false returns the montly pricing
+ * @param type        add-on type
+ * @param discription add-on description
+ * @param price       add-on price
+ * @param localeCode  current locale code
+ * @param dictionary  localization dictionary
  */
 export const expectAddOnVisible = (
   isYearly: boolean,
   type: string,
   discription: string,
   price: number,
+  localeCode: LocaleCode,
+  dictionary: Dictionary,
 ) => {
   const checkBoxInput = screen.getByTestId("add-on-input");
 
@@ -193,7 +222,12 @@ export const expectAddOnVisible = (
 
   const addOnDescription = screen.getByText(discription);
 
-  const formattedPrice = `+${formatYearlyOrMonthlyPrice(isYearly, price)}`;
+  const formattedPrice = `+${getFormattedPrice(
+    isYearly,
+    price,
+    localeCode,
+    dictionary,
+  )}`;
   const addOnPrice = screen.getByText(formattedPrice);
 
   expect(checkBoxInput).toBeVisible();
@@ -210,14 +244,18 @@ export const expectAddOnVisible = (
  * - Change plan button
  * - Form data: selected plan and add-ons list
  * - Subscription total
- * @param isYearly       - if true returns the yearly plans, if false returns the montly plans
- * @param selectedPlanId - selected plan id
- * @param selectedAddOns - list of selected add-ons id
+ * @param isYearly       if true returns the yearly plans, if false returns the montly plans
+ * @param selectedPlanId selected plan id
+ * @param selectedAddOns list of selected add-ons id
+ * @param localeCode  current locale code
+ * @param dictionary  localization dictionary
  */
 export const expectFinishSubscriptionVisible = (
   isYearly: boolean,
   selectedPlanId: string,
   selectedAddOns: string[],
+  localeCode: LocaleCode,
+  dictionary: Dictionary,
 ) => {
   const finishSubscription = FIXTURE_FORM_STEPS.finishSubscription;
 
@@ -228,6 +266,7 @@ export const expectFinishSubscriptionVisible = (
   ) as PlanProps;
 
   const selectedAddOnsList = getSelectedAddOns(
+    FIXTURE_ADD_ONS_LIST,
     selectedAddOns,
     isYearly,
   ) as AddOnProps[];
@@ -249,7 +288,12 @@ export const expectFinishSubscriptionVisible = (
   });
 
   const planPriceCont = screen.getByTestId("plan-price");
-  const planPriceValue = `${formatYearlyOrMonthlyPrice(isYearly, selectedPlan.price.value)}`;
+  const planPriceValue = `${getFormattedPrice(
+    isYearly,
+    selectedPlan.price.value,
+    localeCode,
+    dictionary,
+  )}`;
 
   const addOnTypeContainerList = screen.getAllByTestId("add-on-type");
   const addOnPriceContainerList = screen.getAllByTestId("add-on-price");
@@ -257,8 +301,13 @@ export const expectFinishSubscriptionVisible = (
   const totalText = screen.getByText(
     `Total ${`(per ${isYearly ? "year" : "month"})`}`,
   );
+
+  const totalValuePrice = getSubscriptionTotal(
+    selectedPlan,
+    selectedAddOnsList,
+  );
   const totalValue = screen.getByText(
-    `${formatYearlyOrMonthlyPrice(isYearly, getSubscriptionTotal(selectedPlan, selectedAddOnsList))}`,
+    `${getFormattedPrice(isYearly, totalValuePrice, localeCode, dictionary)}`,
   );
 
   expect(title).toBeVisible();
@@ -274,7 +323,7 @@ export const expectFinishSubscriptionVisible = (
     expect(addOnTypeContainerList[index]).toHaveTextContent(addOn.type);
 
     // Add-on price
-    const addOnPriceValue = `+${formatYearlyOrMonthlyPrice(isYearly, addOn.price)}`;
+    const addOnPriceValue = `+${getFormattedPrice(isYearly, addOn.price, localeCode, dictionary)}`;
     expect(addOnPriceContainerList[index]).toBeVisible();
     expect(addOnPriceContainerList[index]).toHaveTextContent(addOnPriceValue);
   });

@@ -34,7 +34,7 @@ export const getFormattedPriceWithLabel = (
  * @returns accessible price text for screen readers
  *
  * @example getFormattedLabelPrice(true, 90, "en", dictionary)
- * // "90 dollars per year"
+ * // "90 US dollars per year"
  */
 export const getFormattedLabelPrice = (
   isYearly: boolean,
@@ -44,11 +44,7 @@ export const getFormattedLabelPrice = (
 ) => {
   const priceText = formatCurrencyAsFullName(localeCode, price);
 
-  const subscriptionText = getSubscriptionText(
-    isYearly,
-    localeCode,
-    dictionary,
-  );
+  const subscriptionText = getSubscriptionText(isYearly, dictionary);
 
   return `${priceText} ${subscriptionText}`;
 };
@@ -56,7 +52,6 @@ export const getFormattedLabelPrice = (
 /**
  * Returns the subscription text for yearly or monthly payment
  * @param isYearly   is the price for yearly format
- * @param localeCode locale code
  *
  * @returns accessible subscription text for screen readers
  *
@@ -65,7 +60,6 @@ export const getFormattedLabelPrice = (
  */
 export const getSubscriptionText = (
   isYearly: boolean,
-  localeCode: LocaleCode,
   dictionary: Dictionary,
 ) => {
   const subscription = dictionary.subscription;
@@ -102,7 +96,7 @@ export const getFormattedPrice = (
 };
 
 /**
- * Returns a formatted full name price by a given localeCode
+ * Returns a formatted full name price by a given locale code
  * @param localeCode locale code
  * @param price      price to format
  *
@@ -125,12 +119,15 @@ export const formatCurrencyAsFullName = (
 };
 
 /**
- * Returns a formatted price with the currency symbol by a given localeCode
+ * Returns a formatted price with the currency symbol by a given local code
  * @param localeCode locale code
  * @param price      price to format
  *
  * @example formatCurrencyAsSymbol("en", 90)
  * // $90
+ *
+ * @example formatCurrencyAsSymbol("en", 90)
+ * // 90 €
  */
 export const formatCurrencyAsSymbol = (
   localeCode: LocaleCode,

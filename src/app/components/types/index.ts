@@ -15,7 +15,7 @@ export type FormStepProps = {
 /**
  * Props for the Circle component
  * @property stepIndex        - index of the step
- * @property stepIndexDesktop - index of ste step (desktop only)
+ * @property stepIndexDesktop - index of the step (desktop only)
  * @property stepName         - name of the step
  * @property isSelected       - is the step selected
  */

@@ -206,6 +206,7 @@ export const FIXTURE_STEPSLIST = {
  */
 export const FIXTURE_STEP = {
   stepIndex: 0,
+  stepIndexDesktop: "STEP 0",
   stepName: "Your Info",
 };
 
@@ -241,7 +242,7 @@ export const FIXTURE_MULTISTEPFORM = {
 export const FIXTURE_SUBSCRIPTIONTOGGLE = {
   monthly: "Monthly",
   yearly: "Yearly",
-  btnDescription: "Monthly/Yearly toggle current selected:",
+  btnDescription: "Monthly/Yearly subscription toggle, currently selected:",
 };
 
 /**

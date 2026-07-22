@@ -13,6 +13,7 @@ describe("Step component", () => {
     render(
       <Step
         stepIndex={step.stepIndex}
+        stepIndexDesktop={step.stepIndexDesktop}
         stepName={step.stepName}
         isSelected={true}
       />,

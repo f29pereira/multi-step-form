@@ -5,7 +5,6 @@ import userEvent from "@testing-library/user-event";
 import MultiStepFormProvider from "@/app/components/context/MultiStepFormProvider";
 import MultiStepForm from "@/app/components/MultiStepForm/MultiStepForm";
 import en from "@/app/[lang]/dictionaries/en.json";
-import pt from "@/app/[lang]/dictionaries/pt.json";
 import {
   fillPersonalInfo,
   submitForm,
@@ -157,8 +156,6 @@ describe("MultiStepForm component", () => {
         level: 1,
         name: personalInfo.title,
       });
-
-      // Unable to find an accessible element with the role "button" and name "English (en)"
 
       expect(titleEn).toBeVisible();
 

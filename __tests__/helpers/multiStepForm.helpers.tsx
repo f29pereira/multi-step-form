@@ -395,7 +395,7 @@ export const expectErrorMessageVisible = (messageText: string) => {
  * Expects the visibility of the following elements, in the LanguageSwitchVisible component:
  * - language switch button
  *
- * @param localeCode local code (e.g "en")
+ * @param localeCode locale code (e.g "en")
  */
 export const expectLanguageSwitchVisible = (localeCode: LocaleCode) => {
   const btn = screen.getByRole("button", {
@@ -407,9 +407,9 @@ export const expectLanguageSwitchVisible = (localeCode: LocaleCode) => {
 
 /**
  * Returns the LanguageSwitch aria-label text by a given locale code
- * @param localeCode local code
+ * @param localeCode locale code
  */
-const getLanguageSwitchBtnLabel = (localeCode: LocaleCode) => {
+export const getLanguageSwitchBtnLabel = (localeCode: LocaleCode) => {
   const languageSwitch = FIXTURE_LANGUAGESWITCH;
 
   switch (localeCode) {

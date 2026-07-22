@@ -1,7 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { useRouter } from "next/navigation";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../helpers/reduxHelper";
 import userEvent from "@testing-library/user-event";
 import MultiStepFormProvider from "@/app/components/context/MultiStepFormProvider";
 import MultiStepForm from "@/app/components/MultiStepForm/MultiStepForm";
+import en from "@/app/[lang]/dictionaries/en.json";
+import pt from "@/app/[lang]/dictionaries/pt.json";
 import {
   fillPersonalInfo,
   submitForm,
@@ -12,20 +16,43 @@ import {
   FIXTURE_SUBSCRIPTIONTOGGLE,
 } from "../../../../fixtures/multiStepForm.fixtures";
 import { expectErrorMessageVisible } from "../../../helpers/multiStepForm.helpers";
+import { getLanguageSwitchBtnLabel } from "../../../helpers/multiStepForm.helpers";
+import { getLocaleName } from "@/app/components/LanguageSwitch/LanguageSwitch.utils";
 
 const multiStepForm = FIXTURE_MULTISTEPFORM;
 const personalInfo = FIXTURE_FORM_STEPS.personalInfo;
 const subscriptionToggle = FIXTURE_SUBSCRIPTIONTOGGLE;
+
+// Localization
+const localeCode = "en";
+const dictionary = en;
+
+// Mock Next.js useRouter
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}));
+
+// Type cast to be able to call jest functions in useRouterMock
+const useRouterMock = useRouter as jest.Mock;
 
 /**
  * Integration testing for the component: MultiStepForm
  */
 describe("MultiStepForm component", () => {
   beforeEach(() => {
-    render(
+    useRouterMock.mockReturnValue({
+      replace: jest.fn(),
+    });
+
+    renderWithProviders(
       <MultiStepFormProvider>
         <MultiStepForm />
       </MultiStepFormProvider>,
+      {
+        preloadedState: {
+          localization: { localeCode: localeCode, dictionary: dictionary },
+        },
+      },
     );
   });
 
@@ -120,6 +147,42 @@ describe("MultiStepForm component", () => {
       await userEvent.click(monthlyBtn);
       expect(screen.queryAllByText(/\/yr/)).toHaveLength(3);
       expect(screen.queryAllByText(/\/mo/)).toHaveLength(0);
+    });
+  });
+
+  describe("LanguageSwitch component", () => {
+    it("Change the app language from English to Portuguese", async () => {
+      // PersonalInfo component title in English
+      const titleEn = screen.getByRole("heading", {
+        level: 1,
+        name: personalInfo.title,
+      });
+
+      // Unable to find an accessible element with the role "button" and name "English (en)"
+
+      expect(titleEn).toBeVisible();
+
+      const languageSwitchBtn = screen.getByRole("button", {
+        name: getLanguageSwitchBtnLabel(localeCode),
+      });
+
+      // Opens the language switch pop-up
+      await userEvent.click(languageSwitchBtn);
+
+      const ptLanguageBtn = screen.getByRole("button", {
+        name: getLocaleName("pt"),
+      });
+
+      // Changes the language to Portuguese
+      await userEvent.click(ptLanguageBtn);
+
+      // PersonalInfo component title in Portuguese
+      const titlePt = screen.getByRole("heading", {
+        level: 1,
+        name: personalInfo.title_pt,
+      });
+
+      expect(titlePt).toBeVisible();
     });
   });
 });

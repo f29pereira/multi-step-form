@@ -167,6 +167,7 @@ export const FIXTURE_FORM_STEPS = {
   // PersonalInfo component
   personalInfo: {
     title: "Step 1 of 4, Personal info",
+    title_pt: "Etapa 1 de 4, Informação pessoal",
     description: "Please provide your name, email address, and phone number.",
     nameInputLabel: "Name",
     emailInputLabel: "Email Address",

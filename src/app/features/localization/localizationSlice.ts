@@ -4,6 +4,7 @@ import type { LocalizationState } from "@/app/components/types";
 const initialState: LocalizationState = {
   localeCode: "en",
   dictionary: {
+    languageSwitch: "",
     step: "",
     stepsList: [],
     navigation: {

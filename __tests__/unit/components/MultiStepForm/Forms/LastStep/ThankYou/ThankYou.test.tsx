@@ -1,5 +1,6 @@
-import { render } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../../helpers/reduxHelper";
 import ThankYou from "@/app/components/MultiStepForm/Forms/LastStep/ThankYou/ThankYou";
+import en from "@/app/[lang]/dictionaries/en.json";
 import { expectThankYouVisible } from "../../../../../../helpers/multiStepForm.helpers";
 
 /**
@@ -7,7 +8,11 @@ import { expectThankYouVisible } from "../../../../../../helpers/multiStepForm.h
  */
 describe("ThankYou component", () => {
   beforeEach(() => {
-    render(<ThankYou />);
+    renderWithProviders(<ThankYou />, {
+      preloadedState: {
+        localization: { localeCode: "en", dictionary: en },
+      },
+    });
   });
 
   it("renders the main title and description", () => {

@@ -15,6 +15,7 @@ import {
   FIXTURE_THANKYOU,
   FIXTURE_STEP,
   FIXTURE_ADD_ONS_LIST,
+  FIXTURE_LANGUAGESWITCH,
 } from "../../fixtures/multiStepForm.fixtures";
 import { getFormattedPrice } from "@/app/lib/utils";
 import { getSubscriptionTotal } from "@/app/components/MultiStepForm/Forms/LastStep/FinishSubscription/FinishSubscription.utils";
@@ -26,6 +27,10 @@ import {
   PlanProps,
 } from "@/app/components/types";
 import { getSelectedAddOns } from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns.utils";
+import {
+  getLocaleName,
+  getUpperCaseLocale,
+} from "@/app/components/LanguageSwitch/LanguageSwitch.utils";
 
 /**
  * Expects the visibility of the following elements, in the PersonalInfo component:
@@ -378,12 +383,41 @@ export const expectStepVisible = () => {
 
 /**
  * Expects the visibility of an error message
- * @messageText - message text
+ * @param messageText - message text
  */
 export const expectErrorMessageVisible = (messageText: string) => {
   const errorMessage = screen.getByText(messageText);
 
   expect(errorMessage).toBeVisible();
+};
+
+/**
+ * Expects the visibility of the following elements, in the LanguageSwitchVisible component:
+ * - language switch button
+ *
+ * @param localeCode local code (e.g "en")
+ */
+export const expectLanguageSwitchVisible = (localeCode: LocaleCode) => {
+  const btn = screen.getByRole("button", {
+    name: getLanguageSwitchBtnLabel(localeCode),
+  });
+
+  expect(btn).toBeVisible();
+};
+
+/**
+ * Returns the LanguageSwitch aria-label text by a given locale code
+ * @param localeCode local code
+ */
+const getLanguageSwitchBtnLabel = (localeCode: LocaleCode) => {
+  const languageSwitch = FIXTURE_LANGUAGESWITCH;
+
+  switch (localeCode) {
+    case "en":
+      return languageSwitch.btnAriaLabel_en;
+    case "pt":
+      return languageSwitch.btnAriaLabel_pt;
+  }
 };
 
 /**
@@ -397,25 +431,4 @@ export const submitForm = async () => {
   });
 
   await userEvent.click(btn);
-};
-
-/**
- * Returns a React Form Hook provider with react element
- * @param ui           - React element to be rendered inside the React Form Hook provider
- * @param defaultValue - React Form Hook useForm defaultValues
- */
-export const renderWithReactFormHookProvider = <T extends FieldValues>(
-  ui: ReactElement,
-  defaultValue?: DefaultValues<T>,
-) => {
-  // Wrapper component
-  const Wrapper = ({ children }: { children: ReactNode }) => {
-    const methods = useForm({
-      defaultValues: defaultValue,
-    });
-
-    return <FormProvider {...methods}>{children}</FormProvider>;
-  };
-
-  return render(<Wrapper>{ui}</Wrapper>);
 };

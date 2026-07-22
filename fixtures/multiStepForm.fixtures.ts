@@ -253,3 +253,11 @@ export const FIXTURE_THANKYOU = {
   description:
     "Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loregaming.com.",
 };
+
+/**
+ * Mocked data for the LanguageSwitch component
+ */
+export const FIXTURE_LANGUAGESWITCH = {
+  btnAriaLabel_en: "Switch language, current selected English",
+  btnAriaLabel_pt: "Alterar idioma, atualmente selecionado Português",
+};

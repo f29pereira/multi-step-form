@@ -25,7 +25,9 @@ import { fetchLocaleDictionary } from "@/app/actions";
  */
 export default function LanguageSwitch() {
   // Localization reducer
-  const currentLocal = useAppSelector((state) => state.localization.localeCode);
+  const localization = useAppSelector((state) => state.localization);
+  const currentLocal = localization.localeCode;
+  const dictionary = localization.dictionary;
   const dispatch = useDispatch();
 
   // Locales pop-up
@@ -61,7 +63,7 @@ export default function LanguageSwitch() {
         aria-haspopup="menu"
         aria-expanded={isToggled}
         aria-controls="languages-pop-up"
-        aria-label={`Switch language, current selected ${getLocaleName(currentLocal)}`}
+        aria-label={`${dictionary.languageSwitch} ${getLocaleName(currentLocal)}`}
       >
         <div className={`${styles.flexCont} bold-text`}>
           <IoIosGlobe className={styles.icon} />

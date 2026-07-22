@@ -190,6 +190,7 @@ export type LocalizationState = Pick<
 
 /**
  * Type for the localization dictionary
+ * @propery  languageSwitch     - language switch button accessible text
  * @property step               - step keyword
  * @property stepsList          - list of step names
  * @property navigation         - form navigation
@@ -201,6 +202,7 @@ export type LocalizationState = Pick<
  * @property pickAddOns         - ThankYou component dictionary
  */
 export type Dictionary = {
+  languageSwitch: string;
   step: string;
   stepsList: {
     name: string;

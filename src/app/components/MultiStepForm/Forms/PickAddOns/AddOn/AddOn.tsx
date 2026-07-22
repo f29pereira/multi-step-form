@@ -76,7 +76,7 @@ export default function AddOn({ id, type, description, price }: AddOnProps) {
       {/*Price (monthly or yearly value)*/}
       <span className="sr-only">{`Plus ${price} dollars per ${isYearly ? "year" : "month"}`}</span>
       <span className={`lighter-text ${styles.price}`}>
-        {getFormattedPrice(isYearly, price, localeCode, dictionary)}
+        {`+${getFormattedPrice(isYearly, price, localeCode, dictionary)}`}
       </span>
     </label>
   );

@@ -12,7 +12,10 @@ import {
   FIXTURE_MULTISTEPFORM,
   FIXTURE_FORM_STEPS,
   FIXTURE_THANKYOU,
+  FIXTURE_LANGUAGESWITCH,
 } from "../../fixtures/multiStepForm.fixtures";
+import en from "@/app/[lang]/dictionaries/en.json";
+import { getLocaleName } from "@/app/components/LanguageSwitch/LanguageSwitch.utils";
 
 // Multi-step form Data
 const submittedData = multiStepFormContext();
@@ -30,12 +33,43 @@ const selectPlan = FIXTURE_FORM_STEPS.selectPlan;
 const finishSubscription = FIXTURE_FORM_STEPS.finishSubscription;
 const thankYou = FIXTURE_THANKYOU;
 
+//Localization
+const languageSwitchBtn = FIXTURE_LANGUAGESWITCH;
+const localeCode = "en";
+const dictionary = { en };
+
 /**
  * End to End testing: list of form steps
  */
 test.describe("Multi step form", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/"); // baseURL
+  });
+
+  test("allows the user to switch between English and Portuguese locale", async ({
+    page,
+  }) => {
+    // First form step (Personal Info) title in English
+    await expect(
+      page.getByRole("heading", { level: 1, name: personalInfo.title }),
+    ).toBeVisible();
+
+    // Clicks the language switch button
+    const btn = page.getByRole("button", {
+      name: languageSwitchBtn.btnAriaLabel_en,
+    });
+    await btn.click();
+
+    // Clicks the Portuguese language button
+    const ptBtn = page.getByRole("button", {
+      name: getLocaleName("pt"),
+    });
+    await ptBtn.click();
+
+    // First form step (Personal Info) title in Portuguese
+    await expect(
+      page.getByRole("heading", { level: 1, name: personalInfo.title_pt }),
+    ).toBeVisible();
   });
 
   test("doesn't allow the user to go to the next step if the current step has an invalid field", async ({
@@ -89,6 +123,8 @@ test.describe("Multi step form", () => {
         isYearly,
         selectedPlanId,
         selectedAddOnsIds,
+        localeCode,
+        dictionary.en,
       );
     });
 

@@ -1,6 +1,8 @@
-import { screen, render } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { renderWithProviders } from "../../../../../../helpers/reduxHelper";
 import SubscriptionToggle from "@/app/components/MultiStepForm/Forms/SelectPlan/SubscriptionToggle/SubscriptionToggle";
+import en from "@/app/[lang]/dictionaries/en.json";
 import { createEmptyMultiStepFormContext } from "../../../../../../../fixtures/multiStepForm.fixtures";
 import { expectSubscriptionToggleVisible } from "../../../../../../helpers/multiStepForm.helpers";
 
@@ -16,7 +18,11 @@ jest.mock("@/app/components/customHooks/useMultiStepForm", () => ({
  */
 describe("SubscriptionToggle component", () => {
   beforeEach(() => {
-    render(<SubscriptionToggle />);
+    renderWithProviders(<SubscriptionToggle />, {
+      preloadedState: {
+        localization: { localeCode: "en", dictionary: en },
+      },
+    });
   });
 
   it("renders the monthly and yearly text and the toggle button", () => {

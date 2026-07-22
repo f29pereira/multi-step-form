@@ -1,11 +1,4 @@
-import { ReactElement, ReactNode } from "react";
-import {
-  FormProvider,
-  useForm,
-  DefaultValues,
-  FieldValues,
-} from "react-hook-form";
-import { screen, render } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
   FIXTURE_FORM_STEPS,
@@ -27,10 +20,6 @@ import {
   PlanProps,
 } from "@/app/components/types";
 import { getSelectedAddOns } from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns.utils";
-import {
-  getLocaleName,
-  getUpperCaseLocale,
-} from "@/app/components/LanguageSwitch/LanguageSwitch.utils";
 
 /**
  * Expects the visibility of the following elements, in the PersonalInfo component:

@@ -1,4 +1,4 @@
-import { Dictionary } from "@/app/components/types";
+import type { Dictionary } from "@/app/components/types/localization";
 
 /**
  * Returns the React Hook Form validation for the name field

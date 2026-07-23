@@ -1,4 +1,5 @@
-import { Dictionary, LocaleCode } from "../components/types";
+import { LocaleCode } from "../components/types";
+import type { Dictionary } from "../components/types/localization";
 
 /**
  * Returns an object with the formatted label and price for yearly or monthly payment

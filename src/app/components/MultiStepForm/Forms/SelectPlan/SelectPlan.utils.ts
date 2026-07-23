@@ -1,8 +1,5 @@
-import type {
-  PlanDetails,
-  PlanProps,
-  SelectPlanDictionary,
-} from "@/app/components/types";
+import type { PlanDetails, PlanProps } from "@/app/components/types";
+import type { SelectPlanDictionary } from "@/app/components/types/localization";
 
 /**
  * Returns the list of available subscription plans with localization

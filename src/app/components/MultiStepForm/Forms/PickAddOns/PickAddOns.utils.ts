@@ -1,8 +1,5 @@
-import type {
-  AddOnDetails,
-  AddOnProps,
-  PickAddOnsDictionary,
-} from "@/app/components/types";
+import type { AddOnDetails, AddOnProps } from "@/app/components/types";
+import type { PickAddOnsDictionary } from "@/app/components/types/localization";
 
 /**
  * Returns the list of available add-ons with localization

@@ -13,12 +13,8 @@ import {
 import { getFormattedPrice } from "@/app/lib/utils";
 import { getSubscriptionTotal } from "@/app/components/MultiStepForm/Forms/LastStep/FinishSubscription/FinishSubscription.utils";
 import { getPlanById } from "@/app/components/MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
-import {
-  AddOnProps,
-  Dictionary,
-  LocaleCode,
-  PlanProps,
-} from "@/app/components/types";
+import { AddOnProps, LocaleCode, PlanProps } from "@/app/components/types";
+import type { Dictionary } from "@/app/components/types/localization";
 import { getSelectedAddOns } from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns.utils";
 
 /**

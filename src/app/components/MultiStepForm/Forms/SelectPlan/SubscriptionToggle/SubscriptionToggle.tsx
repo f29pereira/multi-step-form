@@ -1,6 +1,7 @@
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import styles from "./SubscriptionToggle.module.css";
 import { useAppSelector } from "@/app/hooks";
+import Toggle from "@/app/components/ui/Toggle/Toggle";
 
 /**
  * Renders the monthly/yearly subscription toggle
@@ -30,15 +31,7 @@ export default function SubscriptionToggle() {
           isYearly ? subsToggleDict.yearlyText : subsToggleDict.monthlyText
         }`}
       >
-        {isYearly ? (
-          <div className={styles.yearlySelected}>
-            <div className={styles.circle}></div>
-          </div>
-        ) : (
-          <div className={styles.monthlySelected}>
-            <div className={styles.circle}></div>
-          </div>
-        )}
+        <Toggle isLeftSelected={!isYearly} />
       </button>
 
       {/*Yearly text*/}

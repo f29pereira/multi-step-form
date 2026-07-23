@@ -1,13 +1,10 @@
 /**
  * CSS Module for SubscriptionToggle component
  * Classes: 
- * .mainCont        - main container
- * .monthly         - monthly text
- * .toggleBtn       - toggle monthly/yearly subscription button
- * .monthlySelected - .circle container when the current selected subscription is monthly
- * .yearlySelected  - .circle container when the current selected subscription is yearly
- * .circle          - white circle inside .toggleBtn
- * .yearly          - yearly text
+ * .mainCont  - main container
+ * .monthly   - monthly text
+ * .toggleBtn - toggle monthly/yearly subscription button
+ * .yearly    - yearly text
  */
 
 .mainCont {
@@ -32,25 +29,6 @@
 /*on focus, display --purple-600 outline*/
 .toggleBtn:focus-visible {
   outline-color: var(--purple-600);
-}
-
-.monthlySelected {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.yearlySelected {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.circle {
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 50%;
-  background-color: var(--white);
 }
 
 .yearly {

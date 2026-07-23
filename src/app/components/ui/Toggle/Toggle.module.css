@@ -1,0 +1,26 @@
+/**
+ * CSS Module for Toggle component
+ * Classes: 
+ * .rightSelected - .circle container when the right side is currently selected
+ * .leftSelected  - .circle container when the left side is currently selected
+ * .circle        - white circle
+ */
+
+.leftSelected {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rightSelected {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.circle {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background-color: var(--white);
+}

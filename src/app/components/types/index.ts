@@ -80,3 +80,11 @@ export type ErrorMessageProps = {
   id: string;
   message?: string;
 };
+
+/**
+ * Props for the Toggle component
+ * @propery isLeftSelected - is the toggle selected on the left side
+ */
+export type ToggleProps = {
+  isLeftSelected: boolean;
+};

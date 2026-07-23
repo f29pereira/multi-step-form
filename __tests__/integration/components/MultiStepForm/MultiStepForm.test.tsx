@@ -16,7 +16,7 @@ import {
 } from "../../../../fixtures/multiStepForm.fixtures";
 import { expectErrorMessageVisible } from "../../../helpers/multiStepForm.helpers";
 import { getLanguageSwitchBtnLabel } from "../../../helpers/multiStepForm.helpers";
-import { getLocaleName } from "@/app/components/LanguageSwitch/LanguageSwitch.utils";
+import { getLocaleName } from "@/app/components/Switch/LanguageSwitch/LanguageSwitch.utils";
 
 const multiStepForm = FIXTURE_MULTISTEPFORM;
 const personalInfo = FIXTURE_FORM_STEPS.personalInfo;

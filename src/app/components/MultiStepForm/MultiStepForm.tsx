@@ -2,7 +2,7 @@
 
 import styles from "./MultiStepForm.module.css";
 import { useRef } from "react";
-import LanguageSwitch from "../LanguageSwitch/LanguageSwitch";
+import LanguageSwitch from "../Switch/LanguageSwitch/LanguageSwitch";
 import StepsList from "./StepsList/StepsList";
 import PersonalInfo from "./Forms/PersonalInfo/PersonalInfo";
 import SelectPlan from "./Forms/SelectPlan/SelectPlan";

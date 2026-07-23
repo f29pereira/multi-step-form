@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import { renderWithProviders } from "../../../helpers/reduxHelper";
-import LanguageSwitch from "@/app/components/LanguageSwitch/LanguageSwitch";
+import LanguageSwitch from "@/app/components/Switch/LanguageSwitch/LanguageSwitch";
 import en from "@/app/[lang]/dictionaries/en.json";
 import { expectLanguageSwitchVisible } from "../../../helpers/multiStepForm.helpers";
 

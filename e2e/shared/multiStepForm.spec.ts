@@ -15,7 +15,7 @@ import {
   FIXTURE_LANGUAGESWITCH,
 } from "../../fixtures/multiStepForm.fixtures";
 import en from "@/app/[lang]/dictionaries/en.json";
-import { getLocaleName } from "@/app/components/LanguageSwitch/LanguageSwitch.utils";
+import { getLocaleName } from "@/app/components/Switch/LanguageSwitch/LanguageSwitch.utils";
 
 // Multi-step form Data
 const submittedData = multiStepFormContext();

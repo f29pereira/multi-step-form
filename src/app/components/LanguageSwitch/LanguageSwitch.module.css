@@ -93,10 +93,14 @@
 
 /*Desktop Styles*/
 @media (min-width: 64rem /*1024px*/) {
-  /*decrease top from 3rem to -3rem and right from 3rem to 0, add box shadow*/
+  /*decrease top from 3rem to -3rem and right from 3rem to 0*/
   .mainCont {
     top: -3rem; /*displayed above the .sectionCont (MultiStepForm component)*/
     right: 0;
+  }
+
+  /*add box shadow*/
+  .btn {
     box-shadow:
       0 10px 15px -3px var(--shadow),
       0 4px 6px -4px var(--shadow);

@@ -24,3 +24,11 @@ export type LocalizationState = Pick<
   StoreProviderProps,
   "localeCode" | "dictionary"
 >;
+
+/**
+ * Type for the theme slice
+ * @property isDarkTheme - is the dark mode theme active
+ */
+export type ThemeState = {
+  isDarkTheme: boolean;
+};

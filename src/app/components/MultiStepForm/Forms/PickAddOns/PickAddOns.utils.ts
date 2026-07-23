@@ -1,4 +1,5 @@
-import type { AddOnDetails, AddOnProps } from "@/app/components/types";
+import type { AddOnDetails } from "@/app/components/types/data";
+import type { AddOnProps } from "@/app/components/types";
 import type { PickAddOnsDictionary } from "@/app/components/types/localization";
 
 /**

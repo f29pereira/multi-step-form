@@ -1,4 +1,5 @@
-import type { PlanDetails, PlanProps } from "@/app/components/types";
+import type { PlanDetails } from "@/app/components/types/data";
+import type { PlanProps } from "@/app/components/types";
 import type { SelectPlanDictionary } from "@/app/components/types/localization";
 
 /**

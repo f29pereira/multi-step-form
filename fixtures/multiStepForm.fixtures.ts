@@ -1,5 +1,5 @@
-import type { PlanDetails, AddOnDetails } from "@/app/components/types";
-import {
+import type { PlanDetails, AddOnDetails } from "@/app/components/types/data";
+import type {
   MultiStepFormContextType,
   FormData,
 } from "@/app/components/types/context";

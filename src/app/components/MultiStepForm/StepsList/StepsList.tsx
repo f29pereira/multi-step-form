@@ -1,6 +1,6 @@
 import styles from "./StepsList.module.css";
 import type { StepsListProps } from "../../types";
-import Step from "../../shared/Step/Step";
+import Step from "./Step/Step";
 import { useAppSelector } from "@/app/hooks";
 
 /**

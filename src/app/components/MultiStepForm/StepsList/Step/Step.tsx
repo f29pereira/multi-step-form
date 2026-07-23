@@ -1,5 +1,5 @@
 import styles from "./Step.module.css";
-import type { StepProps } from "../../types";
+import type { StepProps } from "../../../types";
 
 /**
  * Renders a circle with the step index

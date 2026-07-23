@@ -10,7 +10,7 @@
 
 .mainCont {
   position: absolute;
-  top: 4.2rem;
+  top: 4.5rem;
   right: 1rem; /*to match the right padding of .sectionCont (MultiStepForm component)*/
   z-index: 1;
 }
@@ -68,9 +68,9 @@
 
 /*Tablet Styles*/
 @media (min-width: 48rem /*768px*/) {
-  /*decrease top from 4.2rem to 3rem and increase right from 1rem to 3rem*/
+  /*decrease top from 4.5rem to 3.5rem and increase right from 1rem to 3rem*/
   .mainCont {
-    top: 3rem;
+    top: 3.5rem;
     right: 3rem; /*to match the right padding of .sectionCont (MultiStepForm component)*/
   }
 

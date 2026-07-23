@@ -83,32 +83,6 @@ export type ErrorMessageProps = {
 };
 
 /* ---------------------------------------------------- */
-/* Redux Toolkit related types                          */
-/* ---------------------------------------------------- */
-
-/**
- * Type for the Redux store
- * @property children   - single or list of React children
- * @property locale     - current locale code
- * @property dictionary - locatization dictionary
- */
-export type StoreProviderProps = {
-  children: ReactNode;
-  localeCode: LocaleCode;
-  dictionary: Dictionary;
-};
-
-/**
- * Type for the localization slice
- * @property locale     - current locale code
- * @property dictionary - locatization dictionary
- */
-export type LocalizationState = Pick<
-  StoreProviderProps,
-  "localeCode" | "dictionary"
->;
-
-/* ---------------------------------------------------- */
 /* Localization related types                           */
 /* ---------------------------------------------------- */
 

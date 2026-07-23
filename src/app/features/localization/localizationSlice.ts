@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { LocalizationState } from "@/app/components/types";
+import type { LocalizationState } from "@/app/components/types/redux";
 
 const initialState: LocalizationState = {
   localeCode: "en",

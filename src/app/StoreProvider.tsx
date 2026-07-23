@@ -1,8 +1,8 @@
 "use client"; // Client Component
 import { useRef } from "react";
 import { Provider } from "react-redux";
+import type { StoreProviderProps } from "./components/types/redux";
 import { makeStore, AppStore } from "./lib/store";
-import type { StoreProviderProps } from "./components/types";
 
 /**
  * Creates and provides the Redux store

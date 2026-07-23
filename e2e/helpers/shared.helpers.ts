@@ -7,8 +7,11 @@ import {
   FIXTURE_PLANS_LIST,
   FIXTURE_ADD_ONS_LIST,
 } from "../../fixtures/multiStepForm.fixtures";
-import { PlanProps, AddOnProps, LocaleCode } from "@/app/components/types";
-import type { Dictionary } from "@/app/components/types/localization";
+import type { PlanProps, AddOnProps } from "@/app/components/types";
+import type {
+  LocaleCode,
+  Dictionary,
+} from "@/app/components/types/localization";
 import { getPlanById } from "@/app/components/MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
 import { getFormattedPrice } from "@/app/lib/utils";
 import { getSubscriptionTotal } from "@/app/components/MultiStepForm/Forms/LastStep/FinishSubscription/FinishSubscription.utils";

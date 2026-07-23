@@ -1,6 +1,6 @@
 "use server";
 
-import type { LocaleCode } from "./components/types";
+import type { LocaleCode } from "./components/types/localization";
 import { getDictionary } from "./[lang]/dictionaries";
 
 /**

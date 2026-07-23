@@ -14,7 +14,7 @@ import {
 import { setCookie } from "@/app/lib/utils";
 import useToggle from "../customHooks/useToggle";
 import { IoIosArrowDown, IoIosArrowUp, IoIosGlobe } from "@/app/lib/icons";
-import { LocaleCode } from "../types";
+import type { LocaleCode } from "../types/localization";
 import { setLocalization } from "@/app/features/localization/localizationSlice";
 import { fetchLocaleDictionary } from "@/app/actions";
 

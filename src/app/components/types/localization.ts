@@ -1,6 +1,11 @@
 // Localization related types
 
 /**
+ * Type for the locale codes
+ */
+export type LocaleCode = "en" | "pt";
+
+/**
  * Type for the localization dictionary
  * @propery  languageSwitch     - language switch button accessible text
  * @property step               - step keyword

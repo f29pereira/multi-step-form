@@ -1,4 +1,4 @@
-import type { LocaleCode } from "../types";
+import type { LocaleCode } from "../types/localization";
 
 /**
  * Returns the language name and given language code inside parentheses

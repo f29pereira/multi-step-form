@@ -1,8 +1,7 @@
 // Redux Toolkit related types
 
 import { ReactNode } from "react";
-import type { LocaleCode } from ".";
-import type { Dictionary } from "./localization";
+import type { LocaleCode, Dictionary } from "./localization";
 
 /**
  * Type for the Redux store

@@ -124,8 +124,3 @@ export type AddOnDetails = {
   monthlyPrice: number;
   yearlyPrice: number;
 };
-
-/**
- * Type for the locale codes
- */
-export type LocaleCode = "en" | "pt";

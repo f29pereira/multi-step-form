@@ -5,7 +5,8 @@ import clsx from "clsx";
 import { useForm } from "react-hook-form";
 import useFocus from "@/app/components/customHooks/useFocus";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
-import type { FormStepProps, PersonalInfoFields } from "@/app/components/types";
+import type { PersonalInfoFields } from "@/app/components/types/context";
+import type { FormStepProps } from "@/app/components/types";
 import {
   nameValidation,
   emailValidation,

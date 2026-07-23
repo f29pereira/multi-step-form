@@ -1,7 +1,8 @@
 "use client"; // Client Component
 
 import styles from "./PickAddOns.module.css";
-import type { FormStepProps, SelectedAddOns } from "@/app/components/types";
+import type { SelectedAddOns } from "@/app/components/types/context";
+import type { FormStepProps } from "@/app/components/types";
 import useFocus from "@/app/components/customHooks/useFocus";
 import { getAddOnsWithLocalization } from "./PickAddOns.utils";
 import { getAddOnsListBySubscription } from "./PickAddOns.utils";

@@ -1,7 +1,8 @@
 "use client"; // Client Component
 
 import styles from "./SelectPlan.module.css";
-import type { FormStepProps, SelectedPlan } from "@/app/components/types";
+import type { SelectedPlan } from "@/app/components/types/context";
+import type { FormStepProps } from "@/app/components/types";
 import {
   getPlansWithLocalization,
   getPlansListBySubscription,

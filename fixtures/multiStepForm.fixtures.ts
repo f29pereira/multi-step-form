@@ -1,9 +1,8 @@
-import type {
-  PlanDetails,
+import type { PlanDetails, AddOnDetails } from "@/app/components/types";
+import {
   MultiStepFormContextType,
-  AddOnDetails,
   FormData,
-} from "@/app/components/types";
+} from "@/app/components/types/context";
 
 /**
  * Returns an initial state mock for the MultiStepFormContext

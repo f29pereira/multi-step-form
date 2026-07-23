@@ -1,11 +1,11 @@
 "use client"; // Client Component
 
 import { createContext, useState } from "react";
-import type {
+import {
   MultiStepFormContextType,
   ReactChildrenType,
   FormData,
-} from "../types";
+} from "../types/context";
 import {
   getPlanById,
   getPlansWithLocalization,

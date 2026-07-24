@@ -52,10 +52,10 @@ export default function LanguageSwitch() {
   };
 
   return (
-    <div className={styles.mainCont}>
+    <>
       {/*Current locale button*/}
       <button
-        className={clsx(styles.btn, {
+        className={clsx("switchBtn", styles.btn, {
           [styles.toggled]: isToggled,
         })}
         onClick={toggle}
@@ -99,6 +99,6 @@ export default function LanguageSwitch() {
           )}
         </ul>
       ) : null}
-    </div>
+    </>
   );
 }

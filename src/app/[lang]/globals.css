@@ -25,6 +25,7 @@
   /*Size*/
   --font-size-14: 0.875rem; /*14px*/
   --font-size-base: 1rem;
+  --font-size-19: 1.1875rem; /*19px*/
   --font-size-20: 1.375rem; /*22px*/
   --font-size-25: 1.5625rem; /*25px*/
   --font-size-30: 1.875rem; /*30px*/
@@ -172,6 +173,20 @@ button:focus {
   margin: 1rem 0 1.5rem 0;
 }
 
+.switchBtn {
+  height: 100%;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--border-radius-10);
+  font-size: var(--font-size-14);
+  color: var(--grey-500);
+  background-color: var(--white);
+}
+
+/*on focus, display --grey-500 outline*/
+.switchBtn:focus-visible {
+  outline-color: var(--grey-500);
+}
+
 /*Tablet Styles*/
 @media (min-width: 48rem /*768px*/) {
   /*increase left/right padding from 1rem to 3rem*/
@@ -182,6 +197,12 @@ button:focus {
   /*remove max-width*/
   .form-description {
     max-width: unset;
+  }
+
+  /*increase padding to 0.5rem and font size from 14px to 16px*/
+  .switchBtn {
+    padding: 0.5rem;
+    font-size: var(--font-size-base);
   }
 }
 
@@ -206,5 +227,12 @@ button:focus {
   /*increase font size from 14px to 16px*/
   label {
     font-size: var(--font-size-base);
+  }
+
+  /*add box shadow*/
+  .switchBtn {
+    box-shadow:
+      0 10px 15px -3px var(--shadow),
+      0 4px 6px -4px var(--shadow);
   }
 }

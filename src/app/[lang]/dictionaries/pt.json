@@ -1,4 +1,9 @@
 {
+  "themeSwitch": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "btnAriaLabel": "Alterar para tema"
+  },
   "languageSwitch": "Alterar idioma, atualmente selecionado",
   "step": "Etapa",
   "stepsList": [

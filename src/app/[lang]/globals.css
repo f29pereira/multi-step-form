@@ -174,8 +174,7 @@ button:focus {
 }
 
 .switchBtn {
-  height: 100%;
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.5rem;
   border-radius: var(--border-radius-10);
   font-size: var(--font-size-14);
   color: var(--grey-500);

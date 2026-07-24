@@ -7,6 +7,7 @@ export type LocaleCode = "en" | "pt";
 
 /**
  * Type for the localization dictionary
+ * @propery  themeSwitch        - ThemeSwitch component dictionary
  * @propery  languageSwitch     - language switch button accessible text
  * @property step               - step keyword
  * @property stepsList          - list of step names
@@ -19,6 +20,7 @@ export type LocaleCode = "en" | "pt";
  * @property pickAddOns         - ThankYou component dictionary
  */
 export type Dictionary = {
+  themeSwitch: ThemeSwitchDictionary;
   languageSwitch: string;
   step: string;
   stepsList: {
@@ -35,6 +37,18 @@ export type Dictionary = {
   pickAddOns: PickAddOnsDictionary;
   finishSubscription: FinishSubscriptionDictionary;
   thankYou: ThankYouDictionary;
+};
+
+/**
+ * Type for the ThemeSwitch component localization
+ * @property light        - light keyword
+ * @property dark         - dark keyword
+ * @property btnAriaLabel - theme switch button aria label
+ */
+export type ThemeSwitchDictionary = {
+  light: string;
+  dark: string;
+  btnAriaLabel: string;
 };
 
 /**

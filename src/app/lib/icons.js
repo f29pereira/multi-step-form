@@ -1,3 +1,9 @@
-import { IoIosArrowDown, IoIosArrowUp, IoIosGlobe } from "react-icons/io";
+import {
+  IoIosArrowDown,
+  IoIosArrowUp,
+  IoIosGlobe,
+  IoMdMoon,
+  IoMdSunny,
+} from "react-icons/io";
 
-export { IoIosArrowDown, IoIosArrowUp, IoIosGlobe };
+export { IoIosArrowDown, IoIosArrowUp, IoIosGlobe, IoMdMoon, IoMdSunny };

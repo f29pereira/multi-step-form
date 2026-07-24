@@ -1,0 +1,30 @@
+/**
+ * CSS Module for the ThemeSwitch component
+ * Classes:
+ * .btn         - switch theme button
+ * .flexCont    - flex container for the button content
+ * .icon        - theme icons
+ * .lightIcon   - light icon
+ */
+
+/*on focus, display --purple-600 outline*/
+.btn:focus-visible {
+  border-radius: var(--border-radius-10);
+  outline-color: var(--purple-600);
+}
+
+.flexCont {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/*increase font size from 14px (.switchBtn) to 19px */
+.icon {
+  font-size: var(--font-size-19);
+}
+
+/*change light icon color from --grey-500 (.switchBtn) to --blue-950*/
+.lightIcon {
+  color: var(--blue-950);
+}

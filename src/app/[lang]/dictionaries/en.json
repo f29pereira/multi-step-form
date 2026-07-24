@@ -1,4 +1,9 @@
 {
+  "themeSwitch": {
+    "light": "Light theme",
+    "dark": "Dark theme",
+    "btnAriaLabel": "Switch to"
+  },
   "languageSwitch": "Switch language, current selected",
   "step": "Step",
   "stepsList": [

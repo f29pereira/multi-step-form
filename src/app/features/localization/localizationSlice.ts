@@ -4,6 +4,11 @@ import type { LocalizationState } from "@/app/components/types/redux";
 const initialState: LocalizationState = {
   localeCode: "en",
   dictionary: {
+    themeSwitch: {
+      light: "",
+      dark: "",
+      btnAriaLabel: "",
+    },
     languageSwitch: "",
     step: "",
     stepsList: [],

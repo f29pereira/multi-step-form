@@ -8,7 +8,7 @@ import type { ToggleProps } from "../../types";
  */
 export default function Toggle({ isLeftSelected }: ToggleProps) {
   return (
-    <>
+    <div className={styles.mainCont}>
       {isLeftSelected ? (
         <div className={styles.leftSelected}>
           <div className={styles.circle}></div>
@@ -18,6 +18,6 @@ export default function Toggle({ isLeftSelected }: ToggleProps) {
           <div className={styles.circle}></div>
         </div>
       )}
-    </>
+    </div>
   );
 }

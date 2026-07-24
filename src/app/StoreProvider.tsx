@@ -11,6 +11,7 @@ export default function StoreProvider({
   children,
   localeCode,
   dictionary,
+  isDarkTheme,
 }: StoreProviderProps) {
   const storeRef = useRef<AppStore>(undefined);
   // eslint-disable-next-line react-hooks/refs
@@ -21,6 +22,7 @@ export default function StoreProvider({
         localeCode: localeCode,
         dictionary: dictionary,
       },
+      theme: { isDarkTheme },
     });
   }
 

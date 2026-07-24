@@ -8,11 +8,13 @@ import type { LocaleCode, Dictionary } from "./localization";
  * @property children   - single or list of React children
  * @property locale     - current locale code
  * @property dictionary - locatization dictionary
+ * @property isDarkTheme - is the dark mode theme active
  */
 export type StoreProviderProps = {
   children: ReactNode;
   localeCode: LocaleCode;
   dictionary: Dictionary;
+  isDarkTheme: boolean;
 };
 
 /**
@@ -29,6 +31,4 @@ export type LocalizationState = Pick<
  * Type for the theme slice
  * @property isDarkTheme - is the dark mode theme active
  */
-export type ThemeState = {
-  isDarkTheme: boolean;
-};
+export type ThemeState = Pick<StoreProviderProps, "isDarkTheme">;

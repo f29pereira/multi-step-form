@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Ubuntu } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import { getDictionary, hasLocale } from "./dictionaries";
 import StoreProvider from "../StoreProvider";
@@ -27,6 +28,10 @@ export default async function RootLayout({
   children,
   params,
 }: LayoutProps<"/[lang]">) {
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get("APP_THEME")?.value;
+  const isDarkTheme = themeCookie === "dark";
+
   const { lang } = await params;
 
   if (!hasLocale(lang)) notFound();
@@ -34,9 +39,16 @@ export default async function RootLayout({
   const dict = await getDictionary(lang);
 
   return (
-    <html lang={(await params).lang} className={`${ubuntu.variable}`}>
+    <html
+      lang={(await params).lang}
+      className={`${isDarkTheme ? "dark-theme" : undefined} ${ubuntu.variable}`}
+    >
       <body>
-        <StoreProvider localeCode={lang} dictionary={dict}>
+        <StoreProvider
+          localeCode={lang}
+          dictionary={dict}
+          isDarkTheme={isDarkTheme}
+        >
           {children}
         </StoreProvider>
       </body>

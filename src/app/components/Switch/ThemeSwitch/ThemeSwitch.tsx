@@ -24,8 +24,8 @@ export default function ThemeSwitch() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // Adds dark-theme class to the document body
-    document.body.classList.toggle("dark-theme", isDarkTheme);
+    // Adds dark-theme class to the html element
+    document.documentElement.classList.toggle("dark-theme", isDarkTheme);
 
     // Saves cookie with current theme
     const theme = isDarkTheme ? "dark" : "light";

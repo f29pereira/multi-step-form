@@ -19,15 +19,9 @@
   color: var(--blue-950);
 }
 
-.toggleBtn {
-  width: 2.5rem;
-  padding: 0.3rem;
-  border-radius: var(--border-radius-10);
-  background-color: var(--blue-950);
-}
-
 /*on focus, display --purple-600 outline*/
 .toggleBtn:focus-visible {
+  border-radius: var(--border-radius-10);
   outline-color: var(--purple-600);
 }
 

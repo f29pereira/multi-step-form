@@ -71,9 +71,19 @@
     border-color: var(--purple-550);
   }
 
+  /*for the dark theme, on hover, change border color from --purple-200 to --blue-500*/
+  :global(.dark-theme) .input:hover {
+    border-color: var(--blue-500);
+  }
+
   /*maintain border color --red-500*/
   .input.errorInput:hover {
     border-color: var(--red-500);
+  }
+
+  /*for the dark theme, maintain border color --red-300*/
+  :global(.dark-theme) .input.errorInput:hover {
+    border-color: var(--red-300);
   }
 }
 

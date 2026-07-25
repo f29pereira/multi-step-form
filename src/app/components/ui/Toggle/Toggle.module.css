@@ -14,6 +14,11 @@
   background-color: var(--blue-950);
 }
 
+/*for the dark theme, change background color from --blue-950 to --blue-500*/
+:global(.dark-theme) .mainCont {
+  background-color: var(--blue-500);
+}
+
 .leftSelected {
   display: flex;
   justify-content: flex-start;
@@ -38,5 +43,10 @@
   /*on hover, change background color from --blue-950 to --blue-900*/
   .mainCont:hover {
     background-color: var(--blue-900);
+  }
+
+  /*for the dark theme, on hover, change background color from --blue-500 to --blue-450*/
+  :global(.dark-theme) .mainCont:hover {
+    background-color: var(--blue-450);
   }
 }

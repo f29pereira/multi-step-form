@@ -56,6 +56,11 @@
   background-color: var(--white);
 }
 
+/*for the dark theme, change background color from --white to --blue-950*/
+:global(.dark-theme) .buttonsCont {
+  background-color: var(--blue-950);
+}
+
 .nextConfirmBtnCont {
   margin-left: auto;
 }
@@ -101,6 +106,12 @@
     box-shadow:
       0 10px 15px -3px var(--shadow),
       0 4px 6px -4px var(--shadow);
+  }
+
+  /*for the dark theme, change background color from --white to --blue-950 and remove box shadow*/
+  :global(.dark-theme) .sectionCont {
+    background-color: var(--blue-950);
+    box-shadow: none;
   }
 
   /*flex column, add padding*/

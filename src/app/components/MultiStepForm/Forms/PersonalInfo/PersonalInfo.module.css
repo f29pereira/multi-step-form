@@ -16,9 +16,20 @@
   color: var(--blue-950);
 }
 
+/*for the dark theme, change text color from --blue-950 to --white and set background color to --slate-600*/
+:global(.dark-theme) .input {
+  color: var(--white);
+  background-color: var(--slate-600);
+}
+
 /*change border color from --purple-200 to --red-500*/
 .input.errorInput {
   border-color: var(--red-500);
+}
+
+/*for the dark theme, change border color from --red-500 to --red-300*/
+:global(.dark-theme) .input.errorInput {
+  border-color: var(--red-300);
 }
 
 .input::placeholder {
@@ -27,15 +38,30 @@
   color: var(--grey-450);
 }
 
+/*for the dark theme, change the placeholder text color from --grey-450 to --purple-200*/
+:global(.dark-theme) .input::placeholder {
+  color: var(--purple-200);
+}
+
 /*when focused, change the border color from --purple-200 to --purple-550*/
 .input:focus {
   outline: none; /*remove default browser outline*/
   border-color: var(--purple-550);
 }
 
+/*for the dark theme, when focused, change the border color from --purple-200 to --blue-500*/
+:global(.dark-theme) .input:focus {
+  border-color: var(--blue-500);
+}
+
 /*when focused with error, change the border color from --purple-550 to --red-500*/
 .input.errorInput:focus {
   border-color: var(--red-500);
+}
+
+/*for the dark theme, when focused with error, change the border color from --blue-500 to --red-300*/
+:global(.dark-theme) .input.errorInput:focus {
+  border-color: var(--red-300);
 }
 
 /*Tablet Styles*/

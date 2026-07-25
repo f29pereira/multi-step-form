@@ -45,6 +45,7 @@
   /*Colors:*/
   /*Neutral*/
   --slate-950: hsl(228.57, 84%, 4.9%);
+  --slate-600: hsl(215.29, 19.32%, 34.51%);
   --grey-500: hsl(231, 11%, 63%);
   --grey-450: hsl(231, 11%, 71%);
   --purple-200: hsl(229, 24%, 87%);
@@ -63,6 +64,7 @@
   --blue-300: hsl(228, 100%, 84%);
   --blue-200: hsl(206, 94%, 87%);
   --red-500: hsl(354, 84%, 57%);
+  --red-300: hsl(0, 93.55%, 81.76%);
 }
 
 html {
@@ -71,7 +73,7 @@ html {
   transition-duration: 500ms;
 }
 
-/*for dark theme, set the color scheme to dark and change the background color from --blue-100 to --slate-950*/
+/*for the dark theme, set the color scheme to dark and change the background color from --blue-100 to --slate-950*/
 html.dark-theme {
   color-scheme: dark;
   background-color: var(--slate-950);
@@ -117,7 +119,7 @@ p {
   color: var(--grey-500);
 }
 
-/*fort he dark theme, change text color from --grey-500 to --purple-200*/
+/*for the dark theme, change text color from --grey-500 to --purple-200*/
 .dark-theme p {
   color: var(--purple-200);
 }
@@ -131,6 +133,11 @@ label {
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-400);
   color: var(--blue-950);
+}
+
+/*for the dark theme, change text color from --blue-950 to --white*/
+.dark-theme label {
+  color: var(--white);
 }
 
 fieldset {
@@ -264,5 +271,10 @@ button:focus {
     box-shadow:
       0 10px 15px -3px var(--shadow),
       0 4px 6px -4px var(--shadow);
+  }
+
+  /*for the dark theme, remove box shadow*/
+  .dark-theme .switchBtn {
+    box-shadow: none;
   }
 }

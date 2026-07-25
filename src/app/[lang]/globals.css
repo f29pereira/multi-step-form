@@ -1,12 +1,16 @@
 /*
  * Global CSS styles
  * Classes:
- * .lighter-text    - font-weight-400
- * .light-text      - font-weight-500
- * .bold-text       - font-weight-700
- * .flex-center     - centered flex row container
- * .sr-only         - available only for screen readers
- * .white-card-cont - card with 10px border radius and white background
+ * .lighter-text     - font-weight-400
+ * .light-text       - font-weight-500
+ * .bold-text        - font-weight-700
+ * .flex-center      - centered flex row container
+ * .flex-col-center  - centered flex column container
+ * .sr-only          - available only for screen readers
+ * .white-card-cont  - card with 10px border radius and white background
+ * .form-description - form text description
+ * .switchBtn        - switch button (app theme/locale)
+ * .dark-theme       - dark theme class
 */
 * {
   box-sizing: border-box;
@@ -40,6 +44,7 @@
 
   /*Colors:*/
   /*Neutral*/
+  --slate-950: hsl(228.57, 84%, 4.9%);
   --grey-500: hsl(231, 11%, 63%);
   --grey-450: hsl(231, 11%, 71%);
   --purple-200: hsl(229, 24%, 87%);
@@ -51,11 +56,25 @@
   /*Primary*/
   --blue-950: hsl(213, 96%, 18%);
   --blue-900: hsl(213, 96%, 27%);
+  --blue-500: hsl(217.22, 91.22%, 59.8%);
+  --blue-450: hsl(215.17, 92.56%, 63.82%);
   --purple-600: hsl(243, 100%, 62%);
   --purple-550: hsl(243, 100%, 71%);
   --blue-300: hsl(228, 100%, 84%);
   --blue-200: hsl(206, 94%, 87%);
   --red-500: hsl(354, 84%, 57%);
+}
+
+html {
+  background-color: var(--blue-100);
+  transition-property: background-color;
+  transition-duration: 500ms;
+}
+
+/*for dark theme, set the color scheme to dark and change the background color from --blue-100 to --slate-950*/
+html.dark-theme {
+  color-scheme: dark;
+  background-color: var(--slate-950);
 }
 
 html,
@@ -65,24 +84,27 @@ body {
   -moz-osx-font-smoothing: grayscale; /*smooths the edges of fonts Firefox on macOS*/
 }
 
-body {
-  background-color: var(--blue-100);
-}
-
 h1 {
   font-size: var(--font-size-20);
-  font-weight: var(--font-weight-700);
-  color: var(--blue-950);
-}
-
-h2 {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-700);
-  color: var(--blue-950);
 }
 
 h1:focus {
   outline: none;
+}
+
+h2 {
+  font-size: var(--font-size-base);
+}
+
+h1,
+h2 {
+  font-weight: var(--font-weight-700);
+  color: var(--blue-950);
+}
+
+/*for the dark theme, change text color from --blue-950 to --white*/
+.dark-theme :is(h1, h2) {
+  color: var(--white);
 }
 
 a {
@@ -93,6 +115,11 @@ p {
   font-size: var(--font-size-base);
   line-height: 1.5;
   color: var(--grey-500);
+}
+
+/*fort he dark theme, change text color from --grey-500 to --purple-200*/
+.dark-theme p {
+  color: var(--purple-200);
 }
 
 ul {
@@ -140,7 +167,6 @@ button:focus {
   align-items: center;
 }
 
-/*Centered flex column container*/
 .flex-col-center {
   display: flex;
   flex-direction: column;
@@ -166,6 +192,11 @@ button:focus {
   padding: 2rem 1rem;
   border-radius: var(--border-radius-10);
   background-color: var(--white);
+}
+
+/*for the dark theme, change background color grom --white to --blue-950*/
+.dark-theme .white-card-cont {
+  background-color: var(--blue-950);
 }
 
 .form-description {

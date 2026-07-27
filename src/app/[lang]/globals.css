@@ -221,9 +221,20 @@ button:focus {
   background-color: var(--white);
 }
 
+/*for the dark theme, change text color from --grey-500 to --white and background color from --white to --slate-700*/
+.dark-theme .switchBtn {
+  color: var(--white);
+  background-color: var(--slate-700);
+}
+
 /*on focus, display --grey-500 outline*/
 .switchBtn:focus-visible {
   outline-color: var(--grey-500);
+}
+
+/*for the dark theme, on focus, display --white outline*/
+.dark-theme .switchBtn:focus-visible {
+  outline-color: var(--white);
 }
 
 /*Tablet Styles*/

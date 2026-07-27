@@ -13,6 +13,11 @@
   outline-color: var(--purple-600);
 }
 
+/*for the dark theme, on focus, display --white outline*/
+:global(.dark-theme) .btn:focus-visible {
+  outline-color: var(--white);
+}
+
 .flexCont {
   display: flex;
   align-items: center;
@@ -27,4 +32,14 @@
 /*change light icon color from --grey-500 (.switchBtn) to --blue-950*/
 .lightIcon {
   color: var(--blue-950);
+}
+
+/*for the dark theme, change light icon color from --purple-200 (.switchBtn) to --white*/
+:global(.dark-theme) .lightIcon {
+  color: var(--white);
+}
+
+/*for the dark theme, change dark icon color from --white (.switchBtn) to --purple-200*/
+:global(.dark-theme) .darkIcon {
+  color: var(--purple-200);
 }

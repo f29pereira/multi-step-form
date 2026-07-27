@@ -53,7 +53,7 @@ export default function ThemeSwitch() {
       </button>
 
       {/*Dark theme icon*/}
-      <IoMdMoon className={styles.icon} />
+      <IoMdMoon className={`${styles.icon} ${styles.darkIcon}`} />
     </div>
   );
 }

@@ -9,7 +9,7 @@
   width: 100%;
   margin: 0.5rem 0 1rem 0;
   padding: 0.8rem 1rem;
-  border: 1.5px solid var(--purple-200);
+  border: 1.5px solid var(--purple-grey-200);
   border-radius: var(--border-radius-5);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-700);
@@ -22,7 +22,7 @@
   background-color: var(--slate-700);
 }
 
-/*change border color from --purple-200 to --red-500*/
+/*change border color from --purple-grey-200 to --red-500*/
 .input.errorInput {
   border-color: var(--red-500);
 }
@@ -38,18 +38,18 @@
   color: var(--grey-450);
 }
 
-/*for the dark theme, change the placeholder text color from --grey-450 to --purple-200*/
+/*for the dark theme, change the placeholder text color from --grey-450 to --purple-grey-200*/
 :global(.dark-theme) .input::placeholder {
-  color: var(--purple-200);
+  color: var(--purple-grey-200);
 }
 
-/*when focused, change the border color from --purple-200 to --purple-550*/
+/*when focused, change the border color from --purple-grey-200 to --purple-550*/
 .input:focus {
   outline: none; /*remove default browser outline*/
   border-color: var(--purple-550);
 }
 
-/*for the dark theme, when focused, change the border color from --purple-200 to --blue-500*/
+/*for the dark theme, when focused, change the border color from --purple-grey-200 to --blue-500*/
 :global(.dark-theme) .input:focus {
   border-color: var(--blue-500);
 }
@@ -66,12 +66,12 @@
 
 /*Tablet Styles*/
 @media (min-width: 48rem /*768px*/) {
-  /*on hover, change border color from --purple-200 to --purple-550*/
+  /*on hover, change border color from --purple-grey-200 to --purple-550*/
   .input:hover {
     border-color: var(--purple-550);
   }
 
-  /*for the dark theme, on hover, change border color from --purple-200 to --blue-500*/
+  /*for the dark theme, on hover, change border color from --purple-grey-200 to --blue-500*/
   :global(.dark-theme) .input:hover {
     border-color: var(--blue-500);
   }

@@ -44,7 +44,7 @@
   color: var(--grey-500);
 }
 
-/*for the dark theme, change text color from --grey-500 to --purple-200*/
+/*for the dark theme, change text color from --grey-500 to --purple-grey-200*/
 :global(.dark-theme) .yearly {
-  color: var(--purple-200);
+  color: var(--purple-grey-200);
 }

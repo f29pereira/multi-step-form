@@ -42,7 +42,7 @@
 
 .stepIndex {
   margin-bottom: 0.2rem;
-  color: var(--purple-200);
+  color: var(--purple-grey-200);
   font-size: var(--font-size-14);
   letter-spacing: 0.1em;
 }

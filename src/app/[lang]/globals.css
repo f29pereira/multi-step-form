@@ -50,7 +50,7 @@
   --slate-550: hsl(213, 10%, 39%);
   --grey-500: hsl(231, 11%, 63%);
   --grey-450: hsl(231, 11%, 71%);
-  --purple-200: hsl(229, 24%, 87%);
+  --purple-grey-200: hsl(229, 24%, 87%);
   --blue-100: hsl(218, 100%, 97%);
   --blue-50: hsl(231, 100%, 99%);
   --white: hsl(0, 100%, 100%);
@@ -121,9 +121,9 @@ p {
   color: var(--grey-500);
 }
 
-/*for the dark theme, change text color from --grey-500 to --purple-200*/
+/*for the dark theme, change text color from --grey-500 to --purple-grey-200*/
 .dark-theme p {
-  color: var(--purple-200);
+  color: var(--purple-grey-200);
 }
 
 ul {

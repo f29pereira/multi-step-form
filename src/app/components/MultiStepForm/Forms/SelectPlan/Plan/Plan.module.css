@@ -18,29 +18,29 @@
   width: 100%;
   height: 6rem; /*96px*/
   cursor: pointer;
-  border: 2px solid var(--purple-200);
+  border: 2px solid var(--purple-grey-200);
   border-radius: var(--border-radius-10);
 }
 
-/*for the dark theme, change border color from --purple-200 to --white and set background color to --slate-700*/
+/*for the dark theme, change border color from --purple-grey-200 to --white and set background color to --slate-700*/
 :global(.dark-theme) .planCont {
   border-color: var(--white);
   background-color: var(--slate-700);
 }
 
-/*change border color from --purple-200 to --purple-550*/
+/*change border color from --purple-grey-200 to --purple-550*/
 .planCont.selected {
   border-color: var(--purple-550);
   background-color: var(--blue-100);
 }
 
-/*for the dark theme, change border color from --purple-200 to --blue-500 and background color from --blue-100 to --slate-550*/
+/*for the dark theme, change border color from --purple-grey-200 to --blue-500 and background color from --blue-100 to --slate-550*/
 :global(.dark-theme) .planCont.selected {
   border-color: var(--blue-500);
   background-color: var(--slate-550);
 }
 
-/*change border color from --purple-200 to --red-500*/
+/*change border color from --purple-grey-200 to --red-500*/
 .planCont.errorInput {
   border-color: var(--red-500);
 }
@@ -77,9 +77,9 @@
   color: var(--grey-500);
 }
 
-/*for the dark theme, change color from --grey-500 to --purple-200*/
+/*for the dark theme, change color from --grey-500 to --purple-grey-200*/
 :global(.dark-theme) .value {
-  color: var(--purple-200);
+  color: var(--purple-grey-200);
 }
 
 .discount {
@@ -99,7 +99,7 @@
     height: 7.8125rem; /*125px*/
   }
 
-  /*on hover, change border color from --purple-200 to --purple-600*/
+  /*on hover, change border color from --purple-grey-200 to --purple-600*/
   .planCont:hover {
     border-color: var(--purple-600);
   }

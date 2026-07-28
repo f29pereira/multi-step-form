@@ -86,6 +86,7 @@ export default function FinishSubscription() {
           <button
             className={`light-text ${styles.greyText} ${styles.linkBtn}`}
             onClick={() => goToStep(1)}
+            onMouseDown={(e) => e.preventDefault()}
           >
             <span className="light-text">
               {finishingUpDict.changePlanLink}{" "}

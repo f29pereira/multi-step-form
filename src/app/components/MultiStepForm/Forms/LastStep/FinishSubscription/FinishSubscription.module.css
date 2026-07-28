@@ -5,11 +5,11 @@
  * .title        - main title
  * .linkBtn      - link to redirect to the SelectPlan component
  * .divider      - line between selected plan and add-ons list
- * .flexCol     - flex column container for the list of add-ons
+ * .flexCol      - flex column container for the list of add-ons
  * .totalCont    - total price container
  * .totalPrice   - total price
- * .greyText     - text with --grey-500 color
- * .blueText     - text with --blue-950 color
+ * .greyText     - text with --grey-500 color (Change btn, Add-on type, Total text)
+ * .blueText     - text with --blue-950 color (total price)
  */
 
 .formDataCont {
@@ -18,18 +18,40 @@
   border-radius: var(--border-radius-5);
 }
 
+/*for the dark theme, change background color from --blue-50 to --slate-700*/
+:global(.dark-theme) .formDataCont {
+  background-color: var(--slate-700);
+}
+
 .title {
   margin-bottom: 0.5rem;
 }
 
 .linkBtn {
+  border-radius: var(--border-radius-10);
+  background-color: transparent;
   font-size: var(--font-size-base);
   text-decoration: underline;
+}
+
+/*on focus, display --purple-550 outline*/
+.linkBtn:focus-visible {
+  outline-color: var(--purple-550);
+}
+
+/*for the dark theme, display --blue-500 outline*/
+:global(.dark-theme) .linkBtn:focus-visible {
+  outline-color: var(--blue-500);
 }
 
 .planPrice {
   font-size: var(--font-size-base);
   color: var(--blue-950);
+}
+
+/*for the dark theme, change the text color from --blue-950 to --white*/
+:global(.dark-theme) .planPrice {
+  color: var(--white);
 }
 
 .divider {
@@ -55,12 +77,27 @@
   color: var(--purple-600);
 }
 
+/*for the dark theme, change text color from --purple-600 to --purple-200*/
+:global(.dark-theme) .totalPrice {
+  color: var(--purple-200);
+}
+
 .greyText {
   color: var(--grey-500);
 }
 
+/*for the dark theme, change text color from --grey-500 to --purple-grey-200*/
+:global(.dark-theme) .greyText {
+  color: var(--purple-grey-200);
+}
+
 .blueText {
   color: var(--blue-950);
+}
+
+/*for the dark theme, change text color from --blue-950 to --white*/
+:global(.dark-theme) .blueText {
+  color: var(--white);
 }
 
 /*Tablet Styles*/
@@ -78,5 +115,10 @@
   /*on hover, change text color from --grey-500 to --purple-550*/
   .linkBtn:hover {
     color: var(--purple-550);
+  }
+
+  /*for the dark theme, on hover, change text color from --purple-grey-200 to --blue-450*/
+  :global(.dark-theme) .linkBtn:hover {
+    color: var(--blue-450);
   }
 }

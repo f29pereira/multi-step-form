@@ -22,15 +22,32 @@
   border-radius: var(--border-radius-10);
 }
 
+/*for the dark theme, change border color from --purple-200 to --white and set background color to --slate-700*/
+:global(.dark-theme) .planCont {
+  border-color: var(--white);
+  background-color: var(--slate-700);
+}
+
 /*change border color from --purple-200 to --purple-550*/
 .planCont.selected {
   border-color: var(--purple-550);
   background-color: var(--blue-100);
 }
 
+/*for the dark theme, change border color from --purple-200 to --blue-500 and background color from --blue-100 to --slate-550*/
+:global(.dark-theme) .planCont.selected {
+  border-color: var(--blue-500);
+  background-color: var(--slate-550);
+}
+
 /*change border color from --purple-200 to --red-500*/
 .planCont.errorInput {
   border-color: var(--red-500);
+}
+
+/*for the dark theme, change border color from --white to --red-300*/
+:global(.dark-theme) .planCont.errorInput {
+  border-color: var(--red-300);
 }
 
 .contentCont {
@@ -50,14 +67,29 @@
   color: var(--blue-950);
 }
 
+/*for the dark theme, change color from --blue-950 to --white*/
+:global(.dark-theme) .type {
+  color: var(--white);
+}
+
 .value {
   font-size: var(--font-size-14);
   color: var(--grey-500);
 }
 
+/*for the dark theme, change color from --grey-500 to --purple-200*/
+:global(.dark-theme) .value {
+  color: var(--purple-200);
+}
+
 .discount {
   font-size: var(--font-size-14);
   color: var(--blue-950);
+}
+
+/*for the dark theme, change color from --blue-950 to --white*/
+:global(.dark-theme) .discount {
+  color: var(--white);
 }
 
 /*Tablet Styles*/
@@ -67,9 +99,14 @@
     height: 7.8125rem; /*125px*/
   }
 
-  /*on hover, change border color of the main container from --purple-200 to --purple-600*/
+  /*on hover, change border color from --purple-200 to --purple-600*/
   .planCont:hover {
     border-color: var(--purple-600);
+  }
+
+  /*for the dark theme, on hover, change border color from --white to --blue-500*/
+  :global(.dark-theme) .planCont:hover {
+    border-color: var(--blue-500);
   }
 
   /*increase the icon width/height from 40px to 50px*/

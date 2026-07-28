@@ -44,7 +44,7 @@ export type StepsListProps = {
  */
 export type ButtonProps = {
   description: string;
-  variant: "transparentBtn" | "blueBtn" | "purpleBtn" | "whiteBtn";
+  variant: "transparentBtn" | "blueBtn" | "purpleBtn";
   fontSize?: "small" | "base";
   handleOnClick?: () => void;
 };

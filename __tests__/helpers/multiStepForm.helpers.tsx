@@ -417,7 +417,7 @@ export const expectThemeSwitchVisible = () => {
   const themeSwitch = FIXTURE_THEMESWITCH;
 
   const btn = screen.getByRole("button", {
-    name: themeSwitch.btnAriaLabel,
+    name: themeSwitch.btnAriaLabel_light,
   });
 
   expect(btn).toBeVisible();

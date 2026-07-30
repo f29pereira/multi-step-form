@@ -266,5 +266,6 @@ export const FIXTURE_LANGUAGESWITCH = {
  * Mocked data for the ThemeSwitch component
  */
 export const FIXTURE_THEMESWITCH = {
-  btnAriaLabel: "Switch to Dark theme",
+  btnAriaLabel_light: "Switch to Dark theme",
+  btnAriaLabel_dark: "Switch to Light theme",
 };

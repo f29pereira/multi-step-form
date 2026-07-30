@@ -157,7 +157,7 @@ describe("MultiStepForm component", () => {
       expect(document.documentElement).not.toHaveClass("dark-theme");
 
       const themeSwitchBtn = screen.getByRole("button", {
-        name: themeSwitch.btnAriaLabel,
+        name: themeSwitch.btnAriaLabel_light,
       });
 
       // Switch to the dark theme

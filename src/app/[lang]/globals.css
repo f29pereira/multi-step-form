@@ -153,7 +153,7 @@ button {
   cursor: pointer;
 }
 
-button:focus {
+button:focus-visible {
   outline-width: 0.2rem;
   outline-style: solid;
   outline-offset: 4px;

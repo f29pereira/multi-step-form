@@ -4,6 +4,7 @@
  * .btn         - languages list pop-up button
  * .flexCont    - flex container for the button content
  * .languages   - languages list
+ * .item        - languages list item
  * .languageBtn - language item button
  */
 
@@ -41,13 +42,21 @@
 .languageBtn {
   width: 100%;
   margin: 0.5rem 0;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-10);
   color: var(--grey-500);
   font-size: var(--font-size-14);
 }
 
-/*on focus, display --grey-500 outline*/
+/*for the dark theme, change text color from --grey-500 to --white*/
+:global(.dark-theme) .languageBtn {
+  color: var(--white);
+}
+
+/*on focus, decrease outline offset from 4px to 1px and display --purple-550 outline*/
 .languageBtn:focus-visible {
-  outline-color: var(--grey-500);
+  outline-offset: 1px;
+  outline-color: var(--purple-550);
 }
 
 /*on focus, display --white outline*/
@@ -67,9 +76,25 @@
     color: var(--purple-grey-200);
   }
 
+  /*on focus, increase outline offset from 1px to 2px*/
+  .languageBtn:focus-visible {
+    outline-offset: 2px;
+  }
+
   /*increase top from 2rem to 3rem*/
   .languages {
     top: 3rem;
+  }
+
+  /*on hover, change text color from --grey-500 to --blue-950 and background color from --white to --grey-450*/
+  .item:hover {
+    color: var(--blue-950);
+    background-color: var(--purple-grey-200);
+  }
+
+  /*for the dark theme, on hover, change background color from --slate-700 to --slate-600*/
+  :global(.dark-theme) .item:hover {
+    background-color: var(--slate-600);
   }
 }
 
@@ -80,11 +105,5 @@
     margin: 0;
     padding: 0.5rem 0;
     font-size: var(--font-size-base);
-  }
-
-  /*on hover, change text color from --grey-500 to --blue-950 and background color from --white to --grey-450*/
-  .languageBtn:hover {
-    color: var(--blue-950);
-    background-color: var(--purple-grey-200);
   }
 }

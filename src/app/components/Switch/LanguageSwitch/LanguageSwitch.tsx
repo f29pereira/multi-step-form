@@ -83,7 +83,7 @@ export default function LanguageSwitch() {
         <ul className={styles.languages} id="languages-pop-up" role="menu">
           {LOCALE_CODES.filter((locale) => locale !== currentLocal).map(
             (locale, index) => (
-              <li key={index}>
+              <li key={index} className={styles.item}>
                 <button
                   className={`bold-text ${styles.languageBtn}`}
                   onClick={() => {

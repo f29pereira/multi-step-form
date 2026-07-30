@@ -13,6 +13,7 @@ import {
   FIXTURE_FORM_STEPS,
   FIXTURE_THANKYOU,
   FIXTURE_LANGUAGESWITCH,
+  FIXTURE_THEMESWITCH,
 } from "../../fixtures/multiStepForm.fixtures";
 import en from "@/app/[lang]/dictionaries/en.json";
 import { getLocaleName } from "@/app/components/Switch/LanguageSwitch/LanguageSwitch.utils";
@@ -33,7 +34,12 @@ const selectPlan = FIXTURE_FORM_STEPS.selectPlan;
 const finishSubscription = FIXTURE_FORM_STEPS.finishSubscription;
 const thankYou = FIXTURE_THANKYOU;
 
-//Localization
+// Theme
+const themeSwitchBtn = FIXTURE_THEMESWITCH;
+const lightTitle = "rgb(2, 41, 90)";
+const darkTitle = "rgb(255, 255, 255)";
+
+// Localization
 const languageSwitchBtn = FIXTURE_LANGUAGESWITCH;
 const localeCode = "en";
 const dictionary = { en };
@@ -44,6 +50,32 @@ const dictionary = { en };
 test.describe("Multi step form", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/"); // baseURL
+  });
+
+  test("allows the user to switch between the light and dark themes", async ({
+    page,
+  }) => {
+    // "dark-theme" class is not present
+    await expect(page.locator("html")).not.toHaveClass(/dark-theme/);
+
+    // First form step (Personal Info) header - light variant
+    const title = page.getByRole("heading", {
+      level: 1,
+      name: personalInfo.title,
+    });
+    await expect(title).toHaveCSS("color", lightTitle);
+
+    // Clicks the theme switch button
+    const lightThemeBtn = page.getByRole("button", {
+      name: themeSwitchBtn.btnAriaLabel_light,
+    });
+    await lightThemeBtn.click();
+
+    // "dark-theme" class is present
+    await expect(page.locator("html")).toHaveClass(/dark-theme/);
+
+    // First form step (Personal Info) header - dark variant
+    await expect(title).toHaveCSS("color", darkTitle);
   });
 
   test("allows the user to switch between English and Portuguese locale", async ({

@@ -1,8 +1,8 @@
 import { useRouter } from "next/navigation";
-import { renderWithProviders } from "../../../helpers/reduxHelper";
+import { renderWithProviders } from "../../../../helpers/reduxHelper";
 import LanguageSwitch from "@/app/components/Switch/LanguageSwitch/LanguageSwitch";
 import en from "@/app/[lang]/dictionaries/en.json";
-import { expectLanguageSwitchVisible } from "../../../helpers/multiStepForm.helpers";
+import { expectLanguageSwitchVisible } from "../../../../helpers/multiStepForm.helpers";
 
 // Mock Next.js useRouter
 jest.mock("next/navigation", () => ({

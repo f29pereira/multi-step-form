@@ -49,11 +49,14 @@ export default function ThemeSwitch() {
         onMouseDown={(e) => e.preventDefault()}
         aria-label={`${themeSwitchDict.btnAriaLabel} ${isDarkTheme ? themeSwitchDict.light : themeSwitchDict.dark}`}
       >
-        <Toggle isLeftSelected={!isDarkTheme} aria-hidden="true" />
+        <Toggle isLeftSelected={!isDarkTheme} />
       </button>
 
       {/*Dark theme icon*/}
-      <IoMdMoon className={`${styles.icon} ${styles.darkIcon}`} />
+      <IoMdMoon
+        className={`${styles.icon} ${styles.darkIcon}`}
+        aria-hidden="true"
+      />
     </div>
   );
 }

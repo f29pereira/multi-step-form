@@ -66,14 +66,14 @@ export default function LanguageSwitch() {
         aria-label={`${dictionary.languageSwitch} ${getLocaleName(currentLocal)}`}
       >
         <div className={`${styles.flexCont} bold-text`}>
-          <IoIosGlobe className={styles.icon} />
+          <IoIosGlobe className={styles.icon} aria-hidden="true" />
 
           <span>{getUpperCaseLocale(currentLocal)}</span>
 
           {isToggled ? (
-            <IoIosArrowUp className={styles.icon} />
+            <IoIosArrowUp className={styles.icon} aria-hidden="true" />
           ) : (
-            <IoIosArrowDown className={styles.icon} />
+            <IoIosArrowDown className={styles.icon} aria-hidden="true" />
           )}
         </div>
       </button>

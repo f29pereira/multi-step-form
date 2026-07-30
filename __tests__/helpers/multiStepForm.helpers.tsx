@@ -9,6 +9,7 @@ import {
   FIXTURE_STEP,
   FIXTURE_ADD_ONS_LIST,
   FIXTURE_LANGUAGESWITCH,
+  FIXTURE_THEMESWITCH,
 } from "../../fixtures/multiStepForm.fixtures";
 import { getFormattedPrice } from "@/app/lib/utils";
 import { getSubscriptionTotal } from "@/app/components/MultiStepForm/Forms/LastStep/FinishSubscription/FinishSubscription.utils";
@@ -380,7 +381,7 @@ export const expectErrorMessageVisible = (messageText: string) => {
 };
 
 /**
- * Expects the visibility of the following elements, in the LanguageSwitchVisible component:
+ * Expects the visibility of the following elements, in the LanguageSwitch component:
  * - language switch button
  *
  * @param localeCode locale code (e.g "en")
@@ -406,6 +407,20 @@ export const getLanguageSwitchBtnLabel = (localeCode: LocaleCode) => {
     case "pt":
       return languageSwitch.btnAriaLabel_pt;
   }
+};
+
+/**
+ * Expects the visibility of the following elements, in the ThemeSwitch component:
+ * - theme switch button
+ */
+export const expectThemeSwitchVisible = () => {
+  const themeSwitch = FIXTURE_THEMESWITCH;
+
+  const btn = screen.getByRole("button", {
+    name: themeSwitch.btnAriaLabel,
+  });
+
+  expect(btn).toBeVisible();
 };
 
 /**

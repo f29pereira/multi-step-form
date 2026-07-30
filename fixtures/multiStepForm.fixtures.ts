@@ -261,3 +261,10 @@ export const FIXTURE_LANGUAGESWITCH = {
   btnAriaLabel_en: "Switch language, current selected English",
   btnAriaLabel_pt: "Alterar idioma, atualmente selecionado Português",
 };
+
+/**
+ * Mocked data for the ThemeSwitch component
+ */
+export const FIXTURE_THEMESWITCH = {
+  btnAriaLabel: "Switch to Dark theme",
+};

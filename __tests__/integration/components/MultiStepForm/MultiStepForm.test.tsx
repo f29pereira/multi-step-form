@@ -13,6 +13,7 @@ import {
   FIXTURE_MULTISTEPFORM,
   FIXTURE_FORM_STEPS,
   FIXTURE_SUBSCRIPTIONTOGGLE,
+  FIXTURE_THEMESWITCH,
 } from "../../../../fixtures/multiStepForm.fixtures";
 import { expectErrorMessageVisible } from "../../../helpers/multiStepForm.helpers";
 import { getLanguageSwitchBtnLabel } from "../../../helpers/multiStepForm.helpers";
@@ -21,6 +22,7 @@ import { getLocaleName } from "@/app/components/Switch/LanguageSwitch/LanguageSw
 const multiStepForm = FIXTURE_MULTISTEPFORM;
 const personalInfo = FIXTURE_FORM_STEPS.personalInfo;
 const subscriptionToggle = FIXTURE_SUBSCRIPTIONTOGGLE;
+const themeSwitch = FIXTURE_THEMESWITCH;
 
 // Localization
 const localeCode = "en";
@@ -50,6 +52,7 @@ describe("MultiStepForm component", () => {
       {
         preloadedState: {
           localization: { localeCode: localeCode, dictionary: dictionary },
+          theme: { isDarkTheme: false },
         },
       },
     );
@@ -146,6 +149,21 @@ describe("MultiStepForm component", () => {
       await userEvent.click(monthlyBtn);
       expect(screen.queryAllByText(/\/yr/)).toHaveLength(3);
       expect(screen.queryAllByText(/\/mo/)).toHaveLength(0);
+    });
+  });
+
+  describe("ThemeSwitch component", () => {
+    it("Change the app theme from light to dark", async () => {
+      expect(document.documentElement).not.toHaveClass("dark-theme");
+
+      const themeSwitchBtn = screen.getByRole("button", {
+        name: themeSwitch.btnAriaLabel,
+      });
+
+      // Switch to the dark theme
+      await userEvent.click(themeSwitchBtn);
+
+      expect(document.documentElement).toHaveClass("dark-theme");
     });
   });
 

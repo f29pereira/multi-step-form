@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import userEvent, { UserEvent } from "@testing-library/user-event";
+import { UserEvent } from "@testing-library/user-event";
 import {
   FIXTURE_FORM_STEPS,
   FIXTURE_MULTISTEPFORM,
@@ -50,17 +50,19 @@ export const expectPersonalInfoVisible = () => {
 
 /**
  * Fills the PersonalInfo component inputs: Name, Email Address and Phone Number
+ *
+ * @param user user-event
  */
-export const fillPersonalInfo = async () => {
+export const fillPersonalInfo = async (user: UserEvent) => {
   const personalInfo = FIXTURE_FORM_STEPS.personalInfo;
 
   const nameInput = screen.getByLabelText(personalInfo.nameInputLabel);
   const emailInput = screen.getByLabelText(personalInfo.emailInputLabel);
   const phoneInput = screen.getByLabelText(personalInfo.phoneInputLabel);
 
-  await userEvent.type(nameInput, "John Doe");
-  await userEvent.type(emailInput, "johndoe@email.com");
-  await userEvent.type(phoneInput, "123456789");
+  await user.type(nameInput, "John Doe");
+  await user.type(emailInput, "johndoe@email.com");
+  await user.type(phoneInput, "123456789");
 };
 
 /**
@@ -457,13 +459,15 @@ export const expectThemeSwitchVisible = () => {
 
 /**
  * Submits the "Confirm" button from the MultiStepForm component
+ *
+ *  @param user user-event
  */
-export const submitForm = async () => {
+export const submitForm = async (user: UserEvent) => {
   const multiStepForm = FIXTURE_MULTISTEPFORM;
 
-  const btn = screen.getByRole("button", {
-    name: multiStepForm.nextBtn,
-  });
-
-  await userEvent.click(btn);
+  await user.click(
+    screen.getByRole("button", {
+      name: multiStepForm.nextBtn,
+    }),
+  );
 };

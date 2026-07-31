@@ -17,6 +17,7 @@ import { IoIosArrowDown, IoIosArrowUp, IoIosGlobe } from "@/app/lib/icons";
 import type { LocaleCode } from "../../types/localization";
 import { setLocalization } from "@/app/features/localization/localizationSlice";
 import { fetchLocaleDictionary } from "@/app/actions";
+import { useOnEscape } from "../../customHooks/useOnEscape";
 
 /**
  * Renders the language switch with:
@@ -32,6 +33,9 @@ export default function LanguageSwitch() {
 
   // Locales pop-up
   const { isToggled, toggle } = useToggle(false);
+
+  // Locales close on Escape
+  useOnEscape(isToggled, toggle);
 
   // Next.js hooks
   const router = useRouter();

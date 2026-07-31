@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import userEvent, { UserEvent } from "@testing-library/user-event";
 import {
   FIXTURE_FORM_STEPS,
   FIXTURE_MULTISTEPFORM,
@@ -392,6 +392,38 @@ export const expectLanguageSwitchVisible = (localeCode: LocaleCode) => {
   });
 
   expect(btn).toBeVisible();
+};
+
+/**
+ * Clicks the language switch from the LanguageSwitch component
+ *
+ * @param localeCode locale code (e.g "en")
+ * @param user user-event
+ */
+export const clickLanguageSwitch = async (
+  localeCode: LocaleCode,
+  user: UserEvent,
+) => {
+  await user.click(
+    screen.getByRole("button", {
+      name: getLanguageSwitchBtnLabel(localeCode),
+    }),
+  );
+};
+
+/**
+ * Expects the visibility of the following elements, in the LanguageSwitch component:
+ * - Languages pop-up
+ */
+export const expectLanguagesPopUpVisible = () => {
+  expect(screen.queryByTestId("languages-pop-up")).toBeVisible();
+};
+
+/**
+ * Expects the languages pop-up, from LanguageSwitch component, isn't in the document
+ */
+export const expectLanguagesPopUpNotInDoc = () => {
+  expect(screen.queryByTestId("languages-pop-up")).not.toBeInTheDocument();
 };
 
 /**

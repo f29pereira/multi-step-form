@@ -84,7 +84,12 @@ export default function LanguageSwitch() {
 
       {/*List of languages pop-up*/}
       {isToggled ? (
-        <ul className={styles.languages} id="languages-pop-up" role="menu">
+        <ul
+          className={styles.languages}
+          id="languages-pop-up"
+          role="menu"
+          data-testid="languages-pop-up"
+        >
           {LOCALE_CODES.filter((locale) => locale !== currentLocal).map(
             (locale, index) => (
               <li key={index} className={styles.item}>

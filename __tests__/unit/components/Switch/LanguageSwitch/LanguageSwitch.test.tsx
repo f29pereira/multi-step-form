@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import userEvent, { UserEvent } from "@testing-library/user-event";
 import { renderWithProviders } from "../../../../helpers/reduxHelper";
 import LanguageSwitch from "@/app/components/Switch/LanguageSwitch/LanguageSwitch";
 import en from "@/app/[lang]/dictionaries/en.json";
@@ -8,7 +9,6 @@ import {
   expectLanguagesPopUpVisible,
   expectLanguagesPopUpNotInDoc,
 } from "../../../../helpers/multiStepForm.helpers";
-import userEvent from "@testing-library/user-event";
 
 // Mock Next.js useRouter
 jest.mock("next/navigation", () => ({
@@ -26,7 +26,11 @@ const dictionary = en;
  * Unit testing for the component: LanguageSwitch
  */
 describe("LanguageSwitch component", () => {
+  let user: UserEvent;
+
   beforeEach(() => {
+    user = userEvent.setup();
+
     useRouterMock.mockReturnValue({
       replace: jest.fn(),
     });
@@ -43,8 +47,6 @@ describe("LanguageSwitch component", () => {
   });
 
   describe("Allows to close the languages pop-up by", () => {
-    const user = userEvent.setup();
-
     beforeEach(async () => {
       await clickLanguageSwitch(localeCode, user);
 

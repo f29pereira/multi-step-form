@@ -4,9 +4,10 @@ import styles from "./Plan.module.css";
 import clsx from "clsx";
 import type { PlanProps } from "@/app/components/types";
 import { getPlanIcon } from "./Plan.util";
-import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import { useFormContext } from "react-hook-form";
+import { useAppSelector } from "@/app/hooks";
+import { getFormattedPriceWithLabel } from "@/app/lib/utils";
 
 /**
  * Renders a subscription plan with:
@@ -16,6 +17,11 @@ import { useFormContext } from "react-hook-form";
  * - Discount if applicable
  */
 export default function Plan({ id, type, price, isInvalid }: PlanProps) {
+  // Localization reducer
+  const localeCode = useAppSelector((state) => state.localization.localeCode);
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
+  const selectPlanDict = dictionary.selectPlan;
+
   // MultiStepForm context
   const { formData } = useMultiStepForm();
 
@@ -32,7 +38,13 @@ export default function Plan({ id, type, price, isInvalid }: PlanProps) {
   const isSelected = id === selectedPlanId;
 
   // Data
-  const icon = getPlanIcon(type);
+  const icon = getPlanIcon(id);
+  const formattedPrice = getFormattedPriceWithLabel(
+    isYearly,
+    price.value,
+    localeCode,
+    dictionary,
+  );
 
   return (
     <label
@@ -48,7 +60,7 @@ export default function Plan({ id, type, price, isInvalid }: PlanProps) {
         type="radio"
         value={id}
         {...register("selectedPlanId", {
-          required: "Select a plan to continue",
+          required: selectPlanDict.errorMessages.required,
         })}
       />
 
@@ -60,14 +72,14 @@ export default function Plan({ id, type, price, isInvalid }: PlanProps) {
         <span className={`bold-text ${styles.type}`}>{type}</span>
 
         {/*Price (monthly or yearly value)*/}
-        <span className="sr-only">{`Price ${price.value} dollars per ${isYearly ? "year" : "month"}`}</span>
+        <span className="sr-only">{formattedPrice.ariaLabel}</span>
 
         <span className={`light-text ${styles.value}`} aria-hidden="true">
-          {formatYearlyOrMonthlyPrice(isYearly, price.value)}
+          {formattedPrice.price}
         </span>
 
         {/*Discount*/}
-        <span className="sr-only">Discount</span>
+        <span className="sr-only">{selectPlanDict.discount}</span>
         <span
           className={`lighter-text ${styles.discount}`}
           data-testid="plan-discount"

@@ -2,12 +2,28 @@
  * CSS Module for MultiStepForm component
  * Classes:
  * .sectionCont    - main section container
+ * .absoluteCont   - absolute container for the ThemeSwitch and LanguageSwitch components
  * .stepsCont      - steps list container
  * .contentCont    - current form step and navigation buttons container
  * .formStepCont   - current form step container
  * .navigationCont - fixed container for the navigation buttons (mobile)
  * .buttonsCont    - "Go back", "Go next" or "Confirm" buttons container
  */
+
+.sectionCont {
+  position: relative;
+}
+
+.absoluteCont {
+  position: absolute;
+  top: 4rem; /*68.8px*/
+  right: 1rem; /*to match the right padding of .formStepCont*/
+  left: 1rem; /*to match the left padding of .formStepCont*/
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
 
 .stepsCont {
   width: 100%;
@@ -40,12 +56,26 @@
   background-color: var(--white);
 }
 
+/*for the dark theme, change background color from --white to --blue-950*/
+:global(.dark-theme) .buttonsCont {
+  background-color: var(--blue-950);
+}
+
 .nextConfirmBtnCont {
   margin-left: auto;
 }
 
 /*Tablet Styles*/
 @media (min-width: 48rem /*768px*/) {
+  /*decrease top from 4 to 3.5rem, increase: right/left from 1rem to 3rem, gap from 0.5rem to 1rem and height from 28px to 40px*/
+  .absoluteCont {
+    top: 3.5rem; /*56px*/
+    left: 3rem; /*to match the left padding of .formStepCont*/
+    right: 3rem; /*to match the right padding of .formStepCont*/
+    gap: 1rem;
+    height: 2.5rem; /*40px*/
+  }
+
   /*increase left/right padding from 1rem to 3rem*/
   .formStepCont {
     padding: 0 3rem;
@@ -54,12 +84,20 @@
 
 /*Desktop Styles*/
 @media (min-width: 64rem /*1024px*/) {
+  /*make top -3.5rem and decrease right from 3rem to 0, move the flex children to the left side and increase the gap from 1rem to 2rem*/
+  .absoluteCont {
+    top: -3.5rem; /*64px - displayed above .sectionCont*/
+    right: 0;
+    justify-content: flex-end;
+    gap: 2rem;
+  }
+
   /*grid with 2 columns, 3rem gap, set width to 880px and height to 640px*/
   .sectionCont {
     display: grid;
     grid-template-columns: 0.5fr 1fr;
     align-items: stretch;
-    gap: 3rem;
+    gap: 3rem; /*48px*/
     width: 55rem; /*880px*/
     height: 40rem; /*640px*/
     padding: 1rem;
@@ -68,6 +106,12 @@
     box-shadow:
       0 10px 15px -3px var(--shadow),
       0 4px 6px -4px var(--shadow);
+  }
+
+  /*for the dark theme, change background color from --white to --blue-950 and remove box shadow*/
+  :global(.dark-theme) .sectionCont {
+    background-color: var(--blue-950);
+    box-shadow: none;
   }
 
   /*flex column, add padding*/
@@ -107,7 +151,7 @@
 @media (min-width: 90rem /*1440px*/) {
   /*increase: gap from 3rem to 5rem, width from 880px to 960px and padding from 1rem to 1.2rem*/
   .sectionCont {
-    gap: 5rem;
+    gap: 5rem; /*80px*/
     width: 60rem; /*960px*/
     padding: 1.2rem;
   }

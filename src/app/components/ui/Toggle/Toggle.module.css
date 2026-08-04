@@ -1,0 +1,52 @@
+/**
+ * CSS Module for Toggle component
+ * Classes: 
+ * .mainCont      - main container
+ * .rightSelected - .circle container when the right side is currently selected
+ * .leftSelected  - .circle container when the left side is currently selected
+ * .circle        - white circle
+ */
+
+.mainCont {
+  width: 2.5rem;
+  padding: 0.3rem;
+  border-radius: var(--border-radius-10);
+  background-color: var(--blue-950);
+}
+
+/*for the dark theme, change background color from --blue-950 to --blue-500*/
+:global(.dark-theme) .mainCont {
+  background-color: var(--blue-500);
+}
+
+.leftSelected {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.rightSelected {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.circle {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background-color: var(--white);
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*on hover, change background color from --blue-950 to --blue-900*/
+  .mainCont:hover {
+    background-color: var(--blue-900);
+  }
+
+  /*for the dark theme, on hover, change background color from --blue-500 to --blue-450*/
+  :global(.dark-theme) .mainCont:hover {
+    background-color: var(--blue-450);
+  }
+}

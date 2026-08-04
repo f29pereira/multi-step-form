@@ -3,11 +3,22 @@
 import useFocus from "@/app/components/customHooks/useFocus";
 import styles from "./FinishSubscription.module.css";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
-import { getPlanById, PLANS_LIST } from "../../SelectPlan/SelectPlan.utils";
-import { getSelectedAddOns } from "../../PickAddOns/PickAddOns.utils";
-import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import {
+  getPlanById,
+  getPlansWithLocalization,
+} from "../../SelectPlan/SelectPlan.utils";
+import {
+  getAddOnsWithLocalization,
+  getSelectedAddOns,
+} from "../../PickAddOns/PickAddOns.utils";
+import {
+  getFormattedPrice,
+  getFormattedLabelPrice,
+  formatCurrencyAsFullName,
+} from "@/app/lib/utils";
 import { PlanProps } from "@/app/components/types";
 import { getSubscriptionTotal } from "./FinishSubscription.utils";
+import { useAppSelector } from "@/app/hooks";
 
 /**
  * Renders the subscription confirmation screen with:
@@ -18,67 +29,97 @@ import { getSubscriptionTotal } from "./FinishSubscription.utils";
  * - Subscription total
  */
 export default function FinishSubscription() {
+  // Localization reducer
+  const localeCode = useAppSelector((state) => state.localization.localeCode);
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
+  const pickAddOnsDict = dictionary.pickAddOns;
+  const selectPlanDict = dictionary.selectPlan;
+  const subscriptionToggle = dictionary.subscriptionToggle;
+  const finishingUpDict = dictionary.finishSubscription;
+
   // MultiStepForm context
   const { formData, goToStep } = useMultiStepForm();
-
   const isYearly = formData.isYearly;
-  const selectedPlan = getPlanById(
-    PLANS_LIST,
-    formData.selectedPlanId,
-    isYearly,
-  ) as PlanProps;
-  const selectedAddOns = getSelectedAddOns(formData.selectedAddOns, isYearly);
-  const total = getSubscriptionTotal(selectedPlan, selectedAddOns);
 
   // Main header Ref
   const { elementRef } = useFocus<HTMLHeadingElement>();
 
+  // Data
+  const selectedPlan = getPlanById(
+    getPlansWithLocalization(selectPlanDict),
+    formData.selectedPlanId,
+    isYearly,
+  ) as PlanProps;
+  const addOnsList = getAddOnsWithLocalization(pickAddOnsDict);
+  const selectedAddOns = getSelectedAddOns(
+    addOnsList,
+    formData.selectedAddOns,
+    isYearly,
+  );
+  const total = getSubscriptionTotal(selectedPlan, selectedAddOns);
+
   return (
     <div className={"white-card-cont"}>
+      {/*Main header*/}
       <h1
         ref={elementRef}
         tabIndex={-1}
         className={styles.title}
-        aria-label="Step 4 of 4, Finishing up"
+        aria-label={finishingUpDict.titleAriaLabel}
       >
-        Finishing up
+        {finishingUpDict.title}
       </h1>
 
+      {/*Form description*/}
       <p className="lighter-text form-description">
-        Double-check everything looks OK before confirming.
+        {finishingUpDict.description}
       </p>
 
       {/*Selected user's plan and add-ons*/}
       <div className={styles.formDataCont}>
         {/*Plan type*/}
         <h2 className={styles.title}>
-          {`${selectedPlan?.type} (${isYearly ? "Yearly" : "Monthly"})`}
+          {`${selectedPlan?.type} (${isYearly ? subscriptionToggle.yearlyText : subscriptionToggle.monthlyText})`}
         </h2>
 
         <div className="flex-space-between">
           <button
             className={`light-text ${styles.greyText} ${styles.linkBtn}`}
             onClick={() => goToStep(1)}
+            onMouseDown={(e) => e.preventDefault()}
           >
             <span className="light-text">
-              Change <span className="sr-only">Plan</span>
+              {finishingUpDict.changePlanLink}{" "}
+              <span className="sr-only">{finishingUpDict.changePlanLabel}</span>
             </span>
           </button>
 
           {/*Plan price*/}
-          <span className="sr-only">{`Price ${selectedPlan?.price} dollars per ${isYearly ? "year" : "month"}`}</span>
+          <span className="sr-only">
+            {getFormattedLabelPrice(
+              isYearly,
+              selectedPlan.price.value,
+              localeCode,
+              dictionary,
+            )}
+          </span>
 
           <span
             className={`bold-text ${styles.planPrice}`}
             aria-hidden="true"
             data-testid="plan-price"
           >
-            {formatYearlyOrMonthlyPrice(isYearly, selectedPlan.price.value)}
+            {getFormattedPrice(
+              isYearly,
+              selectedPlan.price.value,
+              localeCode,
+              dictionary,
+            )}
           </span>
         </div>
 
         <div className={styles.flexCol}>
-          <p className="sr-only">Selected Add-Ons</p>
+          <p className="sr-only">{finishingUpDict.addOnsLabel}</p>
 
           {/*Add-ons list*/}
           {selectedAddOns.length > 0 ? (
@@ -102,7 +143,12 @@ export default function FinishSubscription() {
                     aria-hidden="true"
                     data-testid="add-on-price"
                   >
-                    {`+${formatYearlyOrMonthlyPrice(isYearly, addOn.price)}`}
+                    {`+${getFormattedPrice(
+                      isYearly,
+                      addOn.price,
+                      localeCode,
+                      dictionary,
+                    )}`}
                   </span>
                 </div>
               ))}
@@ -114,15 +160,22 @@ export default function FinishSubscription() {
       {/*Subscription total*/}
       <div className={`flex-space-between ${styles.totalCont}`}>
         <span className={styles.greyText}>
-          Total {`(per ${isYearly ? "year" : "month"})`}
+          {finishingUpDict.total.text}{" "}
+          {`(${
+            isYearly
+              ? finishingUpDict.total.yearly
+              : finishingUpDict.total.monthly
+          })`}
         </span>
-        <span className="sr-only">{`${total} dollars`}</span>
+        <span className="sr-only">
+          {formatCurrencyAsFullName(localeCode, total)}
+        </span>
         <span
           className={`bold-text ${styles.totalPrice}`}
           aria-hidden="true"
           data-testid="total"
         >
-          {formatYearlyOrMonthlyPrice(isYearly, total)}
+          {getFormattedPrice(isYearly, total, localeCode, dictionary)}
         </span>
       </div>
     </div>

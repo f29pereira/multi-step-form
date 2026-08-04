@@ -1,0 +1,122 @@
+{
+  "themeSwitch": {
+    "light": "Light theme",
+    "dark": "Dark theme",
+    "btnAriaLabel": "Switch to"
+  },
+  "languageSwitch": "Switch language, current selected",
+  "step": "Step",
+  "stepsList": [
+    {
+      "name": "Your info"
+    },
+    {
+      "name": "Select plan"
+    },
+    {
+      "name": "Add-ons"
+    },
+    {
+      "name": "Summary"
+    }
+  ],
+  "navigation": {
+    "goBackBtn": "Go Back",
+    "nextStep": "Next Step",
+    "confirmBtn": "Confirm"
+  },
+  "subscription": {
+    "yearly": {
+      "long": "per year",
+      "short": "yr"
+    },
+    "monthly": {
+      "long": "per month",
+      "short": "mo"
+    }
+  },
+  "personalInfo": {
+    "titleAriaLabel": "Step 1 of 4, Personal info",
+    "title": "Personal info",
+    "description": "Please provide your name, email address, and phone number.",
+    "nameLabel": "Name",
+    "emailAddressLabel": "Email Address",
+    "phoneNumberLabel": "Phone Number",
+    "errorMessages": {
+      "required": "This field is required",
+      "name": {
+        "minLength": "Must be at least 2 characters",
+        "maxLength": "Must be under 50 characters",
+        "invalid": "Can only contain letters or spaces"
+      },
+      "emailAddress": "Invalid Email Address",
+      "phoneNumber": "Invalid Phone Number"
+    }
+  },
+  "selectPlan": {
+    "titleAriaLabel": "Step 2 of 4, Select your plan",
+    "title": "Select your plan",
+    "description": "You have the option of monthly or yearly billing.",
+    "legend": "Select your plan",
+    "discount": "Discount",
+    "plans": [
+      {
+        "type": "Arcade",
+        "discount": "2 months free"
+      },
+      {
+        "type": "Advanced",
+        "discount": "2 months free"
+      },
+      {
+        "type": "Pro",
+        "discount": "2 months free"
+      }
+    ],
+    "errorMessages": {
+      "required": "Select a plan to continue"
+    }
+  },
+  "subscriptionToggle": {
+    "monthlyText": "Monthly",
+    "toggleBtnLabel": "Monthly/Yearly subscription toggle, currently selected:",
+    "yearlyText": "Yearly"
+  },
+  "pickAddOns": {
+    "titleAriaLabel": "Step 3 of 4, Pick add-ons",
+    "title": "Pick add-ons",
+    "description": "Add-ons help enhance your gaming experience.",
+    "legend": "Pick add-ons",
+    "addOns": [
+      {
+        "type": "Online service",
+        "description": "Access to multiplayer games"
+      },
+      {
+        "type": "Larger storage",
+        "description": "Extra 1TB of cloud save"
+      },
+      {
+        "type": "Customizable profile",
+        "description": "Custom theme on your profile"
+      }
+    ]
+  },
+  "finishSubscription": {
+    "titleAriaLabel": "Step 4 of 4, Finishing up",
+    "title": "Finishing up",
+    "description": "Double-check everything looks OK before confirming.",
+    "changePlanLink": "Change",
+    "changePlanLabel": "Plan",
+    "addOnsLabel": "Selected Add-Ons",
+    "total": {
+      "text": "Total",
+      "yearly": "per year",
+      "monthly": "per month"
+    }
+  },
+  "thankYou": {
+    "title": "Thank you!",
+    "message": "Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loregaming.com."
+  }
+}

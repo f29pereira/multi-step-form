@@ -1,6 +1,7 @@
-import { render } from "@testing-library/react";
 import { createRef } from "react";
+import { renderWithProviders } from "../../../../../helpers/reduxHelper";
 import SelectPlan from "@/app/components/MultiStepForm/Forms/SelectPlan/SelectPlan";
+import en from "@/app/[lang]/dictionaries/en.json";
 import { createEmptyMultiStepFormContext } from "../../../../../../fixtures/multiStepForm.fixtures";
 import { FIXTURE_PLANS_LIST } from "../../../../../../fixtures/multiStepForm.fixtures";
 import { getPlansListBySubscription } from "@/app/components/MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
@@ -34,7 +35,12 @@ jest.mock(
 describe("SelectPlan component", () => {
   beforeEach(() => {
     const formRef = createRef<HTMLFormElement>();
-    render(<SelectPlan formRef={formRef} />);
+
+    renderWithProviders(<SelectPlan formRef={formRef} />, {
+      preloadedState: {
+        localization: { localeCode: "en", dictionary: en },
+      },
+    });
   });
 
   it("renders the main title, form description and list of plans", () => {

@@ -1,0 +1,122 @@
+{
+  "themeSwitch": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "btnAriaLabel": "Alterar para tema"
+  },
+  "languageSwitch": "Alterar idioma, atualmente selecionado",
+  "step": "Etapa",
+  "stepsList": [
+    {
+      "name": "Info. pessoal"
+    },
+    {
+      "name": "Escolher o plano"
+    },
+    {
+      "name": "Add-ons"
+    },
+    {
+      "name": "Resumo"
+    }
+  ],
+  "navigation": {
+    "goBackBtn": "Voltar",
+    "nextStep": "Próx. etapa",
+    "confirmBtn": "Confirmar"
+  },
+  "subscription": {
+    "yearly": {
+      "long": "anuais",
+      "short": "a."
+    },
+    "monthly": {
+      "long": "mensais",
+      "short": "m."
+    }
+  },
+  "personalInfo": {
+    "titleAriaLabel": "Etapa 1 de 4, Informação pessoal",
+    "title": "Informação pessoal",
+    "description": "Por favor, forneça o seu nome, endereço de e-mail e número de telefone.",
+    "nameLabel": "Nome",
+    "emailAddressLabel": "Endereço de e-mail",
+    "phoneNumberLabel": "Número de Telefone",
+    "errorMessages": {
+      "required": "Este campo é obrigatório",
+      "name": {
+        "minLength": "Deve ter pelo menos 2 caracteres",
+        "maxLength": "Deve ter menos de 50 caracteres",
+        "invalid": "Pode conter apenas letras ou espaços"
+      },
+      "emailAddress": "Endereço de e-mail inválido",
+      "phoneNumber": "Número de Telefone inválido"
+    }
+  },
+  "selectPlan": {
+    "titleAriaLabel": "Etapa 2 de 4, Ecolher o plano",
+    "title": "Escolha o seu plano",
+    "description": "Tem a opção de faturação mensal ou anual.",
+    "legend": "Escolha o seu plano",
+    "discount": "Desconto",
+    "plans": [
+      {
+        "type": "Arcade",
+        "discount": "2 meses grátis"
+      },
+      {
+        "type": "Advanced",
+        "discount": "2 meses grátis"
+      },
+      {
+        "type": "Pro",
+        "discount": "2 meses grátis"
+      }
+    ],
+    "errorMessages": {
+      "required": "Escolha um plano para continuar"
+    }
+  },
+  "subscriptionToggle": {
+    "monthlyText": "Mensal",
+    "toggleBtnLabel": "Alternar entre subscrição Mensal/Anual, atualmente selecionada:",
+    "yearlyText": "Anual"
+  },
+  "pickAddOns": {
+    "titleAriaLabel": "Etapa 3 de 4, Escolha add-ons",
+    "title": "Escolha add-ons",
+    "description": "Add-ons ajudam a melhorar a sua experiência gaming.",
+    "legend": "Escolha add-ons",
+    "addOns": [
+      {
+        "type": "Serviço online",
+        "description": "Acesso a jogos multiplayer"
+      },
+      {
+        "type": "Maior capacidade de armazenamento",
+        "description": "1TB extra na cloud save"
+      },
+      {
+        "type": "Perfil customizável",
+        "description": "Tema personalizado no seu perfil"
+      }
+    ]
+  },
+  "finishSubscription": {
+    "titleAriaLabel": "Etapa 4 de 4, Finalizar",
+    "title": "Finalizar",
+    "description": "Verifique novamente se está tudo OK antes de confirmar.",
+    "changePlanLink": "Mudar",
+    "changePlanLabel": "Plano",
+    "addOnsLabel": "Add-Ons escolhidos",
+    "total": {
+      "text": "Total",
+      "yearly": "por ano",
+      "monthly": "por mês"
+    }
+  },
+  "thankYou": {
+    "title": "Obrigado!",
+    "message": "Obrigado por confirmar a sua subscrição! Esperamos que se divirta a utilizar a nossa plataforma. Se precisar de apoio a qualquer momento, sinta-se à vontade para nos enviar um e-mail para support@loregaming.com."
+  }
+}

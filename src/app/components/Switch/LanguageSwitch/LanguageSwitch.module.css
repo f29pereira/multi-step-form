@@ -1,0 +1,109 @@
+/**
+ * CSS Module for the LanguageSwitch component
+ * Classes:
+ * .btn         - languages list pop-up button
+ * .flexCont    - flex container for the button content
+ * .languages   - languages list
+ * .item        - languages list item
+ * .languageBtn - language item button
+ */
+
+/*if the languages pop-up is visible, change .btn text color from --grey-500 to --blue-950*/
+.toggled {
+  color: var(--blue-950);
+}
+
+.flexCont {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.languages {
+  position: absolute;
+  top: 2.3rem;
+  right: 0;
+  padding: 1rem 0;
+  width: 8rem;
+  border-radius: var(--border-radius-10);
+  border: 2px solid var(--purple-grey-200);
+  background-color: var(--white);
+}
+
+/*for the dark theme, change background color from --white to --slate-700*/
+:global(.dark-theme) .languages {
+  background-color: var(--slate-700);
+}
+
+.languageBtn {
+  width: 100%;
+  margin: 0.5rem 0;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-10);
+  color: var(--grey-500);
+  font-size: var(--font-size-14);
+}
+
+/*for the dark theme, change text color from --grey-500 to --white*/
+:global(.dark-theme) .languageBtn {
+  color: var(--white);
+}
+
+/*on focus, decrease outline offset from 4px to 1px and display --purple-550 outline*/
+.languageBtn:focus-visible {
+  outline-offset: 1px;
+  outline-color: var(--purple-550);
+}
+
+/*on focus, display --white outline*/
+:global(.dark-theme) .languageBtn:focus-visible {
+  outline-color: var(--white);
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*on hover, change text color from --grey-500 to --blue-950*/
+  .btn:hover {
+    color: var(--blue-950);
+  }
+
+  /*for the dark theme, on hover, change text color from --white to --purple-grey-200*/
+  :global(.dark-theme) .btn:hover {
+    color: var(--purple-grey-200);
+  }
+
+  /*on focus, increase outline offset from 1px to 2px*/
+  .languageBtn:focus-visible {
+    outline-offset: 2px;
+  }
+
+  /*increase top from 2rem to 3rem*/
+  .languages {
+    top: 3rem;
+  }
+
+  /*on hover, change text color from --grey-500 to --blue-950 and background color from --white to --grey-450*/
+  .item:hover {
+    color: var(--blue-950);
+    background-color: var(--purple-grey-200);
+  }
+
+  /*for the dark theme, on hover, change background color from --slate-700 to --slate-600*/
+  :global(.dark-theme) .item:hover {
+    background-color: var(--slate-600);
+  }
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*remove margin, set top/bottom padding and increase font size from 14px to 16px*/
+  .languageBtn {
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: var(--font-size-base);
+  }
+}

@@ -1,4 +1,3 @@
-import "server-only";
 import type { Dictionary } from "../components/types/localization";
 
 const dictionaries = {

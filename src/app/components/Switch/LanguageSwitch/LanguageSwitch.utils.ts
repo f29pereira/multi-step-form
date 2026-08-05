@@ -1,4 +1,5 @@
 import type { LocaleCode } from "../../types/localization";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
 /**
  * Returns the language name and given language code inside parentheses
@@ -33,3 +34,11 @@ export const getLocaleName = (localeCode: LocaleCode) => {
  * List of available locale codes
  */
 export const LOCALE_CODES: LocaleCode[] = ["en", "pt"];
+
+/**
+ * Fetches the dictionary for a given locale code
+ * @param localeCode - locale code
+ */
+export const fetchLocaleDictionary = async (localeCode: LocaleCode) => {
+  return getDictionary(localeCode);
+};

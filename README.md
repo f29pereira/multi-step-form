@@ -693,6 +693,8 @@ After completing the Multi-step form:
 
 - For the unit/integration tests when using the `user-event` library, follow the docs recommendation and use a session object (`userEvent.setup()`) instead of the `userEvent` directly. This session object persists during the test and can be configured if necessary.
 
+- Since the app is deployed to GitHub Pages (which only serves static files), Server Actions aren't allowed because there is no server to run them. So the localization related files `dictionaries.ts` and `actions.ts` can't use `server-only` and `use server` respectively, the dictionary needs to be fetched on the client side.
+
 ## Author
 
 - Frontend Mentor - [@f29pereira](https://www.frontendmentor.io/profile/f29pereira)

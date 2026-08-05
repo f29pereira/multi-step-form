@@ -16,7 +16,7 @@ import useToggle from "../../customHooks/useToggle";
 import { IoIosArrowDown, IoIosArrowUp, IoIosGlobe } from "@/app/lib/icons";
 import type { LocaleCode } from "../../types/localization";
 import { setLocalization } from "@/app/features/localization/localizationSlice";
-import { fetchLocaleDictionary } from "@/app/actions";
+import { fetchLocaleDictionary } from "./LanguageSwitch.utils";
 import { useOnEscape } from "../../customHooks/useOnEscape";
 
 /**

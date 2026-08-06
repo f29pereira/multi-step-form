@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import Step from "@/app/components/shared/Step/Step";
+import Step from "@/app/components/MultiStepForm/StepsList/Step/Step";
 import { FIXTURE_STEP } from "../../../../fixtures/multiStepForm.fixtures";
 import { expectStepVisible } from "../../../helpers/multiStepForm.helpers";
 
@@ -13,6 +13,7 @@ describe("Step component", () => {
     render(
       <Step
         stepIndex={step.stepIndex}
+        stepIndexDesktop={step.stepIndexDesktop}
         stepName={step.stepName}
         isSelected={true}
       />,

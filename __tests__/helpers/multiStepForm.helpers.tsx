@@ -1,12 +1,5 @@
-import { ReactElement, ReactNode } from "react";
-import {
-  FormProvider,
-  useForm,
-  DefaultValues,
-  FieldValues,
-} from "react-hook-form";
-import { screen, render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { screen } from "@testing-library/react";
+import { UserEvent } from "@testing-library/user-event";
 import {
   FIXTURE_FORM_STEPS,
   FIXTURE_MULTISTEPFORM,
@@ -14,11 +7,18 @@ import {
   FIXTURE_SUBSCRIPTIONTOGGLE,
   FIXTURE_THANKYOU,
   FIXTURE_STEP,
+  FIXTURE_ADD_ONS_LIST,
+  FIXTURE_LANGUAGESWITCH,
+  FIXTURE_THEMESWITCH,
 } from "../../fixtures/multiStepForm.fixtures";
-import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import { getFormattedPrice } from "@/app/lib/utils";
 import { getSubscriptionTotal } from "@/app/components/MultiStepForm/Forms/LastStep/FinishSubscription/FinishSubscription.utils";
 import { getPlanById } from "@/app/components/MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
 import { AddOnProps, PlanProps } from "@/app/components/types";
+import type {
+  LocaleCode,
+  Dictionary,
+} from "@/app/components/types/localization";
 import { getSelectedAddOns } from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns.utils";
 
 /**
@@ -50,17 +50,19 @@ export const expectPersonalInfoVisible = () => {
 
 /**
  * Fills the PersonalInfo component inputs: Name, Email Address and Phone Number
+ *
+ * @param user user-event
  */
-export const fillPersonalInfo = async () => {
+export const fillPersonalInfo = async (user: UserEvent) => {
   const personalInfo = FIXTURE_FORM_STEPS.personalInfo;
 
   const nameInput = screen.getByLabelText(personalInfo.nameInputLabel);
   const emailInput = screen.getByLabelText(personalInfo.emailInputLabel);
   const phoneInput = screen.getByLabelText(personalInfo.phoneInputLabel);
 
-  await userEvent.type(nameInput, "John Doe");
-  await userEvent.type(emailInput, "johndoe@email.com");
-  await userEvent.type(phoneInput, "123456789");
+  await user.type(nameInput, "John Doe");
+  await user.type(emailInput, "johndoe@email.com");
+  await user.type(phoneInput, "123456789");
 };
 
 /**
@@ -125,16 +127,30 @@ export const expectPlanRadioInputInDocument = () => {
  * - Plan type
  * - Price (monthly or yearly value)
  * - Discount if applicable
+ *
+ * @param isYearly    if true returns the yearly pricing, if false returns the montly pricing
+ * @param type        plan type
+ * @param price       plan price
+ * @param localeCode  current locale code
+ * @param dictionary  localization dictionary
+ * @param discount    plan discount
  */
 export const expectPlanVisible = (
   isYearly: boolean,
   type: string,
-  value: number,
+  price: number,
+  localeCode: LocaleCode,
+  dictionary: Dictionary,
   discount: string | undefined,
 ) => {
   const planType = screen.getByText(type);
 
-  const formattedPrice = formatYearlyOrMonthlyPrice(isYearly, value);
+  const formattedPrice = getFormattedPrice(
+    isYearly,
+    price,
+    localeCode,
+    dictionary,
+  );
   const planPrice = screen.getByText(formattedPrice);
 
   expect(planType).toBeVisible();
@@ -180,12 +196,21 @@ export const expectPickAddOnsVisible = (addOnsListLength: number) => {
  * - Add-on type
  * - Add-on description
  * - Price (monthly or yearly value)
+ *
+ * @param isYearly    if true returns the yearly pricing, if false returns the montly pricing
+ * @param type        add-on type
+ * @param discription add-on description
+ * @param price       add-on price
+ * @param localeCode  current locale code
+ * @param dictionary  localization dictionary
  */
 export const expectAddOnVisible = (
   isYearly: boolean,
   type: string,
   discription: string,
   price: number,
+  localeCode: LocaleCode,
+  dictionary: Dictionary,
 ) => {
   const checkBoxInput = screen.getByTestId("add-on-input");
 
@@ -193,7 +218,12 @@ export const expectAddOnVisible = (
 
   const addOnDescription = screen.getByText(discription);
 
-  const formattedPrice = `+${formatYearlyOrMonthlyPrice(isYearly, price)}`;
+  const formattedPrice = `+${getFormattedPrice(
+    isYearly,
+    price,
+    localeCode,
+    dictionary,
+  )}`;
   const addOnPrice = screen.getByText(formattedPrice);
 
   expect(checkBoxInput).toBeVisible();
@@ -210,14 +240,18 @@ export const expectAddOnVisible = (
  * - Change plan button
  * - Form data: selected plan and add-ons list
  * - Subscription total
- * @param isYearly       - if true returns the yearly plans, if false returns the montly plans
- * @param selectedPlanId - selected plan id
- * @param selectedAddOns - list of selected add-ons id
+ * @param isYearly       if true returns the yearly plans, if false returns the montly plans
+ * @param selectedPlanId selected plan id
+ * @param selectedAddOns list of selected add-ons id
+ * @param localeCode  current locale code
+ * @param dictionary  localization dictionary
  */
 export const expectFinishSubscriptionVisible = (
   isYearly: boolean,
   selectedPlanId: string,
   selectedAddOns: string[],
+  localeCode: LocaleCode,
+  dictionary: Dictionary,
 ) => {
   const finishSubscription = FIXTURE_FORM_STEPS.finishSubscription;
 
@@ -228,6 +262,7 @@ export const expectFinishSubscriptionVisible = (
   ) as PlanProps;
 
   const selectedAddOnsList = getSelectedAddOns(
+    FIXTURE_ADD_ONS_LIST,
     selectedAddOns,
     isYearly,
   ) as AddOnProps[];
@@ -249,7 +284,12 @@ export const expectFinishSubscriptionVisible = (
   });
 
   const planPriceCont = screen.getByTestId("plan-price");
-  const planPriceValue = `${formatYearlyOrMonthlyPrice(isYearly, selectedPlan.price.value)}`;
+  const planPriceValue = `${getFormattedPrice(
+    isYearly,
+    selectedPlan.price.value,
+    localeCode,
+    dictionary,
+  )}`;
 
   const addOnTypeContainerList = screen.getAllByTestId("add-on-type");
   const addOnPriceContainerList = screen.getAllByTestId("add-on-price");
@@ -257,8 +297,13 @@ export const expectFinishSubscriptionVisible = (
   const totalText = screen.getByText(
     `Total ${`(per ${isYearly ? "year" : "month"})`}`,
   );
+
+  const totalValuePrice = getSubscriptionTotal(
+    selectedPlan,
+    selectedAddOnsList,
+  );
   const totalValue = screen.getByText(
-    `${formatYearlyOrMonthlyPrice(isYearly, getSubscriptionTotal(selectedPlan, selectedAddOnsList))}`,
+    `${getFormattedPrice(isYearly, totalValuePrice, localeCode, dictionary)}`,
   );
 
   expect(title).toBeVisible();
@@ -274,7 +319,7 @@ export const expectFinishSubscriptionVisible = (
     expect(addOnTypeContainerList[index]).toHaveTextContent(addOn.type);
 
     // Add-on price
-    const addOnPriceValue = `+${formatYearlyOrMonthlyPrice(isYearly, addOn.price)}`;
+    const addOnPriceValue = `+${getFormattedPrice(isYearly, addOn.price, localeCode, dictionary)}`;
     expect(addOnPriceContainerList[index]).toBeVisible();
     expect(addOnPriceContainerList[index]).toHaveTextContent(addOnPriceValue);
   });
@@ -329,7 +374,7 @@ export const expectStepVisible = () => {
 
 /**
  * Expects the visibility of an error message
- * @messageText - message text
+ * @param messageText - message text
  */
 export const expectErrorMessageVisible = (messageText: string) => {
   const errorMessage = screen.getByText(messageText);
@@ -338,35 +383,91 @@ export const expectErrorMessageVisible = (messageText: string) => {
 };
 
 /**
- * Submits the "Confirm" button from the MultiStepForm component
+ * Expects the visibility of the following elements, in the LanguageSwitch component:
+ * - language switch button
+ *
+ * @param localeCode locale code (e.g "en")
  */
-export const submitForm = async () => {
-  const multiStepForm = FIXTURE_MULTISTEPFORM;
-
+export const expectLanguageSwitchVisible = (localeCode: LocaleCode) => {
   const btn = screen.getByRole("button", {
-    name: multiStepForm.nextBtn,
+    name: getLanguageSwitchBtnLabel(localeCode),
   });
 
-  await userEvent.click(btn);
+  expect(btn).toBeVisible();
 };
 
 /**
- * Returns a React Form Hook provider with react element
- * @param ui           - React element to be rendered inside the React Form Hook provider
- * @param defaultValue - React Form Hook useForm defaultValues
+ * Clicks the language switch from the LanguageSwitch component
+ *
+ * @param localeCode locale code (e.g "en")
+ * @param user user-event
  */
-export const renderWithReactFormHookProvider = <T extends FieldValues>(
-  ui: ReactElement,
-  defaultValue?: DefaultValues<T>,
+export const clickLanguageSwitch = async (
+  localeCode: LocaleCode,
+  user: UserEvent,
 ) => {
-  // Wrapper component
-  const Wrapper = ({ children }: { children: ReactNode }) => {
-    const methods = useForm({
-      defaultValues: defaultValue,
-    });
+  await user.click(
+    screen.getByRole("button", {
+      name: getLanguageSwitchBtnLabel(localeCode),
+    }),
+  );
+};
 
-    return <FormProvider {...methods}>{children}</FormProvider>;
-  };
+/**
+ * Expects the visibility of the following elements, in the LanguageSwitch component:
+ * - Languages pop-up
+ */
+export const expectLanguagesPopUpVisible = () => {
+  expect(screen.queryByTestId("languages-pop-up")).toBeVisible();
+};
 
-  return render(<Wrapper>{ui}</Wrapper>);
+/**
+ * Expects the languages pop-up, from LanguageSwitch component, isn't in the document
+ */
+export const expectLanguagesPopUpNotInDoc = () => {
+  expect(screen.queryByTestId("languages-pop-up")).not.toBeInTheDocument();
+};
+
+/**
+ * Returns the LanguageSwitch aria-label text by a given locale code
+ * @param localeCode locale code
+ */
+export const getLanguageSwitchBtnLabel = (localeCode: LocaleCode) => {
+  const languageSwitch = FIXTURE_LANGUAGESWITCH;
+
+  switch (localeCode) {
+    case "en":
+      return languageSwitch.btnAriaLabel_en;
+    case "pt":
+      return languageSwitch.btnAriaLabel_pt;
+  }
+};
+
+/**
+ * Expects the visibility of the following elements, in the ThemeSwitch component:
+ * - theme switch button
+ */
+export const expectThemeSwitchVisible = () => {
+  const themeSwitch = FIXTURE_THEMESWITCH;
+
+  const btn = screen.getByRole("button", {
+    name: themeSwitch.btnAriaLabel_light,
+  });
+
+  expect(btn).toBeVisible();
+};
+
+/**
+ * Submits the "Confirm" button from the MultiStepForm component
+ *
+ *  @param user user-event
+ */
+export const submitForm = async (user: UserEvent) => {
+  const multiStepForm = FIXTURE_MULTISTEPFORM;
+
+  await user.click(
+    screen.getByRole("button", {
+      name: multiStepForm.nextBtn,
+    }),
+  );
 };

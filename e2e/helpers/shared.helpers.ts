@@ -7,11 +7,18 @@ import {
   FIXTURE_PLANS_LIST,
   FIXTURE_ADD_ONS_LIST,
 } from "../../fixtures/multiStepForm.fixtures";
-import { PlanProps, AddOnProps } from "@/app/components/types";
+import type { PlanProps, AddOnProps } from "@/app/components/types";
+import type {
+  LocaleCode,
+  Dictionary,
+} from "@/app/components/types/localization";
 import { getPlanById } from "@/app/components/MultiStepForm/Forms/SelectPlan/SelectPlan.utils";
-import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import { getFormattedPrice } from "@/app/lib/utils";
 import { getSubscriptionTotal } from "@/app/components/MultiStepForm/Forms/LastStep/FinishSubscription/FinishSubscription.utils";
-import { getSelectedAddOns } from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns.utils";
+import {
+  getAddOnsWithLocalization,
+  getSelectedAddOns,
+} from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns.utils";
 
 const multiStepForm = FIXTURE_MULTISTEPFORM;
 const personalInfo = FIXTURE_FORM_STEPS.personalInfo;
@@ -121,16 +128,20 @@ export const expectCurrentStepVisible = async (
  * - Change plan button
  * - Form data: selected plan and add-ons list
  * - Subscription total
- * @param page           - Playwright page
- * @param isYearly       - if true returns the yearly plans, if false returns the montly plans
- * @param selectedPlanId - selected plan id
- * @param selectedAddOns - list of selected add-ons id
+ * @param page           Playwright page
+ * @param isYearly       if true returns the yearly plans, if false returns the montly plans
+ * @param selectedPlanId selected plan id
+ * @param selectedAddOns list of selected add-ons id
+ * @param localeCode     locale code
+ * @param dictionary     localization dictionary
  */
 export const expectFinishSubscriptionVisible = async (
   page: Page,
   isYearly: boolean,
   selectedPlanId: string,
   selectedAddOns: string[],
+  localeCode: LocaleCode,
+  dictionary: Dictionary,
 ) => {
   await expect(page.getByText(finishSubscription.description)).toBeVisible();
 
@@ -140,7 +151,9 @@ export const expectFinishSubscriptionVisible = async (
     isYearly,
   ) as PlanProps;
 
+  const addOnsList = getAddOnsWithLocalization(dictionary.pickAddOns);
   const selectedAddOnsList = getSelectedAddOns(
+    addOnsList,
     selectedAddOns,
     isYearly,
   ) as AddOnProps[];
@@ -155,7 +168,12 @@ export const expectFinishSubscriptionVisible = async (
   });
 
   const planPriceCont = page.getByTestId("plan-price");
-  const planPriceValue = `${formatYearlyOrMonthlyPrice(isYearly, selectedPlan.price.value)}`;
+  const planPriceValue = getFormattedPrice(
+    isYearly,
+    selectedPlan.price.value,
+    localeCode,
+    dictionary,
+  );
 
   const addOnTypeContainerList = page.getByTestId("add-on-type");
   const addOnPriceContainerList = page.getByTestId("add-on-price");
@@ -163,8 +181,9 @@ export const expectFinishSubscriptionVisible = async (
   const totalText = page.getByText(
     `Total ${`(per ${isYearly ? "year" : "month"})`}`,
   );
+  const total = getSubscriptionTotal(selectedPlan, selectedAddOnsList);
   const totalValue = page.getByText(
-    `${formatYearlyOrMonthlyPrice(isYearly, getSubscriptionTotal(selectedPlan, selectedAddOnsList))}`,
+    getFormattedPrice(isYearly, total, localeCode, dictionary),
   );
 
   await expect(planTypeTitle).toBeVisible();
@@ -182,7 +201,12 @@ export const expectFinishSubscriptionVisible = async (
 
     // Add-on price
     const addOnPrice = addOnPriceContainerList.nth(index);
-    const addOnPriceValue = `+${formatYearlyOrMonthlyPrice(isYearly, addOn.price)}`;
+    const addOnPriceValue = `+${getFormattedPrice(
+      isYearly,
+      addOn.price,
+      localeCode,
+      dictionary,
+    )}`;
     await expect(addOnPrice).toBeVisible();
     await expect(addOnPrice).toHaveText(addOnPriceValue);
   }

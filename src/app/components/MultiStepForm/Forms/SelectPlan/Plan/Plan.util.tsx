@@ -1,12 +1,12 @@
 import styles from "./Plan.module.css";
-import type { PlanType } from "@/app/components/types";
 
 /**
- * Returns the svg icon for the given plan type
+ * Returns the svg icon for the given plan id
+ * @planId plan id
  */
-export const getPlanIcon = (type: PlanType) => {
-  switch (type) {
-    case "Arcade":
+export const getPlanIcon = (planId: string) => {
+  switch (planId) {
+    case "1":
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ export const getPlanIcon = (type: PlanType) => {
           </g>
         </svg>
       );
-    case "Advanced":
+    case "2":
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ export const getPlanIcon = (type: PlanType) => {
           </g>
         </svg>
       );
-    case "Pro":
+    case "3":
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"

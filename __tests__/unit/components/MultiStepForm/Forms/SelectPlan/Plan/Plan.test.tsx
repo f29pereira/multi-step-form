@@ -1,9 +1,10 @@
+import { renderWithProviders } from "../../../../../../helpers/reduxHelper";
 import Plan from "@/app/components/MultiStepForm/Forms/SelectPlan/Plan/Plan";
+import en from "@/app/[lang]/dictionaries/en.json";
 import {
   createEmptyMultiStepFormContext,
   createPlan,
 } from "../../../../../../../fixtures/multiStepForm.fixtures";
-import { renderWithReactFormHookProvider } from "../../../../../../helpers/multiStepForm.helpers";
 import {
   expectPlanRadioInputInDocument,
   expectPlanVisible,
@@ -22,6 +23,9 @@ const defaultContext = createEmptyMultiStepFormContext();
 
 const plan = createPlan();
 
+const localeCode = "en";
+const dictionary = en;
+
 /**
  * Unit testing for the component: Plan
  */
@@ -30,71 +34,88 @@ describe("Plan component", () => {
     useMultiStepFormMock.mockReturnValue(defaultContext);
   });
 
-  it("renders the radio input", () => {
-    const planPrice = {
+  describe("when is yearly", () => {
+    const yearlyPlanPrice = {
       value: plan.yearlyPlan.value,
       discount: plan.yearlyPlan.discount,
     };
 
-    renderWithReactFormHookProvider(
-      <Plan
-        id={plan.id}
-        type={plan.type}
-        price={planPrice}
-        isInvalid={false}
-      />,
-    );
-    expectPlanRadioInputInDocument();
+    beforeEach(() => {
+      renderWithProviders(
+        <Plan
+          id={plan.id}
+          type={plan.type}
+          price={yearlyPlanPrice}
+          isInvalid={false}
+        />,
+        {
+          withFormProvider: true,
+          preloadedState: {
+            localization: { localeCode: localeCode, dictionary: dictionary },
+          },
+        },
+      );
+    });
+
+    it("renders the radio input", () => {
+      expectPlanRadioInputInDocument();
+    });
+
+    it("renders the type, yearly price and discount", () => {
+      expectPlanVisible(
+        defaultContext.formData.isYearly,
+        plan.type,
+        yearlyPlanPrice.value,
+        localeCode,
+        dictionary,
+        yearlyPlanPrice.discount,
+      );
+    });
   });
 
-  it("renders the type, yearly price and discount", () => {
-    const planPrice = {
-      value: plan.yearlyPlan.value,
-      discount: plan.yearlyPlan.discount,
-    };
-
-    renderWithReactFormHookProvider(
-      <Plan
-        id={plan.id}
-        type={plan.type}
-        price={planPrice}
-        isInvalid={false}
-      />,
-    );
-    expectPlanVisible(
-      defaultContext.formData.isYearly,
-      plan.type,
-      planPrice.value,
-      planPrice.discount,
-    );
-  });
-
-  it("renders the type and monthly price", () => {
+  describe("when is monthly", () => {
     const updatedContext = {
       ...defaultContext,
       formData: { ...defaultContext, isYearly: false },
     };
 
-    // Update useMultiStepForm to a monthly subscription
-    useMultiStepFormMock.mockReturnValue(updatedContext);
-
-    const planPrice = {
+    const monthlyPlanPrice = {
       value: plan.monthlyPlan.value,
     };
 
-    renderWithReactFormHookProvider(
-      <Plan
-        id={plan.id}
-        type={plan.type}
-        price={planPrice}
-        isInvalid={false}
-      />,
-    );
-    expectPlanVisible(
-      updatedContext.formData.isYearly,
-      plan.type,
-      planPrice.value,
-      undefined,
-    );
+    beforeEach(() => {
+      // Update useMultiStepForm to a monthly subscription
+      useMultiStepFormMock.mockReturnValue(updatedContext);
+
+      renderWithProviders(
+        <Plan
+          id={plan.id}
+          type={plan.type}
+          price={monthlyPlanPrice}
+          isInvalid={false}
+        />,
+        {
+          withFormProvider: true,
+          preloadedState: {
+            localization: { localeCode: localeCode, dictionary: dictionary },
+          },
+        },
+      );
+    });
+
+    it("renders the radio input", () => {
+      expectPlanRadioInputInDocument();
+    });
+
+    it("renders the type and monthly price", () => {
+      expectPlanVisible(
+        updatedContext.formData.isYearly,
+        plan.type,
+        monthlyPlanPrice.value,
+        localeCode,
+        dictionary,
+        undefined,
+      );
+    });
   });
 });

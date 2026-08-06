@@ -10,12 +10,14 @@ import clsx from "clsx";
 export default function Button({
   description,
   variant,
+  fontSize,
   handleOnClick,
 }: ButtonProps) {
   return (
     <button
-      className={clsx(styles.btn, styles[variant])}
+      className={clsx(styles.btn, styles[variant], styles[fontSize ?? "base"])}
       onClick={handleOnClick}
+      onMouseDown={(e) => e.preventDefault()}
     >
       <span className="bold-text">{description}</span>
     </button>

@@ -1,8 +1,8 @@
 # Frontend Mentor - Multi-step form
 
-This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Allows users to fill out a multi-step form for a game subscription.
+This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Allows users to fill out a multi-step form for a gaming subscription.
 
-<img src="public/images/readme/layout/desktop.png" width="750" alt="Multi-step form desktop layout">
+<img src="public/images/readme/layout/lightTheme/desktop.png" width="750" alt="Multi-step form desktop layout">
 
 ## Table of contents
 
@@ -10,6 +10,8 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
   - [The challenge](#the-challenge)
   - [Screenshots](#screenshots)
     - [Responsive Layout](#responsive-layout)
+    - [Dark Theme](#dark-theme)
+    - [Localization](#localization)
     - [Multi-step form](#multi-step-form)
       - [Steps](#steps)
         - [1. Personal Info](#1-personal-info)
@@ -17,7 +19,7 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
         - [3. Pick Add-ons](#3-pick-add-ons)
     - [Forms Validation](#forms-validation)
       - [1. Personal Info Validation](#1-personal-info-validation)
-      - [1. Select Plan Validation](#2-select-plan-validation)
+      - [2. Select Plan Validation](#2-select-plan-validation)
     - [Hover and Focus states](#hover-and-focus-states)
   - [Tests](#tests)
     - [Unit and Integration Tests](#unit-and-integration-tests)
@@ -50,6 +52,8 @@ Additional features:
 - Receive form validation messages if:
   - The name field contains characters other than letters and spaces
   - The name field has less than 2 characters or more than 50 characters
+- App theme switch that allows users to toggle between light and dark themes
+- Language switch that allows users to choose between English and Portuguese
 
 ### Screenshots
 
@@ -61,15 +65,49 @@ This project features a responsive design, built with with a "mobile-first" appr
 
    1.1 Small Screens
 
-      <img src="public/images/readme/layout/mobile.png" width="250" alt="Multi-step form mobile layout">
+      <img src="public/images/readme/layout/lightTheme/mobile.png" width="250" alt="Multi-step form mobile layout">
 
    1.2 Tablet Screens
 
-      <img src="public/images/readme/layout/tablet.png" width="350" alt="Multi-step form layout">
+      <img src="public/images/readme/layout/lightTheme/tablet.png" width="350" alt="Multi-step form tablet layout">
+
+<br>
 
 2. Desktop layout
 
-   <img src="public/images/readme/layout/desktop.png" width="750" alt="Multi-step form desktop layout">
+   <img src="public/images/readme/layout/lightTheme/desktop.png" width="750" alt="Multi-step form desktop layout">
+
+#### Dark Theme
+
+Clicking the theme switch allows the users to change the app's theme.
+
+1. Mobile dark theme
+
+   1.1 Small Screens
+
+      <img src="public/images/readme/layout/darkTheme/mobile.png" width="250" alt="Multi-step form mobile layout with dark theme">
+
+   1.2 Tablet Screens
+
+      <img src="public/images/readme/layout/darkTheme/tablet.png" width="350" alt="Multi-step form tablet layout with dark theme">
+
+<br>
+
+2. Desktop dark theme
+
+   <img src="public/images/readme/layout/darkTheme/desktop.png" width="750" alt="Multi-step form desktop layout with dark theme">
+
+#### Localization
+
+Clicking the current language button will open the languages pop-up, allowing users to change the app's locale.
+
+<img src="public/images/readme/localization/button.png" width="250" alt="Languages pop-up">
+
+<br>
+
+Personal Info form step with Portuguese locale:
+
+<img src="public/images/readme/localization/personalInfo_pt.png" width="750" alt="Personal Info with Portuguese locale">
 
 #### Multi-step form
 
@@ -79,159 +117,465 @@ This project features a responsive design, built with with a "mobile-first" appr
 
 The first form step is the Personal Info form, the user needs to provide their name, email address, and phone number.
 
-<img src="public/images/readme/steps/personalInfo/personalInfo.png" width="750" alt="First form step - Personal Info">
+Light theme:
+
+<img src="public/images/readme/steps/personalInfo/lightTheme/personalInfo.png" width="750" alt="First form step - Personal Info with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/steps/personalInfo/darkTheme/personalInfo.png" width="750" alt="First form step - Personal Info with dark theme">
 
 ###### 2. Select Plan
 
 The second form step is the Select Plan form, the user needs to choose a plan.
 
-<img src="public/images/readme/steps/selectPlan/select_plan.png" width="750" alt="Second form step - Select Plan">
+Light theme:
+
+<img src="public/images/readme/steps/selectPlan/lightTheme/select_plan.png" width="750" alt="Second form step - Select Plan with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/steps/selectPlan/darkTheme/select_plan.png" width="750" alt="Second form step - Select Plan with dark theme">
+
+<br>
 
 When a plan is selected, it stays highlighted:
 
-<img src="public/images/readme/steps/selectPlan/selected_plan.png" width="750" alt="Select Plan - highlighted plan">
+Light theme:
+
+<img src="public/images/readme/steps/selectPlan/lightTheme/selected_plan.png" width="450" alt="Select Plan - highlighted plan with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/steps/selectPlan/darkTheme/selected_plan.png" width="450" alt="Select Plan - highlighted plan with dark theme">
+
+<br>
 
 By default, the yearly subscription is selected. If the user wants to change to monthly, just needs to click the toggle button and the monthly pricing is applied:
 
-<img src="public/images/readme/steps/selectPlan/monthly_subscription.png" width="750" alt="Select Plan - monthly subscription">
+<img src="public/images/readme/steps/selectPlan/lightTheme/monthly_subscription.png" width="450" alt="Select Plan - monthly subscription">
+
+<br>
 
 Clicking the "Go Back" button allows the user to return to the previous form step, where the submitted data is displayed. For example, going back to the first step:
 
-<img src="public/images/readme/steps/personalInfo/submitted_data.png" width="750" alt="Personal Info - submitted data">
+Light theme:
+
+<img src="public/images/readme/steps/personalInfo/lightTheme/submitted_data.png" width="750" alt="Personal Info - submitted data with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/steps/personalInfo/darkTheme/submitted_data.png" width="750" alt="Personal Info - submitted data with dark theme">
 
 ###### 3. Pick Add-ons
 
 The final form step is the Pick Add-ons form, where the user can choose the add-ons for the subscription.
 
-<img src="public/images/readme/steps/pickAddons/pick_addons.png" width="750" alt="Third form step - Pick Add-ons">
+Light theme:
+
+<img src="public/images/readme/steps/pickAddons/lightTheme/pick_addons.png" width="750" alt="Third form step - Pick Add-ons with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/steps/pickAddons/darkTheme/pick_addons.png" width="750" alt="Third form step - Pick Add-ons with dark theme">
+
+<br>
 
 Like the plan, selected add-ons stay highlighted:
 
-<img src="public/images/readme/steps/pickAddons/selected_addons.png" width="750" alt="Pick Add-ons - highlighted add-ons">
+Ligth theme:
+
+<img src="public/images/readme/steps/pickAddons/lightTheme/selected_addons.png" width="450" alt="Pick Add-ons - highlighted add-ons with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/steps/pickAddons/darkTheme/selected_addons.png" width="450" alt="Pick Add-ons - highlighted add-ons with dark theme">
+
+<br>
 
 After the last form submision, the user is redirected to a confirmation screen to review the filled-out data:
 
-<img src="public/images/readme/steps/confirmation.png" width="750" alt="Confirmation screen">
+Light theme:
+
+<img src="public/images/readme/steps/confirmation/lightTheme/confirmation.png" width="750" alt="Confirmation screen with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/steps/confirmation/darkTheme/confirmation.png" width="750" alt="Confirmation screen with dark theme">
+
+<br>
 
 On this screen, the user can click the "Change" button to be redirected to the Select Plan form step, or click the "Confirm" button to be redirected to the thank-you screen:
 
-<img src="public/images/readme/steps/thankYou.png" width="750" alt="Thank you screen">
+Light theme:
+
+<img src="public/images/readme/steps/thankYou/lightTheme/thankYou.png" width="750" alt="Thank you screen with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/steps/thankYou/darkTheme/thankYou.png" width="750" alt="Thank you screen with dark theme">
 
 ##### Forms Validation
 
-This projects uses React Hook Form to validate and display error messages in the form steps: Personal Info and Select Plan
+This projects uses the React Hook Form library to validate and display error messages in the form steps: Personal Info and Select Plan
 
 ###### 1. Personal Info Validation
 
 - If a field is missing:
 
-  <img src="public/images/readme/steps/personalInfo/errorMessages/required.png" width="450" alt="Personal Info - required message">
+  Light theme:
+
+  <img src="public/images/readme/steps/personalInfo/lightTheme/errorMessages/required.png" width="450" alt="Personal Info -  required field message with light theme">
+
+  <br>
+
+  Dark theme:
+
+  <img src="public/images/readme/steps/personalInfo/darkTheme/errorMessages/required.png" width="450" alt="Personal Info -  dark theme required field message with dark theme">
 
 Name field:
 
 - If it has less than 2 characters:
 
-  <img src="public/images/readme/steps/personalInfo/errorMessages/name_less_than_2_chars.png" width="450" alt="Personal Info - name field min characters message">
+  <img src="public/images/readme/steps/personalInfo/lightTheme/errorMessages/name_less_than_2_chars.png" width="450" alt="Personal Info - name field min characters message">
 
 - If it has more than 50 characters:
 
-  <img src="public/images/readme/steps/personalInfo/errorMessages/name_less_than_2_chars.png" width="450" alt="Personal Info - name field max characters message">
+  <img src="public/images/readme/steps/personalInfo/lightTheme/errorMessages/name_less_than_2_chars.png" width="450" alt="Personal Info - name field max characters message">
 
 - If contains characters other than letters and spaces the message:
 
-  <img src="public/images/readme/steps/personalInfo/errorMessages/name_invalid.png" width="450" alt="Personal Info - name field invalid message">
+  <img src="public/images/readme/steps/personalInfo/lightTheme/errorMessages/name_invalid.png" width="450" alt="Personal Info - name field invalid message">
 
 Email Address field:
 
 - If doesn't match the valid format:
 
-  <img src="public/images/readme/steps/personalInfo/errorMessages/email_invalid.png" width="450" alt="Personal Info - email address field invalid message">
+  <img src="public/images/readme/steps/personalInfo/lightTheme/errorMessages/email_invalid.png" width="450" alt="Personal Info - email address field invalid message">
 
 Phone Number field:
 
 - If doesn't match a valid format like +351 123456789; +1-(800)-123-4567; (926) 1234567; 1234567; 123-4567:
 
-  <img src="public/images/readme/steps/personalInfo/errorMessages/phone_invalid.png" width="450" alt="Personal Info - phone number field invalid message">
+  <img src="public/images/readme/steps/personalInfo/lightTheme/errorMessages/phone_invalid.png" width="450" alt="Personal Info - phone number field invalid message">
 
 ###### 2. Select Plan Validation
 
-- If no plan is selected:
+If no plan is selected by the user the following message will appear:
 
-  <img src="public/images/readme/steps/selectPlan/required.png" width="450" alt="Selected Plan - required message">
+Light theme:
+
+  <img src="public/images/readme/steps/selectPlan/lightTheme/errorMessages/required.png" width="450" alt="Selected Plan - light theme required message">
+
+  <br>
+
+Dark theme:
+
+  <img src="public/images/readme/steps/selectPlan/darkTheme/errorMessages/required.png" width="450" alt="Selected Plan - dark theme required message">
 
 #### Hover and Focus states
 
 ##### Hover states
 
-##### 1. Personal info form
+These are the hover states used in the app.
 
-Name field with hover state:
+###### 1. Theme switch and Localization
 
-<img src="public/images/readme/hover/steps/personalInfo/field.png" width="450" alt="Personal Info - field hover state">
+1.1 Theme switch - default/hover states:
 
-##### 2. Select Plan form
+Light theme:
 
-<img src="public/images/readme/hover/steps/selectPlan/plan.png" width="450" alt="Selected Plan - plan hover state">
+<img src="public/images/readme/hover/lightTheme/buttons/theme/theme_no_hover.png" width="150" alt="Theme switch - default state with light theme">
 
-##### 3. Confirmation screen - "Change" button
+<img src="public/images/readme/hover/lightTheme/buttons/theme/theme_with_hover.png" width="150" alt="Theme switch - hover state with light theme">
 
-Default state:
+<br>
 
-<img src="public/images/readme/hover/steps/confirmation.png" width="450" alt="Confirmation screen - select plan button">
+Dark theme:
 
-Hover state:
+<img src="public/images/readme/hover/darkTheme/buttons/theme/theme_no_hover.png" width="150" alt="Theme switch - default state with dark theme">
 
-<img src="public/images/readme/hover/steps/confirmation_hover.png" width="450" alt="Confirmation screen - select plan button hover state">
+<img src="public/images/readme/hover/darkTheme/buttons/theme/theme_with_hover.png" width="150" alt="Theme switch - hover state with dark theme">
 
-##### 4. Steps navigation buttons
+1.2 Localization button and pop-up - default/hover states:
 
-Default/Hover state:
+- Localization button:
 
-"Go Back" button:
+  Light theme:
 
-<img src="public/images/readme/buttons/goBack/goBack.png" width="150" alt="Go Back button default state">
+  <img src="public/images/readme/hover/lightTheme/buttons/locale/locale_no_hover.png" width="150" alt="Localization button - default state with light theme">
 
-<img src="public/images/readme/hover/buttons/goBack_hover.png" width="150" alt="Go Back button hover state">
+  <img src="public/images/readme/hover/lightTheme/buttons/locale/locale_with_hover.png" width="150" alt="Localization button - hover state with light theme">
 
-"Next Step" button:
+  Dark theme:
 
-<img src="public/images/readme/buttons/nextStep/nextStep.png" width="150" alt="Next Step button hover state">
+  <img src="public/images/readme/hover/darkTheme/buttons/locale/locale_no_hover.png" width="150" alt="Localization button - default state with dark theme">
 
-<img src="public/images/readme/hover/buttons/nextStep_hover.png" width="150" alt="Next Step button hover state">
+  <img src="public/images/readme/hover/darkTheme/buttons/locale/locale_with_hover.png" width="150" alt="Localization button - hover state with dark theme">
 
-"Confirm" button:
+  <br>
 
-<img src="public/images/readme/buttons/confirm/confirm.png" width="150" alt="Confirm button hover  state">
+- Localization pop-up:
 
-<img src="public/images/readme/hover/buttons/confirm_hover.png" width="150" alt="Confirm button hover state">
+  Light theme:
+
+  <img src="public/images/readme/hover/lightTheme/buttons/locale/popUp/popUp_no_hover.png" width="150" alt="Localization pop-up - default state with light theme">
+
+  <img src="public/images/readme/hover/lightTheme/buttons/locale/popUp/popUp_with_hover.png" width="150" alt="Localization pop-up - hover state with light theme">
+
+  Dark theme:
+
+  <img src="public/images/readme/hover/darkTheme/buttons/locale/popUp/popUp_no_hover.png" width="150" alt="Localization pop-up - default state with dark theme">
+
+  <img src="public/images/readme/hover/darkTheme/buttons/locale/popUp/popUp_with_hover.png" width="150" alt="Localization pop-up - hover state with dark theme">
+
+###### 2. Personal info form
+
+Name field - default/hover states:
+
+Light theme:
+
+<img src="public/images/readme/hover/lightTheme/steps/personalInfo/field.png" width="450" alt="Personal Info field - hover state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/hover/darkTheme/steps/personalInfo/field.png" width="450" alt="Personal Info field - hover state with dark theme">
+
+###### 3. Select Plan form
+
+###### Selected plan - default/hover states:
+
+Light theme:
+
+<img src="public/images/readme/hover/lightTheme/steps/selectPlan/plan.png" width="450" alt="Selected Plan - plan hover state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/hover/darkTheme/steps/selectPlan/plan.png" width="450" alt="Selected Plan - plan hover state with dark theme">
+
+###### Yearly/Monthly subscription toggle:
+
+Light theme:
+
+<img src="public/images/readme/hover/lightTheme/steps/selectPlan/subscriptionToggle/subscription_no_hover.png" width="450" alt="Subscription toggle button - default state with light theme">
+
+<img src="public/images/readme/hover/lightTheme/steps/selectPlan/subscriptionToggle/subscription_with_hover.png" width="450" alt="Subscription toggle - button hover state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/hover/darkTheme/steps/selectPlan/subscriptionToggle/subscription_no_hover.png" width="450" alt="Subscription toggle button - default state with light theme">
+
+<img src="public/images/readme/hover/darkTheme/steps/selectPlan/subscriptionToggle/subscription_with_hover.png" width="450" alt="Subscription toggle button - hover state with light theme">
+
+###### 4. Confirmation screen
+
+4.1 "Change" button - default/hover states:
+
+Light theme:
+
+<img src="public/images/readme/hover/lightTheme/buttons/change/change_no_hover.png" width="150" alt="Change button - default state with light theme">
+
+<img src="public/images/readme/hover/lightTheme/buttons/change/change_with_hover.png" width="150" alt="Change button - hover state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/hover/darkTheme/buttons/change/change_no_hover.png" width="150" alt="Change button - default state with dark theme">
+
+<img src="public/images/readme/hover/darkTheme/buttons/change/change_with_hover.png" width="150" alt="Change button - hover state with dark theme">
+
+4.2 "Confirm" button - default/hover states:
+
+Same for light and dark themes:
+
+<img src="public/images/readme/hover/lightTheme/buttons/confirm/confirm_no_hover.png" width="150" alt="Confirmation screen - confirm button default state">
+
+<img src="public/images/readme/hover/lightTheme/buttons/confirm/confirm_with_hover.png" width="150" alt="Confirmation screen - confirm button hover state">
+
+###### 5. Step navigation buttons
+
+Default/Hover states:
+
+5.1 "Go Back" button:
+
+Light theme:
+
+<img src="public/images/readme/hover/lightTheme/buttons/goBack/goBack_no_hover.png" width="150" alt="Go back button - default state with light theme">
+
+<img src="public/images/readme/hover/lightTheme/buttons/goBack/goBack_with_hover.png" width="150" alt="Go back button - hover state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/hover/darkTheme//buttons/goBack/goBack_no_hover.png" width="150" alt="Go back button - default state with dark theme">
+
+<img src="public/images/readme/hover/darkTheme//buttons/goBack/goBack_with_hover.png" width="150" alt="Go back button - hover state with dark theme">
+
+<br>
+
+5.2 "Next Step" button:
+
+Light theme:
+
+<img src="public/images/readme/hover/lightTheme/buttons/nextStep/nextStep_no_hover.png" width="150" alt="Next step button - default state with light theme">
+
+<img src="public/images/readme/hover/lightTheme/buttons/nextStep/nextStep_with_hover.png" width="150" alt="Next step button - hover state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/hover/darkTheme/buttons/nextStep/nextStep_no_hover.png" width="150" alt="Next step button - default state with dark theme">
+
+<img src="public/images/readme/hover/darkTheme/buttons/nextStep/nextStep_with_hover.png" width="150" alt="Next step button - hover state with dark theme">
 
 ##### Focus states
 
-##### 1. Personal info form
+These are the focus states used in the app.
+
+##### 1. Theme switch and Localization
+
+1.1 Theme switch focus state
+
+Light theme:
+
+<img src="public/images/readme/focus/lightTheme/buttons/theme.png" width="150" alt="Theme switch - focus state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/focus/darkTheme/buttons/theme.png" width="150" alt="Theme switch - focus state with dark theme">
+
+1.2 Localization button and pop-up focus states
+
+- Localization button:
+
+  Light theme:
+
+  <img src="public/images/readme/focus/lightTheme/buttons/locale/locale.png" width="150" alt="Localization button - focus state with light theme">
+
+  <br>
+
+  Dark theme:
+
+  <img src="public/images/readme/focus/darkTheme/buttons/locale/locale.png" width="150" alt="Localization pop-up - focus state with dark theme">
+
+- Localization pop-up:
+
+  Light theme:
+
+  <img src="public/images/readme/focus/lightTheme/buttons/locale/popUp.png" width="150" alt="Localization button - focus state with light theme">
+
+  <br>
+
+  Dark theme:
+
+  <img src="public/images/readme/focus/darkTheme/buttons/locale/popUp.png" width="150" alt="Localization pop-up - focus state with dark theme">
+
+##### 2. Personal info form
 
 Name field with focus state:
 
-<img src="public/images/readme/hover/steps/personalInfo/field.png" width="450" alt="Personal Info - field focus state">
+Light theme:
 
-##### 2. Select Plan form
+<img src="public/images/readme/focus/lightTheme/steps/personalInfo_field.png" width="450" alt="Personal Info field - focus state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/focus/darkTheme/steps/personalInfo_field.png" width="450" alt="Personal Info field - focus state with dark theme">
+
+##### 3. Select Plan form
 
 Subscription toggle button focus state:
 
-<img src="public/images/readme/focus/steps/selectPlan/subscriptionToggle.png" width="450" alt="Selected Plan - subscription toggle focus state">
+Light theme:
 
-##### 3. Steps navigation buttons
+<img src="public/images/readme/focus/lightTheme/steps/selectPlan_subscriptionToggle.png" width="450" alt="Select Plan - subscription toggle focus state with light theme">
 
-"Go Back" button:
+<br>
 
-<img src="public/images/readme/focus/steps/buttons/goBack/goBack.png" width="150" alt="Go Back button focus state">
+Dark theme:
 
-"Next Step" button:
+<img src="public/images/readme/focus/darkTheme/steps/selectPlan_subscriptionToggle.png" width="450" alt="Select Plan - subscription toggle focus state with dark theme">
 
-<img src="public/images/readme/focus/steps/buttons/nextStep/nextStep.png" width="150" alt="Next Step button focus state">
+###### 4. Confirmation screen
 
-"Confirm" button:
+4.1 "Change" button:
 
-<img src="public/images/readme/focus/steps/buttons/confirm/confirm.png" width="150" alt="Confirm button focus state">
+Light theme:
+
+<img src="public/images/readme/focus/lightTheme/buttons/change.png" width="150" alt="Change button - focus state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/focus/darkTheme/buttons/change.png" width="150" alt="Change button - focus state with dark theme">
+
+4.2 "Confirm" button:
+
+Light theme:
+
+<img src="public/images/readme/focus/lightTheme/buttons/confirm.png" width="150" alt="Go Back button - focus state">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/focus/darkTheme/buttons/confirm.png" width="150" alt="Go Back button - focus state">
+
+##### 5. Steps navigation buttons
+
+5.1 "Go Back" button:
+
+Light theme:
+
+<img src="public/images/readme/focus/lightTheme/buttons/goBack.png" width="150" alt="Go Back button - focus state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/focus/darkTheme/buttons/goBack.png" width="150" alt="Go Back button - focus state with dark theme">
+
+5.2 "Next Step" button:
+
+Light theme:
+
+<img src="public/images/readme/focus/lightTheme/buttons/nextStep.png" width="150" alt="Go Back - button focus state with light theme">
+
+<br>
+
+Dark theme:
+
+<img src="public/images/readme/focus/darkTheme/buttons/nextStep.png" width="150" alt="Next Step - button focus state with dark theme">
 
 ### Tests
 
@@ -245,6 +589,9 @@ The unit tests cover:
 - The function formatYearlyOrMonthlyPrice, used to format the price in the Select Plan, Pick Add-ons and Finishing Up screens
 
 The integration tests cover:
+
+- Allowing the user to switch between the light and dark theme
+- Allowing the user to switch the app language
 
 For the Personal info form step:
 
@@ -278,6 +625,8 @@ The E2E tests cover:
 
 3. All viewport tests:
 
+- Allowing the user to switch between the light and dark theme
+- Allowing the user to switch the app language
 - Not allowing the user to go to the next step if the current step has an invalid field
 - All form steps Keep the submitted form data
 
@@ -291,7 +640,7 @@ After completing the Multi-step form:
 
 1. Automated Tests
 
-- Run Lighthouse audits in Chrome and Edge DevTools (96 score - related to the text font color and form background color).
+- Run Lighthouse audits in Chrome and Edge DevTools (96 score - related to the text font color and form background color for the light theme).
 
 2. Manual Tests
 
@@ -320,6 +669,7 @@ After completing the Multi-step form:
 - [React Context API](https://react.dev/reference/react/createContext) - React API that allows to share state across components without prop drilling
 - [React Developer Tools](https://react.dev/learn/react-developer-tools) - browser extension
 - [React Hook Form](https://react-hook-form.com/) - Library that helps build performant, flexible and extensible forms with easy-to-use validation
+- [React Icons](https://react-icons.github.io/react-icons/) - Library that bundles popular icon sets as React components
 - [clsx](https://www.npmjs.com/package/clsx) - Utility for constructing className strings conditionally
 - [Jest](https://jestjs.io/) - JavaScript testing library
 - [React Testing Library](https://testing-library.com/) - React components testing library
@@ -329,9 +679,19 @@ After completing the Multi-step form:
 
 ### What I learned
 
-- Use a list of components (form step related components) to de displayed one by one in the main form component MultiStepForm
-- Use the React Hook Form library to validate and display error messages for the form steps
-- Avoid potential hydration errors that occasionally occur during the Playwright tests (browsers: webkit and safari) by using the Playwrtight's method click(), to check if the inputs of the first form step where ready to be filled in.
+- Use a list of components (form step related components) to de displayed one by one in the main form component `MultiStepForm`.
+
+- For the complex functions use the JSDocs `@returns` and `@example` for easy readability.
+
+- Use multiple TypeScript files to organize the different types. The types are divided into: component props, Redux Toolkit, Context API, localization and data.
+
+- Use the React Hook Form library to validate the form fields and display error messages.
+
+- Add localization using Next.js dictionaries and `proxy` (redirects the user to the correct locale).
+
+- Avoid potential hydration errors that occasionally occur during the E2E Playwright tests (browsers: webkit and safari) by using the Playwright's method `click()`, to check if the inputs of the first form step where ready to be filled in.
+
+- For the unit/integration tests when using the `user-event` library, follow the docs recommendation and use a session object (`userEvent.setup()`) instead of the `userEvent` directly. This session object persists during the test and can be configured if necessary.
 
 ## Author
 

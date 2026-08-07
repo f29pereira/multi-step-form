@@ -1,0 +1,81 @@
+/**
+ * CSS Module for Step component
+ * Classes: 
+ * .circleNameCont - step circle and index/name container
+ * .circle         - step circle container
+ * .selected       - update .circle background-color and .circleIndex color
+ * .circleIndex    - step index inside the circle
+ * .numberNameCont - step index and name container (desktop)
+ * .stepIndex      - index (desktop)
+ * .stepName       - name (desktop)
+ */
+
+.circleNameCont {
+  margin-bottom: 2rem;
+}
+
+.circle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--white);
+  background-color: transparent;
+}
+
+.selected {
+  background-color: var(--blue-200);
+}
+
+.circleIndex {
+  color: var(--white);
+  font-size: var(--font-size-base);
+}
+
+.selected .circleIndex {
+  color: var(--blue-950);
+}
+
+/*not displayed for mobile screens*/
+.numberNameCont {
+  display: none;
+}
+
+.stepIndex {
+  margin-bottom: 0.2rem;
+  color: var(--purple-grey-200);
+  font-size: var(--font-size-14);
+  letter-spacing: 0.1em;
+}
+
+.stepName {
+  text-transform: uppercase;
+  color: var(--white);
+  font-size: var(--font-size-base);
+  letter-spacing: 0.08em;
+}
+
+.stepIndex,
+.stepName {
+  display: block;
+}
+
+/*Desktop Styles*/
+@media (min-width: 64rem /*1024px*/) {
+  /*increase size from 2rem to 2.5rem*/
+  .circle {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  /*flex row container with items center aligned and 1rem gap*/
+  .circleNameCont {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /*update display from none to block*/
+  .numberNameCont {
+    display: block;
+  }
+}

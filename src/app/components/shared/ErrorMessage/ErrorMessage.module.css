@@ -10,6 +10,11 @@
   color: var(--red-500);
 }
 
+/*for the dark theme, change text color from --red-500 to --red-300*/
+:global(.dark-theme) .errorMsg {
+  color: var(--red-300);
+}
+
 /*Desktop Styles*/
 @media (min-width: 64rem /*1024px*/) {
   /*increase font size from 14px to 16px*/

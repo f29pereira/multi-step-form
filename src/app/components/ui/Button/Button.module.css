@@ -2,6 +2,8 @@
 * CSS Module for the Button component
 * Classes: 
 * .btn            - button
+* .small          - 14px font size
+* .base           - 16px font size
 * .transparentBtn - button with transparent background
 * .blueBtn        - button with --blue-950 background color
 * .purpleBtn      - button with --purple-600 background color
@@ -10,6 +12,13 @@
 .btn {
   padding: 1rem 1.5rem;
   border-radius: var(--border-radius-10);
+}
+
+.small {
+  font-size: var(--font-size-14);
+}
+
+.base {
   font-size: var(--font-size-base);
 }
 
@@ -18,9 +27,9 @@
   color: var(--grey-500);
 }
 
-/*on focus, display --grey-500 outline*/
-.transparentBtn:focus {
-  outline-color: var(--grey-500);
+/*for the dark theme, change text color from --grey-500 to --white*/
+:global(.dark-theme) .transparentBtn {
+  color: var(--white);
 }
 
 .blueBtn {
@@ -28,15 +37,35 @@
   color: var(--white);
 }
 
+/*for the dark theme, change background color from --blue-950 to --blue-500*/
+:global(.dark-theme) .blueBtn {
+  background-color: var(--blue-500);
+}
+
 .purpleBtn {
   background-color: var(--purple-600);
   color: var(--white);
 }
 
+/*on focus, display --grey-500 outline*/
+.transparentBtn:focus-visible {
+  outline-color: var(--grey-500);
+}
+
 /*on focus, display --purple-600 outline*/
-.blueBtn:focus,
-.purpleBtn:focus {
+.blueBtn:focus-visible,
+.purpleBtn:focus-visible {
   outline-color: var(--purple-600);
+}
+
+/*for the dark theme, on focus, display --white outline*/
+:global(.dark-theme)
+  :is(
+    .transparentBtn:focus-visible,
+    .blueBtn:focus-visible,
+    .purpleBtn:focus-visible
+  ) {
+  outline-color: var(--white);
 }
 
 /*Tablet Styles*/
@@ -46,9 +75,19 @@
     color: var(--blue-950);
   }
 
+  /*for the dark theme, on hover, change the background color from --white to --purple-grey-200*/
+  :global(.dark-theme) .transparentBtn:hover {
+    color: var(--purple-grey-200);
+  }
+
   /*on hover, change the background color from --blue-950 to --blue-900*/
   .blueBtn:hover {
     background-color: var(--blue-900);
+  }
+
+  /*for the dark theme, on hover, change the background color from --blue-500 to --blue-450*/
+  :global(.dark-theme) .blueBtn:hover {
+    background-color: var(--blue-450);
   }
 
   /*on hover, change the background color from --purple-600 to --purple-550*/

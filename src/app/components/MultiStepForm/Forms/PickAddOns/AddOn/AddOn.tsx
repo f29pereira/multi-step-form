@@ -3,9 +3,10 @@
 import styles from "./AddOn.module.css";
 import clsx from "clsx";
 import type { AddOnProps } from "@/app/components/types";
-import { formatYearlyOrMonthlyPrice } from "@/app/lib/utils";
+import { getFormattedPrice } from "@/app/lib/utils";
 import { useMultiStepForm } from "@/app/components/customHooks/useMultiStepForm";
 import { useFormContext } from "react-hook-form";
+import { useAppSelector } from "@/app/hooks";
 
 /**
  * Renders a add-on with:
@@ -15,6 +16,10 @@ import { useFormContext } from "react-hook-form";
  * - Price (monthly or yearly value)
  */
 export default function AddOn({ id, type, description, price }: AddOnProps) {
+  // Localization reducer
+  const localeCode = useAppSelector((state) => state.localization.localeCode);
+  const dictionary = useAppSelector((state) => state.localization.dictionary);
+
   // MultiStepForm context
   const { formData } = useMultiStepForm();
   const isYearly = formData.isYearly;
@@ -71,7 +76,7 @@ export default function AddOn({ id, type, description, price }: AddOnProps) {
       {/*Price (monthly or yearly value)*/}
       <span className="sr-only">{`Plus ${price} dollars per ${isYearly ? "year" : "month"}`}</span>
       <span className={`lighter-text ${styles.price}`}>
-        {`+${formatYearlyOrMonthlyPrice(isYearly, price)}`}
+        {`+${getFormattedPrice(isYearly, price, localeCode, dictionary)}`}
       </span>
     </label>
   );

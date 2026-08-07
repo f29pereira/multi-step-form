@@ -1,6 +1,7 @@
-import { render } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../helpers/reduxHelper";
 import { createRef } from "react";
 import PickAddOns from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns";
+import en from "@/app/[lang]/dictionaries/en.json";
 import { createEmptyMultiStepFormContext } from "../../../../../../fixtures/multiStepForm.fixtures";
 import { FIXTURE_ADD_ONS_LIST } from "../../../../../../fixtures/multiStepForm.fixtures";
 import { getAddOnsListBySubscription } from "@/app/components/MultiStepForm/Forms/PickAddOns/PickAddOns.utils";
@@ -34,7 +35,12 @@ jest.mock(
 describe("PickAddOns component", () => {
   beforeEach(() => {
     const formRef = createRef<HTMLFormElement>();
-    render(<PickAddOns formRef={formRef} />);
+
+    renderWithProviders(<PickAddOns formRef={formRef} />, {
+      preloadedState: {
+        localization: { localeCode: "en", dictionary: en },
+      },
+    });
   });
 
   it("renders the main title, form description and list of add-ons", () => {

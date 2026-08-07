@@ -1,9 +1,8 @@
+import type { PlanDetails, AddOnDetails } from "@/app/components/types/data";
 import type {
-  PlanDetails,
   MultiStepFormContextType,
-  AddOnDetails,
   FormData,
-} from "@/app/components/types";
+} from "@/app/components/types/context";
 
 /**
  * Returns an initial state mock for the MultiStepFormContext
@@ -167,6 +166,7 @@ export const FIXTURE_FORM_STEPS = {
   // PersonalInfo component
   personalInfo: {
     title: "Step 1 of 4, Personal info",
+    title_pt: "Etapa 1 de 4, Informação pessoal",
     description: "Please provide your name, email address, and phone number.",
     nameInputLabel: "Name",
     emailInputLabel: "Email Address",
@@ -206,6 +206,7 @@ export const FIXTURE_STEPSLIST = {
  */
 export const FIXTURE_STEP = {
   stepIndex: 0,
+  stepIndexDesktop: "STEP 0",
   stepName: "Your Info",
 };
 
@@ -241,7 +242,7 @@ export const FIXTURE_MULTISTEPFORM = {
 export const FIXTURE_SUBSCRIPTIONTOGGLE = {
   monthly: "Monthly",
   yearly: "Yearly",
-  btnDescription: "Monthly/Yearly toggle current selected:",
+  btnDescription: "Monthly/Yearly subscription toggle, currently selected:",
 };
 
 /**
@@ -251,4 +252,20 @@ export const FIXTURE_THANKYOU = {
   title: "Thank you!",
   description:
     "Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loregaming.com.",
+};
+
+/**
+ * Mocked data for the LanguageSwitch component
+ */
+export const FIXTURE_LANGUAGESWITCH = {
+  btnAriaLabel_en: "Switch language, current selected English",
+  btnAriaLabel_pt: "Alterar idioma, atualmente selecionado Português",
+};
+
+/**
+ * Mocked data for the ThemeSwitch component
+ */
+export const FIXTURE_THEMESWITCH = {
+  btnAriaLabel_light: "Switch to Dark theme",
+  btnAriaLabel_dark: "Switch to Light theme",
 };

@@ -1,5 +1,6 @@
-import { render } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../../helpers/reduxHelper";
 import FinishSubscription from "@/app/components/MultiStepForm/Forms/LastStep/FinishSubscription/FinishSubscription";
+import en from "@/app/[lang]/dictionaries/en.json";
 import { createMultiStepFormContext } from "../../../../../../../fixtures/multiStepForm.fixtures";
 import { expectFinishSubscriptionVisible } from "../../../../../../helpers/multiStepForm.helpers";
 
@@ -10,12 +11,20 @@ jest.mock("@/app/components/customHooks/useMultiStepForm", () => ({
   useMultiStepForm: () => context,
 }));
 
+// Localization
+const localeCode = "en";
+const dictionary = en;
+
 /**
  * Unit testing for the component: FinishSubscription
  */
 describe("FinishSubscription component", () => {
   beforeEach(() => {
-    render(<FinishSubscription />);
+    renderWithProviders(<FinishSubscription />, {
+      preloadedState: {
+        localization: { localeCode: "en", dictionary: en },
+      },
+    });
   });
 
   it("renders the main title, description and subscription: plan, add-ons list and total", () => {
@@ -25,6 +34,8 @@ describe("FinishSubscription component", () => {
       formData.isYearly,
       formData.selectedPlanId,
       formData.selectedAddOns,
+      localeCode,
+      dictionary,
     );
   });
 });

@@ -676,6 +676,8 @@ After completing the Multi-step form:
 - [user-event](https://www.npmjs.com/package/@testing-library/user-event) - companion library of the React Testing Library
 - [Playwright](https://playwright.dev/) - Automation library for end-to-end testing
 - [NVDA (NonVisual Desktop Access)](https://www.nvaccess.org/) - Open-source screen reader for Windows
+- [GitHub Actions](https://github.com/features/actions) - CI/CD platform built into GitHub that automates workflows on every push or pull request
+- [Vercel](https://vercel.com/) - Cloud platform used to host and deploy modern websites and web applications
 
 ### What I learned
 
@@ -692,6 +694,8 @@ After completing the Multi-step form:
 - Avoid potential hydration errors that occasionally occur during the E2E Playwright tests (browsers: webkit and safari) by using the Playwright's method `click()`, to check if the inputs of the first form step where ready to be filled in.
 
 - For the unit/integration tests when using the `user-event` library, follow the docs recommendation and use a session object (`userEvent.setup()`) instead of the `userEvent` directly. This session object persists during the test and can be configured if necessary.
+
+- Host this project on Vercel to get full access to Next.js Server Actions functionality, instead of using GitHub Pages, which only supports static websites.
 
 ## Author
 

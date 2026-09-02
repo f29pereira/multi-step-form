@@ -116,8 +116,8 @@
   color: var(--purple-200);
 }
 
-/*Tablet Styles*/
-@media (min-width: 48rem /*768px*/) {
+/*Hover styles*/
+@media (hover: hover) {
   /*on hover, change border color from --purple-grey-200 to --purple-600*/
   .addOnCont:hover {
     border-color: var(--purple-600);
@@ -127,7 +127,10 @@
   :global(.dark-theme) .addOnCont:hover {
     border-color: var(--blue-500);
   }
+}
 
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
   /*increase top/bottom padding from 0.8rem to 1rem and left/right padding from 0.7rem to 1.5rem*/
   .addOnCont {
     padding: 1rem 1.5rem;

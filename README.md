@@ -683,6 +683,8 @@ After completing the Multi-step form:
 
 - Use a list of components (form step related components) to de displayed one by one in the main form component `MultiStepForm`.
 
+- Use hover media feature @media (hover: hover) instead of applying hover styles based of screen size
+
 - For the complex functions use the JSDocs `@returns` and `@example` for easy readability.
 
 - Use multiple TypeScript files to organize the different types. The types are divided into: component props, Redux Toolkit, Context API, localization and data.

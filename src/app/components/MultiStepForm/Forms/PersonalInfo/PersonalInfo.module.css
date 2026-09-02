@@ -64,8 +64,8 @@
   border-color: var(--red-300);
 }
 
-/*Tablet Styles*/
-@media (min-width: 48rem /*768px*/) {
+/*Hover styles*/
+@media (hover: hover) {
   /*on hover, change border color from --purple-grey-200 to --purple-550*/
   .input:hover {
     border-color: var(--purple-550);

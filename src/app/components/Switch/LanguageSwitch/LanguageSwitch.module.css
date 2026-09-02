@@ -64,8 +64,8 @@
   outline-color: var(--white);
 }
 
-/*Tablet Styles*/
-@media (min-width: 48rem /*768px*/) {
+/*Hover styles*/
+@media (hover: hover) {
   /*on hover, change text color from --grey-500 to --blue-950*/
   .btn:hover {
     color: var(--blue-950);
@@ -74,16 +74,6 @@
   /*for the dark theme, on hover, change text color from --white to --purple-grey-200*/
   :global(.dark-theme) .btn:hover {
     color: var(--purple-grey-200);
-  }
-
-  /*on focus, increase outline offset from 1px to 2px*/
-  .languageBtn:focus-visible {
-    outline-offset: 2px;
-  }
-
-  /*increase top from 2rem to 3rem*/
-  .languages {
-    top: 3rem;
   }
 
   /*on hover, change text color from --grey-500 to --blue-950 and background color from --white to --grey-450*/
@@ -95,6 +85,19 @@
   /*for the dark theme, on hover, change background color from --slate-700 to --slate-600*/
   :global(.dark-theme) .item:hover {
     background-color: var(--slate-600);
+  }
+}
+
+/*Tablet Styles*/
+@media (min-width: 48rem /*768px*/) {
+  /*on focus, increase outline offset from 1px to 2px*/
+  .languageBtn:focus-visible {
+    outline-offset: 2px;
+  }
+
+  /*increase top from 2rem to 3rem*/
+  .languages {
+    top: 3rem;
   }
 }
 

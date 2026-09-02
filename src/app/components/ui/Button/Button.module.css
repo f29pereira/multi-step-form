@@ -68,8 +68,8 @@
   outline-color: var(--white);
 }
 
-/*Tablet Styles*/
-@media (min-width: 48rem /*768px*/) {
+/*Hover styles*/
+@media (hover: hover) {
   /*on hover, change the background color from --grey-500 to --blue-950*/
   .transparentBtn:hover {
     color: var(--blue-950);

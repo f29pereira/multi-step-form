@@ -100,6 +100,19 @@
   color: var(--white);
 }
 
+/*Hover styles*/
+@media (hover: hover) {
+  /*on hover, change text color from --grey-500 to --purple-550*/
+  .linkBtn:hover {
+    color: var(--purple-550);
+  }
+
+  /*for the dark theme, on hover, change text color from --purple-grey-200 to --blue-450*/
+  :global(.dark-theme) .linkBtn:hover {
+    color: var(--blue-450);
+  }
+}
+
 /*Tablet Styles*/
 @media (min-width: 48rem /*768px*/) {
   /*increase top/bottom padding from 1.5rem to 2rem and left/right padding from 1rem to 1.5rem*/
@@ -110,15 +123,5 @@
   /*increase bottom margin to 0.5rem to 1rem*/
   .title {
     margin-bottom: 1rem;
-  }
-
-  /*on hover, change text color from --grey-500 to --purple-550*/
-  .linkBtn:hover {
-    color: var(--purple-550);
-  }
-
-  /*for the dark theme, on hover, change text color from --purple-grey-200 to --blue-450*/
-  :global(.dark-theme) .linkBtn:hover {
-    color: var(--blue-450);
   }
 }

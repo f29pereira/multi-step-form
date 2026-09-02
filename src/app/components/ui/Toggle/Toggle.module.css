@@ -38,8 +38,8 @@
   background-color: var(--white);
 }
 
-/*Desktop Styles*/
-@media (min-width: 64rem /*1024px*/) {
+/*Hover styles*/
+@media (hover: hover) {
   /*on hover, change background color from --blue-950 to --blue-900*/
   .mainCont:hover {
     background-color: var(--blue-900);
